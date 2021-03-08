@@ -1,6 +1,14 @@
 import { SyntheticEvent } from "react";
 import PropTypes from "prop-types";
-import { Button, Box, Text } from "@glif/react-components";
+import {
+  Button,
+  Box,
+  Text,
+  Title,
+  Card,
+  InputLabelBase,
+  Input,
+} from "@glif/react-components";
 
 import { SignInEmailForm, SignUpEmailForm } from "./EmailForm";
 import { PropTypeView, View } from "../View";
@@ -9,6 +17,7 @@ type OnboardFormProps = {
   view: View;
   onEmailSubmit: (event: SyntheticEvent) => void;
   onWeb3Connect: () => void;
+  onPasswordSubmit: (event: SyntheticEvent) => void;
 };
 
 function SignInView(props: {
@@ -35,16 +44,97 @@ function SignInView(props: {
       <Button
         role="button"
         title="Connect with Web3"
+        variant="secondary"
         onClick={props.onWeb3Connect}
       />
     </>
   );
 }
 
+SignInView.propTypes = {
+  onWeb3Connect: PropTypes.func.isRequired,
+  onEmailSubmit: PropTypes.func.isRequired,
+};
+
 function SignUpView(props: {
+  onPasswordSubmit: (event: SyntheticEvent) => void;
   onEmailSubmit: (event: SyntheticEvent) => void;
   onWeb3Connect: () => void;
+  view: View;
 }) {
+  if (props.view === "VERIFY_EMAIL") {
+    return <Title>Check your email!</Title>;
+  }
+
+  if (props.view === "ENTER_PASSWORD") {
+    return (
+      <>
+        <Text color="core.nearblack" textAlign="center" p="0" m={0} mr={1}>
+          SIGN UP
+        </Text>
+        <Card
+          p={0}
+          border={0}
+          width="100%"
+          maxWidth={13}
+          height={7}
+          display="flex"
+          flexDirection="column"
+          justifyContent="space-between"
+          boxShadow={2}
+          bg="status.success.background"
+        >
+          <Box
+            display="flex"
+            flexDirection="row"
+            justifyContent="space-between"
+            flexWrap="wrap"
+            height="100%"
+          >
+            <form
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                flexGrow: 1,
+              }}
+              onSubmit={props.onEmailSubmit}
+            >
+              <Box
+                position="relative"
+                display="flex"
+                flexGrow="1"
+                flexWrap="wrap"
+                alignItems="center"
+                height="100%"
+              >
+                <InputLabelBase display="none" htmlFor="email" />
+                <Input.Base
+                  id="email"
+                  width="100%"
+                  pr={8}
+                  overflow="scroll"
+                  placeholder="you@you.com"
+                  pl={3}
+                  height="100%"
+                  flexShrink="1"
+                />
+                <Button
+                  position="absolute"
+                  right="0"
+                  mx={2}
+                  px={4}
+                  type="submit"
+                  title="Verify email"
+                />
+              </Box>
+            </form>
+          </Box>
+        </Card>
+      </>
+    );
+  }
+
   return (
     <>
       <Box
@@ -65,11 +155,19 @@ function SignUpView(props: {
       <Button
         role="button"
         title="Connect with Web3"
+        variant="secondary"
         onClick={props.onWeb3Connect}
       />
     </>
   );
 }
+
+SignUpView.propTypes = {
+  onWeb3Connect: PropTypes.func.isRequired,
+  onEmailSubmit: PropTypes.func.isRequired,
+  onPasswordSubmit: PropTypes.func.isRequired,
+  view: PropTypeView,
+};
 
 export default function OnboardForm(props: OnboardFormProps) {
   return (
@@ -94,6 +192,8 @@ export default function OnboardForm(props: OnboardFormProps) {
           <SignUpView
             onEmailSubmit={props.onEmailSubmit}
             onWeb3Connect={props.onWeb3Connect}
+            onPasswordSubmit={props.onPasswordSubmit}
+            view={props.view}
           />
         )}
       </Box>
@@ -104,5 +204,6 @@ export default function OnboardForm(props: OnboardFormProps) {
 OnboardForm.propTypes = {
   onWeb3Connect: PropTypes.func.isRequired,
   onEmailSubmit: PropTypes.func.isRequired,
+  onPasswordSubmit: PropTypes.func.isRequired,
   view: PropTypeView,
 };

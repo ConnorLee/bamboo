@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Title,
@@ -63,6 +63,12 @@ export default function Onboard() {
   const { get, set } = useJwt();
   const { createIdentitySingleton } = useIdentityProvider();
   const [err, setErr] = useState<string>("");
+
+  useEffect(() => {
+    const verifiedEmailJWT = get("POST_EMAIL_CONFIRM");
+    if (verifiedEmailJWT) setView("ENTER_PASSWORD");
+  }, [get]);
+
   return (
     <>
       <Box
@@ -113,18 +119,25 @@ export default function Onboard() {
               e.preventDefault();
               const { elements } = e.target as HTMLFormElement;
               const email = elements.namedItem("email") as HTMLInputElement;
-              const res = await axios.post(
-                `${process.env
-                  .NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
-                {
-                  email: email.value,
-                }
-              );
-
-              if (res.status !== 201)
-                return setErr(
-                  "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+              if (view === "SIGN_UP") {
+                const res = await axios.post(
+                  `${process.env
+                    .NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
+                  {
+                    email: email.value,
+                  }
                 );
+
+                if (res.status !== 201) {
+                  setErr(
+                    "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+                  );
+                  return;
+                }
+
+                setView("VERIFY_EMAIL");
+                return;
+              }
 
               // const password = elements.namedItem("password") as HTMLInputElement;
               // const identitySingleton = createIdentitySingleton!(
@@ -136,6 +149,10 @@ export default function Onboard() {
             }}
             onWeb3Connect={() => {
               console.log("Clicked web3 connect!");
+            }}
+            onPasswordSubmit={(e) => {
+              e.preventDefault();
+              console.log("password");
             }}
           />
           <SwitchView view={view} onSwitch={(view: View) => setView(view)} />
