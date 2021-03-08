@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Button, Box, Text } from "@glif/react-components";
 
 import EmailForm from "./EmailForm";
-import Web3Connect from "./Web3Connect";
 
 type OnboardFormProps = {
   onEmailSubmit: (event: SyntheticEvent) => void;
