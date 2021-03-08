@@ -1,5 +1,5 @@
-import { Signup as SignupView } from "../src/components/Onboard";
+import { PermissionRequest } from "../src/components/Onboard";
 
-export default function Signup() {
-  return <SignupView />;
+export default function Permission() {
+  return <PermissionRequest />;
 }
