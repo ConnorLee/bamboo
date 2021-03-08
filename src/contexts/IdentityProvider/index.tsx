@@ -1,11 +1,5 @@
-import {
-  createContext,
-  useContext,
-  ReactNode,
-  useState,
-  useEffect,
-} from "react";
-import Identity from "../modules/Identity";
+import { createContext, useContext, ReactNode, useState } from "react";
+import Identity from "../../modules/Identity";
 
 type IdentityContextType = {
   identitySingleton: Identity | null;

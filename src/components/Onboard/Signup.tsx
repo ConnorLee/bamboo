@@ -1,11 +1,13 @@
-import React, { useState, SyntheticEvent } from "react";
+import React, { useState } from "react";
 import { Box, Title, Header, HeaderGlyph } from "@glif/react-components";
-import { useIdentityProvider } from "../../IdentityProvider";
+import axios from "axios";
+import { useIdentityProvider, useJwt } from "../../contexts";
 import OnboardForm from "./Form";
 
 export default function Signup() {
+  const { get, set } = useJwt();
   const { createIdentitySingleton } = useIdentityProvider();
-
+  const [err, setErr] = useState<string>("");
   return (
     <Box
       position="relative"
@@ -49,17 +51,30 @@ export default function Signup() {
       </Box>
 
       <OnboardForm
+        // TODO: add email error feedback here
         onEmailSubmit={async (e: React.FormEvent) => {
           e.preventDefault();
           const { elements } = e.target as HTMLFormElement;
           const email = elements.namedItem("email") as HTMLInputElement;
-          const password = elements.namedItem("password") as HTMLInputElement;
-          const identitySingleton = createIdentitySingleton!(
-            email.value,
-            password.value
+          const res = await axios.post(
+            `${process.env.NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
+            {
+              email: email.value,
+            }
           );
-          const threeID = await identitySingleton.signup();
-          console.log(threeID);
+
+          if (res.status !== 201)
+            return setErr(
+              "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+            );
+
+          // const password = elements.namedItem("password") as HTMLInputElement;
+          // const identitySingleton = createIdentitySingleton!(
+          //   email.value,
+          //   password.value
+          // );
+          // const threeID = await identitySingleton.signup();
+          // console.log(threeID);
         }}
         onWeb3Connect={() => {
           console.log("Clicked web3 connect!");
