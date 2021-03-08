@@ -5,27 +5,49 @@ import {
   useState,
   useEffect,
 } from "react";
+import Identity from "../modules/Identity";
 
-export const IdentityContext = createContext({});
+type IdentityContextType = {
+  identitySingleton: Identity | null;
+  createIdentitySingleton:
+    | ((email: string, password: string) => Identity)
+    | null;
+};
+
+export const IdentityContext = createContext<IdentityContextType>({
+  identitySingleton: null,
+  createIdentitySingleton: null,
+});
 
 interface IdentityProviderProps {
   children: ReactNode;
 }
 
 export const IdentityProviderWrapper = (props: IdentityProviderProps) => {
-  const [mounted, setMounted] = useState(false);
-  const [state, setState] = useState({});
-  useEffect(() => {
-    if (!mounted) {
-      setMounted(true);
-    }
-  }, [mounted, setMounted, setState]);
+  const [identitySingleton, setIdentitySingleton] = useState<Identity | null>(
+    null
+  );
+
+  const createIdentitySingleton = (
+    email: string,
+    password: string
+  ): Identity => {
+    const identity = new Identity(email, password, {
+      url: process.env.NEXT_PUBLIC_DL_URL!,
+      ceramicUrl: process.env.NEXT_PUBLIC_CERAMIC_URL!,
+    });
+    setIdentitySingleton(identity);
+    return identity;
+  };
 
   return (
-    <IdentityContext.Provider value={{}}>
+    <IdentityContext.Provider
+      value={{ identitySingleton, createIdentitySingleton }}
+    >
       {props.children}
     </IdentityContext.Provider>
   );
 };
 
-export const useIdentityProvider = (): {} => useContext(IdentityContext);
+export const useIdentityProvider = (): IdentityContextType =>
+  useContext(IdentityContext);
