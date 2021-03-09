@@ -13,6 +13,7 @@ import { useIdentityProvider, useJwt } from "../../contexts";
 import { View } from "./View";
 import OnboardForm from "./Form";
 import { useRouter } from "next/router";
+import { isValidEmail } from "../../utils";
 
 const HoverableLink = styled(Text)`
   cursor: pointer;
@@ -116,28 +117,61 @@ export default function Onboard() {
         <Box width="100%" maxWidth={13}>
           <OnboardForm
             view={view}
-            // TODO: add email error feedback here
+            // TODO: add error feedback here
             onEmailSubmit={async (e: React.FormEvent) => {
               e.preventDefault();
               const { elements } = e.target as HTMLFormElement;
               const email = elements.namedItem("email") as HTMLInputElement;
-              const res = await axios.post(
-                `${process.env
-                  .NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
-                {
-                  email: email.value,
-                }
-              );
-
-              if (res.status !== 201) {
-                setErr(
-                  "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+              if (!isValidEmail(email.value)) {
+                setErr("Please enter a valid email address.");
+                return;
+              }
+              if (view === "SIGN_UP") {
+                const res = await axios.post(
+                  `${process.env
+                    .NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
+                  {
+                    email: email.value,
+                  }
                 );
+
+                if (res.status !== 201) {
+                  setErr(
+                    "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+                  );
+                  return;
+                }
+
+                setView("VERIFY_EMAIL");
                 return;
               }
 
-              setView("VERIFY_EMAIL");
-              return;
+              if (view === "SIGN_IN") {
+                const password = elements.namedItem(
+                  "password"
+                ) as HTMLInputElement;
+                // TODO: password strength detection
+                if (!password) {
+                  setErr("Please enter a valid password.");
+                  return;
+                }
+
+                const identitySingleton = createIdentitySingleton!(
+                  email.value,
+                  password.value
+                );
+
+                const threeID = await identitySingleton.login();
+                if (threeID) {
+                  // throw the session token into localstorage for easy login
+                  set(identitySingleton.token, "SESSION");
+                }
+                alert(
+                  "Created 3ID: " +
+                    threeID +
+                    " forwarding you to calling app now..."
+                );
+              }
             }}
             onWeb3Connect={() => {
               console.log("Clicked web3 connect!");
@@ -162,7 +196,15 @@ export default function Onboard() {
               const threeID = await identitySingleton.signup(
                 get("POST_EMAIL_CONFIRM")!
               );
-              console.log(threeID);
+              if (threeID) {
+                // throw the session token into localstorage for easy login
+                set(identitySingleton.token, "SESSION");
+              }
+              alert(
+                "Created 3ID: " +
+                  threeID +
+                  " forwarding you to calling app now..."
+              );
             }}
           />
           <SwitchView view={view} onSwitch={(view: View) => setView(view)} />

@@ -13,8 +13,8 @@ export default class Identity {
   public url: string;
   public ceramicUrl: string;
   public _did: string = "";
+  public token: string = "";
   #password: string;
-  #token: string = "";
   constructor(
     username: string,
     password: string,
@@ -37,7 +37,7 @@ export default class Identity {
   async getSecret(): Promise<any> {
     const res = await axios.get(`${this.url}/v0/identity/secret`, {
       headers: {
-        Authorization: `Bearer ${this.#token}`,
+        Authorization: `Bearer ${this.token}`,
       },
     });
 
@@ -55,7 +55,7 @@ export default class Identity {
     if (!registered) throw new Error("Auth error - registering user.");
     const sessionToken = await this.auth.login();
     if (!sessionToken) throw new Error("Auth error - logging in user");
-    this.#token = sessionToken;
+    this.token = sessionToken;
     const secretSalt = await this.getSecret();
     // TODO: investigate slices
     const authSecret = tweetnacl
@@ -78,7 +78,7 @@ export default class Identity {
         },
         {
           headers: {
-            Authorization: `Bearer ${this.#token}`,
+            Authorization: `Bearer ${this.token}`,
           },
         }
       );
@@ -93,7 +93,7 @@ export default class Identity {
   async login(): Promise<DID> {
     const sessionToken = await this.auth.login();
     if (!sessionToken) throw new Error("Auth error - logging in user");
-    this.#token = sessionToken;
+    this.token = sessionToken;
     const secretSalt = await this.getSecret();
     // TODO: investigate slices
     const authSecret = tweetnacl
@@ -110,7 +110,7 @@ export default class Identity {
       await ceramic.setDIDProvider(threeID.getDidProvider());
       const res = await axios.get(`${this.url}/v0/identity`, {
         headers: {
-          Authorization: `Bearer ${this.#token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
       if (res.status !== 200) throw new Error("Error logging in user");

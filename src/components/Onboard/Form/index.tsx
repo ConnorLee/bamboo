@@ -105,7 +105,7 @@ function SignUpView(props: {
                 alignItems: "center",
                 flexGrow: 1,
               }}
-              onSubmit={props.onEmailSubmit}
+              onSubmit={props.onPasswordSubmit}
             >
               <Box
                 position="relative"
