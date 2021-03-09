@@ -63,10 +63,12 @@ export default function PermissionRequest() {
         </Box>
         <Box width="100%" maxWidth={13}>
           <OnboardForm
+            error={err}
             view={view}
             // TODO: add error feedback here
             onEmailSubmit={async (e: React.FormEvent) => {
               e.preventDefault();
+              setErr("");
               const { elements } = e.target as HTMLFormElement;
               const email = elements.namedItem("email") as HTMLInputElement;
               if (!isValidEmail(email.value)) {
@@ -122,9 +124,11 @@ export default function PermissionRequest() {
             }}
             onWeb3Connect={() => {
               console.log("Clicked web3 connect!");
+              setErr("");
             }}
             onPasswordSubmit={async (e) => {
               e.preventDefault();
+              setErr("");
               if (!router.query.email) {
                 remove("POST_EMAIL_CONFIRM");
                 setErr(
@@ -154,7 +158,13 @@ export default function PermissionRequest() {
               );
             }}
           />
-          <SwitchView view={view} onSwitch={(view: View) => setView(view)} />
+          <SwitchView
+            view={view}
+            onSwitch={(view: View) => {
+              setErr("");
+              setView(view);
+            }}
+          />
         </Box>
       </Box>
     </>

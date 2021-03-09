@@ -5,11 +5,13 @@ import {
   Input,
   Button,
   Card,
+  Label,
 } from "@glif/react-components";
-import { func } from "prop-types";
+import { func, string } from "prop-types";
 
 export default function SignInEmailForm(props: {
   onEmailSubmit: (event: SyntheticEvent) => void;
+  error?: string;
 }) {
   return (
     <form style={{ width: "100%" }} onSubmit={props.onEmailSubmit}>
@@ -105,10 +107,22 @@ export default function SignInEmailForm(props: {
           </Box>
         </Box>
       </Card>
+      {props.error && (
+        <Box pt={0} mx={0} textAlign="center" minHeight={6} mt={3}>
+          <Label color="status.fail.background" m={0}>
+            {props.error}
+          </Label>
+        </Box>
+      )}
     </form>
   );
 }
 
 SignInEmailForm.propTypes = {
   onEmailSubmit: func.isRequired,
+  error: string,
+};
+
+SignInEmailForm.defaultProps = {
+  error: "",
 };

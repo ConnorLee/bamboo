@@ -6,6 +6,7 @@ import SignInEmailForm from "./SignInEmailForm";
 export default function SignInView(props: {
   onEmailSubmit: (event: SyntheticEvent) => void;
   onWeb3Connect: () => void;
+  error?: string;
 }) {
   return (
     <>
@@ -20,7 +21,10 @@ export default function SignInView(props: {
           SIGN IN
         </Text>
       </Box>
-      <SignInEmailForm onEmailSubmit={props.onEmailSubmit} />
+      <SignInEmailForm
+        onEmailSubmit={props.onEmailSubmit}
+        error={props.error}
+      />
       <Text color="core.darkgray" textAlign="left" p="0" m={0} my={3}>
         - OR -
       </Text>
@@ -37,4 +41,9 @@ export default function SignInView(props: {
 SignInView.propTypes = {
   onWeb3Connect: PropTypes.func.isRequired,
   onEmailSubmit: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
+
+SignInView.defaultProps = {
+  error: "",
 };

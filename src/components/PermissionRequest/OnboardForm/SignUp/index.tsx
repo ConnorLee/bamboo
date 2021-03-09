@@ -17,6 +17,7 @@ export default function SignUpView(props: {
   onEmailSubmit: (event: SyntheticEvent) => void;
   onWeb3Connect: () => void;
   view: View;
+  error?: string;
 }) {
   if (props.view === "VERIFY_EMAIL") {
     return <Title>Check your email!</Title>;
@@ -112,7 +113,10 @@ export default function SignUpView(props: {
           SIGN UP
         </Text>
       </Box>
-      <SignUpEmailForm onEmailSubmit={props.onEmailSubmit} />
+      <SignUpEmailForm
+        onEmailSubmit={props.onEmailSubmit}
+        error={props.error}
+      />
       <Text color="core.darkgray" textAlign="left" p="0" m={0} my={3}>
         - OR -
       </Text>
@@ -131,4 +135,9 @@ SignUpView.propTypes = {
   onEmailSubmit: PropTypes.func.isRequired,
   onPasswordSubmit: PropTypes.func.isRequired,
   view: PropTypeView,
+  error: PropTypes.string,
+};
+
+SignUpView.defaultProps = {
+  error: "",
 };

@@ -11,9 +11,11 @@ type OnboardFormProps = {
   onEmailSubmit: (event: SyntheticEvent) => void;
   onWeb3Connect: () => void;
   onPasswordSubmit: (event: SyntheticEvent) => void;
+  error?: string;
 };
 
 export default function OnboardForm(props: OnboardFormProps) {
+  console.log(props.error);
   return (
     <>
       <Box
@@ -31,6 +33,7 @@ export default function OnboardForm(props: OnboardFormProps) {
           <SignInView
             onEmailSubmit={props.onEmailSubmit}
             onWeb3Connect={props.onWeb3Connect}
+            error={props.error}
           />
         ) : (
           <SignUpView
@@ -38,6 +41,7 @@ export default function OnboardForm(props: OnboardFormProps) {
             onWeb3Connect={props.onWeb3Connect}
             onPasswordSubmit={props.onPasswordSubmit}
             view={props.view}
+            error={props.error}
           />
         )}
       </Box>
@@ -50,4 +54,9 @@ OnboardForm.propTypes = {
   onEmailSubmit: PropTypes.func.isRequired,
   onPasswordSubmit: PropTypes.func.isRequired,
   view: PropTypeView,
+  error: PropTypes.string,
+};
+
+OnboardForm.defaultProps = {
+  error: "",
 };
