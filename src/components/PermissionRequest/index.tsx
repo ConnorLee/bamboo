@@ -1,66 +1,13 @@
 import React, { useEffect, useState } from "react";
-import {
-  Box,
-  Title,
-  Header,
-  HeaderGlyph,
-  Text,
-  StyledATag,
-} from "@glif/react-components";
-import styled from "styled-components";
+import { Box, Title, Header, HeaderGlyph } from "@glif/react-components";
+import { useRouter } from "next/router";
 import axios from "axios";
 import { useIdentityProvider, useJwt } from "../../contexts";
-import { View } from "./View";
-import OnboardForm from "./Form";
-import { useRouter } from "next/router";
+import SwitchView, { View } from "./View";
+import OnboardForm from "./OnboardForm";
 import { isValidEmail } from "../../utils";
 
-const HoverableLink = styled(Text)`
-  cursor: pointer;
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-function SwitchView(props: { view: View; onSwitch: (view: View) => void }) {
-  return (
-    <>
-      {props.view === "SIGN_IN" ? (
-        <Box display="flex">
-          <Text color="core.darkgray" p="0" m={0} my={3} mr={2}>
-            Don't have an account yet?
-          </Text>
-          <HoverableLink
-            color="core.primary"
-            p="0"
-            m={0}
-            my={3}
-            onClick={() => props.onSwitch("SIGN_UP")}
-          >
-            Create one
-          </HoverableLink>
-        </Box>
-      ) : (
-        <Box display="flex">
-          <Text color="core.darkgray" p="0" m={0} my={3} mr={2}>
-            Already have an account?
-          </Text>
-          <HoverableLink
-            color="core.primary"
-            p="0"
-            m={0}
-            my={3}
-            onClick={() => props.onSwitch("SIGN_IN")}
-          >
-            Sign in
-          </HoverableLink>
-        </Box>
-      )}
-    </>
-  );
-}
-
-export default function Onboard() {
+export default function PermissionRequest() {
   const [view, setView] = useState<View>("SIGN_IN");
   const router = useRouter();
   const { get, set, remove } = useJwt();
