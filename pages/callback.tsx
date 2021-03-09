@@ -4,12 +4,13 @@ import { NextPageContext } from "next";
 import { useRouter } from "next/router";
 import { useJwt } from "../src/contexts";
 
-const getJWT = async (code: string) => {
+const getJWT = async (code: string, email: string) => {
   try {
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_DL_URL!}/v0/verifications/email/verify`,
       {
         code,
+        email,
       }
     );
 
@@ -26,6 +27,7 @@ const getJWT = async (code: string) => {
 interface InitialCallbackProps {
   jwt: string;
   error: Error | null;
+  email: string;
 }
 
 export default function Callback(props: InitialCallbackProps) {
@@ -34,9 +36,14 @@ export default function Callback(props: InitialCallbackProps) {
   useEffect(() => {
     if (props.jwt) {
       jwt.set(props.jwt, "POST_EMAIL_CONFIRM");
+      const params = new URLSearchParams(
+        router.query as Record<string, string>
+      );
+      params.delete("code");
+      router.replace(`/permission?${params.toString()}`);
     }
-  }, [props.jwt]);
-  return <div>Verifying...</div>;
+  }, [props.jwt, router.query]);
+  return null;
 }
 
 Callback.getInitialProps = async ({
@@ -44,11 +51,22 @@ Callback.getInitialProps = async ({
 }: NextPageContext): Promise<InitialCallbackProps> => {
   try {
     if (!query.code) {
-      return { jwt: "", error: new Error("No code passed in the URL bar") };
+      return {
+        jwt: "",
+        error: new Error("No code passed in the URL bar"),
+        email: "",
+      };
     }
-    const jwt = await getJWT(query.code as string);
-    return { jwt, error: null };
+    if (!query.email) {
+      return {
+        jwt: "",
+        error: new Error("No email passed in the URL bar"),
+        email: "",
+      };
+    }
+    const jwt = await getJWT(query.code as string, query.email as string);
+    return { jwt, error: null, email: query.email as string };
   } catch (error) {
-    return { jwt: "", error: error.message };
+    return { jwt: "", error: error.message, email: "" };
   }
 };

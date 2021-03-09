@@ -28,3 +28,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Testing
+
+Our tests require use of json web tokens. Our test require daemon.land services running in order to pass. Make sure the JWT_SECRET .env variable is set to the same as the server you're testing on, or else the server will not be able to decode the JWTs for tests.

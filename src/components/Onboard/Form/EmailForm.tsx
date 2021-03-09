@@ -12,7 +12,7 @@ export function SignInEmailForm(props: {
   onEmailSubmit: (event: SyntheticEvent) => void;
 }) {
   return (
-    <form style={{ width: "100%" }}>
+    <form style={{ width: "100%" }} onSubmit={props.onEmailSubmit}>
       <Card
         p={0}
         border={0}

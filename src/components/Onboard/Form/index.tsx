@@ -69,8 +69,15 @@ function SignUpView(props: {
   if (props.view === "ENTER_PASSWORD") {
     return (
       <>
-        <Text color="core.nearblack" textAlign="center" p="0" m={0} mr={1}>
-          SIGN UP
+        <Text
+          color="core.nearblack"
+          textAlign="center"
+          p="0"
+          m={0}
+          mr={1}
+          mb={1}
+        >
+          Choose something non-obvious, please!
         </Text>
         <Card
           p={0}
@@ -108,14 +115,15 @@ function SignUpView(props: {
                 alignItems="center"
                 height="100%"
               >
-                <InputLabelBase display="none" htmlFor="email" />
+                <InputLabelBase display="none" htmlFor="password" />
                 <Input.Base
-                  id="email"
+                  id="password"
                   width="100%"
                   pr={8}
                   overflow="scroll"
-                  placeholder="you@you.com"
+                  placeholder="Strong password"
                   pl={3}
+                  type="password"
                   height="100%"
                   flexShrink="1"
                 />
@@ -125,7 +133,7 @@ function SignUpView(props: {
                   mx={2}
                   px={4}
                   type="submit"
-                  title="Verify email"
+                  title="Sign up"
                 />
               </Box>
             </form>

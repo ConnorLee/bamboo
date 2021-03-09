@@ -46,8 +46,12 @@ export default class Identity {
     return this.auth.decryptMsg(salt);
   }
 
-  async signup(): Promise<DID> {
-    const registered = await this.auth.register();
+  async signup(validIdentityToken: string): Promise<DID> {
+    if (!validIdentityToken)
+      throw new Error(
+        "Must pass validIdentityToken to signup call (prove your identity first)."
+      );
+    const registered = await this.auth.register(validIdentityToken);
     if (!registered) throw new Error("Auth error - registering user.");
     const sessionToken = await this.auth.login();
     if (!sessionToken) throw new Error("Auth error - logging in user");
@@ -66,19 +70,51 @@ export default class Identity {
         ceramic,
       });
       await ceramic.setDIDProvider(threeID.getDidProvider());
-      // const res = await axios.post(
-      //   `${this.url}/v0/identity`,
-      //   {
-      //     username: this.auth.username,
-      //     did: threeID.id
-      //   },
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${this.#token}`
-      //     }
-      //   }
-      // )
-      // if (res.status !== 201) throw new Error("Error creating user");
+      const res = await axios.post(
+        `${this.url}/v0/identity`,
+        {
+          username: this.auth.username,
+          did: threeID.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.#token}`,
+          },
+        }
+      );
+      if (res.status !== 201) throw new Error("Error creating user");
+      this.did = threeID.id;
+      return threeID.id;
+    } finally {
+      await ceramic.close();
+    }
+  }
+
+  async login(): Promise<DID> {
+    const sessionToken = await this.auth.login();
+    if (!sessionToken) throw new Error("Auth error - logging in user");
+    this.#token = sessionToken;
+    const secretSalt = await this.getSecret();
+    // TODO: investigate slices
+    const authSecret = tweetnacl
+      .hash(concat([fromString(secretSalt), fromString(this.#password)]))
+      .slice(0, 32);
+    const ceramic = new Ceramic(this.ceramicUrl);
+    try {
+      const threeID = await ThreeID.create({
+        authId: "genesis",
+        authSecret,
+        getPermission: () => Promise.resolve([]),
+        ceramic,
+      });
+      await ceramic.setDIDProvider(threeID.getDidProvider());
+      const res = await axios.get(`${this.url}/v0/identity`, {
+        headers: {
+          Authorization: `Bearer ${this.#token}`,
+        },
+      });
+      if (res.status !== 200) throw new Error("Error logging in user");
+      if (threeID.id !== res.data.did) throw new Error("DID Mismatch");
       this.did = threeID.id;
       return threeID.id;
     } finally {

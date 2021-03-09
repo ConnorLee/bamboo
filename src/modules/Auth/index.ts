@@ -33,7 +33,7 @@ export default class Auth {
     return this.#sessionKey;
   }
 
-  async register(): Promise<boolean> {
+  async register(validIdentityToken: string): Promise<boolean> {
     const salt = srp.generateSalt(p);
     const privateKey = srp.derivePrivateKey(
       salt,
@@ -42,11 +42,19 @@ export default class Auth {
       p
     );
     const verifier = srp.deriveVerifier(privateKey, p);
-    const res = await axios.post(`${this.url}/v0/auth/register`, {
-      username: this.username,
-      salt,
-      verifier,
-    });
+    const res = await axios.post(
+      `${this.url}/v0/auth/register`,
+      {
+        username: this.username,
+        salt,
+        verifier,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${validIdentityToken}`,
+        },
+      }
+    );
     if (res.status !== 201)
       throw new Error("Error creating salt and verifier.");
     return true;
@@ -106,7 +114,6 @@ export default class Auth {
       throw new Error("Must authenticate before decrypting messages.");
     const key = fromString(this.#sessionKey!);
     const message = await decryptJWE(encryptedJWE, xc20pDirDecrypter(key));
-    console.log(toString(message));
-    return "";
+    return toString(message);
   }
 }

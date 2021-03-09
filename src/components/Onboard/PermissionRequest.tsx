@@ -12,6 +12,7 @@ import axios from "axios";
 import { useIdentityProvider, useJwt } from "../../contexts";
 import { View } from "./View";
 import OnboardForm from "./Form";
+import { useRouter } from "next/router";
 
 const HoverableLink = styled(Text)`
   cursor: pointer;
@@ -60,7 +61,8 @@ function SwitchView(props: { view: View; onSwitch: (view: View) => void }) {
 
 export default function Onboard() {
   const [view, setView] = useState<View>("SIGN_IN");
-  const { get, set } = useJwt();
+  const router = useRouter();
+  const { get, set, remove } = useJwt();
   const { createIdentitySingleton } = useIdentityProvider();
   const [err, setErr] = useState<string>("");
 
@@ -119,40 +121,48 @@ export default function Onboard() {
               e.preventDefault();
               const { elements } = e.target as HTMLFormElement;
               const email = elements.namedItem("email") as HTMLInputElement;
-              if (view === "SIGN_UP") {
-                const res = await axios.post(
-                  `${process.env
-                    .NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
-                  {
-                    email: email.value,
-                  }
-                );
-
-                if (res.status !== 201) {
-                  setErr(
-                    "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
-                  );
-                  return;
+              const res = await axios.post(
+                `${process.env
+                  .NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
+                {
+                  email: email.value,
                 }
+              );
 
-                setView("VERIFY_EMAIL");
+              if (res.status !== 201) {
+                setErr(
+                  "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+                );
                 return;
               }
 
-              // const password = elements.namedItem("password") as HTMLInputElement;
-              // const identitySingleton = createIdentitySingleton!(
-              //   email.value,
-              //   password.value
-              // );
-              // const threeID = await identitySingleton.signup();
-              // console.log(threeID);
+              setView("VERIFY_EMAIL");
+              return;
             }}
             onWeb3Connect={() => {
               console.log("Clicked web3 connect!");
             }}
-            onPasswordSubmit={(e) => {
+            onPasswordSubmit={async (e) => {
               e.preventDefault();
-              console.log("password");
+              if (!router.query.email) {
+                remove("POST_EMAIL_CONFIRM");
+                setErr(
+                  "Something went wrong. Please refresh the page and try again."
+                );
+                return;
+              }
+              const { elements } = e.target as HTMLFormElement;
+              const password = elements.namedItem(
+                "password"
+              ) as HTMLInputElement;
+              const identitySingleton = createIdentitySingleton!(
+                router.query.email as string,
+                password.value
+              );
+              const threeID = await identitySingleton.signup(
+                get("POST_EMAIL_CONFIRM")!
+              );
+              console.log(threeID);
             }}
           />
           <SwitchView view={view} onSwitch={(view: View) => setView(view)} />
