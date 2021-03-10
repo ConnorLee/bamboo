@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken";
+import axios from "axios";
 import { describe, expect, test } from "@jest/globals";
 import { ScopeDirection, ScopesV2 } from "@daemon-land/types";
 import { AccessController } from "@daemon-land/sdk";
-import Identity from ".";
+import Identity, { MinimalProfile } from ".";
 import { makeRandomString } from "../../utils";
 
 const globalAny: any = global;
@@ -98,4 +99,34 @@ describe("identityv2", () => {
   });
 
   test.todo("saving permission saves the permission in IDX");
+
+  test("saving profile saves the profile in IDX cache", async () => {
+    const username = makeRandomString(10);
+    const password = makeRandomString(10);
+    const identityJWT = await createJWT({ username, verified: true });
+
+    const identity = new Identity(username, password, {
+      url: "http://localhost:3001",
+      ceramicUrl: "http://localhost:7007",
+    });
+    const threeID = await identity.signup(identityJWT);
+    await identity.saveProfile({
+      name: username,
+      imageUrl: "http://localhost:5011/ipfs/Qmz...",
+      callbackUrl: "http://localhost:3001/callback",
+    });
+
+    const res = await axios.get(
+      `http://localhost:3001/v0/identity/profile/${threeID}`
+    );
+
+    if (res.status !== 200) throw new Error("Error getting profile");
+
+    const profile = res.data as MinimalProfile;
+    expect(profile.name).toBe(username);
+    expect(profile.imageUrl).toBe("http://localhost:5011/ipfs/Qmz...");
+    expect(profile.callbackUrl).toBe("http://localhost:3001/callback");
+  });
+
+  test.todo("saving profile saves the permission in IDX");
 });

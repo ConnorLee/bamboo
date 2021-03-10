@@ -8,6 +8,11 @@ import Auth from "../Auth";
 import { PermissionRequestV2 } from "@daemon-land/types";
 
 type DID = string;
+export type MinimalProfile = {
+  name: string;
+  callbackUrl: string;
+  imageUrl: string;
+};
 
 export default class Identity {
   public auth: Auth;
@@ -138,6 +143,29 @@ export default class Identity {
 
       if (res.status !== 201)
         throw new Error("Error saving permission to IDX Cache");
+    } catch (err) {
+      throw new Error("Error saving permission to IDX Cache");
+    }
+  }
+
+  async saveProfile(profile: MinimalProfile) {
+    try {
+      //TODO: actually save to IDX and the cache
+      const res = await axios.put(
+        `${this.url}/v0/identity/profile`,
+        {
+          profile,
+          operandDID: this.did,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        }
+      );
+
+      if (res.status !== 201)
+        throw new Error("Error saving profile to IDX Cache");
     } catch (err) {
       throw new Error("Error saving permission to IDX Cache");
     }
