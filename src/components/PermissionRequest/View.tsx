@@ -3,7 +3,12 @@ import React from "react";
 import styled from "styled-components";
 import { Box, Text } from "@glif/react-components";
 
-export type View = "SIGN_IN" | "SIGN_UP" | "VERIFY_EMAIL" | "ENTER_PASSWORD";
+export type View =
+  | "SIGN_IN"
+  | "SIGN_UP"
+  | "VERIFY_EMAIL"
+  | "ENTER_PASSWORD"
+  | "CREATE_PROFILE";
 
 export const PropTypeView = PropTypes.oneOf([
   "SIGN_IN",

@@ -4,7 +4,7 @@ import { Box } from "@glif/react-components";
 
 import SignInView from "./SignIn";
 import SignUpView from "./SignUp";
-import { PropTypeView, View } from "../View";
+import { PropTypeView, View } from "../PermissionRequest/View";
 
 type OnboardFormProps = {
   view: View;

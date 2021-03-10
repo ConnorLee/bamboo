@@ -5,7 +5,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { useIdentityProvider, useJwt } from "../../contexts";
 import SwitchView, { View } from "./View";
-import OnboardForm from "./OnboardForm";
+import OnboardForm from "../OnboardForm";
 import { isValidEmail } from "../../utils";
 
 export default function Onboard(props: {
@@ -84,6 +84,7 @@ export default function Onboard(props: {
                     .NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
                   {
                     email: email.value,
+                    state: "permission",
                   }
                 );
 
@@ -147,6 +148,7 @@ export default function Onboard(props: {
                 get("POST_EMAIL_CONFIRM")!
               );
               if (threeID) {
+                remove("POST_EMAIL_CONFIRM");
                 // throw the session token into localstorage for easy login
                 set(identitySingleton.token, "SESSION");
                 props.setLoggedIn(true);

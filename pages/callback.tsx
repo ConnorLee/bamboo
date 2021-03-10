@@ -28,6 +28,7 @@ interface InitialCallbackProps {
   jwt: string;
   error: Error | null;
   email: string;
+  state: "create-app" | "permission" | "";
 }
 
 export default function Callback(props: InitialCallbackProps) {
@@ -40,7 +41,7 @@ export default function Callback(props: InitialCallbackProps) {
         router.query as Record<string, string>
       );
       params.delete("code");
-      router.replace(`/permission?${params.toString()}`);
+      router.replace(`/${props.state}?${params.toString()}`);
     }
   }, [props.jwt, router.query]);
   return null;
@@ -50,23 +51,22 @@ Callback.getInitialProps = async ({
   query,
 }: NextPageContext): Promise<InitialCallbackProps> => {
   try {
-    if (!query.code) {
+    if (!query.code || !query.email || !query.state) {
       return {
         jwt: "",
-        error: new Error("No code passed in the URL bar"),
+        error: new Error("Bad params passed in the URL bar"),
         email: "",
-      };
-    }
-    if (!query.email) {
-      return {
-        jwt: "",
-        error: new Error("No email passed in the URL bar"),
-        email: "",
+        state: "",
       };
     }
     const jwt = await getJWT(query.code as string, query.email as string);
-    return { jwt, error: null, email: query.email as string };
+    return {
+      jwt,
+      email: query.email as string,
+      state: query.state as "create-app" | "permission",
+      error: null,
+    };
   } catch (error) {
-    return { jwt: "", error: error.message, email: "" };
+    return { jwt: "", email: "", state: "", error: error.message };
   }
 };

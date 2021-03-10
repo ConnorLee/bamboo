@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { PermissionRequestV2 } from "@daemon-land/types";
 import { bool } from "prop-types";
-import { Box } from "@glif/react-components";
 import { useJwt } from "../../contexts";
 import Onboard from "./Onboard";
 import PermissionForm from "./PermissionForm";
