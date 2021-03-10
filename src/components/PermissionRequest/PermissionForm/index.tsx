@@ -30,6 +30,7 @@ export default function PermissionForm(props: {
           e.preventDefault();
           const { elements } = e.target as HTMLFormElement;
           const password = elements.namedItem("password") as HTMLInputElement;
+
           // user has session but no password entered yet
           if (!identitySingleton && !password) {
             setInputPassword(true);
@@ -63,6 +64,11 @@ export default function PermissionForm(props: {
             } catch (err) {
               setErr(err.message);
             }
+          } else {
+            await identitySingleton.savePermission(props.permissionRequest);
+            const callbackURL = await identitySingleton.generateCallback(
+              props.permissionRequest.requesterDID
+            );
           }
           // SAVE TO IDX HERE
           // UPDATE CACHE
