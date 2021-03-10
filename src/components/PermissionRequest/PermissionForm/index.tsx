@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { Box, Button, Title, Text } from "@glif/react-components";
@@ -61,22 +61,21 @@ export default function PermissionForm(props: {
               );
               await identitySingleton.login();
               await identitySingleton.savePermission(props.permissionRequest);
-              const callbackURL = await identitySingleton.generateCallback(
-                props.permissionRequest.requesterDID
+              alert(
+                "Permission saved! Taking you back to: " +
+                  props.profile.callbackUrl
               );
             } catch (err) {
               setErr(err.message);
+              return;
             }
           } else {
             await identitySingleton.savePermission(props.permissionRequest);
-            const callbackURL = await identitySingleton.generateCallback(
-              props.permissionRequest.requesterDID
+            alert(
+              "Permission saved! Taking you back to: " +
+                props.profile.callbackUrl
             );
           }
-          // SAVE TO IDX HERE
-          // UPDATE CACHE
-          // NEED TO CHECK IF WE HAVE THE ENCRYPTION KEY ALREADY // HAVE AUTHED WITH SERVER, IF NOT, POP OPEN PASSWORD DIALAUGE
-          alert("Routing you back to calling application!");
         }}
       >
         <Box

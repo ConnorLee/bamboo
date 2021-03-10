@@ -30,13 +30,15 @@ export default function CreateAppProfile() {
   const [imageUrl, setImageUrl] = useState<string>("");
   const [inputPassword, setInputPassword] = useState<boolean>(false);
   const [err, setErr] = useState<string>("");
-  const { get } = useJwt();
+  const [creating3ID, setCreating3ID] = useState<boolean>(false);
+  const { get, remove } = useJwt();
   const { createIdentitySingleton, identitySingleton } = useIdentityProvider();
   return (
     <Box display="flex" flexDirection="column" width="100%" mt={8}>
       <Form
         onSubmit={async (e: SyntheticEvent) => {
           e.preventDefault();
+          if (creating3ID) return;
           setErr("");
           if (!appName || !callbackUrl || !imageUrl) {
             setErr("Please complete all form fields");
@@ -50,6 +52,7 @@ export default function CreateAppProfile() {
             return;
           } else if (!identitySingleton) {
             try {
+              setCreating3ID(true);
               // TODO is this call secure?
               const res = await axios.get(
                 `${process.env.NEXT_PUBLIC_DL_URL}/v0/identity`,
@@ -75,22 +78,36 @@ export default function CreateAppProfile() {
                 imageUrl,
                 callbackUrl,
               });
+              setCreating3ID(false);
               alert(
                 `Your application ${appName} has been created successfully. Your app DID is: ${identitySingleton.did}`
               );
+              // TODO: remove this hack - just to log out the user after they've created their app
+              remove("SESSION");
             } catch (err) {
+              setCreating3ID(false);
               setErr(err.message);
               return;
             }
           } else {
-            await identitySingleton.saveProfile({
-              name: appName,
-              imageUrl,
-              callbackUrl,
-            });
-            alert(
-              `Your application ${appName} has been created successfully. Your app DID is: ${identitySingleton.did}`
-            );
+            try {
+              setCreating3ID(true);
+              await identitySingleton.saveProfile({
+                name: appName,
+                imageUrl,
+                callbackUrl,
+              });
+              setCreating3ID(false);
+              alert(
+                `Your application ${appName} has been created successfully. Your app DID is: ${identitySingleton.did}`
+              );
+              // TODO: remove this hack - just to log out the user after they've created their app
+              remove("SESSION");
+            } catch (err) {
+              setCreating3ID(false);
+              setErr(err.message);
+              return;
+            }
           }
         }}
       >
@@ -105,86 +122,93 @@ export default function CreateAppProfile() {
         >
           <CardHeader />
           <Box width="100%" p={3} border={0} bg="background.screen">
-            {inputPassword ? (
-              <>
-                <Text textAlign="center">
-                  Enter your password to register your application!
-                </Text>
-                <EnterPassword error={err} />
-              </>
-            ) : (
-              <>
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  flex="1"
-                  justifyContent="center"
-                  margin="auto"
-                  maxWidth={13}
-                  width="100%"
-                  minWidth={11}
-                  maxHeight={12}
-                  my={3}
-                >
-                  <Input.Text
-                    label="App name"
-                    placeholder="Instagram V2"
-                    value={appName}
-                    onChange={(e: SyntheticEvent) => {
-                      const target = e.target as HTMLInputElement;
-                      setAppName(target.value);
-                    }}
-                    mb={3}
-                  />
-                  <Input.Text
-                    label="Callback"
-                    placeholder="http://localhost:3000/callback"
-                    value={callbackUrl}
-                    onChange={(e: SyntheticEvent) => {
-                      const target = e.target as HTMLInputElement;
-                      setCallbackUrl(target.value);
-                    }}
-                  />
-                  {imageUrl ? (
-                    <Box mt={5} alignItems="center">
-                      <StyledATag
-                        href={imageUrl}
-                        target="_blank"
-                        rel="nooppener noreferrer"
-                      >
-                        Check out your application image
-                      </StyledATag>
-                      <ButtonClose onClick={() => setImageUrl("")} />
-                    </Box>
-                  ) : (
-                    <Dropzone
-                      fileCB={async (file) => {
-                        const ipfs = IPFS({
-                          url: process.env.NEXT_PUBLIC_IPFS_API_URL,
-                        });
-                        if (file) {
-                          const { cid } = await ipfs.add(file, {
-                            pin: true,
-                          });
-                          setImageUrl(
-                            `${
-                              process.env.NEXT_PUBLIC_IPFS_GATEWAY_URL
-                            }/${cid.toBaseEncodedString()}`
-                          );
-                        }
+            {creating3ID && (
+              <Text textAlign="center">
+                Creating your decentralized identity... hold on tight!
+              </Text>
+            )}
+            {!creating3ID ? (
+              inputPassword ? (
+                <>
+                  <Text textAlign="center">
+                    Enter your password to register your application!
+                  </Text>
+                  <EnterPassword error={err} />
+                </>
+              ) : (
+                <>
+                  <Box
+                    display="flex"
+                    flexDirection="column"
+                    flex="1"
+                    justifyContent="center"
+                    margin="auto"
+                    maxWidth={13}
+                    width="100%"
+                    minWidth={11}
+                    maxHeight={12}
+                    my={3}
+                  >
+                    <Input.Text
+                      label="App name"
+                      placeholder="Instagram V2"
+                      value={appName}
+                      onChange={(e: SyntheticEvent) => {
+                        const target = e.target as HTMLInputElement;
+                        setAppName(target.value);
+                      }}
+                      mb={3}
+                    />
+                    <Input.Text
+                      label="Callback"
+                      placeholder="http://localhost:3000/callback"
+                      value={callbackUrl}
+                      onChange={(e: SyntheticEvent) => {
+                        const target = e.target as HTMLInputElement;
+                        setCallbackUrl(target.value);
                       }}
                     />
-                  )}
-                </Box>
-                {err && (
-                  <Box pt={0} mx={0} textAlign="center" minHeight={6} mt={3}>
-                    <Label color="status.fail.background" m={0}>
-                      {err}
-                    </Label>
+                    {imageUrl ? (
+                      <Box mt={5} alignItems="center">
+                        <StyledATag
+                          href={imageUrl}
+                          target="_blank"
+                          rel="nooppener noreferrer"
+                        >
+                          Check out your application image
+                        </StyledATag>
+                        <ButtonClose onClick={() => setImageUrl("")} />
+                      </Box>
+                    ) : (
+                      <Dropzone
+                        fileCB={async (file) => {
+                          const ipfs = IPFS({
+                            url: process.env.NEXT_PUBLIC_IPFS_API_URL,
+                          });
+                          if (file) {
+                            const { cid } = await ipfs.add(file, {
+                              pin: true,
+                            });
+                            setImageUrl(
+                              `${
+                                process.env.NEXT_PUBLIC_IPFS_GATEWAY_URL
+                              }/${cid.toBaseEncodedString()}`
+                            );
+                          }
+                        }}
+                      />
+                    )}
                   </Box>
-                )}
-              </>
-            )}
+                  {err && (
+                    <Box pt={0} mx={0} textAlign="center" minHeight={6} mt={3}>
+                      <Label color="status.fail.background" m={0}>
+                        {err}
+                      </Label>
+                    </Box>
+                  )}
+                </>
+              )
+            ) : null}
           </Box>
           <Box
             display="flex"
@@ -198,7 +222,12 @@ export default function CreateAppProfile() {
             maxHeight={12}
             my={3}
           >
-            <Button variant="primary" title="Register" type="submit" />
+            <Button
+              variant="primary"
+              title="Register"
+              type="submit"
+              disabled={creating3ID}
+            />
           </Box>
         </Box>
       </Form>

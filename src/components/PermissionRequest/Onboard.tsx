@@ -16,6 +16,7 @@ export default function Onboard(props: {
   const { get, set, remove } = useJwt();
   const { createIdentitySingleton } = useIdentityProvider();
   const [err, setErr] = useState<string>("");
+  const [creating3ID, setCreating3ID] = useState<boolean>(false);
 
   useEffect(() => {
     const verifiedEmailJWT = get("POST_EMAIL_CONFIRM");
@@ -66,6 +67,7 @@ export default function Onboard(props: {
         </Box>
         <Box width="100%" maxWidth={13}>
           <OnboardForm
+            creating3ID={creating3ID}
             error={err}
             view={view}
             // TODO: add error feedback here
@@ -79,12 +81,16 @@ export default function Onboard(props: {
                 return;
               }
               if (view === "SIGN_UP") {
+                const params = new URLSearchParams(
+                  router.query as Record<string, string>
+                );
+                params.set("view", "permission");
                 const res = await axios.post(
                   `${process.env
                     .NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
                   {
                     email: email.value,
-                    state: "permission",
+                    params: params.toString(),
                   }
                 );
 
@@ -140,18 +146,25 @@ export default function Onboard(props: {
               const password = elements.namedItem(
                 "password"
               ) as HTMLInputElement;
-              const identitySingleton = createIdentitySingleton!(
-                router.query.email as string,
-                password.value
-              );
-              const threeID = await identitySingleton.signup(
-                get("POST_EMAIL_CONFIRM")!
-              );
-              if (threeID) {
-                remove("POST_EMAIL_CONFIRM");
-                // throw the session token into localstorage for easy login
-                set(identitySingleton.token, "SESSION");
-                props.setLoggedIn(true);
+              setCreating3ID(true);
+              try {
+                const identitySingleton = createIdentitySingleton!(
+                  router.query.email as string,
+                  password.value
+                );
+                const threeID = await identitySingleton.signup(
+                  get("POST_EMAIL_CONFIRM")!
+                );
+                if (threeID) {
+                  remove("POST_EMAIL_CONFIRM");
+                  // throw the session token into localstorage for easy login
+                  set(identitySingleton.token, "SESSION");
+                  setCreating3ID(false);
+                  props.setLoggedIn(true);
+                }
+              } catch (err) {
+                setErr(err.message);
+                setCreating3ID(false);
               }
             }}
           />

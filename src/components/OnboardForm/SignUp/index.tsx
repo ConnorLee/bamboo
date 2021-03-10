@@ -18,7 +18,14 @@ export default function SignUpView(props: {
   onWeb3Connect: () => void;
   view: View;
   error?: string;
+  creating3ID: boolean;
 }) {
+  if (props.creating3ID) {
+    return (
+      <Title>Creating your decentralized identity... hold tight! 🚀🚀🚀</Title>
+    );
+  }
+
   if (props.view === "VERIFY_EMAIL") {
     return <Title>Check your email!</Title>;
   }
@@ -136,6 +143,7 @@ SignUpView.propTypes = {
   onPasswordSubmit: PropTypes.func.isRequired,
   view: PropTypeView,
   error: PropTypes.string,
+  creating3ID: PropTypes.bool.isRequired,
 };
 
 SignUpView.defaultProps = {

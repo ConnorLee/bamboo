@@ -31,12 +31,14 @@ export default function CreateIdentity() {
       return;
     }
 
+    const params = new URLSearchParams();
+    params.set("view", "create-app");
     if (view === "SIGN_UP") {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
         {
           email: email.value,
-          state: "create-app",
+          params: params.toString(),
         }
       );
 

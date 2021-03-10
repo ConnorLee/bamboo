@@ -28,7 +28,7 @@ interface InitialCallbackProps {
   jwt: string;
   error: Error | null;
   email: string;
-  state: "create-app" | "permission" | "";
+  view: "create-app" | "permission" | "";
 }
 
 export default function Callback(props: InitialCallbackProps) {
@@ -41,7 +41,7 @@ export default function Callback(props: InitialCallbackProps) {
         router.query as Record<string, string>
       );
       params.delete("code");
-      router.replace(`/${props.state}?${params.toString()}`);
+      router.replace(`/${props.view}?${params.toString()}`);
     }
   }, [props.jwt, router.query]);
   return null;
@@ -51,22 +51,22 @@ Callback.getInitialProps = async ({
   query,
 }: NextPageContext): Promise<InitialCallbackProps> => {
   try {
-    if (!query.code || !query.email || !query.state) {
+    if (!query.code || !query.email || !query.view) {
       return {
         jwt: "",
         error: new Error("Bad params passed in the URL bar"),
         email: "",
-        state: "",
+        view: "",
       };
     }
     const jwt = await getJWT(query.code as string, query.email as string);
     return {
       jwt,
       email: query.email as string,
-      state: query.state as "create-app" | "permission",
+      view: query.view as "create-app" | "permission",
       error: null,
     };
   } catch (error) {
-    return { jwt: "", email: "", state: "", error: error.message };
+    return { jwt: "", email: "", view: "", error: error.message };
   }
 };
