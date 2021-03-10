@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import axios from "axios";
 import { Box, Button, Title, Text } from "@glif/react-components";
 import { PermissionRequestV2 } from "@daemon-land/types";
@@ -6,6 +7,7 @@ import styled from "styled-components";
 import CardHeader from "./CardHeader";
 import { useIdentityProvider } from "../../../contexts";
 import EnterPassword from "./EnterPassword";
+import { MinimalProfile } from "../../../PropTypes";
 
 const Form = styled.form`
   width: 100%;
@@ -18,6 +20,7 @@ const Form = styled.form`
 export default function PermissionForm(props: {
   permissionRequest: PermissionRequestV2;
   sessionToken: string;
+  profile: MinimalProfile;
 }) {
   const { identitySingleton, createIdentitySingleton } = useIdentityProvider();
   const [err, setErr] = useState<string>("");
@@ -86,7 +89,7 @@ export default function PermissionForm(props: {
           justifyContent="flex-start"
         >
           <CardHeader
-            from={props.permissionRequest.requesterDID}
+            from={props.profile.name}
             resource={props.permissionRequest.resource}
             permission={props.permissionRequest.permission}
           />
@@ -110,17 +113,24 @@ export default function PermissionForm(props: {
                 <>
                   <Text textAlign="center">
                     Enter your password to grant this permission and return to{" "}
-                    {props.permissionRequest.requesterDID}!
+                    {props.profile.name}!
                   </Text>
                   <EnterPassword error={err} />
                 </>
               ) : (
                 <>
                   {/* TODO: actually decode permission request */}
+                  <Box display="flex" justifyContent="center">
+                    <Image
+                      src={props.profile.imageUrl}
+                      width="100px"
+                      height="100px"
+                    />
+                  </Box>
                   <Text textAlign="center">
-                    {props.permissionRequest.requesterDID} is requesting READ
-                    access to your Profile. Click the "Accept" button below to
-                    grant this permission.
+                    {props.profile.name} is requesting READ access to your
+                    Profile. Click the "Accept" button below to grant this
+                    permission.
                   </Text>
                   <Text textAlign="center" color="core.darkgray">
                     If this was a mistake, you can exit this page and do

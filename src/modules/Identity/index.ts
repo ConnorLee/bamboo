@@ -4,15 +4,11 @@ import Ceramic from "@ceramicnetwork/http-client";
 import ThreeID from "3id-did-provider";
 import tweetnacl from "tweetnacl";
 import { concat, fromString } from "uint8arrays";
+import { MinimalProfile } from "../../PropTypes";
 import Auth from "../Auth";
 import { PermissionRequestV2 } from "@daemon-land/types";
 
 type DID = string;
-export type MinimalProfile = {
-  name: string;
-  callbackUrl: string;
-  imageUrl: string;
-};
 
 export default class Identity {
   public auth: Auth;
