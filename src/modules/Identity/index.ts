@@ -5,6 +5,7 @@ import ThreeID from "3id-did-provider";
 import tweetnacl from "tweetnacl";
 import { concat, fromString } from "uint8arrays";
 import Auth from "../Auth";
+import { PermissionRequestV2 } from "@daemon-land/types";
 
 type DID = string;
 
@@ -12,7 +13,7 @@ export default class Identity {
   public auth: Auth;
   public url: string;
   public ceramicUrl: string;
-  public _did: string = "";
+  public _did: ThreeID | null = null;
   public token: string = "";
   #password: string;
   constructor(
@@ -26,12 +27,9 @@ export default class Identity {
     this.#password = password;
   }
 
-  get did() {
-    return this._did;
-  }
-
-  set did(did: string) {
-    this._did = did;
+  get did(): string | null {
+    if (this._did) return this._did.id;
+    return null;
   }
 
   async getSecret(): Promise<any> {
@@ -83,7 +81,7 @@ export default class Identity {
         }
       );
       if (res.status !== 201) throw new Error("Error creating user");
-      this.did = threeID.id;
+      this._did = threeID;
       return threeID.id;
     } finally {
       await ceramic.close();
@@ -115,10 +113,37 @@ export default class Identity {
       });
       if (res.status !== 200) throw new Error("Error logging in user");
       if (threeID.id !== res.data.did) throw new Error("DID Mismatch");
-      this.did = threeID.id;
+      this._did = threeID;
       return threeID.id;
     } finally {
       await ceramic.close();
     }
+  }
+
+  async savePermission(permissionRequest: PermissionRequestV2) {
+    try {
+      //TODO: actually save to IDX and the cache
+      const res = await axios.put(
+        `${this.url}/v0/identity/permissions`,
+        {
+          permissionRequest,
+          operandDID: this.did,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        }
+      );
+
+      if (res.status !== 201)
+        throw new Error("Error saving permission to IDX Cache");
+    } catch (err) {
+      throw new Error("Error saving permission to IDX Cache");
+    }
+  }
+
+  async generateCallback(requesterDID: DID): Promise<string> {
+    return "";
   }
 }

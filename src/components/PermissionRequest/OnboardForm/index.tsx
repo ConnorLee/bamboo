@@ -15,7 +15,6 @@ type OnboardFormProps = {
 };
 
 export default function OnboardForm(props: OnboardFormProps) {
-  console.log(props.error);
   return (
     <>
       <Box

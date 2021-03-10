@@ -1,3 +1,5 @@
+import { ScopeDirection, ScopesV2 } from "@daemon-land/types";
+
 export function makeRandomString(length: number): string {
   var result = "";
   var characters = "abcdefghijklmnopqrstuvwxyz";
@@ -17,4 +19,13 @@ export function isValidEmail(string: string) {
     return true;
   }
   return false;
+}
+
+export function pluckPermissionScope(permission: number): ScopesV2 {
+  const suspectedGranted = permission & ScopeDirection.Granted;
+  if (suspectedGranted === ScopeDirection.Granted) {
+    return permission ^ ScopeDirection.Granted;
+  } else {
+    return permission ^ ScopeDirection.Received;
+  }
 }
