@@ -1,9 +1,11 @@
 module.exports = () => ({
   env: {
-    NEXT_PUBLIC_CERAMIC_URL:
-      process.env.NEXT_PUBLIC_CERAMIC_URL || "http://localhost:7007",
-    NEXT_PUBLIC_DL_URL:
-      process.env.NEXT_PUBLIC_DL_URL || "http://localhost:3001",
+    NEXT_PUBLIC_CERAMIC_URL: process.env.CERAMIC_URL || "http://localhost:7007",
+    NEXT_PUBLIC_DL_URL: process.env.DL_URL || "http://localhost:3001",
+    NEXT_PUBLIC_IPFS_API_URL:
+      process.env.IPFS_API_URL || "http://localhost:5011/api/v0",
+    NEXT_PUBLIC_IPFS_GATEWAY_URL:
+      process.env.IPFS_GATEWAY_URL || "http://localhost:9011/ipfs",
   },
   publicRuntimeConfig: {
     // Will be available on both server and client

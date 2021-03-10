@@ -12,6 +12,7 @@ import {
 } from "@glif/react-components";
 import { View } from "../PermissionRequest/View";
 import SignUpEmailForm from "../OnboardForm/SignUp/SignUpEmailForm";
+import CreateAppProfile from "./CreateApp";
 
 function EnterEmail(props: {
   onSubmit: (event: SyntheticEvent) => void;
@@ -108,6 +109,8 @@ export default function Onboard(props: {
   view: Omit<View, "SIGN_IN">;
   error?: string;
 }) {
+  if (props.view === "CREATE_PROFILE") return <CreateAppProfile />;
+
   return (
     <Box
       display="block"
@@ -158,7 +161,6 @@ export default function Onboard(props: {
             error={props.error}
           />
         )}
-        {props.view === "CREATE_PROFILE" && <div>Create profile</div>}
       </Box>
     </Box>
   );

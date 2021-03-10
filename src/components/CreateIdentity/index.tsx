@@ -16,6 +16,9 @@ export default function CreateIdentity() {
   useEffect(() => {
     const verifiedEmailJWT = get("POST_EMAIL_CONFIRM");
     if (verifiedEmailJWT) setView("ENTER_PASSWORD");
+
+    const sessionJWT = get("SESSION");
+    if (sessionJWT) setView("CREATE_PROFILE");
   }, [get]);
 
   const onEmailSubmit = async (e: SyntheticEvent) => {
