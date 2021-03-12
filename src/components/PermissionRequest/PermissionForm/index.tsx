@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+import { useRouter } from "next/router";
 import { Box, Button, Title, Text } from "@glif/react-components";
 import { PermissionRequestV2 } from "@daemon-land/types";
 import styled from "styled-components";
@@ -22,6 +23,7 @@ export default function PermissionForm(props: {
   sessionToken: string;
   profile: MinimalProfile;
 }) {
+  const router = useRouter();
   const { identitySingleton, createIdentitySingleton } = useIdentityProvider();
   const [err, setErr] = useState<string>("");
   const [inputPassword, setInputPassword] = useState<boolean>(false);
@@ -61,20 +63,24 @@ export default function PermissionForm(props: {
               );
               await identitySingleton.login();
               await identitySingleton.savePermission(props.permissionRequest);
-              alert(
-                "Permission saved! Taking you back to: " +
-                  props.profile.callbackUrl
+              const returnURL = await identitySingleton.generateReturnURL(
+                props.permissionRequest.requesterDID,
+                router.query?.state as string
               );
+              router.push(returnURL);
+              return;
             } catch (err) {
               setErr(err.message);
               return;
             }
           } else {
             await identitySingleton.savePermission(props.permissionRequest);
-            alert(
-              "Permission saved! Taking you back to: " +
-                props.profile.callbackUrl
+            const returnURL = await identitySingleton.generateReturnURL(
+              props.permissionRequest.requesterDID,
+              router.query?.state as string
             );
+            router.push(returnURL);
+            return;
           }
         }}
       >

@@ -3,7 +3,8 @@ import axios from "axios";
 import { describe, expect, test } from "@jest/globals";
 import { ScopeDirection, ScopesV2 } from "@daemon-land/types";
 import { AccessController } from "@daemon-land/sdk";
-import Identity, { MinimalProfile } from ".";
+import Identity from ".";
+import { MinimalProfile } from "../../PropTypes";
 import { makeRandomString } from "../../utils";
 
 const globalAny: any = global;
@@ -100,6 +101,7 @@ describe("identityv2", () => {
 
   test.todo("saving permission saves the permission in IDX");
 
+  let appDID: string = "";
   test("saving profile saves the profile in IDX cache", async () => {
     const username = makeRandomString(10);
     const password = makeRandomString(10);
@@ -126,7 +128,30 @@ describe("identityv2", () => {
     expect(profile.name).toBe(username);
     expect(profile.imageUrl).toBe("http://localhost:5011/ipfs/Qmz...");
     expect(profile.callbackUrl).toBe("http://localhost:3001/callback");
+    appDID = threeID;
   });
 
   test.todo("saving profile saves the permission in IDX");
+
+  test("generateReturnURL returns a url with a code and state", async () => {
+    if (!appDID)
+      throw new Error(
+        "test could not run because no appDID generated from previous test"
+      );
+
+    const username = makeRandomString(10);
+    const password = makeRandomString(10);
+    const identityJWT = await createJWT({ username, verified: true });
+
+    const identity = new Identity(username, password, {
+      url: "http://localhost:3001",
+      ceramicUrl: "http://localhost:7007",
+    });
+    await identity.signup(identityJWT);
+    const returnURL = await identity.generateReturnURL(appDID, "some-state");
+    const params = new URLSearchParams(returnURL.split("?")[1]);
+    expect(params.get("code")).toBeTruthy();
+    expect(params.get("state")).toBe("some-state");
+    expect(returnURL.includes("http://localhost:3001/callback")).toBeTruthy();
+  });
 });

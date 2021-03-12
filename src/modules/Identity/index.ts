@@ -167,7 +167,31 @@ export default class Identity {
     }
   }
 
-  async generateCallback(requesterDID: DID): Promise<string> {
-    return "";
+  async generateReturnURL(
+    requesterDID: string,
+    state?: string
+  ): Promise<string> {
+    try {
+      const res = await axios.post(
+        `${this.url}/v0/pkce/generate-return-url`,
+        {
+          requesterDID,
+          // TODO PKCE:
+          code_challenge: "",
+          state,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.token}`,
+          },
+        }
+      );
+
+      if (res.status !== 201) throw new Error("Error generating returnURL");
+
+      return res.data.returnURL as string;
+    } catch (err) {
+      throw new Error(err.response.data);
+    }
   }
 }
