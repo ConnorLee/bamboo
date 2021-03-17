@@ -1,47 +1,16 @@
-import { createContext, useContext, ReactNode, useState } from "react";
-import Identity from "../../modules/Identity";
+import { ReactNode } from "react";
+export * from "./Web2Identity";
+export * from "./ManagedIdentity";
 
-type IdentityContextType = {
-  identitySingleton: Identity | null;
-  createIdentitySingleton:
-    | ((email: string, password: string) => Identity)
-    | null;
-};
+import { Web2IdentityProviderWrapper } from "./Web2Identity";
+import { ManagedIdentityProviderWrapper } from "./ManagedIdentity";
 
-export const IdentityContext = createContext<IdentityContextType>({
-  identitySingleton: null,
-  createIdentitySingleton: null,
-});
-
-interface IdentityProviderProps {
-  children: ReactNode;
-}
-
-export const IdentityProviderWrapper = (props: IdentityProviderProps) => {
-  const [identitySingleton, setIdentitySingleton] = useState<Identity | null>(
-    null
-  );
-
-  const createIdentitySingleton = (
-    email: string,
-    password: string
-  ): Identity => {
-    const identity = new Identity(email, password, {
-      url: process.env.NEXT_PUBLIC_DL_URL!,
-      ceramicUrl: process.env.NEXT_PUBLIC_CERAMIC_URL!,
-    });
-    setIdentitySingleton(identity);
-    return identity;
-  };
-
+export const IdentityProviderWrapper = (props: { children: ReactNode }) => {
   return (
-    <IdentityContext.Provider
-      value={{ identitySingleton, createIdentitySingleton }}
-    >
-      {props.children}
-    </IdentityContext.Provider>
+    <Web2IdentityProviderWrapper>
+      <ManagedIdentityProviderWrapper>
+        {props.children}
+      </ManagedIdentityProviderWrapper>
+    </Web2IdentityProviderWrapper>
   );
 };
-
-export const useIdentityProvider = (): IdentityContextType =>
-  useContext(IdentityContext);

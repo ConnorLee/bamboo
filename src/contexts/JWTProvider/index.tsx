@@ -1,13 +1,7 @@
-import React, {
-  useState,
-  createContext,
-  useContext,
-  useEffect,
-  ReactNode,
-} from "react";
+import React, { createContext, useContext, ReactNode } from "react";
 import { node } from "prop-types";
 
-type JWT_PATH = "POST_EMAIL_CONFIRM" | "SESSION";
+type JWT_PATH = "POST_EMAIL_CONFIRM" | "SESSION" | "PDM_SESSION";
 
 const JwtContext = createContext({
   get: (path: JWT_PATH): string | null => null,

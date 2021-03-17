@@ -6,6 +6,7 @@ module.exports = () => ({
       process.env.IPFS_API_URL || "http://localhost:5011/api/v0",
     NEXT_PUBLIC_IPFS_GATEWAY_URL:
       process.env.IPFS_GATEWAY_URL || "http://localhost:9011/ipfs",
+    PDM_SEED: process.env.PDM_SEED,
   },
   publicRuntimeConfig: {
     // Will be available on both server and client
