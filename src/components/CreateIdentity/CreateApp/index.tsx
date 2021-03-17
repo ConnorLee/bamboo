@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import axios from "axios";
 import IPFS from "ipfs-http-client";
 import {
@@ -13,7 +13,11 @@ import {
 import styled from "styled-components";
 import CardHeader from "./CardHeader";
 import Dropzone from "./Dropzone";
-import { useIdentityProvider, useJwt } from "../../../contexts";
+import {
+  useManagedIdentityProvider,
+  useWeb2IdentityProvider,
+  useJwt,
+} from "../../../contexts";
 import EnterPassword from "../../PermissionRequest/PermissionForm/EnterPassword";
 
 const Form = styled.form`
@@ -32,7 +36,12 @@ export default function CreateAppProfile() {
   const [err, setErr] = useState<string>("");
   const [creating3ID, setCreating3ID] = useState<boolean>(false);
   const { get, remove } = useJwt();
-  const { createIdentitySingleton, identitySingleton } = useIdentityProvider();
+  const {
+    createWeb2IdentitySingleton,
+    web2IdentitySingleton,
+  } = useWeb2IdentityProvider();
+  const { createManagedIdentitySingleton } = useManagedIdentityProvider();
+
   return (
     <Box display="flex" flexDirection="column" width="100%" mt={8}>
       <Form
@@ -47,10 +56,10 @@ export default function CreateAppProfile() {
 
           const { elements } = e.target as HTMLFormElement;
           const password = elements.namedItem("password") as HTMLInputElement;
-          if (!identitySingleton && !password) {
+          if (!web2IdentitySingleton && !password) {
             setInputPassword(true);
             return;
-          } else if (!identitySingleton) {
+          } else if (!web2IdentitySingleton) {
             try {
               setCreating3ID(true);
               // TODO is this call secure?
@@ -68,19 +77,22 @@ export default function CreateAppProfile() {
                 );
                 return;
               }
-              const identitySingleton = createIdentitySingleton!(
+              const web2Identity = createWeb2IdentitySingleton!(
                 res.data.username,
                 password.value
               );
-              await identitySingleton.login();
-              await identitySingleton.saveProfile({
+              await web2Identity.login();
+              const managedIdentity = await createManagedIdentitySingleton!(
+                web2Identity.did!
+              );
+              await managedIdentity.profile.create({
                 name: appName,
                 imageUrl,
                 callbackUrl,
               });
               setCreating3ID(false);
               alert(
-                `Your application ${appName} has been created successfully. Your app DID is: ${identitySingleton.did}`
+                `Your application ${appName} has been created successfully. Your app DID is: ${web2Identity.did?.id}`
               );
               // TODO: remove this hack - just to log out the user after they've created their app
               remove("SESSION");
@@ -92,14 +104,17 @@ export default function CreateAppProfile() {
           } else {
             try {
               setCreating3ID(true);
-              await identitySingleton.saveProfile({
+              const managedIdentity = await createManagedIdentitySingleton!(
+                web2IdentitySingleton.did!
+              );
+              await managedIdentity.profile.create({
                 name: appName,
                 imageUrl,
                 callbackUrl,
               });
               setCreating3ID(false);
               alert(
-                `Your application ${appName} has been created successfully. Your app DID is: ${identitySingleton.did}`
+                `Your application ${appName} has been created successfully. Your app DID is: ${web2IdentitySingleton.did?.id}`
               );
               // TODO: remove this hack - just to log out the user after they've created their app
               remove("SESSION");

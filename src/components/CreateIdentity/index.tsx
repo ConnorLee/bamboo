@@ -4,14 +4,14 @@ import { useRouter } from "next/router";
 import Onboard from "./Onboard";
 import { View } from "../PermissionRequest/View";
 import { isValidEmail } from "../../utils";
-import { useIdentityProvider, useJwt } from "../../contexts";
+import { useWeb2IdentityProvider, useJwt } from "../../contexts";
 
 export default function CreateIdentity() {
   const [view, setView] = useState<Omit<View, "SIGN_IN">>("SIGN_UP");
   const [err, setErr] = useState<string>("");
   const router = useRouter();
   const { get, set, remove } = useJwt();
-  const { createIdentitySingleton } = useIdentityProvider();
+  const { createWeb2IdentitySingleton } = useWeb2IdentityProvider();
 
   useEffect(() => {
     const verifiedEmailJWT = get("POST_EMAIL_CONFIRM");
@@ -64,15 +64,15 @@ export default function CreateIdentity() {
     }
     const { elements } = e.target as HTMLFormElement;
     const password = elements.namedItem("password") as HTMLInputElement;
-    const identitySingleton = createIdentitySingleton!(
+    const web2Identity = createWeb2IdentitySingleton!(
       router.query.email as string,
       password.value
     );
-    const threeID = await identitySingleton.signup(get("POST_EMAIL_CONFIRM")!);
+    const threeID = await web2Identity.signup(get("POST_EMAIL_CONFIRM")!);
     if (threeID) {
       remove("POST_EMAIL_CONFIRM");
       // throw the session token into localstorage for easy login
-      set(identitySingleton.token, "SESSION");
+      set(web2Identity.token, "SESSION");
       setView("CREATE_PROFILE");
     }
   };

@@ -1,10 +1,27 @@
+import jwt from "jsonwebtoken";
 import { makeRandomString } from "../../utils";
 import Auth from ".";
 
+const globalAny: any = global;
+
+const createJWT = (claims: object): Promise<string> =>
+  new Promise((resolve, reject) => {
+    return jwt.sign(
+      claims,
+      globalAny.JWT_SECRET as jwt.Secret,
+      (err, token) => {
+        if (err) reject(err);
+        else resolve(token!);
+      }
+    );
+  });
+
 describe("SRP Authentication", () => {
-  const auth = new Auth(makeRandomString(10), makeRandomString(10));
+  const username = makeRandomString(10);
+  const auth = new Auth(username, makeRandomString(10));
   test("it registers an identity", async () => {
-    const registered = await auth.register();
+    const identityJWT = await createJWT({ username, verified: true });
+    const registered = await auth.register(identityJWT);
     expect(registered).toBe(true);
   });
 

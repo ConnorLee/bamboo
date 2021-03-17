@@ -4,7 +4,7 @@ import ThreeID from "3id-did-provider";
 import { fromString } from "uint8arrays";
 import { describe, expect, test } from "@jest/globals";
 import { DagJWS, DID } from "dids";
-import { _signAsPDM } from ".";
+import { _signAsPDM, getPDMSessionToken } from ".";
 
 describe("signAsPDM", () => {
   let ceramic: CeramicClient;
@@ -33,7 +33,7 @@ describe("signAsPDM", () => {
       process.env.PDM_SEED!,
       "http://localhost:7007"
     );
-    expect(jws.payload).toBe("message");
+    expect(jws.payload).toBeTruthy();
     expect(jws.signatures[0].protected).toBeTruthy();
     expect(jws.signatures[0].signature).toBeTruthy();
     sig = JSON.stringify(jws);
@@ -48,5 +48,10 @@ describe("signAsPDM", () => {
     const did = new DID({ resolver });
     const { kid } = await did.verifyJWS(jws);
     expect(kid.includes(pdmDID)).toBe(true);
+  });
+
+  test("getPDMSessionToken gets a session token from the DL API", async () => {
+    const sessionToken = await getPDMSessionToken(JSON.parse(sig) as DagJWS);
+    expect(sessionToken).toBeTruthy();
   });
 });

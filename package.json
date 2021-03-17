@@ -6,18 +6,20 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "export $(cat .env | xargs) && jest"
   },
   "dependencies": {
     "3id-did-provider": "^0.5.1",
+    "@ceramicnetwork/3id-did-resolver": "^0.6.10",
     "@ceramicnetwork/http-client": "^0.9.6",
-    "@daemon-land/sdk": "0.0.1-alpha.27",
+    "@daemon-land/sdk": "latest",
     "@daemon-land/types": "0.0.1-alpha.27",
     "@glif/react-components": "^1.1.0-beta.17",
     "@kapetan/secure-remote-password": "^1.0.1",
     "@types/uuid": "^8.3.0",
     "axios": "^0.20.0",
     "did-jwt": "^4.9.0",
+    "dids": "^1.1.1",
     "ipfs-http-client": "^49.0.3",
     "jsonrpc-ts": "^0.2.1",
     "next": "^10.0.8",

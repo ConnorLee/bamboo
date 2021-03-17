@@ -1,11 +1,27 @@
 import jwt from "jsonwebtoken";
-import axios from "axios";
+import ThreeID from "3id-did-provider";
 import { describe, expect, test } from "@jest/globals";
 import { ScopeDirection, ScopesV2 } from "@daemon-land/types";
-import { AccessController } from "@daemon-land/sdk";
-import Identity from ".";
-import { MinimalProfile } from "../../PropTypes";
-import { makeRandomString } from "../../utils";
+import { ManagedIdentity, Web2Identity } from ".";
+import { makeRandomString, _signAsPDM, getPDMSessionToken } from "../../utils";
+
+const CERAMIC_URL = "http://localhost:7007";
+const DL_URL = "http://localhost:3001";
+const DL_RPC = `${DL_URL}/rpc/v0`;
+
+// we mock this call and just imitate what its like in the backend handlers
+jest
+  .spyOn(require("../../utils/signAsPDM"), "default")
+  .mockImplementation(async (operandDID) => {
+    // this is the exact same method as the api handler
+    const jws = await _signAsPDM(
+      operandDID as string,
+      process.env.PDM_SEED as string,
+      CERAMIC_URL
+    );
+    const token = await getPDMSessionToken(jws);
+    return token;
+  });
 
 const globalAny: any = global;
 
@@ -21,137 +37,124 @@ const createJWT = (claims: object): Promise<string> =>
     );
   });
 
-describe("identityv2", () => {
+describe("Web2Identity", () => {
   const username = makeRandomString(10);
   const password = makeRandomString(10);
+  // used by future tests
+  let appDID: string = "";
   test("it allows for signup with a username and a password", async () => {
     const identityJWT = await createJWT({ username, verified: true });
-    const identity = new Identity(username, password, {
-      url: "http://localhost:3001",
-      ceramicUrl: "http://localhost:7007",
+    const identity = new Web2Identity(username, password, {
+      url: DL_URL,
+      ceramicUrl: CERAMIC_URL,
     });
-    const threeID = await identity.signup(identityJWT);
-    expect(threeID.includes("did:3")).toBe(true);
+    const did = await identity.signup(identityJWT);
+    expect(did.includes("did:3")).toBe(true);
   });
 
   test("it allows for logging in with a username and a password", async () => {
-    const identity = new Identity(username, password, {
-      url: "http://localhost:3001",
-      ceramicUrl: "http://localhost:7007",
+    const identity = new Web2Identity(username, password, {
+      url: DL_URL,
+      ceramicUrl: CERAMIC_URL,
     });
     const threeID = await identity.login();
     expect(threeID.includes("did:3")).toBe(true);
+    appDID = threeID;
   });
 
   test("signing up without a valid identity token throws a 403", async () => {
     const username = makeRandomString(10);
     const password = makeRandomString(10);
-    const identity = new Identity(username, password, {
-      url: "http://localhost:3001",
-      ceramicUrl: "http://localhost:7007",
+    const identity = new Web2Identity(username, password, {
+      url: DL_URL,
+      ceramicUrl: CERAMIC_URL,
     });
     await expect(identity.signup("")).rejects.toThrow();
   });
 
-  test("signing up twice throws an error", async () => {
+  test.skip("signing up twice throws an error", async () => {
     const username = makeRandomString(10);
     const password = makeRandomString(10);
     const identityJWT = await createJWT({ username, verified: true });
 
-    const identity = new Identity(username, password, {
-      url: "http://localhost:3001",
-      ceramicUrl: "http://localhost:7007",
+    const identity = new Web2Identity(username, password, {
+      url: DL_URL,
+      ceramicUrl: CERAMIC_URL,
     });
-    const threeID = await identity.signup(identityJWT);
-    expect(threeID.includes("did:3")).toBe(true);
+    const did = await identity.signup(identityJWT);
+    expect(did.includes("did:3")).toBe(true);
     await expect(identity.signup(identityJWT)).rejects.toThrow();
   });
 
   test.todo("Logging in with a bad password throws a bad password error");
+});
 
-  test("saving permission saves the permission in IDX-cache", async () => {
-    const username = makeRandomString(10);
-    const password = makeRandomString(10);
+describe("ManagedIdentity", () => {
+  const username = makeRandomString(10);
+  const password = makeRandomString(10);
+  let web2Identity: Web2Identity;
+  let threeID: ThreeID;
+  let managedIdentity: ManagedIdentity;
+  beforeAll(async () => {
     const identityJWT = await createJWT({ username, verified: true });
-
-    const identity = new Identity(username, password, {
-      url: "http://localhost:3001",
-      ceramicUrl: "http://localhost:7007",
+    web2Identity = new Web2Identity(username, password, {
+      url: DL_URL,
+      ceramicUrl: CERAMIC_URL,
     });
-    const threeID = await identity.signup(identityJWT);
-    await identity.savePermission({
-      resource: "PROFILE",
-      permission: ScopesV2.Read | ScopeDirection.Granted,
-      requesterDID: "did:3:test",
-    });
-
-    // a hack for acting like an application, couldnt be used in prod
-    const sessionToken = await createJWT({
-      requesterDID: "did:3:test",
-      operandDID: threeID,
-    });
-    const ac = new AccessController({ sessionToken });
-    const p = await ac.get({
-      did: "did:3:test",
-      resource: "PROFILE",
-    });
-
-    expect(p?.permission).toBe(ScopesV2.Read | ScopeDirection.Granted);
+    await web2Identity.signup(identityJWT);
+    threeID = web2Identity.did!;
   });
 
-  test.todo("saving permission saves the permission in IDX");
-
-  let appDID: string = "";
-  test("saving profile saves the profile in IDX cache", async () => {
-    const username = makeRandomString(10);
-    const password = makeRandomString(10);
-    const identityJWT = await createJWT({ username, verified: true });
-
-    const identity = new Identity(username, password, {
-      url: "http://localhost:3001",
-      ceramicUrl: "http://localhost:7007",
+  test("static create creates an authenticated managed identity instance", async () => {
+    managedIdentity = await ManagedIdentity.create(threeID, {
+      ceramicUrl: CERAMIC_URL,
+      url: DL_RPC,
     });
-    const threeID = await identity.signup(identityJWT);
-    await identity.saveProfile({
+
+    expect(managedIdentity.authenticated).toBe(true);
+  });
+
+  test("managed identity can create and get a profile", async () => {
+    await managedIdentity.profile.create({
       name: username,
       imageUrl: "http://localhost:5011/ipfs/Qmz...",
       callbackUrl: "http://localhost:3001/callback",
     });
-
-    const res = await axios.get(
-      `http://localhost:3001/v0/identity/profile/${threeID}`
-    );
-
-    if (res.status !== 200) throw new Error("Error getting profile");
-
-    const profile = res.data as MinimalProfile;
-    expect(profile.name).toBe(username);
-    expect(profile.imageUrl).toBe("http://localhost:5011/ipfs/Qmz...");
-    expect(profile.callbackUrl).toBe("http://localhost:3001/callback");
-    appDID = threeID;
+    const profile = await managedIdentity.profile.get();
+    expect(profile?.name).toBe(username);
+    expect(profile?.imageUrl).toBe("http://localhost:5011/ipfs/Qmz...");
+    expect(profile?.callbackUrl).toBe("http://localhost:3001/callback");
   });
 
-  test.todo("saving profile saves the permission in IDX");
+  test("managed identity can create and get permissions", async () => {
+    await managedIdentity.permissions.add({
+      resource: "PROFILE",
+      permission: ScopesV2.Read | ScopeDirection.Granted,
+      did: "did:3:test",
+    });
+
+    const perm = await managedIdentity.permissions.get({
+      did: "did:3:test",
+      resource: "PROFILE",
+    });
+
+    expect(perm?.permission).toBe(ScopesV2.Read | ScopeDirection.Granted);
+  });
 
   test("generateReturnURL returns a url with a code and state", async () => {
-    if (!appDID)
-      throw new Error(
-        "test could not run because no appDID generated from previous test"
-      );
-
-    const username = makeRandomString(10);
-    const password = makeRandomString(10);
-    const identityJWT = await createJWT({ username, verified: true });
-
-    const identity = new Identity(username, password, {
-      url: "http://localhost:3001",
-      ceramicUrl: "http://localhost:7007",
-    });
-    await identity.signup(identityJWT);
-    const returnURL = await identity.generateReturnURL(appDID, "some-state");
+    const returnURL = await managedIdentity.generateReturnURL(
+      // this is a little meta - were generating a return value for ourselves just to make sure this works
+      managedIdentity.did?.id!,
+      65,
+      "PROFILE",
+      "some-state"
+    );
     const params = new URLSearchParams(returnURL.split("?")[1]);
     expect(params.get("code")).toBeTruthy();
     expect(params.get("state")).toBe("some-state");
     expect(returnURL.includes("http://localhost:3001/callback")).toBeTruthy();
   });
+
+  test.todo("saving permission saves the permission in IDX");
+  test.todo("saving profile saves the profile in IDX");
 });

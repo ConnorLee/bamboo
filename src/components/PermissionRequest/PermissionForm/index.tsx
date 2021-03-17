@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -6,7 +6,10 @@ import { Box, Button, Title, Text } from "@glif/react-components";
 import { PermissionRequestV2 } from "@daemon-land/types";
 import styled from "styled-components";
 import CardHeader from "./CardHeader";
-import { useIdentityProvider } from "../../../contexts";
+import {
+  useManagedIdentityProvider,
+  useWeb2IdentityProvider,
+} from "../../../contexts";
 import EnterPassword from "./EnterPassword";
 import { MinimalProfile } from "../../../PropTypes";
 
@@ -24,7 +27,11 @@ export default function PermissionForm(props: {
   profile: MinimalProfile;
 }) {
   const router = useRouter();
-  const { identitySingleton, createIdentitySingleton } = useIdentityProvider();
+  const {
+    web2IdentitySingleton,
+    createWeb2IdentitySingleton,
+  } = useWeb2IdentityProvider();
+  const { createManagedIdentitySingleton } = useManagedIdentityProvider();
   const [err, setErr] = useState<string>("");
   const [inputPassword, setInputPassword] = useState<boolean>(false);
 
@@ -37,10 +44,10 @@ export default function PermissionForm(props: {
           const password = elements.namedItem("password") as HTMLInputElement;
 
           // user has session but no password entered yet
-          if (!identitySingleton && !password) {
+          if (!web2IdentitySingleton && !password) {
             setInputPassword(true);
             return;
-          } else if (!identitySingleton) {
+          } else if (!web2IdentitySingleton) {
             try {
               // TODO is this call secure?
               const res = await axios.get(
@@ -57,14 +64,23 @@ export default function PermissionForm(props: {
                 );
                 return;
               }
-              const identitySingleton = createIdentitySingleton!(
+              const web2Identity = createWeb2IdentitySingleton!(
                 res.data.username,
                 password.value
               );
-              await identitySingleton.login();
-              await identitySingleton.savePermission(props.permissionRequest);
-              const returnURL = await identitySingleton.generateReturnURL(
+              await web2Identity.login();
+              const managedIdentity = await createManagedIdentitySingleton!(
+                web2Identity.did!
+              );
+              await managedIdentity.permissions.add({
+                did: props.permissionRequest.requesterDID,
+                permission: props.permissionRequest.permission,
+                resource: props.permissionRequest.resource,
+              });
+              const returnURL = await managedIdentity.generateReturnURL(
                 props.permissionRequest.requesterDID,
+                props.permissionRequest.permission,
+                props.permissionRequest.resource,
                 router.query?.state as string
               );
               router.push(returnURL);
@@ -74,9 +90,18 @@ export default function PermissionForm(props: {
               return;
             }
           } else {
-            await identitySingleton.savePermission(props.permissionRequest);
-            const returnURL = await identitySingleton.generateReturnURL(
+            const managedIdentity = await createManagedIdentitySingleton!(
+              web2IdentitySingleton.did!
+            );
+            await managedIdentity.permissions.add({
+              did: props.permissionRequest.requesterDID,
+              permission: props.permissionRequest.permission,
+              resource: props.permissionRequest.resource,
+            });
+            const returnURL = await managedIdentity.generateReturnURL(
               props.permissionRequest.requesterDID,
+              props.permissionRequest.permission,
+              props.permissionRequest.resource,
               router.query?.state as string
             );
             router.push(returnURL);

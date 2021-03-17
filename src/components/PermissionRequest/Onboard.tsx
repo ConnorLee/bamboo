@@ -3,7 +3,7 @@ import { Box, Title, Header, HeaderGlyph } from "@glif/react-components";
 import { useRouter } from "next/router";
 import axios from "axios";
 import PropTypes from "prop-types";
-import { useIdentityProvider, useJwt } from "../../contexts";
+import { useWeb2IdentityProvider, useJwt } from "../../contexts";
 import SwitchView, { View } from "./View";
 import OnboardForm from "../OnboardForm";
 import { isValidEmail } from "../../utils";
@@ -14,7 +14,7 @@ export default function Onboard(props: {
   const [view, setView] = useState<View>("SIGN_IN");
   const router = useRouter();
   const { get, set, remove } = useJwt();
-  const { createIdentitySingleton } = useIdentityProvider();
+  const { createWeb2IdentitySingleton } = useWeb2IdentityProvider();
   const [err, setErr] = useState<string>("");
   const [creating3ID, setCreating3ID] = useState<boolean>(false);
 
@@ -115,15 +115,15 @@ export default function Onboard(props: {
                   return;
                 }
 
-                const identitySingleton = createIdentitySingleton!(
+                const web2Identity = createWeb2IdentitySingleton!(
                   email.value,
                   password.value
                 );
 
-                const threeID = await identitySingleton.login();
+                const threeID = await web2Identity.login();
                 if (threeID) {
                   // throw the session token into localstorage for easy login
-                  set(identitySingleton.token, "SESSION");
+                  set(web2Identity.token, "SESSION");
                   props.setLoggedIn(true);
                 }
               }
@@ -148,17 +148,17 @@ export default function Onboard(props: {
               ) as HTMLInputElement;
               setCreating3ID(true);
               try {
-                const identitySingleton = createIdentitySingleton!(
+                const web2Identity = createWeb2IdentitySingleton!(
                   router.query.email as string,
                   password.value
                 );
-                const threeID = await identitySingleton.signup(
+                const threeID = await web2Identity.signup(
                   get("POST_EMAIL_CONFIRM")!
                 );
                 if (threeID) {
                   remove("POST_EMAIL_CONFIRM");
                   // throw the session token into localstorage for easy login
-                  set(identitySingleton.token, "SESSION");
+                  set(web2Identity.token, "SESSION");
                   setCreating3ID(false);
                   props.setLoggedIn(true);
                 }
