@@ -90,17 +90,6 @@ export default function Form(props: {
     // throw the session token into localstorage for easy login
     set(web2Identity.token, "SESSION");
     setAuthenticationStatus("ACTIVE_SESSION_SIGN_IN");
-    // const managedIdentity = await createManagedIdentitySingleton!(
-    //   web2Identity.did!
-    // );
-
-    // const permExists = await managedIdentity.permissions.hasPermission({
-    //   did: router.query.requesterDID as string,
-    //   resource: router.query.resource as Resource,
-    //   scope: AccessController.pluckPermissionScope(
-    //     Number(router.query.permission)
-    //   ),
-    // });
   };
 
   return (

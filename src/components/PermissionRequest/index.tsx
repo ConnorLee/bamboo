@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import { Box, Button, Text } from "@glif/react-components";
-import { useJwt, useUserState, useWeb2IdentityProvider } from "../../contexts";
+import { AccessController, Resource } from "@daemon-land/sdk";
+import {
+  useJwt,
+  useManagedIdentityProvider,
+  useUserState,
+  useWeb2IdentityProvider,
+} from "../../contexts";
 import PermissionForm from "./PermissionForm";
+import { generateReturnURL } from "../../utils";
 import {
   AuthenticationStatus,
   PermissionPagePropType,
@@ -47,6 +54,44 @@ export default function PermissionRequest(props: PermissionPageProps) {
     userState.authenticationStatus,
     determinedLandingState,
   ]);
+
+  // checks to see if the permission has already been granted
+  // if it has, forward the user back to the calling app immediately
+  useEffect(() => {
+    const checkIfPermAlreadyGrantedAndForward = async () => {
+      const permissions = new AccessController({
+        sessionToken: get("PDM_SESSION")!,
+        serviceUrl: `${process.env.NEXT_PUBLIC_DL_URL!}/rpc/v0`,
+      });
+
+      const did = router.query.requesterDID as string;
+      const resource = router.query.resource as Resource;
+      const permission = Number(router.query.permission);
+
+      const hasPerm = await permissions.hasPermission({
+        did,
+        resource,
+        scope: AccessController.pluckPermissionScope(permission),
+      });
+
+      if (hasPerm) {
+        const returnURL = await generateReturnURL(
+          did,
+          permission,
+          resource,
+          get("PDM_SESSION")!,
+          process.env.NEXT_PUBLIC_DL_URL!,
+          router.query.state as string
+        );
+        router.push(returnURL);
+        return;
+      }
+    };
+
+    if (userState.loaded && get("PDM_SESSION")) {
+      checkIfPermAlreadyGrantedAndForward();
+    }
+  }, [userState.loaded]);
 
   if (userState.authenticationStatus === "") {
     return <LoggedOutLanding profile={props.profile!} />;

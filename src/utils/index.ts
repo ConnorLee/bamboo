@@ -2,6 +2,7 @@ import { ScopeDirection, ScopesV2 } from "@daemon-land/types";
 
 export * from "./signAsPDM";
 export { default as signAsPDM } from "./signAsPDM";
+export { default as generateReturnURL } from "./generateReturnURL";
 
 export function makeRandomString(length: number): string {
   var result = "";

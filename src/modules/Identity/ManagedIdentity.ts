@@ -1,8 +1,7 @@
 import ThreeID from "3id-did-provider";
-import axios from "axios";
 import { Resource } from "@daemon-land/types";
 import { AccessController, Profile } from "../SDKWrappers";
-import { signAsPDM } from "../../utils";
+import { generateReturnURL, signAsPDM } from "../../utils";
 
 export default class ManagedIdentity {
   private _did: ThreeID | null = null;
@@ -50,29 +49,13 @@ export default class ManagedIdentity {
     resource: Resource,
     state?: string
   ): Promise<string> {
-    try {
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_DL_URL}/v0/pkce/generate-return-url`,
-        {
-          requesterDID,
-          // TODO PKCE:
-          code_challenge: "",
-          permission,
-          resource,
-          state,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${this.appToken}`,
-          },
-        }
-      );
-
-      if (res.status !== 201) throw new Error("Error generating returnURL");
-
-      return res.data.returnURL as string;
-    } catch (err) {
-      throw new Error(err.response.data);
-    }
+    return generateReturnURL(
+      requesterDID,
+      permission,
+      resource,
+      this.appToken,
+      this.url,
+      state
+    );
   }
 }

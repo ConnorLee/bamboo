@@ -57,8 +57,8 @@ export default function PermissionForm(props: {
       props.permissionRequest.resource,
       router.query?.state as string
     );
-    alert(returnURL);
-    // router.push(returnURL);
+    router.push(returnURL);
+    return;
   };
 
   return (
