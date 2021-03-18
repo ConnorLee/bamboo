@@ -33,12 +33,10 @@ export async function _signAsPDM(
   seed: string,
   ceramicUrl: string
 ) {
-  const authSecret = fromString(seed).slice(0, 32);
   const ceramic = new Ceramic(ceramicUrl);
   try {
     const threeID = await ThreeID.create({
-      authId: "genesis",
-      authSecret,
+      seed: fromString(seed).slice(0, 32),
       getPermission: () => Promise.resolve([]),
       ceramic,
     });

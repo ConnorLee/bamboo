@@ -12,8 +12,7 @@ describe("signAsPDM", () => {
   beforeAll(async () => {
     ceramic = new CeramicClient("http://localhost:7007");
     const threeID = await ThreeID.create({
-      authId: "genesis",
-      authSecret: fromString(process.env.PDM_SEED!).slice(0, 32),
+      seed: fromString(process.env.PDM_SEED!).slice(0, 32),
       getPermission: () => Promise.resolve([]),
       ceramic,
     });
