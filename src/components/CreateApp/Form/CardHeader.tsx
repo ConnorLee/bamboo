@@ -1,5 +1,4 @@
 import { Box, Text, Glyph, Title } from "@glif/react-components";
-import PropTypes from "prop-types";
 
 export default function CardHeader() {
   return (

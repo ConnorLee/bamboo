@@ -4,8 +4,7 @@ import { Button, Box, Text } from "@glif/react-components";
 import SignInEmailForm from "./SignInEmailForm";
 
 export default function SignInView(props: {
-  onEmailSubmit: (event: SyntheticEvent) => void;
-  onWeb3Connect: () => void;
+  onSubmit: (event: SyntheticEvent) => void;
   error?: string;
 }) {
   return (
@@ -21,26 +20,13 @@ export default function SignInView(props: {
           SIGN IN
         </Text>
       </Box>
-      <SignInEmailForm
-        onEmailSubmit={props.onEmailSubmit}
-        error={props.error}
-      />
-      <Text color="core.darkgray" textAlign="left" p="0" m={0} my={3}>
-        - OR -
-      </Text>
-      <Button
-        role="button"
-        title="Connect with Web3"
-        variant="secondary"
-        onClick={props.onWeb3Connect}
-      />
+      <SignInEmailForm onSubmit={props.onSubmit} error={props.error} />
     </>
   );
 }
 
 SignInView.propTypes = {
-  onWeb3Connect: PropTypes.func.isRequired,
-  onEmailSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   error: PropTypes.string,
 };
 

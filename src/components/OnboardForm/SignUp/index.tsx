@@ -15,7 +15,6 @@ import { PropTypeView, View } from "../../PermissionRequest/View";
 export default function SignUpView(props: {
   onPasswordSubmit: (event: SyntheticEvent) => void;
   onEmailSubmit: (event: SyntheticEvent) => void;
-  onWeb3Connect: () => void;
   view: View;
   error?: string;
   creating3ID: boolean;
@@ -124,21 +123,11 @@ export default function SignUpView(props: {
         onEmailSubmit={props.onEmailSubmit}
         error={props.error}
       />
-      <Text color="core.darkgray" textAlign="left" p="0" m={0} my={3}>
-        - OR -
-      </Text>
-      <Button
-        role="button"
-        title="Connect with Web3"
-        variant="secondary"
-        onClick={props.onWeb3Connect}
-      />
     </>
   );
 }
 
 SignUpView.propTypes = {
-  onWeb3Connect: PropTypes.func.isRequired,
   onEmailSubmit: PropTypes.func.isRequired,
   onPasswordSubmit: PropTypes.func.isRequired,
   view: PropTypeView,

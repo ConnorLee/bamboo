@@ -6,7 +6,7 @@ import {
   Label,
 } from "@glif/react-components";
 
-export default function EnterPassword(props: { error?: string }) {
+export default function EnterPasswordInput(props: { error?: string }) {
   return (
     <>
       <Card
@@ -18,7 +18,7 @@ export default function EnterPassword(props: { error?: string }) {
         display="flex"
         flexDirection="column"
         justifyContent="space-between"
-        boxShadow={2}
+        boxShadow={0}
         bg="status.success.background"
       >
         <Box

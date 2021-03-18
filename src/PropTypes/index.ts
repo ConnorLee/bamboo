@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { PermissionRequestV2 } from "@daemon-land/types";
+import { PermissionRequestV2, SpiritProfile } from "@daemon-land/types";
 
 export const ResourcePropType = PropTypes.oneOf([
   "DATASTORE",
@@ -23,7 +23,7 @@ export type MinimalProfile = {
 
 export type PermissionPageProps = {
   permissionRequest: PermissionRequestV2 | null;
-  profile: MinimalProfile | null;
+  profile: SpiritProfile | null;
   invalidParamsErr: boolean;
 };
 
@@ -38,3 +38,10 @@ export const PermissionPagePropType = {
   profile: MinimalProfilePropType.isRequired,
   invalidParamsErr: PropTypes.bool,
 };
+
+export type AuthenticationStatus =
+  | "ACTIVE_SESSION_SIGN_UP"
+  | "ACTIVE_SESSION_SIGN_IN"
+  | "ACTIVE_SESSION_LANDING"
+  | "POST_EMAIL_CONFIRM"
+  | "";

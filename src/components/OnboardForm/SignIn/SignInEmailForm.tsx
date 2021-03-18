@@ -10,11 +10,11 @@ import {
 import { func, string } from "prop-types";
 
 export default function SignInEmailForm(props: {
-  onEmailSubmit: (event: SyntheticEvent) => void;
+  onSubmit: (event: SyntheticEvent) => void;
   error?: string;
 }) {
   return (
-    <form style={{ width: "100%" }} onSubmit={props.onEmailSubmit}>
+    <form style={{ width: "100%" }} onSubmit={props.onSubmit}>
       <Card
         p={0}
         border={0}
@@ -119,7 +119,7 @@ export default function SignInEmailForm(props: {
 }
 
 SignInEmailForm.propTypes = {
-  onEmailSubmit: func.isRequired,
+  onSubmit: func.isRequired,
   error: string,
 };
 

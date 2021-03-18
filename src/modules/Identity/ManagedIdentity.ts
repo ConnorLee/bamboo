@@ -52,7 +52,7 @@ export default class ManagedIdentity {
   ): Promise<string> {
     try {
       const res = await axios.post(
-        `${process.env.DL_URL}/v0/pkce/generate-return-url`,
+        `${process.env.NEXT_PUBLIC_DL_URL}/v0/pkce/generate-return-url`,
         {
           requesterDID,
           // TODO PKCE:

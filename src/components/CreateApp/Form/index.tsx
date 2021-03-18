@@ -18,7 +18,7 @@ import {
   useWeb2IdentityProvider,
   useJwt,
 } from "../../../contexts";
-import EnterPassword from "../../PermissionRequest/PermissionForm/EnterPassword";
+import EnterPassword from "../../PermissionRequest/EnterPassword/Input";
 
 const Form = styled.form`
   width: 100%;

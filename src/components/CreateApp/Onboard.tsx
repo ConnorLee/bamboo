@@ -10,9 +10,9 @@ import {
   InputLabelBase,
   Input,
 } from "@glif/react-components";
-import { View } from "../PermissionRequest/View";
+import { View } from "./Views";
 import SignUpEmailForm from "../OnboardForm/SignUp/SignUpEmailForm";
-import CreateAppProfile from "./CreateApp";
+import CreateAppProfile from "./Form";
 
 function EnterEmail(props: {
   onSubmit: (event: SyntheticEvent) => void;

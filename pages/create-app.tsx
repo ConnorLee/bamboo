@@ -1,5 +1,5 @@
-import CreateIdentity from "../src/components/CreateIdentity";
+import CreateApp from "../src/components/CreateApp";
 
 export default function CreateDLApp() {
-  return <CreateIdentity />;
+  return <CreateApp />;
 }
