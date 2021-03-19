@@ -41,7 +41,7 @@ export const ManagedIdentityProviderWrapper = (
       const pdmSessionToken = jwt.get("PDM_SESSION");
       if (pdmSessionToken) {
         const identity = new ManagedIdentity(threeID, {
-          url: `${process.env.NEXT_PUBLIC_DL_URL}/rpc/v0`,
+          url: process.env.NEXT_PUBLIC_DL_URL,
           ceramicUrl: process.env.NEXT_PUBLIC_CERAMIC_URL,
           sessionToken: pdmSessionToken,
         });
@@ -49,7 +49,7 @@ export const ManagedIdentityProviderWrapper = (
         return identity;
       } else {
         const identity = await ManagedIdentity.create(threeID, {
-          url: `${process.env.NEXT_PUBLIC_DL_URL}/rpc/v0`,
+          url: process.env.NEXT_PUBLIC_DL_URL,
           ceramicUrl: process.env.NEXT_PUBLIC_CERAMIC_URL,
         });
         jwt.set(identity.appToken, "PDM_SESSION");

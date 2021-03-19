@@ -61,7 +61,7 @@ export default function PermissionRequest(props: PermissionPageProps) {
     const checkIfPermAlreadyGrantedAndForward = async () => {
       const permissions = new AccessController({
         sessionToken: get("PDM_SESSION")!,
-        serviceUrl: `${process.env.NEXT_PUBLIC_DL_URL!}/rpc/v0`,
+        serviceUrl: `${process.env.NEXT_PUBLIC_DL_URL!}`,
       });
 
       const did = router.query.requesterDID as string;

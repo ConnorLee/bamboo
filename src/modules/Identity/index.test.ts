@@ -7,7 +7,6 @@ import { makeRandomString, _signAsPDM, getPDMSessionToken } from "../../utils";
 
 const CERAMIC_URL = "http://localhost:7007";
 const DL_URL = "http://localhost:3001";
-const DL_RPC = `${DL_URL}/rpc/v0`;
 
 // we mock this call and just imitate what its like in the backend handlers
 jest
@@ -108,7 +107,7 @@ describe("ManagedIdentity", () => {
   test("static create creates an authenticated managed identity instance", async () => {
     managedIdentity = await ManagedIdentity.create(threeID, {
       ceramicUrl: CERAMIC_URL,
-      url: DL_RPC,
+      url: DL_URL,
     });
 
     expect(managedIdentity.authenticated).toBe(true);
