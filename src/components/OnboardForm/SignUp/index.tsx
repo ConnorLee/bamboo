@@ -10,7 +10,7 @@ import {
   Input,
 } from "@glif/react-components";
 import SignUpEmailForm from "./SignUpEmailForm";
-import { PropTypeView, View } from "../../PermissionRequest/View";
+import { PropTypeView, View } from "../../../PropTypes";
 
 export default function SignUpView(props: {
   onPasswordSubmit: (event: SyntheticEvent) => void;

@@ -2,7 +2,7 @@ import { useEffect, SyntheticEvent, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Onboard from "./Onboard";
-import { View } from "./Views";
+import { View } from "../../PropTypes";
 import { isValidEmail } from "../../utils";
 import { useWeb2IdentityProvider, useJwt } from "../../contexts";
 

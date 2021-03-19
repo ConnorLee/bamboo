@@ -10,7 +10,7 @@ import {
   InputLabelBase,
   Input,
 } from "@glif/react-components";
-import { View } from "./Views";
+import { View } from "../../PropTypes";
 import SignUpEmailForm from "../OnboardForm/SignUp/SignUpEmailForm";
 import CreateAppProfile from "./Form";
 
