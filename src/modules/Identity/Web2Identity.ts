@@ -3,7 +3,6 @@ import { JWE } from "did-jwt";
 import Ceramic from "@ceramicnetwork/http-client";
 import ThreeID from "3id-did-provider";
 import tweetnacl from "tweetnacl";
-import { Resource } from "@daemon-land/types";
 import { concat, fromString } from "uint8arrays";
 import Auth from "../Auth";
 
@@ -87,8 +86,6 @@ export default class Web2Identity {
         }
       );
       if (res.status !== 201) throw new Error("Error creating user");
-      // // sign the message as the PDM so we can get a session token
-      // const token = await signAsPDM(threeID.id);
       this._did = threeID;
       return threeID.id;
     } finally {

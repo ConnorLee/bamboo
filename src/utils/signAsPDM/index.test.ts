@@ -5,10 +5,13 @@ import { fromString } from "uint8arrays";
 import { describe, expect, test } from "@jest/globals";
 import { DagJWS, DID } from "dids";
 import { _signAsPDM, getPDMSessionToken } from ".";
+import { randomBytes } from "tweetnacl";
 
 describe("signAsPDM", () => {
   let ceramic: CeramicClient;
   let pdmDID: string = "";
+  let operandDID: string = "";
+  let operandJWS: DagJWS;
   beforeAll(async () => {
     ceramic = new CeramicClient("http://localhost:7007");
     const threeID = await ThreeID.create({
@@ -19,16 +22,36 @@ describe("signAsPDM", () => {
     const provider = threeID.getDidProvider();
     await ceramic.setDIDProvider(provider);
     pdmDID = threeID.id;
+
+    // get a signature for the operandDID
+    const _operandDID = await ThreeID.create({
+      seed: randomBytes(32),
+      getPermission: () => Promise.resolve([]),
+      ceramic,
+    });
+    const operandDIDProvider = _operandDID.getDidProvider();
+    await ceramic.setDIDProvider(operandDIDProvider);
+
+    operandDID = _operandDID.id;
+    const resolver = ThreeIDResolver.getResolver(ceramic);
+    const did = new DID({ resolver, provider: operandDIDProvider });
+    await did.authenticate();
+
+    const res = await did.createDagJWS({ operandDID });
+    operandJWS = res.jws;
   });
 
   afterAll(async () => {
     await ceramic.close();
   });
+
   let sig: string = "";
   test("it signs a message as the PDM", async () => {
     if (!pdmDID) throw new Error("PDM DID needed for tests to run");
+
     const jws = await _signAsPDM(
-      "message",
+      operandDID,
+      operandJWS,
       process.env.PDM_SEED!,
       "http://localhost:7007"
     );
@@ -36,6 +59,19 @@ describe("signAsPDM", () => {
     expect(jws.signatures[0].protected).toBeTruthy();
     expect(jws.signatures[0].signature).toBeTruthy();
     sig = JSON.stringify(jws);
+  });
+
+  test("it does not sign a message as the PDM if the signature mismatches the DID", async () => {
+    if (!pdmDID) throw new Error("PDM DID needed for tests to run");
+
+    await expect(
+      _signAsPDM(
+        "did:3:",
+        operandJWS,
+        process.env.PDM_SEED!,
+        "http://localhost:7007"
+      )
+    ).rejects.toThrowError();
   });
 
   test("the signature can be verified", async () => {

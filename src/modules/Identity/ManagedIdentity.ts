@@ -1,5 +1,11 @@
 import ThreeID from "3id-did-provider";
+import { DID } from "dids";
 import { Resource } from "@daemon-land/types";
+import Ceramic from "@ceramicnetwork/http-client";
+import ThreeIDResolver from "@ceramicnetwork/3id-did-resolver";
+import { randomBytes } from "tweetnacl";
+import { toString } from "uint8arrays";
+
 import { AccessController, Profile } from "../SDKWrappers";
 import { generateReturnURL, signAsPDM } from "../../utils";
 
@@ -37,7 +43,28 @@ export default class ManagedIdentity {
   ) {
     let token = opts?.sessionToken;
     if (!token) {
-      token = await signAsPDM(did.id);
+      const ceramic = new Ceramic(
+        opts?.ceramicUrl || process.env.NEXT_PUBLIC_CERAMIC_URL
+      );
+
+      try {
+        // here we have the user sign a message,
+        // so that on the server side, the PDM backend can verify the DID it is about to sign
+        // is being requested by the owner of the DID (i.e. you can't ask the PDM to sign someone else's DID for you)
+        const provider = did.getDidProvider();
+        await ceramic.setDIDProvider(provider);
+        const resolver = ThreeIDResolver.getResolver(ceramic);
+        const signer = new DID({ provider, resolver });
+        await signer.authenticate();
+        // here it doesnt actually matter what we sign
+        // just need the signer
+        const jws = await signer.createJWS({
+          message: toString(randomBytes(32)),
+        });
+        token = await signAsPDM(did.id, jws);
+      } finally {
+        await ceramic.close();
+      }
     }
 
     return new ManagedIdentity(did, { sessionToken: token, ...opts });

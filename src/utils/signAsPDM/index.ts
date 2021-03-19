@@ -6,12 +6,21 @@ import { fromString } from "uint8arrays";
 import Ceramic from "@ceramicnetwork/http-client";
 
 // this is its own separate func so we can mock it in tests
-export default async function signAsPDM(operandDID: string): Promise<string> {
+export default async function signAsPDM(
+  operandDID: string,
+  jws: DagJWS
+): Promise<string> {
   const res = await axios.post("/api/v0/identity", {
     operandDID,
+    jws,
   });
   if (res.status !== 201) throw new Error("Error getting PDM session token.");
   return res.data;
+}
+
+function isSigner(kid: string, did: string): boolean {
+  const allegedDID = kid.split("?version-id")[0];
+  return allegedDID === did;
 }
 
 export async function getPDMSessionToken(jws: DagJWS): Promise<string> {
@@ -30,6 +39,7 @@ export async function getPDMSessionToken(jws: DagJWS): Promise<string> {
 // this is the actual server utility function
 export async function _signAsPDM(
   operandDID: string,
+  matchingSig: DagJWS,
   seed: string,
   ceramicUrl: string
 ) {
@@ -44,8 +54,13 @@ export async function _signAsPDM(
     const provider = threeID.getDidProvider();
     await ceramic.setDIDProvider(provider);
     const resolver = ThreeIDResolver.getResolver(ceramic);
-    const did = new DID({ provider, resolver });
+    const did = new DID({ resolver, provider });
     await did.authenticate();
+    const { kid } = await did.verifyJWS(matchingSig);
+    if (!isSigner(kid, operandDID)) {
+      throw new Error("Bad signature");
+    }
+
     return did.createJWS({ operandDID });
   } finally {
     await ceramic.close();
