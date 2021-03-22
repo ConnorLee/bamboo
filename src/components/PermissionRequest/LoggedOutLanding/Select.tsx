@@ -8,7 +8,7 @@ export default function Select(props: {
   title: string;
 }) {
   return (
-    <Box display="flex" alignItems="center" mb={7} justifyContent="center">
+    <Box display="flex" alignItems="center" mb={3} justifyContent="center">
       <Card
         display="flex"
         flexDirection="column"

@@ -4,10 +4,10 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import axios from "axios";
 import { useRouter } from "next/router";
-import { Box, Button, Text } from "@glif/react-components";
+import { Box, Button, Label, Text } from "@glif/react-components";
 import { PermissionRequestV2, SpiritProfile } from "@daemon-land/types";
 import styled from "styled-components";
-import ReviewCardHeader from "./ReviewCardHeader";
+import CardHeader from "./CardHeader";
 import {
   useManagedIdentityProvider,
   useWeb2IdentityProvider,
@@ -121,32 +121,31 @@ export default function PermissionForm(props: {
           flexDirection="column"
           justifyContent="flex-start"
         >
-          <Box boxShadow={2} borderRadius={4}>
-            <ReviewCardHeader />
+          <Box boxShadow={2} borderRadius={4} mt={4}>
+            {props.landingState === "ACTIVE_SESSION_LANDING" &&
+              props.step === 2 ?
+              <CardHeader acronym='Ep' text='Enter your password' /> : <CardHeader acronym='Rr' text='Review Request' />}
             <Box
               width="100%"
-              css={`
-                padding: 16px 70px;
-              `}
               border={0}
               bg="background.screen"
               borderRadius={3}
             >
               <Box
+                p={4}
                 display="flex"
                 flexDirection="column"
                 flex="1"
                 justifyContent="center"
-                margin="auto"
+                // margin="auto"
                 maxWidth={13}
                 width="100%"
                 minWidth={11}
                 maxHeight={12}
-                my={3}
                 borderRadius={1}
               >
                 {props.landingState === "ACTIVE_SESSION_LANDING" &&
-                props.step === 2 ? (
+                  props.step === 2 ? (
                   <>
                     <Text textAlign="center">
                       Enter your password to grant this permission and return to{" "}
@@ -157,20 +156,69 @@ export default function PermissionForm(props: {
                 ) : (
                   <>
                     {/* TODO: actually decode permission request */}
-                    <Box display="flex" justifyContent="center">
-                      <Image
-                        src={props.profile.imageUrl!}
-                        width="100px"
-                        height="100px"
-                      />
+                    <Box display="flex">
+                      <Box>
+                        <Label mb={4}>App</Label>
+                        <Box display="flex">
+                          <Box css={`max-height: 60px; min-height: 60px;`}>
+                            <Image
+                              src={props.profile.imageUrl!}
+                              width="60px"
+                              height="60px"
+                              className="image"
+                            />
+                          </Box>
+                          <Text ml={3} fontWeight={700} fontSize={3}>{props.profile.name}</Text>
+                        </Box>
+                      </Box>
+                      <Box textAlign="right" flex='1'>
+                        <Label display='inline-block' pr={2}>
+                          Access
+                        </Label>
+                        <Box
+                          display='inline-block'
+                          width={2}
+                          height={2}
+                          mx={1}
+                          borderRadius={100}
+                          backgroundColor={'core.primary'}
+                        />
+                        <Box
+                          display='inline-block'
+                          width={2}
+                          height={2}
+                          mx={1}
+                          borderRadius={100}
+                          backgroundColor={'status.inactive'}
+                        />
+                        <Box
+                          display='inline-block'
+                          width={2}
+                          height={2}
+                          mx={1}
+                          borderRadius={100}
+                          backgroundColor={'status.inactive'}
+                        />
+                        <Box
+                          display='inline-block'
+                          width={2}
+                          height={2}
+                          mx={1}
+                          borderRadius={100}
+                          backgroundColor={'status.inactive'}
+                        />
+                        <Text pl={8} color={'grey'}>{props.profile.name} is requesting access to view your profile.</Text>
+                      </Box>
                     </Box>
-                    <Text textAlign="center">
-                      {props.profile.name} is requesting to your view your
+                    {/* <Text textAlign="center">
+                      is requesting to your view your
                       profile. Click "Accept" below to grant this permission.
-                    </Text>
+                    </Text> */}
                   </>
                 )}
               </Box>
+              {/* <hr></hr>
+              yo */}
             </Box>
           </Box>
           <Box
@@ -189,7 +237,7 @@ export default function PermissionForm(props: {
               variant="primary"
               title={
                 props.landingState === "ACTIVE_SESSION_LANDING" &&
-                props.step === 2
+                  props.step === 2
                   ? "Submit"
                   : "Accept"
               }

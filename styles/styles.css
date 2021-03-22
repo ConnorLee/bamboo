@@ -11,6 +11,17 @@ body {
   margin: 0;
 }
 
+.image {
+  border-radius: 50%;
+}
+
+.image > img {
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 60px;
+  max-height: 60px;
+}
+
 /* Alias Medium */
 
 @font-face {

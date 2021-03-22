@@ -1,10 +1,6 @@
-import PropTypes from "prop-types";
 import { Box, Text, Glyph, Title } from "@glif/react-components";
 
-export default function CardHeader(props: {
-  acronym: string;
-  text: string;
-}) {
+export default function PasswordCardHeader() {
   return (
     <Box
       width="100%"
@@ -22,17 +18,12 @@ export default function CardHeader(props: {
         justifyContent="space-between"
       >
         <Box display="flex" flexDirection="row" alignItems="center">
-          <Glyph acronym={props.acronym} color="white" mr={3} />
+          <Glyph acronym="Rv" color="white" mr={3} />
           <Box display="flex" flexDirection="column" alignItems="flex-start">
-            <Text m={0}>{props.text}</Text>
+            <Text m={0}>Enter your password</Text>
           </Box>
         </Box>
       </Box>
     </Box>
   );
 }
-
-CardHeader.propTypes = {
-  acronym: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-};
