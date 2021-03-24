@@ -3,8 +3,6 @@ import { DID } from "dids";
 import { Resource } from "@daemon-land/types";
 import Ceramic from "@ceramicnetwork/http-client";
 import ThreeIDResolver from "@ceramicnetwork/3id-did-resolver";
-import { randomBytes } from "tweetnacl";
-import { toString } from "uint8arrays";
 
 import { AccessController, Profile } from "../SDKWrappers";
 import { generateReturnURL, signAsPDM } from "../../utils";
@@ -56,10 +54,8 @@ export default class ManagedIdentity {
         const resolver = ThreeIDResolver.getResolver(ceramic);
         const signer = new DID({ provider, resolver });
         await signer.authenticate();
-        // here it doesnt actually matter what we sign
-        // just need the signer
         const jws = await signer.createJWS({
-          message: toString(randomBytes(32)),
+          operandDID: did.id,
         });
         token = await signAsPDM(did.id, jws);
       } finally {

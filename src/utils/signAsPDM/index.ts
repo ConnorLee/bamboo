@@ -23,13 +23,17 @@ function isSigner(kid: string, did: string): boolean {
   return allegedDID === did;
 }
 
-export async function getPDMSessionToken(jws: DagJWS): Promise<string> {
+export async function getPDMSessionToken(
+  jws: DagJWS,
+  operandDID: string
+): Promise<string> {
   const res = await axios.post(
     `${
       process.env.NEXT_PUBLIC_DL_URL || "http://localhost:3001"
     }/v0/pdm/verify-signature`,
     {
       jws,
+      operandDID,
     }
   );
   if (res.status !== 201) throw new Error("Error getting PDM session token.");

@@ -38,13 +38,13 @@ export const UserStateProvider = ({ children }: { children: ReactNode }) => {
   const cacheKeyCarrier = (keyCarrier: KeyCarrier) => {
     if (!keyCarrier) return;
     setKeyCarrier(keyCarrier);
-    if (!!window && typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
       window.localStorage.setItem("KEY_CARRIER", keyCarrier);
     }
   };
 
   useEffect(() => {
-    if (!!window && typeof window !== "undefined") {
+    if (typeof window !== "undefined") {
       const cachedKeyCarrier = window.localStorage.getItem("KEY_CARRIER");
       if (cachedKeyCarrier) setKeyCarrier(cachedKeyCarrier as KeyCarrier);
     }

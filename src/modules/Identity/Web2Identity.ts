@@ -3,7 +3,7 @@ import { JWE } from "did-jwt";
 import Ceramic from "@ceramicnetwork/http-client";
 import ThreeID from "3id-did-provider";
 import tweetnacl from "tweetnacl";
-import { concat, fromString } from "uint8arrays";
+import { concat, fromString, toString } from "uint8arrays";
 import Auth from "../Auth";
 
 type DID = string;
@@ -65,8 +65,10 @@ export default class Web2Identity {
     const ceramic = new Ceramic(this.ceramicUrl);
     try {
       const threeID = await ThreeID.create({
-        authId: "genesis",
-        authSecret,
+        // TODO: replace back in
+        // authId: "genesis",
+        // authSecret,
+        seed: authSecret,
         getPermission: () => Promise.resolve([]),
         ceramic,
       });
@@ -105,8 +107,10 @@ export default class Web2Identity {
     const ceramic = new Ceramic(this.ceramicUrl);
     try {
       const threeID = await ThreeID.create({
-        authId: "genesis",
-        authSecret,
+        // TODO: put back in
+        // authId: "genesis",
+        // authSecret,
+        seed: authSecret,
         getPermission: () => Promise.resolve([]),
         ceramic,
       });

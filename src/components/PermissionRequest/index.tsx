@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { Box, Button, Text } from "@glif/react-components";
 import { AccessController, Resource } from "@daemon-land/sdk";
-import {
-  useJwt,
-  useManagedIdentityProvider,
-  useUserState,
-  useWeb2IdentityProvider,
-} from "../../contexts";
+import { useJwt, useUserState, useWeb2IdentityProvider } from "../../contexts";
 import PermissionForm from "./PermissionForm";
 import { generateReturnURL } from "../../utils";
 import {

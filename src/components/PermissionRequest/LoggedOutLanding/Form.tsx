@@ -1,20 +1,16 @@
 import React, { SyntheticEvent, useState } from "react";
 import axios from "axios";
 import { Box, Card, Text } from "@glif/react-components";
-import { AccessController } from "@daemon-land/sdk";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import {
   useJwt,
-  useManagedIdentityProvider,
   useUserState,
   useWeb2IdentityProvider,
 } from "../../../contexts";
 import Select from "./Select";
 import SignInView from "../../OnboardForm/SignIn";
-import SignUpView from "../../OnboardForm/SignUp";
-import { isValidEmail } from "../../../utils";
-import { useRouter } from "next/router";
-import { Resource } from "@daemon-land/types";
+import { handleServerErr, isValidEmail } from "../../../utils";
 import SignUpEmailForm from "../../OnboardForm/SignUp/SignUpEmailForm";
 
 const HoverableLink = styled(Text)`
@@ -50,21 +46,25 @@ export default function Form(props: {
     // this is used on the return to know we are creating a user and not an app
     // when creating an app, `view` ==> `create-app`
     params.set("view", "permission");
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
-      {
-        email: email.value,
-        params: params.toString(),
-      }
-    );
-
-    if (res.status !== 201) {
-      setErr(
-        "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
+        {
+          email: email.value,
+          params: params.toString(),
+        }
       );
-      return;
+
+      if (res.status !== 201) {
+        setErr(
+          "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+        );
+        return;
+      }
+      setEmailInFlight(true);
+    } catch (err) {
+      handleServerErr(err, setErr);
     }
-    setEmailInFlight(true);
   };
 
   const onSignIn = async (e: SyntheticEvent) => {
@@ -76,7 +76,7 @@ export default function Form(props: {
       return;
     }
     const password = elements.namedItem("password") as HTMLInputElement;
-    if (!password) {
+    if (!password.value) {
       setErr("Please enter your password");
       return;
     }
@@ -85,11 +85,15 @@ export default function Form(props: {
       email.value,
       password.value
     );
-    await web2Identity.login();
-    remove("POST_EMAIL_CONFIRM");
-    // throw the session token into localstorage for easy login
-    set(web2Identity.token, "SESSION");
-    setAuthenticationStatus("ACTIVE_SESSION_SIGN_IN");
+    try {
+      await web2Identity.login();
+      remove("POST_EMAIL_CONFIRM");
+      // throw the session token into localstorage for easy login
+      set(web2Identity.token, "SESSION");
+      setAuthenticationStatus("ACTIVE_SESSION_SIGN_IN");
+    } catch (err) {
+      handleServerErr(err, setErr);
+    }
   };
 
   return (
@@ -188,7 +192,10 @@ export default function Form(props: {
                       p="0"
                       m={0}
                       my={3}
-                      onClick={() => props.setView("SIGN_UP")}
+                      onClick={() => {
+                        setErr("");
+                        props.setView("SIGN_UP");
+                      }}
                     >
                       Create one
                     </HoverableLink>
@@ -203,7 +210,10 @@ export default function Form(props: {
                       p="0"
                       m={0}
                       my={3}
-                      onClick={() => props.setView("SIGN_IN")}
+                      onClick={() => {
+                        setErr("");
+                        props.setView("SIGN_IN");
+                      }}
                     >
                       Sign in
                     </HoverableLink>

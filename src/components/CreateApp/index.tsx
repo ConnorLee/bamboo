@@ -3,7 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Onboard from "./Onboard";
 import { View } from "../../PropTypes";
-import { isValidEmail } from "../../utils";
+import { handleServerErr, isValidEmail } from "../../utils";
 import { useWeb2IdentityProvider, useJwt } from "../../contexts";
 
 export default function CreateIdentity() {
@@ -34,23 +34,27 @@ export default function CreateIdentity() {
     const params = new URLSearchParams();
     params.set("view", "create-app");
     if (view === "SIGN_UP") {
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
-        {
-          email: email.value,
-          params: params.toString(),
-        }
-      );
-
-      if (res.status !== 201) {
-        setErr(
-          "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+      try {
+        const res = await axios.post(
+          `${process.env.NEXT_PUBLIC_DL_URL!}/v0/verifications/email/send`,
+          {
+            email: email.value,
+            params: params.toString(),
+          }
         );
-        return;
-      }
 
-      setView("VERIFY_EMAIL");
-      return;
+        if (res.status !== 201) {
+          setErr(
+            "Whoops! There was an error sending you a verification email. Please come back tomorrow and try again."
+          );
+          return;
+        }
+
+        setView("VERIFY_EMAIL");
+        return;
+      } catch (err) {
+        handleServerErr(err, setErr);
+      }
     }
   };
 
@@ -68,12 +72,16 @@ export default function CreateIdentity() {
       router.query.email as string,
       password.value
     );
-    const threeID = await web2Identity.signup(get("POST_EMAIL_CONFIRM")!);
-    if (threeID) {
-      remove("POST_EMAIL_CONFIRM");
-      // throw the session token into localstorage for easy login
-      set(web2Identity.token, "SESSION");
-      setView("CREATE_PROFILE");
+    try {
+      const threeID = await web2Identity.signup(get("POST_EMAIL_CONFIRM")!);
+      if (threeID) {
+        remove("POST_EMAIL_CONFIRM");
+        // throw the session token into localstorage for easy login
+        set(web2Identity.token, "SESSION");
+        setView("CREATE_PROFILE");
+      }
+    } catch (err) {
+      handleServerErr(err, setErr);
     }
   };
 

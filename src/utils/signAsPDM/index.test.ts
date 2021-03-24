@@ -86,7 +86,10 @@ describe("signAsPDM", () => {
   });
 
   test("getPDMSessionToken gets a session token from the DL API", async () => {
-    const sessionToken = await getPDMSessionToken(JSON.parse(sig) as DagJWS);
+    const sessionToken = await getPDMSessionToken(
+      JSON.parse(sig) as DagJWS,
+      operandDID
+    );
     expect(sessionToken).toBeTruthy();
   });
 });

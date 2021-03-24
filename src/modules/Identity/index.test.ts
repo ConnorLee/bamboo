@@ -4,6 +4,7 @@ import { describe, expect, test } from "@jest/globals";
 import { ScopeDirection, ScopesV2 } from "@daemon-land/types";
 import { ManagedIdentity, Web2Identity } from ".";
 import { makeRandomString, _signAsPDM, getPDMSessionToken } from "../../utils";
+import { DagJWS } from "dids";
 
 const CERAMIC_URL = "http://localhost:7007";
 const DL_URL = "http://localhost:3001";
@@ -11,14 +12,15 @@ const DL_URL = "http://localhost:3001";
 // we mock this call and just imitate what its like in the backend handlers
 jest
   .spyOn(require("../../utils/signAsPDM"), "default")
-  .mockImplementation(async (operandDID) => {
+  .mockImplementation(async (operandDID, sig) => {
     // this is the exact same method as the api handler
     const jws = await _signAsPDM(
       operandDID as string,
+      sig as DagJWS,
       process.env.PDM_SEED as string,
       CERAMIC_URL
     );
-    const token = await getPDMSessionToken(jws);
+    const token = await getPDMSessionToken(jws, operandDID as string);
     return token;
   });
 
@@ -59,6 +61,25 @@ describe("Web2Identity", () => {
     const threeID = await identity.login();
     expect(threeID.includes("did:3")).toBe(true);
     appDID = threeID;
+  });
+
+  test("sign up and login get matching did", async () => {
+    const username = makeRandomString(10);
+    const password = makeRandomString(10);
+    const identityJWT = await createJWT({ username, verified: true });
+    const identity = new Web2Identity(username, password, {
+      url: DL_URL,
+      ceramicUrl: CERAMIC_URL,
+    });
+    const did = await identity.signup(identityJWT);
+
+    const identity2 = new Web2Identity(username, password, {
+      url: DL_URL,
+      ceramicUrl: CERAMIC_URL,
+    });
+
+    const loggedInDid = await identity2.login();
+    expect(did).toBe(loggedInDid);
   });
 
   test("signing up without a valid identity token throws a 403", async () => {

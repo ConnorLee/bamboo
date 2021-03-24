@@ -1,8 +1,20 @@
 import { ScopeDirection, ScopesV2 } from "@daemon-land/types";
+import { AxiosError } from "axios";
 
 export * from "./signAsPDM";
 export { default as signAsPDM } from "./signAsPDM";
 export { default as generateReturnURL } from "./generateReturnURL";
+
+export function handleServerErr(
+  error: AxiosError,
+  errCb: (message: string) => void
+): void {
+  if (error?.response?.data) {
+    errCb(error.response.data.error);
+    return;
+  }
+  errCb(error.message);
+}
 
 export function makeRandomString(length: number): string {
   var result = "";
