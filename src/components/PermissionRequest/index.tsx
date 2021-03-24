@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Box, Button, Text } from "@glif/react-components";
 import { AccessController, Resource } from "@daemon-land/sdk";
-import { useJwt, useUserState, useWeb2IdentityProvider } from "../../contexts";
+import {
+  useJwt,
+  useManagedIdentityProvider,
+  useUserState,
+  useWeb2IdentityProvider,
+} from "../../contexts";
 import PermissionForm from "./PermissionForm";
 import { generateReturnURL } from "../../utils";
 import {
@@ -26,6 +31,7 @@ function determineTotalStepsOnLand(
 export default function PermissionRequest(props: PermissionPageProps) {
   const userState = useUserState();
   const { createWeb2IdentitySingleton } = useWeb2IdentityProvider();
+  const { createManagedIdentitySingleton } = useManagedIdentityProvider();
   const router = useRouter();
   const { get, remove, set } = useJwt();
   const [err, setErr] = useState<string>("");
@@ -86,7 +92,7 @@ export default function PermissionRequest(props: PermissionPageProps) {
     if (userState.loaded && get("PDM_SESSION")) {
       checkIfPermAlreadyGrantedAndForward();
     }
-  }, [userState.loaded]);
+  }, [userState.loaded, get("PDM_SESSION")]);
 
   if (userState.authenticationStatus === "") {
     return <LoggedOutLanding profile={props.profile!} />;
@@ -173,6 +179,8 @@ export default function PermissionRequest(props: PermissionPageProps) {
                     // throw the session token into localstorage for easy login
                     set(web2Identity.token, "SESSION");
                     userState.setAuthenticationStatus("ACTIVE_SESSION_SIGN_UP");
+                    // go ahead and get a PDM session eagerly, so we can see if permission already exists
+                    await createManagedIdentitySingleton!(web2Identity.did!);
                     setStep(3);
                   }
                 } catch (err) {

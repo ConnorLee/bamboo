@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
-import ThreeID from "3id-did-provider";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import axios from "axios";
@@ -18,6 +17,7 @@ import {
   MinimalProfilePropType,
   PermissionRequestV2PropType,
 } from "../../../PropTypes";
+import { ManagedIdentity } from "../../../modules/Identity";
 
 const Form = styled.form`
   width: 100%;
@@ -36,16 +36,15 @@ export default function PermissionForm(props: {
   landingState: AuthenticationStatus;
 }) {
   const router = useRouter();
+  const { createWeb2IdentitySingleton } = useWeb2IdentityProvider();
   const {
-    web2IdentitySingleton,
-    createWeb2IdentitySingleton,
-  } = useWeb2IdentityProvider();
-  const { createManagedIdentitySingleton } = useManagedIdentityProvider();
+    createManagedIdentitySingleton,
+    managedIdentitySingleton,
+  } = useManagedIdentityProvider();
   const [err, setErr] = useState<string>("");
 
-  const addPermission = async (did: ThreeID) => {
+  const addPermission = async (managedIdentity: ManagedIdentity) => {
     // TODO - try catch these and set friendly errors, gracefully fail
-    const managedIdentity = await createManagedIdentitySingleton!(did);
     await managedIdentity.permissions.add({
       did: props.permissionRequest.requesterDID,
       permission: props.permissionRequest.permission,
@@ -69,13 +68,13 @@ export default function PermissionForm(props: {
           // by the time you got here, all you have to do is accept the request
           // we already have your password
           if (props.landingState !== "ACTIVE_SESSION_LANDING") {
-            if (!web2IdentitySingleton) {
+            if (!managedIdentitySingleton) {
               setErr(
                 "Hmmm something is not right. Please refresh the page and try again."
               );
               return;
             }
-            await addPermission(web2IdentitySingleton?.did!);
+            await addPermission(managedIdentitySingleton!);
             return;
           }
 
@@ -108,7 +107,10 @@ export default function PermissionForm(props: {
             password.value
           );
           await web2Identity.login();
-          await addPermission(web2Identity?.did!);
+          const identity = await createManagedIdentitySingleton(
+            web2Identity.did!
+          );
+          await addPermission(identity!);
           return;
         }}
       >
@@ -123,8 +125,11 @@ export default function PermissionForm(props: {
         >
           <Box boxShadow={2} borderRadius={4} mt={4}>
             {props.landingState === "ACTIVE_SESSION_LANDING" &&
-              props.step === 2 ?
-              <CardHeader acronym='Ep' text='Enter your password' /> : <CardHeader acronym='Rr' text='Review Request' />}
+            props.step === 2 ? (
+              <CardHeader acronym="Ep" text="Enter your password" />
+            ) : (
+              <CardHeader acronym="Rr" text="Review Request" />
+            )}
             <Box
               width="100%"
               border={0}
@@ -145,7 +150,7 @@ export default function PermissionForm(props: {
                 borderRadius={1}
               >
                 {props.landingState === "ACTIVE_SESSION_LANDING" &&
-                  props.step === 2 ? (
+                props.step === 2 ? (
                   <>
                     <Text textAlign="center">
                       Enter your password to grant this permission and return to{" "}
@@ -160,7 +165,12 @@ export default function PermissionForm(props: {
                       <Box>
                         <Label mb={4}>App</Label>
                         <Box display="flex">
-                          <Box css={`max-height: 60px; min-height: 60px;`}>
+                          <Box
+                            css={`
+                              max-height: 60px;
+                              min-height: 60px;
+                            `}
+                          >
                             <Image
                               src={props.profile.imageUrl!}
                               width="60px"
@@ -168,46 +178,51 @@ export default function PermissionForm(props: {
                               className="image"
                             />
                           </Box>
-                          <Text ml={3} fontWeight={700} fontSize={3}>{props.profile.name}</Text>
+                          <Text ml={3} fontWeight={700} fontSize={3}>
+                            {props.profile.name}
+                          </Text>
                         </Box>
                       </Box>
-                      <Box textAlign="right" flex='1'>
-                        <Label display='inline-block' pr={2}>
+                      <Box textAlign="right" flex="1">
+                        <Label display="inline-block" pr={2}>
                           Access
                         </Label>
                         <Box
-                          display='inline-block'
+                          display="inline-block"
                           width={2}
                           height={2}
                           mx={1}
                           borderRadius={100}
-                          backgroundColor={'core.primary'}
+                          backgroundColor={"core.primary"}
                         />
                         <Box
-                          display='inline-block'
+                          display="inline-block"
                           width={2}
                           height={2}
                           mx={1}
                           borderRadius={100}
-                          backgroundColor={'status.inactive'}
+                          backgroundColor={"status.inactive"}
                         />
                         <Box
-                          display='inline-block'
+                          display="inline-block"
                           width={2}
                           height={2}
                           mx={1}
                           borderRadius={100}
-                          backgroundColor={'status.inactive'}
+                          backgroundColor={"status.inactive"}
                         />
                         <Box
-                          display='inline-block'
+                          display="inline-block"
                           width={2}
                           height={2}
                           mx={1}
                           borderRadius={100}
-                          backgroundColor={'status.inactive'}
+                          backgroundColor={"status.inactive"}
                         />
-                        <Text pl={8} color={'grey'}>{props.profile.name} is requesting access to view your profile.</Text>
+                        <Text pl={8} color={"grey"}>
+                          {props.profile.name} is requesting access to view your
+                          profile.
+                        </Text>
                       </Box>
                     </Box>
                     {/* <Text textAlign="center">
@@ -237,7 +252,7 @@ export default function PermissionForm(props: {
               variant="primary"
               title={
                 props.landingState === "ACTIVE_SESSION_LANDING" &&
-                  props.step === 2
+                props.step === 2
                   ? "Submit"
                   : "Accept"
               }

@@ -11,15 +11,15 @@ import { useJwt } from "../JWTProvider";
 
 type ManagedIdentityContextType = {
   managedIdentitySingleton: ManagedIdentity | null;
-  createManagedIdentitySingleton:
-    | ((threeID: ThreeID) => Promise<ManagedIdentity>)
-    | null;
+  createManagedIdentitySingleton: (
+    threeID: ThreeID
+  ) => Promise<ManagedIdentity | null>;
 };
 
 export const ManagedIdentityContext = createContext<ManagedIdentityContextType>(
   {
     managedIdentitySingleton: null,
-    createManagedIdentitySingleton: null,
+    createManagedIdentitySingleton: async () => null,
   }
 );
 

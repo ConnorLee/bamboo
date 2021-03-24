@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import {
   useJwt,
+  useManagedIdentityProvider,
   useUserState,
   useWeb2IdentityProvider,
 } from "../../../contexts";
@@ -27,6 +28,7 @@ export default function Form(props: {
   const { setAuthenticationStatus } = useUserState();
   const router = useRouter();
   const { createWeb2IdentitySingleton } = useWeb2IdentityProvider();
+  const { createManagedIdentitySingleton } = useManagedIdentityProvider();
   const { remove, set } = useJwt();
   const { cacheKeyCarrier } = useUserState();
   const [emailInFlight, setEmailInFlight] = useState<boolean>(false);
@@ -91,6 +93,8 @@ export default function Form(props: {
       // throw the session token into localstorage for easy login
       set(web2Identity.token, "SESSION");
       setAuthenticationStatus("ACTIVE_SESSION_SIGN_IN");
+      // go ahead and eagerly create managed identity instance, so we can check if the permissiona already exists
+      await createManagedIdentitySingleton!(web2Identity.did!);
     } catch (err) {
       handleServerErr(err, setErr);
     }
