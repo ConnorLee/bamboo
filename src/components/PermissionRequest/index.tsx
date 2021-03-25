@@ -94,6 +94,11 @@ export default function PermissionRequest(props: PermissionPageProps) {
     }
   }, [userState.loaded, get("PDM_SESSION")]);
 
+  if (!props.profile || !props.profile.name) {
+    return <Text p={6}>Yo. This app doesn't exist. Make sure your app DID is set properly.
+      Otherwise you'll need to make another. If this is an error, hit us up at squad@infinitescroll.org.</Text>;
+  }
+
   if (userState.authenticationStatus === "") {
     return <LoggedOutLanding profile={props.profile!} />;
   }
@@ -115,15 +120,15 @@ export default function PermissionRequest(props: PermissionPageProps) {
     <Step profile={props.profile!} step={step} totalSteps={totalSteps}>
       {(userState.authenticationStatus === "ACTIVE_SESSION_SIGN_UP" ||
         userState.authenticationStatus === "ACTIVE_SESSION_LANDING") && (
-        <PermissionForm
-          profile={props.profile!}
-          permissionRequest={props.permissionRequest!}
-          sessionToken={get("SESSION")!}
-          landingState={landingState}
-          step={step}
-          setStep={setStep}
-        />
-      )}
+          <PermissionForm
+            profile={props.profile!}
+            permissionRequest={props.permissionRequest!}
+            sessionToken={get("SESSION")!}
+            landingState={landingState}
+            step={step}
+            setStep={setStep}
+          />
+        )}
       {userState.authenticationStatus === "POST_EMAIL_CONFIRM" && (
         <Box mt={5}>
           {step === 1 && (
