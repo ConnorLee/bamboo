@@ -1,5 +1,4 @@
-import ThreeID from "3id-did-provider";
-import { DID } from "dids";
+import { DID, DIDProvider } from "dids";
 import { Resource } from "@daemon-land/types";
 import Ceramic from "@ceramicnetwork/http-client";
 import ThreeIDResolver from "@ceramicnetwork/3id-did-resolver";
@@ -8,27 +7,28 @@ import { AccessController, Profile } from "../SDKWrappers";
 import { generateReturnURL, signAsPDM } from "../../utils";
 
 export default class ManagedIdentity {
-  private _did: ThreeID | null = null;
+  private _didProvider: DIDProvider | null = null;
   public url: string = "";
   public ceramicUrl: string;
   public appToken: string = "";
   public profile: Profile;
   public permissions: AccessController;
   constructor(
-    did: ThreeID,
+    didProvider: DIDProvider,
     opts?: Partial<{ url: string; ceramicUrl: string; sessionToken: string }>
   ) {
-    if (!did) throw new Error("Must pass ThreeID instance to ManagedIdentity");
+    if (!didProvider)
+      throw new Error("Must pass ThreeID instance to ManagedIdentity");
     this.url = opts?.url || "http://locahost:3001";
     this.ceramicUrl = opts?.ceramicUrl || "http://localhost:7007";
     this.appToken = opts?.sessionToken || "";
-    this._did = did;
-    this.profile = new Profile(did, opts);
-    this.permissions = new AccessController(did, opts);
+    this._didProvider = didProvider;
+    this.profile = new Profile(didProvider, opts);
+    this.permissions = new AccessController(didProvider, opts);
   }
 
-  get did() {
-    return this._did;
+  get didProvider() {
+    return this._didProvider;
   }
 
   get authenticated() {
@@ -36,9 +36,9 @@ export default class ManagedIdentity {
   }
 
   static async create(
-    did: ThreeID,
+    didProvider: DIDProvider,
     opts?: Partial<{ url: string; ceramicUrl: string; sessionToken: string }>
-  ) {
+  ): Promise<ManagedIdentity> {
     let token = opts?.sessionToken;
     if (!token) {
       const ceramic = new Ceramic(
@@ -49,21 +49,35 @@ export default class ManagedIdentity {
         // here we have the user sign a message,
         // so that on the server side, the PDM backend can verify the DID it is about to sign
         // is being requested by the owner of the DID (i.e. you can't ask the PDM to sign someone else's DID for you)
-        const provider = did.getDidProvider();
-        await ceramic.setDIDProvider(provider);
+        await ceramic.setDIDProvider(didProvider);
         const resolver = ThreeIDResolver.getResolver(ceramic);
-        const signer = new DID({ provider, resolver });
+        const signer = new DID({ provider: didProvider, resolver });
         await signer.authenticate();
         const jws = await signer.createJWS({
-          operandDID: did.id,
+          operandDID: signer.id,
         });
-        token = await signAsPDM(did.id, jws);
+        token = await signAsPDM(signer.id, jws);
       } finally {
         await ceramic.close();
       }
     }
+    return new ManagedIdentity(didProvider, {
+      sessionToken: token,
+      ...opts,
+    });
+  }
 
-    return new ManagedIdentity(did, { sessionToken: token, ...opts });
+  async did() {
+    const ceramic = new Ceramic(this.ceramicUrl);
+    try {
+      await ceramic.setDIDProvider(this.didProvider!);
+      const resolver = ThreeIDResolver.getResolver(ceramic);
+      const signer = new DID({ provider: this.didProvider!, resolver });
+      await signer.authenticate();
+      return signer.id;
+    } finally {
+      await ceramic.close();
+    }
   }
 
   async generateReturnURL(

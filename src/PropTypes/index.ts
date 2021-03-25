@@ -43,6 +43,7 @@ export type AuthenticationStatus =
   | "ACTIVE_SESSION_SIGN_UP"
   | "ACTIVE_SESSION_SIGN_IN"
   | "ACTIVE_SESSION_LANDING"
+  | "ACTIVE_SESSION_WEB3"
   | "POST_EMAIL_CONFIRM"
   | "";
 

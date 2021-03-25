@@ -1,19 +1,20 @@
 import { Profile } from "@daemon-land/sdk";
-import ThreeID from "3id-did-provider";
 import { SpiritProfile } from "@daemon-land/types";
+import { DIDProvider } from "dids";
 
 export default class ProfileWrapper extends Profile {
-  private _did: ThreeID | null = null;
+  private _didProvider: DIDProvider | null = null;
   public ceramicUrl: string;
 
   constructor(
-    did: ThreeID,
+    didProvider: DIDProvider,
     opts?: Partial<{ url: string; sessionToken: string; ceramicUrl: string }>
   ) {
     super({ sessionToken: opts?.sessionToken, serviceUrl: opts?.url });
-    if (!did) throw new Error("Must pass ThreeID instance to Profile");
+    if (!didProvider)
+      throw new Error("Must pass DIDProvider instance to Profile");
     this.ceramicUrl = opts?.ceramicUrl || "http://localhost:7007";
-    this._did = did;
+    this._didProvider = didProvider;
   }
 
   async create(profile: SpiritProfile) {

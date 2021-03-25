@@ -3,7 +3,7 @@ import { JWE } from "did-jwt";
 import Ceramic from "@ceramicnetwork/http-client";
 import ThreeID from "3id-did-provider";
 import tweetnacl from "tweetnacl";
-import { concat, fromString, toString } from "uint8arrays";
+import { concat, fromString } from "uint8arrays";
 import Auth from "../Auth";
 
 type DID = string;

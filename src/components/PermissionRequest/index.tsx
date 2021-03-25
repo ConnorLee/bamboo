@@ -24,6 +24,7 @@ function determineTotalStepsOnLand(
 ): number {
   if (authenticationStatus === "ACTIVE_SESSION_SIGN_UP") return 2;
   if (authenticationStatus === "ACTIVE_SESSION_LANDING") return 2;
+  if (authenticationStatus === "ACTIVE_SESSION_WEB3") return 3;
   if (authenticationStatus === "POST_EMAIL_CONFIRM") return 3;
   return 0;
 }
@@ -95,8 +96,13 @@ export default function PermissionRequest(props: PermissionPageProps) {
   }, [userState.loaded, get("PDM_SESSION")]);
 
   if (!props.profile || !props.profile.name) {
-    return <Text p={6}>Yo. This app doesn't exist. Make sure your app DID is set properly.
-      Otherwise you'll need to make another. If this is an error, hit us up at squad@infinitescroll.org.</Text>;
+    return (
+      <Text p={6}>
+        Yo. This app doesn't exist. Make sure your app DID is set properly.
+        Otherwise you'll need to make another. If this is an error, hit us up at
+        squad@infinitescroll.org.
+      </Text>
+    );
   }
 
   if (userState.authenticationStatus === "") {
@@ -116,19 +122,31 @@ export default function PermissionRequest(props: PermissionPageProps) {
     );
   }
 
+  if (userState.authenticationStatus === "ACTIVE_SESSION_WEB3") {
+    return (
+      <PermissionForm
+        profile={props.profile!}
+        permissionRequest={props.permissionRequest!}
+        landingState={"ACTIVE_SESSION_WEB3"}
+        step={step}
+        setStep={setStep}
+      />
+    );
+  }
+
   return (
     <Step profile={props.profile!} step={step} totalSteps={totalSteps}>
       {(userState.authenticationStatus === "ACTIVE_SESSION_SIGN_UP" ||
         userState.authenticationStatus === "ACTIVE_SESSION_LANDING") && (
-          <PermissionForm
-            profile={props.profile!}
-            permissionRequest={props.permissionRequest!}
-            sessionToken={get("SESSION")!}
-            landingState={landingState}
-            step={step}
-            setStep={setStep}
-          />
-        )}
+        <PermissionForm
+          profile={props.profile!}
+          permissionRequest={props.permissionRequest!}
+          sessionToken={get("SESSION")!}
+          landingState={landingState}
+          step={step}
+          setStep={setStep}
+        />
+      )}
       {userState.authenticationStatus === "POST_EMAIL_CONFIRM" && (
         <Box mt={5}>
           {step === 1 && (
@@ -185,7 +203,9 @@ export default function PermissionRequest(props: PermissionPageProps) {
                     set(web2Identity.token, "SESSION");
                     userState.setAuthenticationStatus("ACTIVE_SESSION_SIGN_UP");
                     // go ahead and get a PDM session eagerly, so we can see if permission already exists
-                    await createManagedIdentitySingleton!(web2Identity.did!);
+                    await createManagedIdentitySingleton!(
+                      web2Identity.did?.getDidProvider()!
+                    );
                     setStep(3);
                   }
                 } catch (err) {

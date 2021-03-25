@@ -2,9 +2,9 @@ import jwt from "jsonwebtoken";
 import ThreeID from "3id-did-provider";
 import { describe, expect, test } from "@jest/globals";
 import { ScopeDirection, ScopesV2 } from "@daemon-land/types";
+import { DagJWS } from "dids";
 import { ManagedIdentity, Web2Identity } from ".";
 import { makeRandomString, _signAsPDM, getPDMSessionToken } from "../../utils";
-import { DagJWS } from "dids";
 
 const CERAMIC_URL = "http://localhost:7007";
 const DL_URL = "http://localhost:3001";
@@ -92,7 +92,7 @@ describe("Web2Identity", () => {
     await expect(identity.signup("")).rejects.toThrow();
   });
 
-  test.skip("signing up twice throws an error", async () => {
+  test("signing up twice throws an error", async () => {
     const username = makeRandomString(10);
     const password = makeRandomString(10);
     const identityJWT = await createJWT({ username, verified: true });
@@ -126,7 +126,7 @@ describe("ManagedIdentity", () => {
   });
 
   test("static create creates an authenticated managed identity instance", async () => {
-    managedIdentity = await ManagedIdentity.create(threeID, {
+    managedIdentity = await ManagedIdentity.create(threeID.getDidProvider(), {
       ceramicUrl: CERAMIC_URL,
       url: DL_URL,
     });
@@ -164,7 +164,7 @@ describe("ManagedIdentity", () => {
   test("generateReturnURL returns a url with a code and state", async () => {
     const returnURL = await managedIdentity.generateReturnURL(
       // this is a little meta - were generating a return value for ourselves just to make sure this works
-      managedIdentity.did?.id!,
+      await managedIdentity.did(),
       65,
       "PROFILE",
       "some-state"

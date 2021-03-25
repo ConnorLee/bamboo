@@ -29,7 +29,7 @@ const Form = styled.form`
 
 export default function PermissionForm(props: {
   permissionRequest: PermissionRequestV2;
-  sessionToken: string;
+  sessionToken?: string;
   profile: SpiritProfile;
   step: number;
   setStep: Dispatch<SetStateAction<number>>;
@@ -108,7 +108,7 @@ export default function PermissionForm(props: {
           );
           await web2Identity.login();
           const identity = await createManagedIdentitySingleton(
-            web2Identity.did!
+            web2Identity.did?.getDidProvider()!
           );
           await addPermission(identity!);
           return;
@@ -225,15 +225,9 @@ export default function PermissionForm(props: {
                         </Text>
                       </Box>
                     </Box>
-                    {/* <Text textAlign="center">
-                      is requesting to your view your
-                      profile. Click "Accept" below to grant this permission.
-                    </Text> */}
                   </>
                 )}
               </Box>
-              {/* <hr></hr>
-              yo */}
             </Box>
           </Box>
           <Box
@@ -267,9 +261,13 @@ export default function PermissionForm(props: {
 
 PermissionForm.propTypes = {
   permissionRequest: PermissionRequestV2PropType,
-  sessionToken: PropTypes.string.isRequired,
+  sessionToken: PropTypes.string,
   profile: MinimalProfilePropType,
   step: PropTypes.number.isRequired,
   landingState: PropTypes.string.isRequired,
   setStep: PropTypes.func.isRequired,
+};
+
+PermissionForm.defaultProps = {
+  sessionToken: "",
 };

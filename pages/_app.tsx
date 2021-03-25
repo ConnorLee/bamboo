@@ -6,19 +6,22 @@ import {
   IdentityProviderWrapper,
   JwtProvider,
   UserStateProvider,
+  Web3ContextProvider,
 } from "../src/contexts";
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <JwtProvider>
-      <UserStateProvider>
-        <ThemeProvider theme={theme}>
-          <IdentityProviderWrapper>
-            <Component {...pageProps} />
-          </IdentityProviderWrapper>
-        </ThemeProvider>
-      </UserStateProvider>
-    </JwtProvider>
+    <Web3ContextProvider>
+      <JwtProvider>
+        <UserStateProvider>
+          <ThemeProvider theme={theme}>
+            <IdentityProviderWrapper>
+              <Component {...pageProps} />
+            </IdentityProviderWrapper>
+          </ThemeProvider>
+        </UserStateProvider>
+      </JwtProvider>
+    </Web3ContextProvider>
   );
 }
 

@@ -83,9 +83,9 @@ export default function CreateAppProfile() {
               );
               await web2Identity.login();
               const managedIdentity = await createManagedIdentitySingleton!(
-                web2Identity.did!
+                web2Identity.did?.getDidProvider()!
               );
-              await managedIdentity.profile.create({
+              await managedIdentity!.profile.create({
                 name: appName,
                 imageUrl,
                 callbackUrl,
@@ -105,9 +105,9 @@ export default function CreateAppProfile() {
             try {
               setCreating3ID(true);
               const managedIdentity = await createManagedIdentitySingleton!(
-                web2IdentitySingleton.did!
+                web2IdentitySingleton.did?.getDidProvider()!
               );
-              await managedIdentity.profile.create({
+              await managedIdentity!.profile.create({
                 name: appName,
                 imageUrl,
                 callbackUrl,

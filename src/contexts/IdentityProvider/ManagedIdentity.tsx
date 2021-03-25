@@ -5,14 +5,14 @@ import {
   useState,
   ReactNode,
 } from "react";
-import ThreeID from "3id-did-provider";
 import { ManagedIdentity } from "../../modules/Identity";
 import { useJwt } from "../JWTProvider";
+import { DIDProvider } from "dids";
 
 type ManagedIdentityContextType = {
   managedIdentitySingleton: ManagedIdentity | null;
   createManagedIdentitySingleton: (
-    threeID: ThreeID
+    didProvider: DIDProvider
   ) => Promise<ManagedIdentity | null>;
 };
 
@@ -37,10 +37,10 @@ export const ManagedIdentityProviderWrapper = (
   const jwt = useJwt();
 
   const createManagedIdentitySingleton = useCallback(
-    async (threeID: ThreeID): Promise<ManagedIdentity> => {
+    async (threeIDProvider: DIDProvider): Promise<ManagedIdentity> => {
       const pdmSessionToken = jwt.get("PDM_SESSION");
       if (pdmSessionToken) {
-        const identity = new ManagedIdentity(threeID, {
+        const identity = new ManagedIdentity(threeIDProvider, {
           url: process.env.NEXT_PUBLIC_DL_URL,
           ceramicUrl: process.env.NEXT_PUBLIC_CERAMIC_URL,
           sessionToken: pdmSessionToken,
@@ -48,7 +48,7 @@ export const ManagedIdentityProviderWrapper = (
         setManagedIdentitySingleton(identity);
         return identity;
       } else {
-        const identity = await ManagedIdentity.create(threeID, {
+        const identity = await ManagedIdentity.create(threeIDProvider, {
           url: process.env.NEXT_PUBLIC_DL_URL,
           ceramicUrl: process.env.NEXT_PUBLIC_CERAMIC_URL,
         });

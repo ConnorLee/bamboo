@@ -8,6 +8,8 @@ import {
   useManagedIdentityProvider,
   useUserState,
   useWeb2IdentityProvider,
+  useWeb3Provider,
+  useWeb3IdentityProvider,
 } from "../../../contexts";
 import Select from "./Select";
 import SignInView from "../../OnboardForm/SignIn";
@@ -28,7 +30,9 @@ export default function Form(props: {
   const { setAuthenticationStatus } = useUserState();
   const router = useRouter();
   const { createWeb2IdentitySingleton } = useWeb2IdentityProvider();
+  const { createWeb3IdentitySingleton } = useWeb3IdentityProvider();
   const { createManagedIdentitySingleton } = useManagedIdentityProvider();
+  const { connect } = useWeb3Provider();
   const { remove, set } = useJwt();
   const { cacheKeyCarrier } = useUserState();
   const [emailInFlight, setEmailInFlight] = useState<boolean>(false);
@@ -94,7 +98,9 @@ export default function Form(props: {
       set(web2Identity.token, "SESSION");
       setAuthenticationStatus("ACTIVE_SESSION_SIGN_IN");
       // go ahead and eagerly create managed identity instance, so we can check if the permissiona already exists
-      await createManagedIdentitySingleton!(web2Identity.did!);
+      await createManagedIdentitySingleton!(
+        web2Identity.did?.getDidProvider()!
+      );
     } catch (err) {
       handleServerErr(err, setErr);
     }
@@ -231,8 +237,13 @@ export default function Form(props: {
           <Text>Or connect your Ethereum wallet</Text>
         </Box>
         <Select
-          onClick={() => {
+          onClick={async () => {
             cacheKeyCarrier("SELF_CUSTODIED");
+            const provider = await connect();
+            const web3Identity = await createWeb3IdentitySingleton(provider);
+            // go ahead and eagerly create managed identity instance, so we can check if the permissiona already exists
+            await createManagedIdentitySingleton!(web3Identity?.didProvider!);
+            setAuthenticationStatus("ACTIVE_SESSION_WEB3");
           }}
           title="Connect wallet"
           glyphAcronym="Cw"
