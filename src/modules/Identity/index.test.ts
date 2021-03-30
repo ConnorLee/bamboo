@@ -82,6 +82,33 @@ describe("Web2Identity", () => {
     expect(did).toBe(loggedInDid);
   });
 
+  test("sign up with subtle differences results in different DIDs", async () => {
+    const username1 = makeRandomString(4);
+    const username2 = makeRandomString(4);
+    const password = "123";
+    const identity1JWT = await createJWT({
+      username: username1,
+      verified: true,
+    });
+    const identity2JWT = await createJWT({
+      username: username2,
+      verified: true,
+    });
+    const identity1 = new Web2Identity(username1, password, {
+      url: DL_URL,
+      ceramicUrl: CERAMIC_URL,
+    });
+    const did1 = await identity1.signup(identity1JWT);
+
+    const identity2 = new Web2Identity(username2, password, {
+      url: DL_URL,
+      ceramicUrl: CERAMIC_URL,
+    });
+    const did2 = await identity2.signup(identity2JWT);
+
+    expect(did1).not.toBe(did2);
+  });
+
   test("signing up without a valid identity token throws a 403", async () => {
     const username = makeRandomString(10);
     const password = makeRandomString(10);

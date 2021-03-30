@@ -9,14 +9,15 @@
     "test": "export $(cat .env | xargs) && jest"
   },
   "dependencies": {
-    "3id-connect": "^0.1.0",
+    "@daemon-land/3id-connect": "latest",
     "3id-did-provider": "0.5.1",
     "@ceramicnetwork/3id-did-resolver": "0.6.10",
     "@ceramicnetwork/common": "0.15.9",
     "@ceramicnetwork/doctype-caip10-link": "0.13.2",
     "@ceramicnetwork/http-client": "0.9.6",
+    "@daemon-land/errors": "latest",
     "@daemon-land/sdk": "latest",
-    "@daemon-land/types": "0.0.1-alpha.27",
+    "@daemon-land/types": "latest",
     "@glif/react-components": "^1.1.0-beta.17",
     "@kapetan/secure-remote-password": "^1.0.1",
     "@types/uuid": "^8.3.0",

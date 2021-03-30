@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import { provider } from "web3-core";
-import { Manage3IDs, EthereumAuthProvider } from "3id-connect";
+import { Manage3IDs, EthereumAuthProvider } from "@daemon-land/3id-connect";
 import CeramicClient from "@ceramicnetwork/http-client";
 import ThreeIDResolver from "@ceramicnetwork/3id-did-resolver";
 import { DID, DIDProvider } from "dids";
