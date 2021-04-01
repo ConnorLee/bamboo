@@ -9,6 +9,7 @@ import {
   JWE,
 } from "did-jwt";
 import { fromString, toString } from "uint8arrays";
+import crypto from "crypto";
 
 const p = params(2048);
 
@@ -17,7 +18,7 @@ export default class Auth {
   public username: string;
   protected authenticated: boolean = false;
   #password: string;
-  #sessionKey?: string;
+  #sessionKey?: Buffer;
 
   constructor(
     username: string,
@@ -97,7 +98,11 @@ export default class Auth {
       p
     );
 
-    this.#sessionKey = clientSession.key.slice(0, 32);
+    this.#sessionKey = crypto
+      .createHash("shake256", { outputLength: 32 })
+      .update(clientSession.key)
+      .digest();
+
     this.authenticated = true;
     return proofRes.data.token;
   }
@@ -105,15 +110,18 @@ export default class Auth {
   async encryptMsg(message: string) {
     if (!this.authenticated)
       throw new Error("Must authenticate before encrypting messages.");
-    const key = fromString(this.#sessionKey!);
-    return createJWE(fromString(message), [xc20pDirEncrypter(key)]);
+    return createJWE(fromString(message), [
+      xc20pDirEncrypter(this.#sessionKey!),
+    ]);
   }
 
   async decryptMsg(encryptedJWE: JWE): Promise<string> {
     if (!this.authenticated)
       throw new Error("Must authenticate before decrypting messages.");
-    const key = fromString(this.#sessionKey!);
-    const message = await decryptJWE(encryptedJWE, xc20pDirDecrypter(key));
+    const message = await decryptJWE(
+      encryptedJWE,
+      xc20pDirDecrypter(this.#sessionKey!)
+    );
     return toString(message);
   }
 }

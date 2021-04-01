@@ -2,9 +2,8 @@ import axios from "axios";
 import { JWE } from "did-jwt";
 import Ceramic from "@ceramicnetwork/http-client";
 import ThreeID from "3id-did-provider";
-import tweetnacl from "tweetnacl";
-import { concat, fromString } from "uint8arrays";
 import Auth from "../Auth";
+import { SHAKE } from "sha3";
 
 type DID = string;
 
@@ -35,6 +34,13 @@ export default class Web2Identity {
     return this._did;
   }
 
+  digestAuthSecret(salt: string, password: string): Buffer {
+    const hash = new SHAKE(256);
+    hash.update(salt);
+    hash.update(password);
+    return hash.digest();
+  }
+
   async getSecret(): Promise<any> {
     const res = await axios.get(`${this.url}/v0/identity/secret`, {
       headers: {
@@ -58,10 +64,8 @@ export default class Web2Identity {
     if (!sessionToken) throw new Error("Auth error - logging in user");
     this.token = sessionToken;
     const secretSalt = await this.getSecret();
-    // TODO: investigate slices
-    const authSecret = tweetnacl
-      .hash(concat([fromString(secretSalt), fromString(this.#password)]))
-      .slice(0, 32);
+    const authSecret = this.digestAuthSecret(secretSalt, this.#password);
+
     const ceramic = new Ceramic(this.ceramicUrl);
     try {
       const threeID = await ThreeID.create({
@@ -100,10 +104,8 @@ export default class Web2Identity {
     if (!sessionToken) throw new Error("Auth error - logging in user");
     this.token = sessionToken;
     const secretSalt = await this.getSecret();
-    // TODO: investigate slices
-    const authSecret = tweetnacl
-      .hash(concat([fromString(secretSalt), fromString(this.#password)]))
-      .slice(0, 32);
+    const authSecret = this.digestAuthSecret(secretSalt, this.#password);
+
     const ceramic = new Ceramic(this.ceramicUrl);
     try {
       const threeID = await ThreeID.create({
