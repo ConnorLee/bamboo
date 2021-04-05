@@ -69,7 +69,7 @@ describe("Web3Identity", () => {
     expect(data.username).toBe(web3Identity.address);
   });
 
-  test.only("it works with ManagedIdentity to add permissions and profile fields", async () => {
+  test("it works with ManagedIdentity to add permissions and profile fields", async () => {
     const web3Identity = await Web3Identity.create(provider, {
       ceramicUrl: CERAMIC_URL,
       url: DL_URL,
@@ -97,5 +97,5 @@ describe("Web3Identity", () => {
       resource: "PROFILE",
     });
     expect(perm?.permission).toBe(ScopesV2.Read | ScopeDirection.Granted);
-  });
+  }, 50000);
 });
