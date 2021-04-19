@@ -14,6 +14,7 @@
     "@walletconnect/web3-provider": "^1.4.1",
     "axios": "^0.20.0",
     "bignumber.js": "^9.0.1",
+    "classnames": "^2.3.1",
     "jsonrpc-ts": "^0.2.1",
     "next": "^10.0.8",
     "react": "^17.0.1",

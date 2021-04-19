@@ -1,11 +1,14 @@
 import { SyntheticEvent, useState } from "react";
 import Link from "next/link";
 import { useWeb3Provider } from "../contexts";
+import { useRouter } from "next/dist/client/router";
+import classNames from "classnames";
 
 export default function Header() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { connect, connected } = useWeb3Provider();
-
+  const { pathname } = useRouter();
+  console.log(pathname);
   return (
     <>
       <div className="relative">
@@ -49,27 +52,52 @@ export default function Header() {
           </div>
           <nav className="hidden md:flex space-x-10 items-center">
             <Link href="/">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a
+                className={classNames(
+                  "text-base font-medium hover:text-white",
+                  pathname === "/" ? "text-white" : "text-gray-500"
+                )}
+              >
                 HOME
               </a>
             </Link>
             <Link href="/borrow">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+              <a
+                className={classNames(
+                  "text-base font-medium hover:text-white",
+                  pathname.includes("borrow") ? "text-white" : "text-gray-500"
+                )}
+              >
                 BORROW
               </a>
             </Link>
-            <Link href="/borrow">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+            <Link href="/convert">
+              <a
+                className={classNames(
+                  "text-base font-medium hover:text-white",
+                  pathname.includes("convert") ? "text-white" : "text-gray-500"
+                )}
+              >
                 CONVERT
               </a>
             </Link>
-            <Link href="/borrow">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+            <Link href="/farm">
+              <a
+                className={classNames(
+                  "text-base font-medium hover:text-white",
+                  pathname.includes("farm") ? "text-white" : "text-gray-500"
+                )}
+              >
                 FARM
               </a>
             </Link>
-            <Link href="/borrow">
-              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+            <Link href="/buy">
+              <a
+                className={classNames(
+                  "text-base font-medium hover:text-white",
+                  pathname.includes("buy") ? "text-white" : "text-gray-500"
+                )}
+              >
                 BUY
               </a>
             </Link>
@@ -154,17 +182,17 @@ export default function Header() {
                       BORROW
                     </a>
                   </Link>
-                  <Link href="/borrow">
+                  <Link href="/convert">
                     <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                       CONVERT
                     </a>
                   </Link>
-                  <Link href="/borrow">
+                  <Link href="/farm">
                     <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                       FARM
                     </a>
                   </Link>
-                  <Link href="/borrow">
+                  <Link href="/buy">
                     <a className="text-base font-medium text-gray-500 hover:text-gray-900">
                       BUY
                     </a>
