@@ -79,9 +79,11 @@ export default function Header() {
                 type="button"
                 className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 aria-expanded="false"
-                onClick={connect}
+                onClick={async () => {
+                  if (!connected) await connect();
+                }}
               >
-                <span>Connect</span>
+                {connected ? <span>Connected</span> : <span>Connect</span>}
               </button>
             </div>
           </nav>

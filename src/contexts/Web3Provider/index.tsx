@@ -8,7 +8,7 @@ import {
 import PropTypes from "prop-types";
 import Web3 from "web3";
 import { provider } from "web3-core";
-import Web3Modal from "web3modal";
+import Web3Modal, { connectors } from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import BigNumber from "bignumber.js";
 
@@ -32,27 +32,51 @@ const Web3Context = createContext<Web3ContextType>({
   connect: async () => READ_WEB3_PROVIDER,
 });
 
-const providerOptions = {
-  walletconnect: {
-    package: WalletConnectProvider,
-    options: {
-      infuraId: "5d9781cca5414d37822533fbf1e6ef9d",
-    },
-  },
-};
-
 export const Web3ContextProvider = ({ children }: { children: ReactNode }) => {
   const [address, setAddress] = useState("");
   const [network, setNetwork] = useState(0);
-  const [connected, setConnected] = useState(false);
   const [web3Provider, setWeb3Provider] = useState(null);
 
   const connect = useCallback(async () => {
     if (web3Provider) return web3Provider;
 
     const web3Modal = new Web3Modal({
-      providerOptions,
-      cacheProvider: true,
+      providerOptions: {
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            rpc: {
+              1: "https://bsc-dataseed.binance.org/",
+              56: "https://bsc-dataseed.binance.org/",
+            },
+          },
+        },
+        "custom-binance": {
+          display: {
+            name: "Binance",
+            description: "Binance Chain Wallet",
+            logo: "/binance-wallet.png",
+          },
+          package: "binance",
+          connector: async () => {
+            // @ts-ignore
+            const provider = window?.BinanceChain;
+            if (!provider) throw new Error("No provider");
+            await provider.enable();
+            return provider;
+          },
+        },
+        "custom-twt": {
+          display: {
+            name: "Trust",
+            description: "Trust Wallet",
+            logo: "/trust-wallet.png",
+          },
+          package: "twt",
+          connector: connectors.injected,
+        },
+      },
+      cacheProvider: false,
       theme: "dark",
     });
     const provider = await web3Modal.connect();
@@ -61,7 +85,6 @@ export const Web3ContextProvider = ({ children }: { children: ReactNode }) => {
     const chainId = await web3.eth.getChainId();
     setAddress(address);
     setNetwork(chainId);
-    setConnected(true);
     setWeb3Provider(provider);
 
     // TODO - should be subscribed in a useEffect and unsubscribe from them on cleanup to avoid mem leaks
@@ -72,13 +95,19 @@ export const Web3ContextProvider = ({ children }: { children: ReactNode }) => {
     provider.on("chainChanged", (chainId: string) => {
       setNetwork(new BigNumber(chainId).toNumber());
     });
-    provider.on("disconnect", () => setConnected(false));
+    provider.on("disconnect", () => setWeb3Provider(null));
     return provider;
-  }, [connected]);
+  }, [!!web3Provider]);
 
   return (
     <Web3Context.Provider
-      value={{ address, network, connected, connect, web3Provider }}
+      value={{
+        address,
+        network,
+        connected: !!web3Provider,
+        connect,
+        web3Provider,
+      }}
     >
       {children}
     </Web3Context.Provider>
