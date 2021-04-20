@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../Header";
+{/* import Header from "../Header"; */} 
 import Instructions from "./Instructions";
 import Stats from "./Stats";
 
@@ -16,8 +16,8 @@ export default function Landing() {
               Bamboo Vaults make it easy to take out loans on your stablecoins,
               without the risk of liquidation.
             </p>
-            <Stats />
-            <Instructions />
+            {/* <Stats />
+            <Instructions /> */}  
           </div>
         </div>
       </div>
