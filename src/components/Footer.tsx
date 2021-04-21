@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mb-4 flex-none">
         <div className="mt-8 space-x-6 flex justify-center">
           <a
-            href="https://twitter.com/bamboo_money" target="_blank"
+            href="https://twitter.com/bamboo_money" 
             className="social"
             target="_blank"
             rel="noopener noreferrer"
@@ -14,7 +14,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://discord.gg/x5ehFP7P" target="_blank"
+            href="https://discord.gg/x5ehFP7P" 
             className="social"
             target="_blank"
             rel="noopener noreferrer"
@@ -24,7 +24,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://bamboo-money.medium.com/" target="_blank"
+            href="https://bamboo-money.medium.com/"
             className="social"
             target="_blank"
             rel="noopener noreferrer"
@@ -34,7 +34,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://docs.bamboo.money/" target="_blank"
+            href="https://docs.bamboo.money/"
             className="social"
             target="_blank"
             rel="noopener noreferrer"
