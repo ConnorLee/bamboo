@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   font-size: 1rem;
-  font-family: 'Sofia', 'system-ui', 'Segoe UI', 'Roboto', Helvetica;
+  font-family: "Sofia", "system-ui", "Segoe UI", Helvetica;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,147 +22,99 @@ body {
   max-height: 60px;
 }
 
-/* Alias Medium */
-
-@font-face {
-  font-family: 'RT-Alias-Medium';
-  src: url('/fonts/RTAliasMedium-Light.woff2');
-  font-weight: 200;
-}
-
-@font-face {
-  font-family: 'RT-Alias-Medium';
-  src: url('/fonts/RTAliasMedium-Regular.woff2');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'RT-Alias-Medium';
-  src: url('/fonts/RTAliasMedium-Bold.woff2');
-  font-weight: 700;
-}
-
-/* Alias Grotesk */
-
-@font-face {
-  font-family: 'RT-Alias-Grotesk';
-  src: url('/fonts/RTAliasGrotesk-Light.woff2');
-  font-weight: 200;
-}
-
-@font-face {
-  font-family: 'RT-Alias-Grotesk';
-  src: url('/fonts/RTAliasGrotesk-Regular.woff2');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'RT-Alias-Grotesk';
-  src: url('/fonts/RTAliasGrotesk-Bold.woff2');
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: 'RT-Alias-Grotesk';
-  src: url('/fonts/RTAliasGrotesk-Bold.woff2');
-  font-weight: 700;
-}
-
 /* Sofia */
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro UltraLight Italic Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro UltraLight Italic Az.otf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro UltraLight Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro UltraLight Az.otf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Semi Bold Italic Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Semi Bold Italic Az.otf");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Semi Bold Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Semi Bold Az.otf");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Regular Italic Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Regular Italic Az.otf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Regular Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Regular Az.otf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Medium Italic Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Medium Italic Az.otf");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Medium Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Medium Az.otf");
   font-weight: 700;
 }
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Light Italic Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Light Italic Az.otf");
   font-weight: 200;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Light Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Light Az.otf");
   font-weight: 400;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro ExtraLight Italic Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro ExtraLight Italic Az.otf");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro ExtraLight Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro ExtraLight Az.otf");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Bold Italic Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Bold Italic Az.otf");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Bold Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Bold Az.otf");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Black Italic Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Black Italic Az.otf");
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'Sofia';
-  src: url('/fonts/Sofia Pro Black Az.otf');
+  font-family: "Sofia";
+  src: url("/fonts/Sofia Pro Black Az.otf");
   font-weight: 700;
 }
-
-

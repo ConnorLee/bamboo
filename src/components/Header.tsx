@@ -8,7 +8,6 @@ export default function Header() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { connect, connected } = useWeb3Provider();
   const { pathname } = useRouter();
-  console.log(pathname);
   return (
     <>
       <div className="relative">
@@ -51,7 +50,7 @@ export default function Header() {
             </button>
           </div>
           <nav className="hidden md:flex space-x-10 items-center">
-            <Link href="/">
+            {/* <Link href="/">
               <a
                 className={classNames(
                   "text-base font-medium hover:text-white",
@@ -100,18 +99,20 @@ export default function Header() {
               >
                 BUY
               </a>
-            </Link>
+            </Link> */}
             <div className="relative">
               {/* <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" --> */}
               <button
+                disabled
                 type="button"
-                className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="cursor-not-allowed inline-flex items-center px-4 py-2 text-xs font-medium rounded shadow-sm text-white bg-green-600 border-none"
                 aria-expanded="false"
                 onClick={async () => {
-                  if (!connected) await connect();
+                  return;
+                  // if (!connected) await connect();
                 }}
               >
-                {connected ? <span>Connected</span> : <span>Connect</span>}
+                {connected ? <span>Connected</span> : <span>COMING SOON</span>}
               </button>
             </div>
           </nav>
@@ -127,80 +128,81 @@ export default function Header() {
             To: "opacity-0 scale-95"
         --> */}
         {showMobileMenu && (
-          <div className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-            <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white">
-              <div className="pt-5 pb-6 px-5">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                      alt="Workflow"
-                    />
-                  </div>
-                  <div className="-mr-2">
-                    <button
-                      onClick={(e: SyntheticEvent) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setShowMobileMenu(false);
-                      }}
-                      type="button"
-                      className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-                    >
-                      <span className="sr-only">Close menu</span>
-                      {/* <!-- Heroicon name: outline/x --> */}
-                      <svg
-                        className="h-6 w-6"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div className="mt-6"></div>
-              </div>
-              <div className="py-6 px-5">
-                <div className="grid grid-cols-2 gap-4">
-                  <Link href="/">
-                    <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                      HOME
-                    </a>
-                  </Link>
-                  <Link href="/borrow">
-                    <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                      BORROW
-                    </a>
-                  </Link>
-                  <Link href="/convert">
-                    <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                      CONVERT
-                    </a>
-                  </Link>
-                  <Link href="/farm">
-                    <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                      FARM
-                    </a>
-                  </Link>
-                  <Link href="/buy">
-                    <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                      BUY
-                    </a>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
+          <></>
+          // <div className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+          //   <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white">
+          //     <div className="pt-5 pb-6 px-5">
+          //       <div className="flex items-center justify-between">
+          //         <div>
+          //           <img
+          //             className="h-8 w-auto"
+          //             src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+          //             alt="Workflow"
+          //           />
+          //         </div>
+          //         <div className="-mr-2">
+          //           <button
+          //             onClick={(e: SyntheticEvent) => {
+          //               e.preventDefault();
+          //               e.stopPropagation();
+          //               setShowMobileMenu(false);
+          //             }}
+          //             type="button"
+          //             className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+          //           >
+          //             <span className="sr-only">Close menu</span>
+          //             {/* <!-- Heroicon name: outline/x --> */}
+          //             <svg
+          //               className="h-6 w-6"
+          //               xmlns="http://www.w3.org/2000/svg"
+          //               fill="none"
+          //               viewBox="0 0 24 24"
+          //               stroke="currentColor"
+          //               aria-hidden="true"
+          //             >
+          //               <path
+          //                 stroke-linecap="round"
+          //                 stroke-linejoin="round"
+          //                 stroke-width="2"
+          //                 d="M6 18L18 6M6 6l12 12"
+          //               />
+          //             </svg>
+          //           </button>
+          //         </div>
+          //       </div>
+          //       <div className="mt-6"></div>
+          //     </div>
+          //     <div className="py-6 px-5">
+          //       <div className="grid grid-cols-2 gap-4">
+          //         <Link href="/">
+          //           <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+          //             HOME
+          //           </a>
+          //         </Link>
+          //         <Link href="/borrow">
+          //           <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+          //             BORROW
+          //           </a>
+          //         </Link>
+          //         <Link href="/convert">
+          //           <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+          //             CONVERT
+          //           </a>
+          //         </Link>
+          //         <Link href="/farm">
+          //           <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+          //             FARM
+          //           </a>
+          //         </Link>
+          //         <Link href="/buy">
+          //           <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+          //             BUY
+          //           </a>
+          //         </Link>
+          //       </div>
+          //     </div>
+          //   </div>
+          // </div>
         )}
       </div>
     </>

@@ -6,9 +6,10 @@ export default function Layout(props: { children: ReactNode }) {
   return (
     <>
       <div
+        className="h-screen"
         style={{
           backgroundImage: "url(/green.jpg)",
-          backgroundRepeat: "repeat",
+          backgroundSize: "cover",
         }}
       >
         <Header />
