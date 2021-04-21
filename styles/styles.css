@@ -118,3 +118,32 @@ body {
   src: url("/fonts/Sofia Pro Black Az.otf");
   font-weight: 700;
 }
+
+.mt-3{
+  letter-spacing: -1px;
+  margin-top: 2em !important;
+}
+
+.comingsoon{
+  letter-spacing: 4px;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+
+.sm\:h-10 {
+    height: 5.5rem !important;
+}
+
+button:hover{color: rgba(99, 255, 123, 1);
+  box-shadow: 0 0px 15px rgba(99, 255, 123, .4);
+ transition: all 0.2s ease-in-out;}
+
+
+.social:hover{color: rgba(99, 255, 123, 1);
+  box-shadow: 0 0px 15px rgba(99, 255, 123, .4);
+ border-radius: 50%!important;}
+
+
+
+

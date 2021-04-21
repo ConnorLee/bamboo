@@ -105,14 +105,14 @@ export default function Header() {
               <button
                 disabled
                 type="button"
-                className="cursor-not-allowed inline-flex items-center px-4 py-2 text-xs font-medium rounded shadow-sm text-white bg-green-600 border-none"
+                className="inline-flex items-center px-4 py-2 text-xs font-medium rounded shadow-sm text-white bg-green-600 border-none"
                 aria-expanded="false"
                 onClick={async () => {
                   return;
                   // if (!connected) await connect();
                 }}
               >
-                {connected ? <span>Connected</span> : <span>COMING SOON</span>}
+                {connected ? <span>Connected</span> : <span class="comingsoon">COMING SOON</span>}
               </button>
             </div>
           </nav>

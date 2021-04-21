@@ -10,14 +10,14 @@ export default function Landing() {
     <>
       <div className="relative">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-          <div className="relative pt-12 pb-64 sm:pt-24 sm:pb-64 xl:col-start-1 xl:pb-24">
-            <h1 className="mt-3 text-6xl font-extrabold text-white">
+          <div className="relative">
+            <h1 className="mt-3 text-5xl text-white">
               Unlock future yield, now.
             </h1>
-            <p className="mt-10 text-3xl text-white font-extrabold">
+            <p className="mt-10 text-3xl text-white">
               Bamboo enables self-repaying loans that never get liquidated.
-            </p>
-            <p className="text-2xl text-gray-300">
+            </p> <br />
+            <p className="text-2xl text-gray-300 font-light">
               Coming soon to Binance Smart Chain.
             </p>
             {/* <Stats />

@@ -4,48 +4,46 @@ export default function Footer() {
       <div className="mb-4 flex-none">
         <div className="mt-8 space-x-6 flex justify-center">
           <a
-            href="#"
-            className="text-gray-400 hover:text-gray-500"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="sr-only">Facebook</span>
-            <img width="60px" height="60px" src="/twitter.png" />
-          </a>
-
-          <a
-            href="#"
-            className="text-gray-400 hover:text-gray-500"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="sr-only">Instagram</span>
-            <img width="60px" height="60px" src="/discord.png" />
-          </a>
-
-          <a
-            href="#"
-            className="text-gray-400 hover:text-gray-500"
+            href="https://twitter.com/bamboo_money" target="_blank"
+            className="social"
             target="_blank"
             rel="noopener noreferrer"
           >
             <span className="sr-only">Twitter</span>
-            <img width="60px" height="60px" src="/medium.png" />
+            <img width="60px" height="60px" src="/twitter.svg" />
           </a>
 
           <a
-            href="#"
-            className="text-gray-400 hover:text-gray-500"
+            href="https://discord.gg/x5ehFP7P" target="_blank"
+            className="social"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="sr-only">GitHub</span>
-            <img width="60px" height="60px" src="/gitbook.png" />
+            <span className="sr-only">Discord</span>
+            <img width="60px" height="60px" src="/discord.svg" />
+          </a>
+
+          <a
+            href="https://bamboo-money.medium.com/" target="_blank"
+            className="social"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="sr-only">Medium</span>
+            <img width="60px" height="60px" src="/medium.svg" />
+          </a>
+
+          <a
+            href="https://docs.bamboo.money/" target="_blank"
+            className="social"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="sr-only">Gitbook</span>
+            <img width="60px" height="60px" src="/gitbook.svg" />
           </a>
         </div>
-        <p className="mt-4 text-center text-base text-gray-400">
-          Bamboo Finance
-        </p>
+       
       </div>
     </footer>
   );

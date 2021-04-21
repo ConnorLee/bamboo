@@ -9,7 +9,7 @@ export default function Layout(props: { children: ReactNode }) {
       <div
         className="h-full h-screen flex flex-col"
         style={{
-          backgroundImage: "url(/green.jpg)",
+          backgroundImage: "url(/green.svg)",
           backgroundSize: "cover",
         }}
       >
