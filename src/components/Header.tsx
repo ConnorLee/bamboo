@@ -112,7 +112,7 @@ export default function Header() {
                   // if (!connected) await connect();
                 }}
               >
-                {connected ? <span>Connected</span> : <span class="comingsoon">COMING SOON</span>}
+                {connected ? <span>Connected</span> : <span className="comingsoon">COMING SOON</span>}
               </button>
             </div>
           </nav>
