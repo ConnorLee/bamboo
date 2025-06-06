@@ -29,6 +29,14 @@ const greenMaskGridSettings: GeneratedGridSettings = {
   gridGap: 2,
 }
 
+const orangeMaskGridSettings: GeneratedGridSettings = {
+  color: "#FF8C00",
+  maxOpacity: 0.7,
+  flickerChance: 0.08,
+  squareSize: 4,
+  gridGap: 2,
+}
+
 const backgroundGridSettingsForEffect: GeneratedGridSettings = {
   color: "#1F1F1F",
   maxOpacity: 0.2,
@@ -40,7 +48,7 @@ const backgroundGridSettingsForEffect: GeneratedGridSettings = {
 export function AboutSection() {
   const [deathCount, setDeathCount] = useState(0)
   const [recoveryCount, setRecoveryCount] = useState(2342537)
-  const [showRecovery, setShowRecovery] = useState(false)
+  const [currentState, setCurrentState] = useState(0) // 0: deaths, 1: recovery, 2: app usage
   const [isTransitioning, setIsTransitioning] = useState(false)
 
   useEffect(() => {
@@ -65,12 +73,12 @@ export function AboutSection() {
       setRecoveryCount((prev) => prev + 1)
     }, 10000)
 
-    // Toggle between death and recovery stats every 5 seconds with transition
+    // Cycle between all three stats every 5 seconds with transition
     const toggleInterval = setInterval(() => {
       setIsTransitioning(true)
 
       setTimeout(() => {
-        setShowRecovery((prev) => !prev)
+        setCurrentState((prev) => (prev + 1) % 3)
         setTimeout(() => {
           setIsTransitioning(false)
         }, 100)
@@ -84,7 +92,20 @@ export function AboutSection() {
     }
   }, [])
 
-  const currentMaskSettings = showRecovery ? greenMaskGridSettings : redMaskGridSettings
+  const getCurrentMaskSettings = () => {
+    switch (currentState) {
+      case 0:
+        return redMaskGridSettings
+      case 1:
+        return greenMaskGridSettings
+      case 2:
+        return orangeMaskGridSettings
+      default:
+        return redMaskGridSettings
+    }
+  }
+
+  const currentMaskSettings = getCurrentMaskSettings()
 
   return (
     <div className="flex flex-col items-center gap-6">
@@ -94,17 +115,25 @@ export function AboutSection() {
           isTransitioning ? "opacity-0 scale-95 blur-sm" : "opacity-100 scale-100 blur-0"
         }`}
       >
-        {showRecovery ? (
+        {currentState === 0 && (
+          <>
+            <div className="text-red-400 text-2xl font-mono font-bold">{deathCount.toLocaleString()}</div>
+            <div className="text-white/60 text-sm mt-1">Substance & alcohol deaths this year</div>
+            <div className="text-white/40 text-xs mt-1">Source: CDC & SAMHSA</div>
+          </>
+        )}
+        {currentState === 1 && (
           <>
             <div className="text-green-400 text-2xl font-mono font-bold">{recoveryCount.toLocaleString()}</div>
             <div className="text-white/60 text-sm mt-1">people in recovery today</div>
             <div className="text-white/40 text-xs mt-1">Source: SAMHSA & Recovery Organizations</div>
           </>
-        ) : (
+        )}
+        {currentState === 2 && (
           <>
-            <div className="text-red-400 text-2xl font-mono font-bold">{deathCount.toLocaleString()}</div>
-            <div className="text-white/60 text-sm mt-1">Substance & alcohol deaths this year</div>
-            <div className="text-white/40 text-xs mt-1">Source: CDC & SAMHSA</div>
+            <div className="text-orange-400 text-2xl font-mono font-bold">10,000,000+</div>
+            <div className="text-white/60 text-sm mt-1">individuals have used a sobriety app</div>
+            <div className="text-white/40 text-xs mt-1">Source: App Store & Digital Health Studies</div>
           </>
         )}
       </div>
