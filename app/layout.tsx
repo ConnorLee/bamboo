@@ -54,11 +54,31 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+        <meta name="color-scheme" content="dark" />
         <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <link rel="preload" href="/hal-logo.png" as="image" />
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+            html, body {
+              background-color: #000000 !important;
+              color: #ffffff !important;
+              margin: 0;
+              padding: 0;
+              width: 100%;
+              height: 100%;
+              overflow-x: hidden;
+            }
+            * {
+              box-sizing: border-box;
+            }
+          `,
+          }}
+        />
       </head>
-      <body className={`${inter.className} bg-black text-white`}>
+      <body className={`${inter.className} bg-black text-white min-h-screen`}>
         {children}
         <Toaster position="bottom-center" />
       </body>

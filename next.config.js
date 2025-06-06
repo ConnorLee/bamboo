@@ -13,11 +13,8 @@ const nextConfig = {
   ],
   reactStrictMode: true,
   experimental: {
-    // This will help us identify which component is causing the issue
     reactRoot: true,
   },
-  // Add CDN configuration
-  assetPrefix: process.env.NODE_ENV === "production" ? "https://cdn.yourdomain.com" : "",
   // Add error ignoring for successful builds
   eslint: {
     ignoreDuringBuilds: true,
