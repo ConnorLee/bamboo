@@ -11,7 +11,7 @@ import { ScrollingMarquee } from "@/components/scrolling-marquee"
 import { Navbar } from "@/components/navbar"
 import { Toaster } from "@/components/ui/toaster"
 import { motion, AnimatePresence } from "framer-motion"
-import { PageTransition } from "@/components/page-transition"
+import Link from "next/link"
 
 export default function Home() {
   const [showAbout, setShowAbout] = useState(false)
@@ -36,7 +36,12 @@ export default function Home() {
         >
           {showAbout ? "Close" : "The Facts"}
         </button>
-        <PageTransition targetPath="/contact" direction="left" color="#000" duration={1.2} />
+        <Link
+          href="/contact"
+          className="text-white/70 hover:text-white transition-all duration-300 text-sm backdrop-blur-sm bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full"
+        >
+          About
+        </Link>
       </div>
 
       {/* Top Phone - with subtle animation */}

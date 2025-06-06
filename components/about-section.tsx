@@ -73,12 +73,12 @@ export function AboutSection() {
       setRecoveryCount((prev) => prev + 1)
     }, 10000)
 
-    // Cycle between all three stats every 5 seconds with transition
+    // Cycle between deaths and recovery stats every 5 seconds with transition
     const toggleInterval = setInterval(() => {
       setIsTransitioning(true)
 
       setTimeout(() => {
-        setCurrentState((prev) => (prev + 1) % 3)
+        setCurrentState((prev) => (prev + 1) % 2)
         setTimeout(() => {
           setIsTransitioning(false)
         }, 100)
@@ -98,8 +98,6 @@ export function AboutSection() {
         return redMaskGridSettings
       case 1:
         return greenMaskGridSettings
-      case 2:
-        return orangeMaskGridSettings
       default:
         return redMaskGridSettings
     }
@@ -127,13 +125,6 @@ export function AboutSection() {
             <div className="text-green-400 text-2xl font-mono font-bold">{recoveryCount.toLocaleString()}</div>
             <div className="text-white/60 text-sm mt-1">people in recovery today</div>
             <div className="text-white/40 text-xs mt-1">Source: SAMHSA & Recovery Organizations</div>
-          </>
-        )}
-        {currentState === 2 && (
-          <>
-            <div className="text-orange-400 text-2xl font-mono font-bold">10,000,000+</div>
-            <div className="text-white/60 text-sm mt-1">individuals have used a sobriety app</div>
-            <div className="text-white/40 text-xs mt-1">Source: App Store & Digital Health Studies</div>
           </>
         )}
       </div>
