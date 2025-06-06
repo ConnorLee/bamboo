@@ -23,7 +23,7 @@ export function ScrollingMarquee() {
   const repeatedText = Array(10).fill(text).join("")
 
   return (
-    <div className="fixed bottom-8 left-0 right-0 overflow-hidden bg-transparent py-4 z-30 opacity-60">
+    <div className="fixed bottom-8 left-0 right-0 overflow-hidden bg-transparent py-4 z-40">
       <motion.div className="whitespace-nowrap" variants={marqueeVariants} animate="animate">
         <span className="inline-block text-white text-xs tracking-[0.2em] uppercase font-light">{repeatedText}</span>
       </motion.div>

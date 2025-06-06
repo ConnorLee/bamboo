@@ -153,10 +153,10 @@ export default function Home() {
         }}
       />
 
-      {/* Scrolling Marquee */}
-      <motion.div animate={{ opacity: showAbout ? 0.3 : 1 }} transition={{ duration: 0.5 }}>
+      {/* Scrolling Marquee - Increased z-index to appear above gradient */}
+      <div className="z-30">
         <ScrollingMarquee />
-      </motion.div>
+      </div>
 
       {/* Copyright Footer - moved to far left */}
       <div className="absolute bottom-2 left-6 z-30">
