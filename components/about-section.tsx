@@ -1,0 +1,86 @@
+"use client"
+
+import type React from "react"
+
+import { useEffect, useState } from "react"
+import { FlickeringGrid } from "./flickering-grid"
+
+interface GeneratedGridSettings {
+  color: string
+  maxOpacity: number
+  flickerChance: number
+  squareSize: number
+  gridGap: number
+}
+
+const svgDataUrlForEffect: string = `data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTQ2IiBoZWlnaHQ9IjM3NiIgdmlld0JveD0iMCAwIDU0NiAzNzYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xODcuODU2IDM3NkM3OS4zMDgxIDM3NiAwLjA5NzQxMzEgMjk2LjA1NiAwLjA5NzQxMzEgMTg4LjI0MUMwLjA5NzQxMzEgNzkuNjkzNSA3OS4zMDgxIDAuNDgyNzk1IDE4Ny44NTYgMC40ODI3OTVIMzU4LjAxMkM0NjYuNTYgMC40ODI3OTUgNTQ1Ljc3MSA3OS42OTM1IDU0NS43NzEgMTg4LjI0MUM1NDUuNzcxIDI5Ni4wNTYgNDY2LjU2IDM3NiAzNTguMDEyIDM3NkgxODcuODU2Wk0yNzIuOTM0IDI4Mi4xMjFDMzI1Ljc0MSAyODIuMTIxIDM2Ni44MTMgMjQxLjA0OCAzNjYuODEzIDE4OC4yNDFDMzY2LjgxMyAxMzUuNDM0IDMyNS43NDEgOTQuMzYyMSAyNzIuOTM0IDk0LjM2MjFDMjIwLjEyNyA5NC4zNjIxIDE3OS4wNTUgMTM1LjQzNCAxNzkuMDU1IDE4OC4yNDFDMTc5LjA1NSAyNDEuMDQ4IDIyMC4xMjcgMjgyLjEyMSAyNzIuOTM0IDI4Mi4xMjFaIiBmaWxsPSIjRjRGNEY0Ii8+Cjwvc3ZnPgo=`
+
+const svgMaskGridSettingsForEffect: GeneratedGridSettings = {
+  color: "#FF5F1F",
+  maxOpacity: 0.75,
+  flickerChance: 0.18,
+  squareSize: 3,
+  gridGap: 4,
+}
+
+const backgroundGridSettingsForEffect: GeneratedGridSettings = {
+  color: "#28282D",
+  maxOpacity: 0.4,
+  flickerChance: 0.45,
+  squareSize: 3,
+  gridGap: 4,
+}
+
+export function AboutSection() {
+  const [deathCount, setDeathCount] = useState(0)
+
+  useEffect(() => {
+    // Calculate deaths since start of year
+    const startOfYear = new Date(new Date().getFullYear(), 0, 1)
+    const now = new Date()
+    const msElapsed = now.getTime() - startOfYear.getTime()
+
+    // 285,000 deaths per year = ~9.04 deaths per 1000 seconds
+    const deathsPerMs = 285000 / (365.25 * 24 * 60 * 60 * 1000)
+    const initialCount = Math.floor(msElapsed * deathsPerMs)
+
+    setDeathCount(initialCount)
+
+    // Update every second
+    const interval = setInterval(() => {
+      setDeathCount((prev) => prev + Math.floor(deathsPerMs * 1000))
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const maskStyle: React.CSSProperties = {
+    WebkitMaskImage: `url('${svgDataUrlForEffect}')`,
+    WebkitMaskSize: "contain",
+    WebkitMaskPosition: "center",
+    WebkitMaskRepeat: "no-repeat",
+    maskImage: `url('${svgDataUrlForEffect}')`,
+    maskSize: "contain",
+    maskPosition: "center",
+    maskRepeat: "no-repeat",
+  }
+
+  return (
+    <div className="flex flex-col items-center gap-6">
+      {/* Death Counter */}
+      <div className="text-center mb-4">
+        <div className="text-red-400 text-2xl font-mono font-bold">{deathCount.toLocaleString()}</div>
+        <div className="text-white/60 text-sm mt-1">Substance & alcohol deaths this year</div>
+        <div className="text-white/40 text-xs mt-1">Source: CDC & SAMHSA</div>
+      </div>
+
+      {/* Flickering Grid Logo */}
+      <div className="relative w-48 h-32 bg-black overflow-hidden">
+        <FlickeringGrid className="absolute inset-0 z-0" {...backgroundGridSettingsForEffect} startImmediately={true} />
+        <div className="absolute inset-0 z-10" style={maskStyle}>
+          <FlickeringGrid {...svgMaskGridSettingsForEffect} startImmediately={true} />
+        </div>
+      </div>
+    </div>
+  )
+}
