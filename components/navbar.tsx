@@ -12,18 +12,18 @@ export function Navbar() {
       <div className="flex justify-between items-center">
         <Link
           href="/"
-          className="relative h-10 w-24 bg-transparent transition-opacity duration-300"
+          className="relative h-12 w-32 bg-transparent transition-opacity duration-300"
           style={{ opacity: isHovered ? 1 : 0.4 }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/hal%E2%80%A2-RVpK080xqh3pGbovA2eM5Ccp9vy5iH.png"
-            alt="hal•"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-DlZIvmZclrbG5bFthBBHZVCXTX8vwq.png"
+            alt="halo"
             fill
             className="object-contain object-left"
             priority
-            sizes="(max-width: 768px) 96px, 96px"
+            sizes="(max-width: 768px) 128px, 128px"
           />
         </Link>
       </div>
