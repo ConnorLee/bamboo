@@ -11,6 +11,7 @@ import { ScrollingMarquee } from "@/components/scrolling-marquee"
 import { Navbar } from "@/components/navbar"
 import { Toaster } from "@/components/ui/toaster"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link"
 
 export default function Home() {
   const [showAbout, setShowAbout] = useState(false)
@@ -25,16 +26,22 @@ export default function Home() {
       {/* Navbar */}
       <Navbar />
 
-      {/* About Link - Top Right */}
-      <div className="absolute top-4 right-6 z-50">
+      {/* The Facts and About Links - Top Right */}
+      <div className="absolute top-4 right-6 z-50 flex items-center gap-3">
         <button
           onClick={toggleAbout}
           className={`text-white/70 hover:text-white transition-all duration-300 text-sm backdrop-blur-sm ${
             showAbout ? "bg-white/20 text-white" : "bg-white/10"
           } px-3 py-1 rounded-full`}
         >
-          {showAbout ? "Close" : "About"}
+          {showAbout ? "Close" : "The Facts"}
         </button>
+        <Link
+          href="/contact"
+          className="text-white/70 hover:text-white transition-all duration-300 text-sm backdrop-blur-sm bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full"
+        >
+          About
+        </Link>
       </div>
 
       {/* Top Phone - with subtle animation */}
@@ -51,7 +58,7 @@ export default function Home() {
           opacity: { duration: 0.5 },
         }}
       >
-        <div className="relative w-[320px] h-[640px] sm:w-[350px] sm:h-[700px] md:w-[380px] md:h-[760px] lg:w-[400px] lg:h-[800px]">
+        <div className="relative w-[420px] h-[840px] sm:w-[460px] sm:h-[920px] md:w-[500px] md:h-[1000px] lg:w-[520px] lg:h-[1040px]">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Display%202235%20Copy.png-vaBzHOjhWqmIcGV7lNQJp2AbPodOrs.jpeg"
             alt="Halo App Impulsivity Tracker"
@@ -77,7 +84,7 @@ export default function Home() {
           opacity: { duration: 0.5 },
         }}
       >
-        <div className="relative w-[300px] h-[600px] sm:w-[320px] sm:h-[640px] md:w-[350px] md:h-[700px] lg:w-[380px] lg:h-[760px]">
+        <div className="relative w-[390px] h-[780px] sm:w-[420px] sm:h-[840px] md:w-[460px] md:h-[920px] lg:w-[500px] lg:h-[1000px]">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Display%2022352%20Copy.png-oa7vvFXncJW3N9D9zdsyAs5mA29qM1.jpeg"
             alt="Halo App Chat Interface"
@@ -103,7 +110,7 @@ export default function Home() {
           opacity: { duration: 0.5 },
         }}
       >
-        <div className="relative w-[240px] h-[480px] sm:w-[260px] sm:h-[520px] md:w-[280px] md:h-[560px] lg:w-[300px] lg:h-[600px]">
+        <div className="relative w-[310px] h-[620px] sm:w-[340px] sm:h-[680px] md:w-[370px] md:h-[740px] lg:w-[390px] lg:h-[780px]">
           <Image
             src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Display%2022358%20Copy-7a1skef2WHINvuObaaupljJyGdKjOu.png"
             alt="Halo App Sober Journey Screen"
