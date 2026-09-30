@@ -1,0 +1,111 @@
+/* The form shares the product page's light and dark theme tokens. */
+.waitlist-form {
+  width: 100%;
+  max-width: 370px;
+  margin-top: 27px;
+}
+
+.waitlist-form label {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.waitlist-form input {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  margin: 0 0 12px;
+  padding: 13px 16px;
+  border: 1px solid #858b80;
+  border-radius: 12px;
+  outline: none;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.waitlist-form input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+.waitlist-form input:focus-visible {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.waitlist-form input[aria-invalid="true"] {
+  border-color: #a43035;
+}
+
+.waitlist-form input:disabled {
+  opacity: 1;
+  color: var(--muted);
+  cursor: wait;
+}
+
+.waitlist-form .pill {
+  width: 100%;
+  min-height: 50px;
+}
+
+.waitlist-form .pill:disabled {
+  opacity: 1;
+  cursor: wait;
+}
+
+.waitlist-form[data-state="success"] .pill:disabled {
+  cursor: default;
+}
+
+.waitlist-message {
+  min-height: 3.3em;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.waitlist-form[data-state="error"] .waitlist-message {
+  color: #9d292e;
+}
+
+.waitlist-form[data-state="success"] .waitlist-message {
+  color: #475d32;
+}
+
+.product-summary #waitlist-note {
+  margin-top: 6px;
+}
+
+:root[data-theme="dark"] .waitlist-form input {
+  border-color: #747c6b;
+}
+
+:root[data-theme="dark"] .waitlist-form input[aria-invalid="true"] {
+  border-color: #f2a1a4;
+}
+
+:root[data-theme="dark"] .waitlist-form[data-state="error"] .waitlist-message {
+  color: #ffb1b4;
+}
+
+:root[data-theme="dark"] .waitlist-form[data-state="success"] .waitlist-message {
+  color: #c5d9ab;
+}
+
+@media (max-width: 700px) {
+  .waitlist-form {
+    max-width: none;
+  }
+}

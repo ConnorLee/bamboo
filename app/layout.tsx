@@ -7,6 +7,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.habithalo.app"),
   title: "Halo - An Emotional Support Company",
   description: "Design-thinking meets sobriety.",
   icons: {
@@ -21,8 +22,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Halo - An Emotional Support Company",
     description: "Design-thinking meets sobriety.",
-    url: "https://habithalo.com",
-    siteName: "Habit Halo",
+    url: "https://www.habithalo.app",
+    siteName: "Halo",
     images: [
       {
         url: "/og-image.jpeg",

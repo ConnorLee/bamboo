@@ -1,6 +1,6 @@
 # Halo website
 
-This repository deploys to the Vercel project `v0-scrapapp-mpjxkfyicbn` in `connorlees-projects`, from `main`. Production is https://www.tryhabithalo.com.
+This repository deploys to the Vercel project `v0-scrapapp-mpjxkfyicbn` in `connorlees-projects`, from `main`. Production is https://www.habithalo.app.
 
 ## Editing and running
 
@@ -31,10 +31,10 @@ Next.js rewrites `/`, `/how-it-works`, and `/original` to these complete static 
 - The authenticated app owns eligibility, kit verification and activation. Website controls are local design previews and never grant milestones or change an account.
 - Mechanical fit, retention, sourcing, durability, packaging NFC and secure activation still require validation. Halo II/III are future finish studies, not available products. No final price or delivery date is promised.
 
-The waitlist links to Halo's existing https://www.habithalo.app/ experience. This change does not submit visitor data or replace that service.
+The how-it-works waitlist posts to the existing `/api/subscribe` Mailchimp integration. All Halo domains currently alias this same Vercel project, so signup stays on this site. Email delivery is tested with mocked responses; no test subscriber is sent to Mailchimp.
 
 ## Validation
 
-`pnpm build` now includes TypeScript validation. Next.js is patched to 15.2.9; the legacy lint bypass remains until an ESLint setup is adopted. Local production-browser checks cover all three marketing routes, desktop/mobile layouts, theme persistence, twelve scroll states, drawer reveals, evolution previews, keyboard controls, reduced motion and image loading. These checks validate the website, not the unimplemented NFC service or manufactured jewelry.
+`pnpm build` now includes TypeScript validation. Next.js is patched to 15.5.24; the legacy lint bypass remains until an ESLint setup is adopted. Local production-browser checks cover all three marketing routes, desktop/mobile layouts, theme persistence, twelve scroll states, drawer reveals, evolution previews, keyboard controls, reduced motion and image loading. These checks validate the website, not the unimplemented NFC service or manufactured jewelry.
 
 The native Swift app lives separately in `ConnorLee/habithalo`; it must not be deployed as a Next.js website.
