@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import Link from "next/link"
 
 export function Navbar() {
   const [isHovered, setIsHovered] = useState(false)
@@ -10,8 +9,9 @@ export function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 py-4 px-6">
       <div className="flex justify-between items-center">
-        <Link
+        <a
           href="/"
+          aria-label="Halo home"
           className="relative h-12 w-32 bg-transparent transition-opacity duration-300"
           style={{ opacity: isHovered ? 1 : 0.4 }}
           onMouseEnter={() => setIsHovered(true)}
@@ -25,7 +25,7 @@ export function Navbar() {
             priority
             sizes="(max-width: 768px) 128px, 128px"
           />
-        </Link>
+        </a>
       </div>
     </nav>
   )
