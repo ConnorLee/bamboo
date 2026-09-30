@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "website:build": "node scripts/build-halo-site.mjs",
+    "predev": "pnpm website:build",
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm website:build && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -48,7 +50,7 @@
     "framer-motion": "latest",
     "input-otp": "1.4.1",
     "lucide-react": "^0.454.0",
-    "next": "15.2.4",
+    "next": "15.2.9",
     "next-themes": "latest",
     "react": "^19",
     "react-day-picker": "8.10.1",
@@ -63,6 +65,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",

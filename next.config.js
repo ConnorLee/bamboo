@@ -1,26 +1,28 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["localhost", "hebbkx1anhila5yf.public.blob.vercel-storage.com"],
     unoptimized: true,
-  },
-  remotePatterns: [
+    remotePatterns: [
     {
       protocol: "https",
       hostname: "hebbkx1anhila5yf.public.blob.vercel-storage.com",
       pathname: "/**",
     },
-  ],
-  reactStrictMode: true,
-  experimental: {
-    reactRoot: true,
+    ],
   },
-  // Add error ignoring for successful builds
+  reactStrictMode: true,
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: "/", destination: "/halo-site/index.html" },
+        { source: "/how-it-works", destination: "/halo-site/how-it-works/index.html" },
+        { source: "/original", destination: "/halo-site/original/index.html" },
+      ],
+    }
+  },
+  // Existing demo routes retain their legacy lint policy.
   eslint: {
     ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
   },
 }
 

@@ -20,7 +20,7 @@ const moodColors = [
   "rgb(130, 177, 255)", // Blue
 ]
 
-const getMoodColor = (moodNumber) => {
+const getMoodColor = (moodNumber: number) => {
   const normalizedMood = Math.min(Math.max(moodNumber, 0), 10) / 10
   const green = moodColors[0]
   const red = moodColors[2]

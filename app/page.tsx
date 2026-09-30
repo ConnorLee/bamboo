@@ -170,7 +170,7 @@ export default function Home() {
         <p className="text-white/20 text-xs font-light">© 2025 Habit Halo</p>
       </div>
 
-      <Toaster position="bottom-center" />
+      <Toaster />
     </main>
   )
 }

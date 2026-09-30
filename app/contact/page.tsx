@@ -5,7 +5,7 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import Link from "next/link"
 
-declare global {
+declare module "react" {
   namespace JSX {
     interface IntrinsicElements {
       "spline-viewer": {

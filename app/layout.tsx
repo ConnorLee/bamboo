@@ -80,7 +80,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-black text-white min-h-screen`}>
         {children}
-        <Toaster position="bottom-center" />
+        <Toaster />
       </body>
     </html>
   )

@@ -1,0 +1,72 @@
+[
+  {
+    "assetName": "Milestone1",
+    "chapter": "A beginning",
+    "color": "#929ba2",
+    "day": 1,
+    "gem": "Clear quartz",
+    "key": "quartz",
+    "material": "Clear light. Quiet depth.",
+    "story": "A first step. A little clarity."
+  },
+  {
+    "assetName": "Milestone7",
+    "chapter": "Finding rhythm",
+    "color": "#8a61bb",
+    "day": 7,
+    "gem": "Amethyst",
+    "key": "amethyst",
+    "material": "Violet depth. Polished light.",
+    "story": "A week, made of individual days."
+  },
+  {
+    "assetName": "Milestone30",
+    "chapter": "Building warmth",
+    "color": "#b6853e",
+    "day": 30,
+    "gem": "Citrine",
+    "key": "citrine",
+    "material": "Golden color. A warmer glow.",
+    "story": "Small moments, starting to add up."
+  },
+  {
+    "assetName": "Milestone60",
+    "chapter": "Taking root",
+    "color": "#42816a",
+    "day": 60,
+    "gem": "Green tourmaline",
+    "key": "green-tourmaline",
+    "material": "Forest green. Layered depth.",
+    "story": "More days. A deeper sense of you."
+  },
+  {
+    "assetName": "Milestone90",
+    "chapter": "A wider horizon",
+    "color": "#538eae",
+    "day": 90,
+    "gem": "Aquamarine",
+    "key": "aquamarine",
+    "material": "Pale blue. Light held within.",
+    "story": "A little space to see how far."
+  },
+  {
+    "assetName": "Milestone180",
+    "chapter": "A new perspective",
+    "color": "#617c8d",
+    "day": 180,
+    "gem": "Labradorite",
+    "key": "labradorite",
+    "material": "Dark mineral. A shifting flash.",
+    "story": "One hundred eighty days. So many small returns."
+  },
+  {
+    "assetName": "Milestone365",
+    "chapter": "A year, carried",
+    "color": "#706b9c",
+    "day": 365,
+    "gem": "Black opal",
+    "key": "opal",
+    "material": "Deep ground. Unexpected color.",
+    "story": "A year of becoming. Still beginning."
+  }
+]
