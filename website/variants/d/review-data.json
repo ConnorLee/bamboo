@@ -1,0 +1,78 @@
+{
+  "source": "docs/HALO_I_PRODUCT_SYSTEM.md",
+  "status": "Illustrative read-only review fixtures; not native progress or a live NFC service",
+  "milestones": [
+    {
+      "ordinal": 1,
+      "stone": "Rock crystal / clear quartz",
+      "opening": "A beginning, made visible.",
+      "under": "There is room for everything still to come."
+    },
+    {
+      "ordinal": 2,
+      "stone": "Milky quartz",
+      "opening": "Your time is taking shape.",
+      "under": "Small returns belong to the story, too."
+    },
+    {
+      "ordinal": 3,
+      "stone": "White chalcedony",
+      "opening": "Something is becoming familiar.",
+      "under": "You have already carried so much."
+    },
+    {
+      "ordinal": 4,
+      "stone": "Rose quartz",
+      "opening": "Make room for a little warmth.",
+      "under": "This part of the year is yours."
+    },
+    {
+      "ordinal": 5,
+      "stone": "Yellow jasper",
+      "opening": "Look at what has gathered.",
+      "under": "Nothing you have earned disappears."
+    },
+    {
+      "ordinal": 6,
+      "stone": "Green aventurine",
+      "opening": "Half of the circle. All of your effort.",
+      "under": "Take a moment before you carry on."
+    },
+    {
+      "ordinal": 7,
+      "stone": "Moss agate",
+      "opening": "There is more to your story now.",
+      "under": "Growth can be quiet."
+    },
+    {
+      "ordinal": 8,
+      "stone": "Amethyst",
+      "opening": "A little more of yourself, carried.",
+      "under": "You do not need to explain it to anyone."
+    },
+    {
+      "ordinal": 9,
+      "stone": "Red jasper",
+      "opening": "The spaces are becoming a whole.",
+      "under": "Your history stays with you."
+    },
+    {
+      "ordinal": 10,
+      "stone": "Tiger's eye",
+      "opening": "Time has left its own pattern.",
+      "under": "No two journeys look the same."
+    },
+    {
+      "ordinal": 11,
+      "stone": "Smoky quartz",
+      "opening": "One space remains.",
+      "under": "Stay here for a moment. You made this."
+    },
+    {
+      "ordinal": 12,
+      "stone": "Natural opal candidate; qualified natural-stone fallback",
+      "opening": "A year, held in your hands.",
+      "under": "The box is empty. The year stays with you."
+    }
+  ]
+}
