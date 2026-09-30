@@ -169,3 +169,45 @@ html[data-motion-input="keyboard"] { scroll-behavior:auto; }
       linear-gradient(90deg,#03050c38,transparent 65%);
   }
 }
+
+/* One quiet finale for the yearly collection. The artwork keeps its full frame. */
+.closing.yearly-collection {
+  --cta-bg:#edf0f4; --cta-ink:#111318; --cta-hover:#fff; --focus:#d3e5ff;
+  display:grid; grid-template-columns:minmax(280px,.75fr) minmax(0,1.55fr);
+  align-items:center; gap:30px; padding:72px max(5.5vw,calc((100vw - 1440px) / 2));
+  text-align:left; background:#080b10; color:#f4f4f6;
+  border-top:1px solid #ffffff0d; overflow:hidden;
+}
+.yearly-copy { position:relative; z-index:1; padding-block:16px; }
+.yearly-collection .eyebrow { color:#a5b5c8; font-size:10px; margin-bottom:24px; }
+.yearly-collection h2 {
+  font-size:clamp(40px,4.2vw,68px); font-weight:400; letter-spacing:-.055em;
+  line-height:1.05; margin-bottom:22px;
+}
+.yearly-intro { max-width:280px; margin:0 0 28px; color:#aab1be; font-size:15px; line-height:1.65; }
+.yearly-note { color:#8f99a9; font-size:10px; margin:18px 0 0; }
+.yearly-art { margin:0; min-width:0; }
+.yearly-art img {
+  width:100%; height:auto; display:block; aspect-ratio:3 / 2;
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 97%,transparent),
+    linear-gradient(180deg,transparent,#000 8%,#000 87%,transparent);
+  mask-composite:intersect;
+}
+.yearly-art figcaption {
+  display:flex; justify-content:space-between; gap:20px; padding:8px 8% 0;
+  color:#9ca6b6; font-size:10px; letter-spacing:.065em;
+}
+@media(max-width:1000px) and (min-width:701px) {
+  .closing.yearly-collection { grid-template-columns:minmax(240px,.8fr) minmax(0,1.3fr); gap:10px; padding-block:64px; }
+  .yearly-collection h2 { font-size:42px; }
+}
+@media(max-width:700px) {
+  .closing.yearly-collection { grid-template-columns:1fr; gap:22px; padding:58px 24px 42px; }
+  .yearly-copy { padding:0; }
+  .yearly-collection .eyebrow { margin-bottom:19px; font-size:9px; }
+  .yearly-collection h2 { font-size:clamp(40px,10.8vw,60px); margin-bottom:18px; }
+  .yearly-intro { max-width:310px; font-size:14px; margin-bottom:23px; }
+  .yearly-note { margin-top:15px; }
+  .yearly-art { margin-inline:-12px; }
+  .yearly-art figcaption { font-size:9px; padding-top:10px; }
+}
