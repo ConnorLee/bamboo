@@ -123,3 +123,49 @@ html[data-motion-input="keyboard"] { scroll-behavior:auto; }
 @media print {
   [data-reveal],[data-media-state] { opacity:1!important; transform:none!important; }
 }
+
+/* A dark mineral world inside either site theme. Only the two visible worlds
+   composite while scrolling; the imagery and gradients remain stationary. */
+.journey {
+  --ink:#f4f3f7; --muted:#c0c1cc; --stage:#11121a;
+  --border:#ffffff29; --line:#a9adbe85; --selected-ring:#e4e4ed;
+  --product-shadow:#0008; --focus:#f3e6ff;
+  color:var(--ink); color-scheme:dark;
+}
+.journey-stage {
+  isolation:isolate;
+  background:radial-gradient(ellipse at 52% 36%,#34444f,#0a1119 85%);
+}
+.journey-inner { position:relative; z-index:1; }
+.journey-worlds { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.journey-world {
+  position:absolute; inset:0; visibility:hidden; overflow:hidden; isolation:isolate;
+  background:radial-gradient(ellipse at 49% 30%,var(--world-glow),transparent 72%),
+    radial-gradient(ellipse at 88% 70%,var(--world-edge),transparent 66%),var(--world-base);
+}
+.journey-world::before {
+  content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:max(100%,calc((100svh - var(--nav-height)) * 1.34)); aspect-ratio:1254 / 941;
+  background-image:var(--landscape-image); background-size:400% 300%; background-position:var(--world-position);
+  opacity:0; mix-blend-mode:luminosity; transition:opacity 500ms var(--ease-out);
+}
+.journey-worlds[data-landscapes="ready"] .journey-world::before { opacity:.19; }
+.journey-world::after {
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(90deg,#03050c66,transparent 38%,transparent 68%,#03050c45),
+    linear-gradient(180deg,#03050c45 0%,transparent 27%,#03050c20 58%,#03050ca6 100%);
+}
+.journey .component-preview {
+  border:1px solid #ffffff16;
+  box-shadow:0 24px 60px -22px #0009;
+}
+.journey .timeline button[aria-pressed="true"] i {
+  box-shadow:0 0 0 5px var(--stage),0 0 0 6px var(--selected-ring),0 0 20px 2px var(--accent);
+}
+@media(max-width:700px) {
+  .journey-worlds[data-landscapes="ready"] .journey-world::before { opacity:.16; }
+  .journey-world::after {
+    background:linear-gradient(180deg,#03050c66,transparent 43%,#03050ca6),
+      linear-gradient(90deg,#03050c38,transparent 65%);
+  }
+}

@@ -22,12 +22,51 @@
   const preview=$('stage-screen'), timelineFill=$('timeline-fill');
   const buttons=[...document.querySelectorAll('[data-stage]')];
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+  const worlds=$('journey-worlds');
+  const worldLayers=stages.map(s=>{
+    const layer=document.createElement('div');
+    layer.className='journey-world';layer.dataset.world=s.key;
+    Object.entries(s.environment).forEach(([key,value])=>layer.style.setProperty('--world-'+key,value));
+    worlds.append(layer);
+    return layer;
+  });
+  let visibleWorlds='', landscapeReady;
   const previews=new Map();
   let active=-1, pair=-1, lockedStage=-1, start=0, travel=1, sceneHeight=0, pending=false, observer;
   let previewRequest=0, previewAnimation;
   const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
   const smooth=t=>{t=clamp(t);return t*t*(3-2*t);};
   const instantMotion=()=>reduced.matches||document.documentElement.dataset.motionInput==='keyboard';
+  function prepareLandscape(){
+    // One shared, decoded atlas avoids seven large downloads and stale-image races.
+    if(landscapeReady) return landscapeReady;
+    landscapeReady=new Promise(resolve=>{
+      const image=new Image();
+      image.onload=async()=>{
+        try{
+          if(image.decode) await image.decode();
+          worlds.style.setProperty('--landscape-image','url("'+image.src+'")');
+          worlds.dataset.landscapes='ready';
+        }catch(error){/* The stone-colored gradient is the permanent fallback. */}
+        resolve();
+      };
+      image.onerror=()=>resolve();
+      image.src='assets/milestone-landscapes.webp';
+    });
+    return landscapeReady;
+  }
+  function renderWorld(from,to,blend){
+    const visible=from+':'+to;
+    if(visibleWorlds!==visible){
+      visibleWorlds=visible;
+      worldLayers.forEach((layer,index)=>{
+        layer.style.visibility=index===from||index===to?'visible':'hidden';
+      });
+    }
+    // The lower world stays opaque so the crossfade never dips to black.
+    worldLayers[from].style.opacity='1';
+    if(from!==to) worldLayers[to].style.opacity=String(blend);
+  }
   function preparePreview(s){
     if(!previews.has(s.preview)){
       const ready=new Promise((resolve,reject)=>{
@@ -77,6 +116,7 @@
       updatePreview(index);
       scene.setAttribute('aria-label','Original single-stone Halo design study with '+s.stone.toLowerCase());
       journey.style.setProperty('--accent',s.color);
+      journey.dataset.world=s.key;
       buttons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
     }
     if(announce) $('stage-announcement').textContent=monthLabel(s)+': '+s.stone+'. '+s.firstReveal;
@@ -96,6 +136,7 @@
     setStage(selected);
     timelineFill.style.transform='scaleX('+position/lastStage+')';
     if(instantMotion()){
+      renderWorld(selected,selected,0);
       previewAnimation?.cancel();
       if(lockedStage!==selected) current.src=assetRoot+'stone-'+stages[selected].key+'-circular.webp';
       current.style.transform='none';current.style.opacity='1';next.style.opacity='0';pair=-1;
@@ -109,6 +150,7 @@
     // Lift, reveal the next mineral, then settle into the same receiver.
     const lift=smooth(t/.30)*(1-smooth((t-.70)/.30));
     const blend=smooth((t-.38)/.24);
+    renderWorld(from,from+1,blend);
     const liftPx=sceneHeight*.16*lift;
     const scale=1+.60*lift;
     current.style.transform=`translate3d(${blend*-10}px,${-liftPx}px,0) scale(${scale})`;
@@ -133,7 +175,7 @@
   stages.forEach(s=>{const image=new Image();image.src=assetRoot+'stone-'+s.key+'-circular.webp';});
   observer=new IntersectionObserver(entries=>{
     if(entries.some(e=>e.isIntersecting)){
-      stages.forEach(preparePreview);observer.disconnect();
+      stages.forEach(preparePreview);prepareLandscape();observer.disconnect();
     }
   },{rootMargin:'500px'});
   observer.observe(journey);
