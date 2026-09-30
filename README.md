@@ -14,11 +14,13 @@ pnpm build
 pnpm start
 ```
 
-`website/` is the editable source for the current Halo marketing experience, imported from the September 29 Halo site. It preserves Aeonik Pro, the supplied sculptural logo, light/dark themes, the support-system hero, and the twelve-month scroll explorer. `website/halo-i-sections.html` adds the physical product and unboxing story. The build inserts this fragment into `website/index.html` and normalizes asset URLs into `public/halo-site/`. That output is generated and ignored by Git.
+`website/` is the editable source for the current Halo marketing experience, imported from the September 29 Halo site. It preserves Aeonik Pro, the supplied sculptural logo, light/dark themes, the selected “Time, made tangible” hero (candidate B), its amethyst artwork, and the original stone-lift scroll interaction. `website/halo-i-sections.html` adds the physical product and unboxing story. The build inserts this fragment into `website/index.html` and normalizes asset URLs into `public/halo-site/`. That output is generated and ignored by Git.
 
 Next.js rewrites `/`, `/how-it-works`, and `/original` to these complete static documents before filesystem routes run. This preserves the approved design without loading the legacy React landing page's global styling, marquee, or client bundle. Existing `/demo`, `/contact`, `/about`, `/old`, and `/api/subscribe` routes remain available. The old `app/page.tsx` is retained as historical fallback code, not the marketing source. Edit `website/index.html` for the homepage.
 
-`/original` is an explicitly superseded concept archive. Its earlier hardware and milestone ideas are not current product guidance.
+`website/original/` preserves candidate B exactly and supplies the homepage’s shared styles and image assets. The root imports those styles instead of duplicating them. `/original` remains a historical design archive with its earlier schedule.
+
+The homepage’s seven material studies are selected examples from months 1, 2, 3, 4, 5, 9 and 12, mapped through `website/milestones.js` to the canonical catalog. Asset numbers are historical render IDs, never eligibility thresholds. The original single-stone jewelry remains explicitly labelled as a design study; the Halo I sections show the current cumulative twelve-stone architecture. Preserve B’s hero and visual composition when updating product content.
 
 ## Product source of truth
 
@@ -35,6 +37,6 @@ The how-it-works waitlist posts to the existing `/api/subscribe` Mailchimp integ
 
 ## Validation
 
-`pnpm build` now includes TypeScript validation. Next.js is patched to 15.5.24; the legacy lint bypass remains until an ESLint setup is adopted. Local production-browser checks cover all three marketing routes, desktop/mobile layouts, theme persistence, twelve scroll states, drawer reveals, evolution previews, keyboard controls, reduced motion and image loading. These checks validate the website, not the unimplemented NFC service or manufactured jewelry.
+`pnpm build` now includes TypeScript validation. Next.js is patched to 15.5.24; the legacy lint bypass remains until an ESLint setup is adopted. Local production-browser checks cover all three marketing routes, desktop/mobile layouts, theme persistence, selected monthly material studies, all twelve drawer reveals, evolution previews, keyboard controls, reduced motion and image loading. These checks validate the website, not the unimplemented NFC service or manufactured jewelry.
 
 The native Swift app lives separately in `ConnorLee/habithalo`; it must not be deployed as a Next.js website.

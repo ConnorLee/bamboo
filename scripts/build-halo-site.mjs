@@ -39,7 +39,7 @@ async function transform(directory = '') {
       await writeFile(file, html);
     } else if (entry.name.endsWith('.js')) {
       // Image paths in these small, framework-free explorers are document-relative.
-      const js = (await readFile(file, 'utf8')).replace(/([`'"])assets\//g, `$1/halo-site/${directory ? directory + '/' : ''}assets/`);
+      const js = (await readFile(file, 'utf8')).replace(/([`'"])((?:original\/)?assets)\//g, (_, quote, assets) => `${quote}/halo-site/${directory ? directory + '/' : ''}${assets}/`);
       await writeFile(file, js);
     }
   }
