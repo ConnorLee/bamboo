@@ -79,3 +79,47 @@
   .support-device,.support-copy { transform:none!important; opacity:1!important; }
   .support-cta:active { transform:none; }
 }
+
+/* Motion is progressive enhancement; only prepared off-screen content is concealed. */
+:root { --ease-out:cubic-bezier(.23,1,.32,1); --ease-in-out:cubic-bezier(.77,0,.175,1); }
+.support-copy:focus-within { opacity:1!important; }
+[data-reveal] { transition:opacity 520ms var(--ease-out) var(--reveal-delay,0ms),transform 520ms var(--ease-out) var(--reveal-delay,0ms); }
+[data-reveal="waiting"] { opacity:0; transform:translate3d(0,18px,0); }
+[data-reveal="visible"] { opacity:1; transform:translate3d(0,0,0); }
+[data-reveal-instant] { transition:none; }
+img[data-media-state="loading"] { opacity:0; }
+#timeline-fill { width:100%; transform:scaleX(0); transform-origin:left center; }
+.nav-cta,.theme-toggle,.support-cta {
+  transition:transform 150ms var(--ease-out),background-color 180ms ease,color 180ms ease,border-color 180ms ease;
+}
+.nav-cta:active,.theme-toggle:active,.support-cta:active { transform:scale(.97); }
+.support-explore span,.support-foot a span { transition:transform 180ms var(--ease-out); }
+.nav nav a { position:relative; padding-block:12px; }
+.nav nav a::after {
+  content:""; position:absolute; left:0; right:0; bottom:5px; height:1px; background:currentColor;
+  opacity:0; transform:scaleX(.6); transform-origin:left;
+  transition:transform 180ms var(--ease-out),opacity 180ms ease;
+}
+.mineral-window { transition:transform 220ms var(--ease-out); }
+@media(hover:hover) and (pointer:fine) {
+  .nav nav a:hover { opacity:1; }
+  .nav nav a:hover::after { opacity:.65; transform:scaleX(1); }
+  .support-explore:hover span,.support-foot a:hover span { transform:translateY(3px); }
+  .mineral:hover .mineral-window { transform:translateY(-5px); }
+  .mineral:active .mineral-window { transform:translateY(-2px) scale(.97); }
+}
+@media(hover:none),(pointer:coarse) {
+  .mineral:hover .mineral-window,.text-link:hover span { transform:none; }
+}
+html[data-motion-input="keyboard"] { scroll-behavior:auto; }
+[data-motion-input="keyboard"] *,[data-motion-input="keyboard"] *::before,[data-motion-input="keyboard"] *::after { transition:none!important; }
+[data-motion-input="keyboard"] .support-copy,[data-motion-input="keyboard"] .support-device { opacity:1!important; transform:none!important; }
+[data-motion-input="keyboard"] [data-reveal], [data-motion-input="keyboard"] [data-media-state] { opacity:1; transform:none; transition:none; }
+[data-motion-input="keyboard"] .nav-cta,[data-motion-input="keyboard"] .theme-toggle,[data-motion-input="keyboard"] .support-cta { transform:none; transition:none; }
+@media(prefers-reduced-motion:reduce) {
+  [data-reveal],[data-media-state] { opacity:1!important; transform:none!important; transition:none!important; }
+  .nav-cta:active,.theme-toggle:active,.support-cta:active,.support-explore:hover span,.support-foot a:hover span { transform:none; }
+}
+@media print {
+  [data-reveal],[data-media-state] { opacity:1!important; transform:none!important; }
+}

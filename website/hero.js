@@ -12,7 +12,8 @@
     pending = false;
     const offset = window.scrollY - start + navHeight;
     nav.classList.toggle('over-intro', offset < height - 1);
-    const progress = reduced.matches ? 0 : clamp(offset / height);
+    const still = reduced.matches || document.documentElement.dataset.motionInput === 'keyboard';
+    const progress = still ? 0 : clamp(offset / height);
     if (progress === lastProgress) return;
     lastProgress = progress;
     // Images drift with normal scrolling; reversing scroll reverses the same path.
@@ -34,6 +35,7 @@
   window.addEventListener('scroll', requestRender, { passive:true });
   window.addEventListener('resize', measure, { passive:true });
   window.addEventListener('pageshow', measure);
+  ['keydown','pointerdown','wheel'].forEach(type => window.addEventListener(type, requestRender, { passive:true }));
   reduced.addEventListener('change', () => { lastProgress = -1; requestRender(); });
   document.fonts.ready.then(measure);
   measure();

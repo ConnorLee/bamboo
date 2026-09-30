@@ -22,6 +22,10 @@ Next.js rewrites `/`, `/how-it-works`, and `/original` to these complete static 
 
 The homepage’s seven material studies are selected examples from months 1, 2, 3, 4, 5, 9 and 12, mapped through `website/milestones.js` to the canonical catalog. Asset numbers are historical render IDs, never eligibility thresholds. The homepage uses the original single-stone jewelry and app artwork. Do not append the newer Halo I, drawer, unboxing or newer mockup sections to B. The former `halo-i-sections.*` source is retained but is not loaded or inserted into the homepage. Physical concept details remain on separate pages. Preserve B’s complete visual composition when updating content.
 
+## Motion
+
+Main-page polish lives in `website/motion.js`, `hero.js`, and the root `style.css`; the archived variants retain their earlier motion. Hero children enter with a short stagger, below-fold headings and galleries reveal once, and reserved image frames fade in after decoding. Content remains visible without JavaScript. Keyboard input, reduced motion, print, and restored pages skip pending reveals; links keep native scrolling and browser history behavior. Milestone previews use a decoded-image cache and request ordering so a slow image cannot overwrite a newer selection. Failed previews retain the last valid image and its matching caption. The progress line uses a transform, and scene dimensions are measured on layout changes rather than every scroll frame.
+
 ## Product source of truth
 
 `website/halo-i-catalog.js` owns the twelve proposed monthly stones, chapters, colors, reveal messages and evolution descriptions. The how-it-works adapter and companion geometry consume this shared catalog. `public/halo-i/` contains optimized Blender renders, transparent bracelet states, packaging studies and current app captures. Only the renders needed by the site are included; editable Blender sources remain in the Halo product workspace under `output/halo-v1-system`.
