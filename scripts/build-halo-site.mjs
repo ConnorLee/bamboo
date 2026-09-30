@@ -5,7 +5,6 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const source = path.join(root, 'website');
 const output = path.join(root, 'public/halo-site');
-const fragment = await readFile(path.join(source, 'halo-i-sections.html'), 'utf8');
 
 // Keep the approved full-document design isolated from legacy demo layout styles.
 // Only this generated directory is replaced; website/ is the editable source.
@@ -31,10 +30,6 @@ async function transform(directory = '') {
     const file = path.join(output, relative);
     if (entry.name.endsWith('.html')) {
       let html = await readFile(file, 'utf8');
-      if (relative === 'index.html') {
-        if (!html.includes('<!-- HALO_I_SECTIONS -->')) throw new Error('Missing Halo I insertion point');
-        html = html.replace('<!-- HALO_I_SECTIONS -->', fragment);
-      }
       html = html.replace(/\b(src|href)="([^"]+)"/g, (_, attr, value) => `${attr}="${publicUrl(value, directory)}"`);
       await writeFile(file, html);
     } else if (entry.name.endsWith('.js')) {

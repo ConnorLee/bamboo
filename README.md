@@ -14,13 +14,13 @@ pnpm build
 pnpm start
 ```
 
-`website/` is the editable source for the current Halo marketing experience, imported from the September 29 Halo site. It preserves Aeonik Pro, the supplied sculptural logo, light/dark themes, the selected “Time, made tangible” hero (candidate B), its amethyst artwork, and the original stone-lift scroll interaction. `website/halo-i-sections.html` adds the physical product and unboxing story. The build inserts this fragment into `website/index.html` and normalizes asset URLs into `public/halo-site/`. That output is generated and ignored by Git.
+`website/` is the editable source for the current Halo marketing experience, imported from the September 29 Halo site. It preserves Aeonik Pro, the supplied sculptural logo, light/dark themes, the selected “Time, made tangible” hero (candidate B), its amethyst artwork, and the original stone-lift scroll interaction. The homepage retains B’s original sequence: hero, stone explorer, mineral collection, app gallery, and closing. The build normalizes asset URLs into `public/halo-site/`. That output is generated and ignored by Git.
 
 Next.js rewrites `/`, `/how-it-works`, and `/original` to these complete static documents before filesystem routes run. This preserves the approved design without loading the legacy React landing page's global styling, marquee, or client bundle. Existing `/demo`, `/contact`, `/about`, `/old`, and `/api/subscribe` routes remain available. The old `app/page.tsx` is retained as historical fallback code, not the marketing source. Edit `website/index.html` for the homepage.
 
 `website/original/` preserves candidate B exactly and supplies the homepage’s shared styles and image assets. The root imports those styles instead of duplicating them. `/original` remains a historical design archive with its earlier schedule.
 
-The homepage’s seven material studies are selected examples from months 1, 2, 3, 4, 5, 9 and 12, mapped through `website/milestones.js` to the canonical catalog. Asset numbers are historical render IDs, never eligibility thresholds. The original single-stone jewelry remains explicitly labelled as a design study; the Halo I sections show the current cumulative twelve-stone architecture. Preserve B’s hero and visual composition when updating product content.
+The homepage’s seven material studies are selected examples from months 1, 2, 3, 4, 5, 9 and 12, mapped through `website/milestones.js` to the canonical catalog. Asset numbers are historical render IDs, never eligibility thresholds. The homepage uses the original single-stone jewelry and app artwork. Do not append the newer Halo I, drawer, unboxing or newer mockup sections to B. The former `halo-i-sections.*` source is retained but is not loaded or inserted into the homepage. Physical concept details remain on separate pages. Preserve B’s complete visual composition when updating content.
 
 ## Product source of truth
 
@@ -42,7 +42,7 @@ The how-it-works waitlist posts to the existing `/api/subscribe` Mailchimp integ
 | URL | Design | Preserved source |
 | --- | --- | --- |
 | `/variants/a` | A support system. For your progress. | September 29, 11:36 refinement (`deab38c`) |
-| `/variants/b` | Time, made tangible. | Current homepage, including Halo I sections |
+| `/variants/b` | Time, made tangible. | Current minimal homepage; no added Halo I sections |
 | `/variants/c` | You meet them once. Then you grow together. | Companion page from the same 11:36 refinement |
 | `/variants/d` | A year, made visible. | Separate ivory-and-sage `halo-i-system` concept |
 

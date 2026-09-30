@@ -1,9 +1,4 @@
 /* Candidate B is the visual source of truth. Reuse its preserved design and assets. */
 @import url("./original/style.css");
 
-.hero-caption{gap:16px;align-items:baseline}
-.hero-caption a{text-align:right;line-height:1.5}
-.journey-note a{display:inline-block;text-decoration:underline;text-underline-offset:3px}
-.closing-detail{display:block;width:fit-content;margin:24px auto 0;font-size:13px;color:var(--muted)}
-@media(max-width:700px){.hero-caption{max-width:78%}.hero-caption>span{max-width:40%}.hero-caption>a{max-width:57%}}
 @media(min-width:701px) and (max-width:900px){.nav{padding-inline:24px}.nav nav{gap:12px;font-size:12px}.nav .brand-lockup{width:124px}.nav-actions{gap:8px}.nav-cta{padding:12px 16px;font-size:11px}}
