@@ -59,7 +59,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
-        <link rel="preload" href="/hal-logo.png" as="image" />
         <style
           dangerouslySetInnerHTML={{
             __html: `
