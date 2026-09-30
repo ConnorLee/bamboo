@@ -1,0 +1,4 @@
+/* Candidate B is the visual source of truth. Reuse its preserved design and assets. */
+@import url("/halo-site/original/style.css");
+
+@media(min-width:701px) and (max-width:900px){.nav{padding-inline:24px}.nav nav{gap:12px;font-size:12px}.nav .brand-lockup{width:124px}.nav-actions{gap:8px}.nav-cta{padding:12px 16px;font-size:11px}}

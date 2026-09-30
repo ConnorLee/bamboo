@@ -2,3 +2,83 @@
 @import url("./original/style.css");
 
 @media(min-width:701px) and (max-width:900px){.nav{padding-inline:24px}.nav nav{gap:12px;font-size:12px}.nav .brand-lockup{width:124px}.nav-actions{gap:8px}.nav-cta{padding:12px 16px;font-size:11px}}
+
+/* A quiet opening, drawn from the original About page. B continues below. */
+.nav { transition: background-color 220ms ease, border-color 220ms ease, color 220ms ease; }
+.nav.over-intro {
+  --ink:#f2f2ef; --wordmark-filter:none; --border:#ffffff24; --line:#ffffff4d;
+  --surface:#202222; --cta-bg:#f1f2ee; --cta-ink:#111312; --cta-hover:#fff;
+  color:var(--ink); background:#080909; border-bottom-color:transparent;
+}
+.support-hero {
+  min-height:max(710px,calc(100svh - var(--nav-height)));
+  position:relative; isolation:isolate; overflow:hidden;
+  display:grid; place-items:center; padding:96px 24px 144px;
+  color:#f5f5f2; background:#080909; --focus:#c8dfa8;
+}
+.support-art { position:absolute; inset:0; z-index:-1; pointer-events:none; }
+.support-art::after {
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(0deg,#080909 0%,transparent 30%,transparent 86%,#08090999 100%);
+}
+.support-device { position:absolute; width:clamp(230px,22vw,342px); }
+.support-device-progress { top:7%; left:-4%; }
+.support-device-companion { top:25%; right:-2%; width:clamp(225px,20vw,310px); }
+.support-phone {
+  overflow:hidden; border:3px solid #424644; border-radius:42px; background:#101315;
+  box-shadow:0 0 0 1px #b0b5aa33,0 30px 80px #0008;
+}
+.support-phone img { display:block; width:100%; height:auto; }
+.support-device-progress .support-phone { transform:rotate(-14deg); }
+.support-device-companion .support-phone { transform:rotate(13deg); }
+.support-copy { position:relative; z-index:1; max-width:750px; text-align:center; }
+.support-mark { position:relative; overflow:hidden; width:88px; height:76px; margin:0 auto 32px; }
+.support-mark img { position:absolute; width:460px; height:auto; max-width:none; left:-33px; top:-53px; }
+.support-copy h1 { font-size:clamp(52px,5.35vw,86px); font-weight:400; line-height:1.04; letter-spacing:-.058em; margin:0 0 25px; }
+.support-copy h1 span { color:#949b94; }
+.support-copy>p { font-size:16px; line-height:1.65; letter-spacing:-.015em; color:#b0b4b0; margin:0; }
+.support-actions { display:flex; align-items:center; justify-content:center; gap:27px; margin-top:33px; }
+.support-cta { background:#eff1ec; color:#151714; padding:15px 22px; border-radius:28px; font-size:13px; display:inline-flex; align-items:center; gap:24px; transition:background-color 160ms ease,transform 160ms ease; }
+.support-explore { display:inline-flex; align-items:center; gap:14px; font-size:13px; padding:15px 0; color:#d7dad4; transition:color 160ms ease; }
+.support-cta:active { transform:scale(.97); }
+.support-foot { position:absolute; inset:auto 5.5vw 29px; display:flex; align-items:center; justify-content:space-between; gap:24px; color:#8e958e; font-size:11px; letter-spacing:.015em; }
+.support-foot a { display:inline-flex; align-items:center; gap:18px; padding-block:12px; }
+.wearable-title { font-size:clamp(66px,6.4vw,108px); font-weight:500; letter-spacing:-.065em; line-height:1.02; margin:0 0 28px; }
+.wearable-title span { color:var(--heading-muted); }
+@media(hover:hover) and (pointer:fine) {
+  .support-cta:hover { background:#dce5d3; }
+  .support-explore:hover,.support-foot a:hover { color:#fff; }
+}
+@media(min-width:1700px) {
+  .support-device-progress { left:calc(50% - 900px); }
+  .support-device-companion { right:calc(50% - 850px); }
+}
+@media(max-width:1100px) and (min-width:701px) {
+  .support-device-progress { left:-130px; top:12%; }
+  .support-device-companion { right:-130px; top:30%; }
+  .support-copy h1 { font-size:clamp(52px,6.3vw,70px); }
+  .support-copy { max-width:590px; }
+}
+@media(max-width:700px) {
+  .support-hero { min-height:max(760px,calc(100svh - var(--nav-height))); padding:60px 22px 320px; align-items:start; }
+  .support-copy { width:100%; }
+  .support-mark { width:64px; height:56px; margin-bottom:26px; }
+  .support-mark img { width:335px; left:-24px; top:-39px; }
+  .support-copy h1 { font-size:clamp(37px,9.8vw,62px); line-height:1.08; letter-spacing:-.054em; margin-bottom:20px; }
+  .support-copy>p { font-size:14px; }
+  .support-actions { gap:22px; margin-top:26px; }
+  .support-cta { padding:14px 19px; font-size:12px; gap:16px; }
+  .support-explore { font-size:12px; gap:9px; }
+  .support-device-progress { top:auto; bottom:-80px; left:calc(50% - 222px); width:184px; }
+  .support-device-companion { top:auto; bottom:-140px; right:calc(50% - 216px); width:174px; }
+  .support-phone { border-radius:27px; border-width:2px; }
+  .support-art::after { background:linear-gradient(0deg,#080909 0%,#08090900 35%,#08090900 100%); }
+  .support-foot { inset:auto 24px 15px; justify-content:center; font-size:10px; }
+  .support-foot>span { display:none; }
+  .wearable-title { font-size:clamp(52px,17vw,68px); margin-bottom:24px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .nav,.support-cta,.support-explore { transition:none; }
+  .support-device,.support-copy { transform:none!important; opacity:1!important; }
+  .support-cta:active { transform:none; }
+}

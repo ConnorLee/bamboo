@@ -14,7 +14,7 @@ pnpm build
 pnpm start
 ```
 
-`website/` is the editable source for the current Halo marketing experience, imported from the September 29 Halo site. It preserves Aeonik Pro, the supplied sculptural logo, light/dark themes, the selected “Time, made tangible” hero (candidate B), its amethyst artwork, and the original stone-lift scroll interaction. The homepage retains B’s original sequence: hero, stone explorer, mineral collection, app gallery, and closing. The build normalizes asset URLs into `public/halo-site/`. That output is generated and ignored by Git.
+`website/` is the editable source for the current Halo marketing experience, imported from the September 29 Halo site. It preserves Aeonik Pro, the supplied sculptural logo, light/dark themes, the selected B design’s amethyst artwork and original stone-lift scroll interaction. The main homepage opens with a minimalist black support-system hero inspired by the original About page: the supplied Halo mark, two existing app screens, and a waitlist CTA. Normal scrolling carries the screens past the copy and leads into B’s original wearable, stone explorer, mineral collection, app gallery, and closing sequence. `website/hero.js` owns only this opening and its navigation contrast; reduced motion keeps the composition static. The black opening is a fixed presentation surface; subsequent sections honor the saved light/dark preference. The build normalizes asset URLs into `public/halo-site/`. That output is generated and ignored by Git.
 
 Next.js rewrites `/`, `/how-it-works`, and `/original` to these complete static documents before filesystem routes run. This preserves the approved design without loading the legacy React landing page's global styling, marquee, or client bundle. Existing `/demo`, `/contact`, `/about`, `/old`, and `/api/subscribe` routes remain available. The original pre-September-29 homepage now lives at `/about`, rendered from `components/legacy-homepage.tsx`; `app/page.tsx` shares it only as a historical fallback. The About route preserves its floating app screens, animated logo, facts toggle, marquee and waitlist. Its home logo uses full-document navigation to cross back to the static B landing. Edit `website/index.html` for the homepage.
 
@@ -37,12 +37,12 @@ The how-it-works waitlist posts to the existing `/api/subscribe` Mailchimp integ
 
 ## Landing page variants
 
-`/variants` is the comparison page. The main site remains B, with `/variants/b` as a stable alias. The alternatives live in isolated snapshots under `website/variants/`:
+`/variants` is the comparison page. The main site builds on B with its new minimalist opening. `/variants/b` preserves the previous six-section B page from commit `f52da45`, independently of future main-page changes. The alternatives live in isolated snapshots under `website/variants/`:
 
 | URL | Design | Preserved source |
 | --- | --- | --- |
 | `/variants/a` | A support system. For your progress. | September 29, 11:36 refinement (`deab38c`) |
-| `/variants/b` | Time, made tangible. | Current minimal homepage; no added Halo I sections |
+| `/variants/b` | Time, made tangible. | Frozen minimal B (`f52da45`); no new opening or added Halo I sections |
 | `/variants/c` | You meet them once. Then you grow together. | Companion page from the same 11:36 refinement |
 | `/variants/d` | A year, made visible. | Separate ivory-and-sage `halo-i-system` concept |
 
