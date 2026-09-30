@@ -11,7 +11,7 @@
   <script src="theme.js?v=circular-minerals-2"></script>
   <link rel="preload" href="original/assets/fonts/AeonikPro-Regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="preload" href="original/assets/fonts/AeonikPro-Medium.otf" as="font" type="font/otf" crossorigin>
-  <link rel="icon" href="original/assets/icon.png"><link rel="stylesheet" href="style.css?v=yearly-1">
+  <link rel="icon" href="original/assets/icon.png"><link rel="stylesheet" href="style.css?v=waitlist-1">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -30,7 +30,7 @@
         <div class="support-mark" aria-hidden="true"><img src="original/assets/halo-logo-sculptural.png" width="1000" height="382" alt=""></div>
         <h1 id="support-title">A support system.<br><span>For your progress.</span></h1>
         <p>A little support for your sober journey.<br>A place for every day you choose yourself.</p>
-        <div class="support-actions"><a class="support-cta" href="./how-it-works/#reserve">Join the waitlist <span aria-hidden="true">↗</span></a><a class="support-explore" href="#milestones">Discover Halo <span aria-hidden="true">↓</span></a></div>
+        <div class="support-actions"><button class="support-cta waitlist-trigger" type="button" data-open-waitlist aria-haspopup="dialog" aria-controls="waitlist-dialog">Join the waitlist <span aria-hidden="true">→</span></button><a class="support-explore" href="#milestones">Discover Halo <span aria-hidden="true">↓</span></a></div>
       </div>
       <div class="support-foot"><span>An emotional support company.</span><a href="#milestones">More to hold on to <span aria-hidden="true">↓</span></a></div>
     </section>
@@ -66,7 +66,7 @@
         <p class="eyebrow">A lifetime of Halos</p>
         <h2 id="yearly-title">A year<br>worth keeping.</h2>
         <p class="yearly-intro">Twelve monthly stones. One bracelet for each year of becoming.</p>
-        <a class="nav-cta" href="./how-it-works/#reserve">Join the waitlist <span aria-hidden="true">↗</span></a>
+        <button class="nav-cta waitlist-trigger" type="button" data-open-waitlist aria-haspopup="dialog" aria-controls="waitlist-dialog">Join the waitlist <span aria-hidden="true">→</span></button>
         <p class="yearly-note">Yearly collection concept.</p>
       </div>
       <figure class="yearly-art">
@@ -74,8 +74,20 @@
         <figcaption><span>01 / Silver</span><span>02 / Black</span><span>03 / Gold</span></figcaption>
       </figure>
     </section>
-  </main><footer><span class="brand-lockup" role="img" aria-label="Halo — silver sculptural mark with a green center"><img class="brand-symbol" src="original/assets/halo-logo-sculptural.png" alt="" aria-hidden="true" width="1000" height="382"><img class="brand-lettering" src="original/assets/halo-logo-sculptural.png" alt="" aria-hidden="true" width="1000" height="382"></span><p>Wearable is a design concept, not an available product or physical reward.<br>Digital milestones reflect completed sober time. Physical production remains exploratory.</p><nav class="page-links" aria-label="More Halo"><a href="./how-it-works/">How it works ↗</a><a href="/about">About Halo ↗</a></nav><a href="./how-it-works/#reserve">Join the waitlist ↗</a></footer>
+  </main><footer><span class="brand-lockup" role="img" aria-label="Halo — silver sculptural mark with a green center"><img class="brand-symbol" src="original/assets/halo-logo-sculptural.png" alt="" aria-hidden="true" width="1000" height="382"><img class="brand-lettering" src="original/assets/halo-logo-sculptural.png" alt="" aria-hidden="true" width="1000" height="382"></span><p>Wearable is a design concept, not an available product or physical reward.<br>Digital milestones reflect completed sober time. Physical production remains exploratory.</p><nav class="page-links" aria-label="More Halo"><a href="./how-it-works/">How it works ↗</a><a href="/about">About Halo ↗</a></nav><button class="footer-waitlist waitlist-trigger" type="button" data-open-waitlist aria-haspopup="dialog" aria-controls="waitlist-dialog">Join the waitlist <span aria-hidden="true">→</span></button></footer>
+  <dialog class="waitlist-dialog" id="waitlist-dialog" aria-labelledby="waitlist-title" aria-describedby="waitlist-description">
+    <button class="waitlist-close" type="button" aria-label="Close email form"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+    <h2 id="waitlist-title">Join the waitlist</h2>
+    <p id="waitlist-description">Be the first to hear what’s next for Halo.</p>
+    <form id="halo-waitlist" action="/api/subscribe" method="post" data-pending-label="Submitting…" data-success-label="Thanks!">
+      <label class="sr-only" for="waitlist-email">Email address</label>
+      <input id="waitlist-email" name="email" type="email" required autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" maxlength="254" placeholder="email" aria-describedby="waitlist-status" autofocus>
+      <button type="submit" disabled><span id="waitlist-submit-label">notify me</span></button>
+      <p id="waitlist-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    </form>
+  </dialog>
   <script src="hero.js?v=motion-1"></script>
   <script src="halo-i-catalog.js?v=halo-i-2"></script><script src="milestones.js?v=worlds-1"></script><script src="app.js?v=worlds-1"></script>
   <script src="motion.js?v=motion-1"></script>
+  <script src="how-it-works/waitlist.js?v=waitlist-2"></script><script src="waitlist-dialog.js?v=waitlist-1"></script>
 </body></html>

@@ -6,6 +6,7 @@
   const emailInput = document.getElementById('waitlist-email');
   const button = form.querySelector('button[type="submit"]');
   const buttonLabel = document.getElementById('waitlist-submit-label');
+  const initialLabel = buttonLabel.textContent;
   const status = document.getElementById('waitlist-status');
   let pending = false;
   let joined = false;
@@ -44,7 +45,7 @@
     emailInput.removeAttribute('aria-invalid');
     emailInput.disabled = true;
     button.disabled = true;
-    buttonLabel.textContent = 'Joining…';
+    buttonLabel.textContent = form.dataset.pendingLabel || 'Joining…';
     status.textContent = 'Adding you to the Halo waitlist…';
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 20000);
@@ -66,7 +67,7 @@
 
       joined = true;
       form.dataset.state = 'success';
-      buttonLabel.textContent = 'You’re on the list';
+      buttonLabel.textContent = form.dataset.successLabel || 'You’re on the list';
       status.textContent = 'You’re on the Halo waitlist. We’ll email you when there’s news.';
       emailInput.readOnly = true;
     } catch (error) {
@@ -80,8 +81,8 @@
       emailInput.disabled = false;
       button.disabled = joined;
       if (!joined) {
-        buttonLabel.textContent = 'Join the Halo waitlist';
-        emailInput.focus({ preventScroll: true });
+        buttonLabel.textContent = initialLabel;
+        if (emailInput.getClientRects().length) emailInput.focus({ preventScroll: true });
       }
     }
   });
