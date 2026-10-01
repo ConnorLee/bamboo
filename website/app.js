@@ -6,9 +6,9 @@
   const $ = id => document.getElementById(id);
   const collection=$('mineral-collection');
   window.HaloMineralCollection?.create(collection);
-  // The restored Year One case shares the loose-stone collection’s order.
+  // The case artwork and its accessible labels share the canonical Year One order.
   const yearStones=$('year-stones');
-  const yearCollection=window.HaloMineralCollection?.stones ?? stages;
+  const yearCollection=window.HALO_I_CATALOG ?? stages;
   if(yearStones) yearCollection.forEach(stage=>{
     const item=document.createElement('li');
     const month=document.createElement('span');month.className='year-case-month';

@@ -253,12 +253,16 @@ html[data-motion-input="keyboard"] { scroll-behavior:auto; }
   }
 }
 
-/* A centered product reveal. This light studio surface is shared by both themes. */
+/* Transparent product cutouts sit directly on each theme's page surface. */
 .year-case {
   --case-paper:#f5f5f7; --case-ink:#1d1d1f; --case-muted:#6e6e73; --case-line:#d2d2d7;
   background:var(--case-paper); color:var(--case-ink); color-scheme:light;
   padding:clamp(80px,8vw,132px) 5.5vw 76px;
   scroll-margin-top:var(--nav-height);
+}
+:root[data-theme="dark"] .year-case {
+  --case-paper:#101114; --case-ink:#f5f5f7; --case-muted:#a1a1aa; --case-line:#303136;
+  color-scheme:dark;
 }
 .year-case-inner { max-width:1440px; margin:auto; }
 .year-case-story { text-align:center; }
@@ -278,13 +282,12 @@ html[data-motion-input="keyboard"] { scroll-behavior:auto; }
 }
 .year-case-art { width:100%; max-width:1160px; margin:32px auto 0; }
 .year-case-art img {
-  /* The v2 photograph has spare studio space above and below the complete case. */
-  display:block; width:100%; height:auto; aspect-ratio:16 / 9; object-fit:cover;
-  /* Fade only the studio backdrop into the page, keeping the whole case visible. */
-  mask-image:linear-gradient(90deg,transparent,#000 2.5%,#000 97.5%,transparent),
-    linear-gradient(180deg,transparent,#000 5%,#000 93%,transparent);
-  mask-composite:intersect;
+  display:block; width:100%; height:auto; aspect-ratio:3 / 2; object-fit:contain;
+  filter:drop-shadow(0 16px 24px rgb(0 0 0 / .12));
 }
+.year-case-art .year-case-image-dark { display:none; }
+:root[data-theme="dark"] .year-case-art .year-case-image-light { display:none; }
+:root[data-theme="dark"] .year-case-art .year-case-image-dark { display:block; }
 .year-case-art figcaption { color:var(--case-muted); font-size:12px; line-height:1.5; margin-top:8px; }
 .year-case-collection { max-width:1040px; margin:48px auto 0; border-block:1px solid var(--case-line); }
 .year-case-collection summary {

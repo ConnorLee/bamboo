@@ -1,0 +1,20 @@
+{
+  "tool": "Built-in image_gen",
+  "use_case": "background-extraction",
+  "generated_at_utc": "2026-10-01T05:53:40.295Z",
+  "prompt_base": "Use case: background-extraction.\nAsset type: Halo Year One website product packaging cutout.\nThe supplied image is the edit target. Remove ONLY the studio backdrop and ground outside the physical presentation case. Output a genuinely transparent alpha background, including the complete outer margins. Preserve the product itself with extremely high fidelity: exact camera, perspective, full case perimeter, lid geometry, ribbon pull, paper texture, lighting, tiny debossed contours, twelve mineral corner patterns, all twelve boxes and their labels. Do not redesign, retype, alter, enlarge or move anything inside the product. Keep the entire product opaque and sharp, including its dark edges. No gray matte, no pale fringe, no rectangle, no artificial halo, no cast shadow on the transparent margin. Preserve the original 3:2 framing and original product size/position. Retain all text exactly: lid SOME THINGS / TAKE TIME. and front HALO; box labels 01 BEGINNING Moonstone, 02 STILLNESS Amethyst, 03 PROTECTION Turquoise, 04 COMPASSION Rose Quartz, 05 COURAGE Carnelian, 06 TRUTH Lapis Lazuli, 07 RENEWAL Green Aventurine, 08 RESOLVE Tiger's Eye, 09 GROUNDING Black Tourmaline, 10 LIGHT Citrine, 11 CLARITY Clear Quartz, 12 BECOMING Opal. This is precise background removal, not a new creative interpretation.",
+  "variants": {
+    "dark": {
+      "prompt_suffix": "Preserve the supplied charcoal-black edition's material colors exactly.",
+      "source": "halo-year-one-boxes/dark-master.png",
+      "asset": "website/assets/halo-year-one-stone-boxes-dark-cutout-v1.webp"
+    },
+    "light": {
+      "prompt_suffix": "Preserve the supplied warm ivory edition's material colors exactly.",
+      "source": "halo-year-one-boxes/light-master.png",
+      "asset": "website/assets/halo-year-one-stone-boxes-light-cutout-v1.webp"
+    }
+  },
+  "processing": "Generated RGBA PNGs encoded as WebP quality 94 with alpha preserved; no upscaling. 1536 × 1024. Original masters retained locally.",
+  "note": "Illustrative packaging concepts; background extraction is generated and not claimed to be a pixel-identical or production photograph."
+}
