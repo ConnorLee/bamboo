@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process';
 import { mkdir, writeFile, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { collectDeployment, sourceMetadata } from './release-provenance.mjs';
+import { canonicalOrigin, collectDeployment, sourceMetadata } from './release-provenance.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -29,7 +29,17 @@ if (!collectOnly) {
   await writeFile(recovery, JSON.stringify({ generated_at_utc: new Date().toISOString(), deployment_origin: deploymentOrigin, source: context }, null, 2) + '\n', { mode: 0o600 });
 }
 // Collection-only never guesses that the current local branch built a remote release.
-const { target } = await collectDeployment(root, deploymentOrigin, collectOnly ? null : context);
+let collected;
+try {
+  collected = await collectDeployment(root, deploymentOrigin, collectOnly ? null : context, collectOnly ? null : deploymentOrigin);
+} catch (error) {
+  if (collectOnly) throw error;
+  // Unique Vercel URLs may require authentication. The public alias is acceptable
+  // only when its receipt identifies this exact deployment, not an older build.
+  console.log('Checking the public production alias against the expected deployment.');
+  collected = await collectDeployment(root, canonicalOrigin, context, deploymentOrigin);
+}
+const { target } = collected;
 if (!collectOnly) await rm(recovery, { force: true });
 console.log(`Verified release record: ${path.relative(root, target)}`);
 console.log('Commit this new provenance/releases record to retain it in repository history. Do not redeploy solely for that archival commit.');

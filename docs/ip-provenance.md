@@ -35,7 +35,7 @@ A sanitized current receipt is served at `/halo-site/release-provenance.json`. I
 pnpm deploy:production
 ```
 
-This uses the already linked Vercel project, submits explicit Git context, waits for Vercel success, and verifies the resulting public build receipt against the deployed text artifacts, imagery-manifest bytes, and the three routed pages. Image bytes are hashed at build time; the collector does not re-download every image. Only verified HTTP responses create a `production_deployment_observed` record. Keep that newly generated record in Git:
+This uses the already linked Vercel project, submits explicit Git context, waits for Vercel success, and verifies the resulting public build receipt against the deployed text artifacts, imagery-manifest bytes, and the three routed pages. If the unique Vercel URL requires authentication, it checks the public production alias instead, but only when that receipt identifies the exact expected deployment. Image bytes are hashed at build time; the collector does not re-download every image. Only verified HTTP responses create a `production_deployment_observed` record. Keep that newly generated record in Git:
 
 ```sh
 git add provenance/releases/<new-record>.json

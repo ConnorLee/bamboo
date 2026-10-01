@@ -121,12 +121,13 @@ export async function getPublicFile(url) {
   return Buffer.concat(chunks);
 }
 
-export async function collectDeployment(root, deploymentOrigin, sourceContext = null) {
+export async function collectDeployment(root, deploymentOrigin, sourceContext = null, expectedBuildOrigin = null) {
   const host = origin(deploymentOrigin);
   if (!host) throw new Error('A verified deployment origin is required.');
   const receiptBytes = await getPublicFile(host + receiptPath);
   const receipt = JSON.parse(receiptBytes);
   if (receipt.schema_version !== 1 || receipt.event !== 'production_build' || receipt.site?.canonical_origin !== canonicalOrigin || !Array.isArray(receipt.artifacts)) throw new Error('Unrecognized Halo build receipt.');
+  if (expectedBuildOrigin && receipt.site.deployment_origin !== origin(expectedBuildOrigin)) throw new Error('Public alias does not serve the expected deployment.');
   if (sourceContext?.commit_sha && receipt.source?.commit_sha !== sourceContext.commit_sha) throw new Error('Deployment commit does not match the source submitted by this command.');
   const verified = [];
   let imageManifest = null;

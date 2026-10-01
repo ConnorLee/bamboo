@@ -79,6 +79,7 @@ test('records use real capture time, hash exact bytes, remain append-only, and o
       return new Response(await readFile(path.join(root, 'public', relative)), { status: 200 });
     };
     try {
+      await assert.rejects(collectDeployment(root, 'https://example.com', second.record.source, 'https://wrong-deployment.vercel.app'), /expected deployment/);
       const collected = await collectDeployment(root, 'https://example.com', second.record.source);
       assert.equal(collected.record.publication.verified, true);
       assert.equal(collected.record.source.branch, 'private-feature-name');
