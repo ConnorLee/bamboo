@@ -1,6 +1,7 @@
 import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { buildManufacture } from './build-manufacture.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const source = path.join(root, 'website');
@@ -11,6 +12,7 @@ const output = path.join(root, 'public/halo-site');
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(source, output, { recursive: true });
+await buildManufacture(path.join(root, 'manufacture'), path.join(output, 'manufacture'));
 
 function publicUrl(value, directory) {
   if (/^(?:#|\/|[a-z][a-z\d+.-]*:)/i.test(value)) return value;

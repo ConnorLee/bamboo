@@ -15,6 +15,14 @@ const nextConfig = {
   async headers() {
     return [
       {
+        source: "/manufacture/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+      },
+      {
+        source: "/halo-site/manufacture/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+      },
+      {
         source: "/variants/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, follow" }],
       },
@@ -24,6 +32,7 @@ const nextConfig = {
     return {
       beforeFiles: [
         { source: "/", destination: "/halo-site/index.html" },
+        { source: "/manufacture", destination: "/halo-site/manufacture/index.html" },
         { source: "/how-it-works", destination: "/halo-site/how-it-works/index.html" },
         { source: "/original", destination: "/halo-site/original/index.html" },
         { source: "/variants", destination: "/halo-site/variants/index.html" },
