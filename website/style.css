@@ -420,6 +420,7 @@ html.waitlist-open { overflow:hidden; }
   transition:background-color 160ms ease,transform 150ms var(--ease-out);
 }
 .waitlist-dialog button[type="submit"]:not(:disabled):active { transform:scale(.98); }
+[data-motion-input="keyboard"] .waitlist-dialog button[type="submit"]:not(:disabled):active { transform:none; }
 .waitlist-dialog button[type="submit"]:disabled { cursor:default; opacity:.65; }
 .waitlist-dialog form[data-state="success"] button[type="submit"] { opacity:1; }
 .waitlist-dialog input:disabled { opacity:.7; }

@@ -91,4 +91,4 @@ html.reservation-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce) {
   .reservation-button[data-open-waitlist]:not(:disabled):is(:hover,:active) { transform:none; }
 }
-[data-motion-input="keyboard"] .reservation-button[data-open-waitlist] { transform:none; }
+[data-motion-input="keyboard"] .reservation-button[data-open-waitlist]:not(:disabled) { transform:none; }
