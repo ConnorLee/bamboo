@@ -44,6 +44,8 @@ test('records use real capture time, hash exact bytes, remain append-only, and o
     await write('provenance/product-concepts.json', JSON.stringify({ schema_version: 1, concepts: [] }));
     for (const file of ['index.html', 'how-it-works/index.html', 'patents/index.html']) await write(`public/halo-site/${file}`, '<title>Halo</title>');
     await write('public/halo-site/assets/bracelet.webp', 'public-image-bytes');
+    await write('public/halo-site/assets/closing-film.mp4', 'public-mp4-bytes');
+    await write('public/halo-site/assets/closing-film.webm', 'public-webm-bytes');
     await write('public/halo-site/original/style.css', ':root{font-family:Aeonik}');
     await write('public/halo-site/assets/private-notes.md', 'secret-sentinel');
     await write('public/halo-site/manufacture/private.html', 'secret-sentinel');
@@ -58,6 +60,14 @@ test('records use real capture time, hash exact bytes, remain append-only, and o
     assert.equal(first.record.source.working_tree_dirty, true);
     assert.ok(first.record.artifacts.some(item => item.path === '/halo-site/original/style.css'));
     assert.equal(first.record.product_imagery.manifest.assets[0].path, '/halo-site/assets/bracelet.webp');
+    for (const extension of ['mp4', 'webm']) {
+      const moviePath = `/halo-site/assets/closing-film.${extension}`;
+      const movieHash = await hashFile(path.join(root, 'public', moviePath));
+      const expected = { path: moviePath, ...movieHash };
+      assert.deepEqual(first.record.product_imagery.manifest.assets.find(item => item.path === moviePath), expected);
+      assert.deepEqual(first.record.artifacts.find(item => item.path === moviePath), expected);
+    }
+    assert.match(first.record.product_imagery.manifest.scope, /image and video/);
     const publicReceipt = await readFile(path.join(root, 'public/halo-site/release-provenance.json'), 'utf8');
     assert.doesNotMatch(publicReceipt, /private-feature-name|secret-sentinel|\/Users\/|\/tmp\//);
     const manifest = await readFile(path.join(root, 'public/halo-site/product-imagery-manifest.json'), 'utf8');
@@ -73,8 +83,10 @@ test('records use real capture time, hash exact bytes, remain append-only, and o
     globalThis.fetch = async () => new Response(publicReceipt, { status: 200 });
     try { await assert.rejects(collectDeployment(root, 'https://example.com'), /differs/); }
     finally { globalThis.fetch = originalFetch; }
+    const fetchedPaths = new Set();
     globalThis.fetch = async url => {
       let relative = new URL(url).pathname;
+      fetchedPaths.add(relative);
       relative = ({ '/': '/halo-site/index.html', '/how-it-works': '/halo-site/how-it-works/index.html', '/patents': '/halo-site/patents/index.html' })[relative] || relative;
       return new Response(await readFile(path.join(root, 'public', relative)), { status: 200 });
     };
@@ -84,6 +96,13 @@ test('records use real capture time, hash exact bytes, remain append-only, and o
       assert.equal(collected.record.publication.verified, true);
       assert.equal(collected.record.source.branch, 'private-feature-name');
       assert.deepEqual(collected.record.product_imagery.manifest, second.record.product_imagery.manifest);
+      for (const extension of ['mp4', 'webm']) {
+        const moviePath = `/halo-site/assets/closing-film.${extension}`;
+        assert.ok(fetchedPaths.has(moviePath));
+        assert.ok(collected.record.publication.verified_artifacts.includes(moviePath));
+      }
+      await write('public/halo-site/assets/closing-film.mp4', 'changed-movie-bytes');
+      await assert.rejects(collectDeployment(root, 'https://example.com', second.record.source), /differs.*closing-film\.mp4/);
     } finally { globalThis.fetch = originalFetch; }
   } finally { await rm(root, { recursive: true, force: true }); }
 });

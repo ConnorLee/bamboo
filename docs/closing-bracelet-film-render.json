@@ -1,0 +1,520 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-10-01T05:08:35.698058+00:00",
+  "source_master_sha256": "188ada48b8e270a59dcb4959263ffe20512fc073c4dc079574238130d4b9e8eb",
+  "source_master_unchanged": true,
+  "render_engine": "Blender Cycles",
+  "native_samples": 32,
+  "native_motion_fps": 12,
+  "delivery_fps": 24,
+  "motion_note": "Native camera and light motion. Frames repeat at delivery rate; no optical flow or invented geometry. Monthly poses and finish changes use editorial dissolves.",
+  "loop_start_seconds": 4.666666666666667,
+  "loop_note": "Accumulation plays once. Subsequent playback loops only the completed twelve-stone bracelet across finishes.",
+  "width": 1152,
+  "height": 768,
+  "duration_seconds": 13.666667,
+  "outputs": [
+    {
+      "path": "halo-closing-film-v1.mp4",
+      "sha256": "dba3852cc2fbd5430736dc199af049154aa0210f8f148bf2ef1ddb357e2b8668",
+      "bytes": 2219216
+    },
+    {
+      "path": "halo-closing-film-v1-poster.webp",
+      "sha256": "63cdbbde47ad8606c7fc14ddb7319253d35f45b75ee995b8b32408c04d9e2176",
+      "bytes": 63812
+    }
+  ],
+  "native_inputs": [
+    {
+      "path": "months/halo-gold-month-01-000.png",
+      "sha256": "4b8ab69c76d1a6b85823223e0084f812f72b4dafb7eb0a632c2e50c6aa13aa9b"
+    },
+    {
+      "path": "months/halo-gold-month-02-000.png",
+      "sha256": "d909b93acab8c8a40f63fff61f0f8527e5f8004dec553053f9f19dd266997efc"
+    },
+    {
+      "path": "months/halo-gold-month-03-000.png",
+      "sha256": "4f7ff4ac6cc80e888a7969768c44c6d8b319beac80bc88c8cf30188dc05b9725"
+    },
+    {
+      "path": "months/halo-gold-month-04-000.png",
+      "sha256": "97663fe925cffd187a804a4f7017c0d1eb43fd8af3efcd8a0fa485a18bdc2209"
+    },
+    {
+      "path": "months/halo-gold-month-05-000.png",
+      "sha256": "65814ab37389f88bc839a442992126387dd9e905abb4a16f864c57f0c1e64ca0"
+    },
+    {
+      "path": "months/halo-gold-month-06-000.png",
+      "sha256": "8547beb93576d8aeb4145e9a4a345811cc38e942bd2fcdcbcdeaf0cbcc25e6da"
+    },
+    {
+      "path": "months/halo-gold-month-07-000.png",
+      "sha256": "0eadbc3fd914dd8c65cd9b3c44aa4b416b73e48b5312c03d817047380421097f"
+    },
+    {
+      "path": "months/halo-gold-month-08-000.png",
+      "sha256": "a3def9201f00a07a4fb848d333f30d248193296a9af25e1682ef5e4bb886af2c"
+    },
+    {
+      "path": "months/halo-gold-month-09-000.png",
+      "sha256": "0cc1b512ba451e792ccff40ff75963a0b16789fadccbcc43e849a09c512b58d5"
+    },
+    {
+      "path": "months/halo-gold-month-10-000.png",
+      "sha256": "be07a3fc6f675c19420f3671fc3034171b4169b5f8055a3f63dbe650cd7c81cd"
+    },
+    {
+      "path": "months/halo-gold-month-11-000.png",
+      "sha256": "2340c29ff197d715477be02d4c43fdf7ce9b2140d67a656eb8fdb8722225aed5"
+    },
+    {
+      "path": "months/halo-gold-month-12-000.png",
+      "sha256": "1c53bfb165b1503c7c46bafd6fbd9cbcaccf392506155cced0b6d355dd502dff"
+    },
+    {
+      "path": "motion/halo-gold-month-12-000.png",
+      "sha256": "f9e1af929bd61a511aadd29bb772a484288db8713e3b47778b7d14818fb33fa0"
+    },
+    {
+      "path": "motion/halo-gold-month-12-001.png",
+      "sha256": "13538abe8c456c9bbd5a819430bdc3a06ae706b7956a1c4578b4138821105d30"
+    },
+    {
+      "path": "motion/halo-gold-month-12-002.png",
+      "sha256": "d92a1013fab71d881a3e2a62f746e8e864333bea75b5e6e797aac2250a97cd89"
+    },
+    {
+      "path": "motion/halo-gold-month-12-003.png",
+      "sha256": "5380a0224047baa0f9fa684fbad9112cfb4b227f708567628bbc3f9462c4b9af"
+    },
+    {
+      "path": "motion/halo-gold-month-12-004.png",
+      "sha256": "e73fc9aaa36a7c653de1afa002ae14b0dc6533a0d58692e9117eb99745b2d218"
+    },
+    {
+      "path": "motion/halo-gold-month-12-005.png",
+      "sha256": "2136a48586f422cdeb741524f587cd5bf7fdfa361b2f1e6d15e4566f076254f7"
+    },
+    {
+      "path": "motion/halo-gold-month-12-006.png",
+      "sha256": "404c3020afacf79f13aa020c4533f5323f925b12ca063f154150c54fe6ee564f"
+    },
+    {
+      "path": "motion/halo-gold-month-12-007.png",
+      "sha256": "b570d8acfee23043eec57d73871657925c9ecb0c8ae54be6e24b778c70e1dce2"
+    },
+    {
+      "path": "motion/halo-gold-month-12-008.png",
+      "sha256": "cd6ed0bbbeb1f01db99815c9e1c559e796db8e81557d283d30bd7ad39ce84dfb"
+    },
+    {
+      "path": "motion/halo-gold-month-12-009.png",
+      "sha256": "32f609e548a8f1d9ada4282dfb36910620127862bd1211998c13d774393b70ea"
+    },
+    {
+      "path": "motion/halo-gold-month-12-010.png",
+      "sha256": "76db20cd432c4746a129fdd6c0a6748b1e1c383f9bc7b2b4c8e0ab3ef165283e"
+    },
+    {
+      "path": "motion/halo-gold-month-12-011.png",
+      "sha256": "b65328a3d09013495ba6b1a7f0f9c72c1345fb81316bdb72914f449623ff3c57"
+    },
+    {
+      "path": "motion/halo-gold-month-12-012.png",
+      "sha256": "4ca6aedfbd6ed8b93d7c80e696428edbe17412528c637031115439c0c2758235"
+    },
+    {
+      "path": "motion/halo-gold-month-12-013.png",
+      "sha256": "f3e0e2ba8330ddc5b11f11216aca8f99934b9f3e8a3c46f76458bf5a7d1d2276"
+    },
+    {
+      "path": "motion/halo-gold-month-12-014.png",
+      "sha256": "a74f507e086e7f97b477f62af549fa535fa37a1077354a893aab6ce63eba18be"
+    },
+    {
+      "path": "motion/halo-gold-month-12-015.png",
+      "sha256": "f2fa8450f193bca29d028b19d611a985e357cce3cb2f27fad76f758ca214f803"
+    },
+    {
+      "path": "motion/halo-gold-month-12-016.png",
+      "sha256": "b7955c30a9e43d3bdd396521f38207a0f03100f73ec4d5ba2f5b02edba389f45"
+    },
+    {
+      "path": "motion/halo-gold-month-12-017.png",
+      "sha256": "8958089b90cbad7d51408e5afdf18eba55af164a5a4e5630d753f1fcf12d07fa"
+    },
+    {
+      "path": "motion/halo-gold-month-12-018.png",
+      "sha256": "09ff5e91ff040e6c8eb6828219026301646f7583c725f3ea2678415592e26bc3"
+    },
+    {
+      "path": "motion/halo-gold-month-12-019.png",
+      "sha256": "92d2075e97a7fe85129d09c849b3a473f0c947b440461a9f8edb2703c84df894"
+    },
+    {
+      "path": "motion/halo-gold-month-12-020.png",
+      "sha256": "17a4b4de9b6b5ebd4ca1714e3ce902dc1a48b2095993a072da841a90961420ce"
+    },
+    {
+      "path": "motion/halo-gold-month-12-021.png",
+      "sha256": "fa66c0c4da1f10ff6b8accd70226d7b2879e761fde686f3a80c839c2bf7d9302"
+    },
+    {
+      "path": "motion/halo-gold-month-12-022.png",
+      "sha256": "6780768e8f46c43b67a6936de35ee1f675d0d8cf9c32ee6f2f98bc859ea8d7a0"
+    },
+    {
+      "path": "motion/halo-gold-month-12-023.png",
+      "sha256": "e8a774d9dc3b00eac41666336d9546ef309905316262de1f2c5c54cab670b2ea"
+    },
+    {
+      "path": "motion/halo-gold-month-12-024.png",
+      "sha256": "08456f01d744294bb17f4cd08e5e9471aec234994c2b6e800f63db586340f7a4"
+    },
+    {
+      "path": "motion/halo-gold-month-12-025.png",
+      "sha256": "5418950c20ba9b19b06f2e567800084cc5ae14997d844cbe843635c3c072836d"
+    },
+    {
+      "path": "motion/halo-gold-month-12-026.png",
+      "sha256": "ff25d6c1ed54929c0c575429dc98a42606a531ea6ea8599a9473f7212eb837bd"
+    },
+    {
+      "path": "motion/halo-gold-month-12-027.png",
+      "sha256": "b74c62bea760358fbf15c2de47157cd49da2acacd314a46ab7272bc4e89fa3c0"
+    },
+    {
+      "path": "motion/halo-gold-month-12-028.png",
+      "sha256": "d86e8169e9fd7253e86b3941a4cb049eeb16224364626fd0bb0ece4c734cce16"
+    },
+    {
+      "path": "motion/halo-gold-month-12-029.png",
+      "sha256": "3650a9ff2963d64af63b3112f6adf8fc48dc93800b74ffcf589c67f0a2b69402"
+    },
+    {
+      "path": "motion/halo-gold-month-12-030.png",
+      "sha256": "9e097828b4ebc1117b98c43702b8223519b8fd962d731f0b9eed8e7a6b7a915c"
+    },
+    {
+      "path": "motion/halo-gold-month-12-031.png",
+      "sha256": "4a4dfffc4a51bf8b7a6596b1a28862c8f7a52cf0e06e88989e9f36d6bfff9a73"
+    },
+    {
+      "path": "motion/halo-gold-month-12-032.png",
+      "sha256": "7ddf67d80e02f894ab7f7e7112d433398145dd754f566524cbb03a2919b7b803"
+    },
+    {
+      "path": "motion/halo-gold-month-12-033.png",
+      "sha256": "eca634c2cb75c229d1c89cb99d6b19424bfb5af2158da351e1b9c774749b088a"
+    },
+    {
+      "path": "motion/halo-gold-month-12-034.png",
+      "sha256": "4133bc15abec5844045030f15775710deb66dc2a073b2c45c670e37d3e76536c"
+    },
+    {
+      "path": "motion/halo-gold-month-12-035.png",
+      "sha256": "9a2d6954a490b2196a20b3eb29c43e280d1f15ec5a96b417838d7db5b45491d1"
+    },
+    {
+      "path": "motion/halo-silver-month-12-000.png",
+      "sha256": "a0736b001273f01378718baff57cc2bc961d2386ae42eec45d78f3b62802a2e2"
+    },
+    {
+      "path": "motion/halo-silver-month-12-001.png",
+      "sha256": "bf02a69263843f443c2c8bb6b1fe285f5e9e471eba8e701969796d3b4e72f70c"
+    },
+    {
+      "path": "motion/halo-silver-month-12-002.png",
+      "sha256": "8defea7f92984f0d2f30dd6df17a927d44cd47627e0472fb91b64f356c67b2f9"
+    },
+    {
+      "path": "motion/halo-silver-month-12-003.png",
+      "sha256": "80c11dfc5b2c759d023d5f5de13707cf4d4ac169b3e83220bfd1328f5254415f"
+    },
+    {
+      "path": "motion/halo-silver-month-12-004.png",
+      "sha256": "4b2da954f4a97ff2203786625027d2c3abb8b556b760817cf833b44fa360a96d"
+    },
+    {
+      "path": "motion/halo-silver-month-12-005.png",
+      "sha256": "80efd262e5df1a47641756326a9dd13d351812e037974a9b290f753cf436e5ee"
+    },
+    {
+      "path": "motion/halo-silver-month-12-006.png",
+      "sha256": "cb483571d22e7e3b220a752101e68e1de09615dc84d77a674ac562fdd42762ba"
+    },
+    {
+      "path": "motion/halo-silver-month-12-007.png",
+      "sha256": "f0e5912ca9be7d50d84c3fe6a3f0e5b76a5e9577d1c0521647b2a92675c1c894"
+    },
+    {
+      "path": "motion/halo-silver-month-12-008.png",
+      "sha256": "0aa95c2c9519a6e2a99bc3a3538ecc82ac014fa45037d4f3be6ff0790028cf22"
+    },
+    {
+      "path": "motion/halo-silver-month-12-009.png",
+      "sha256": "74d2054e6f4bf6ddd7217419487dfd4fa92e211a6cad673a3051e5e0593cbe5e"
+    },
+    {
+      "path": "motion/halo-silver-month-12-010.png",
+      "sha256": "a1e99642836139867e46617b9b1eef3fa9f7776edb65e860cd2de8a1cb31809f"
+    },
+    {
+      "path": "motion/halo-silver-month-12-011.png",
+      "sha256": "d7ff83db03cc34fb8125995e5e30125568c66ee395ca4a79ea299d6911a48a39"
+    },
+    {
+      "path": "motion/halo-silver-month-12-012.png",
+      "sha256": "6f771029720f91d3daff84c0dfea41becb08e01ee02ee87b43c0709c2c1fd21f"
+    },
+    {
+      "path": "motion/halo-silver-month-12-013.png",
+      "sha256": "807aee7e6303f2f99262f0d633b7aa71eba45bd123f81832ce76f7db1c8eb9dc"
+    },
+    {
+      "path": "motion/halo-silver-month-12-014.png",
+      "sha256": "c9ba26fb9234c4bc3087e3b3426490dd6147ecc63bef469d539f0f772b757029"
+    },
+    {
+      "path": "motion/halo-silver-month-12-015.png",
+      "sha256": "650c35108c651360bd65fd0c2abd4c503c61d5e5a531297ecf85e28cfe523233"
+    },
+    {
+      "path": "motion/halo-silver-month-12-016.png",
+      "sha256": "763da3df2d666740a686865a0b58eebdcc8c4dba3247236f2098ac998d23675d"
+    },
+    {
+      "path": "motion/halo-silver-month-12-017.png",
+      "sha256": "8ac984d1343b8a3281400f5809258b4f2f64e9c5755bcbd0fcbaa41cf8a000ee"
+    },
+    {
+      "path": "motion/halo-silver-month-12-018.png",
+      "sha256": "72a6ea53ae72690e1872369aa5d8d7db705d496f869bd39270d2dd766063cbcc"
+    },
+    {
+      "path": "motion/halo-silver-month-12-019.png",
+      "sha256": "205b59e42638bce6b98cfdce293e02462edf3af5facc86c214fe0bfbc322899a"
+    },
+    {
+      "path": "motion/halo-silver-month-12-020.png",
+      "sha256": "db001af4e30de0321c9bb03b81c4971b8602f4ec9bd649aa82c33630541dce80"
+    },
+    {
+      "path": "motion/halo-silver-month-12-021.png",
+      "sha256": "dd1e163726cb7e3cbbdb8316a6bc1cbfc44ab89d19a428fde6523ec01a3a831c"
+    },
+    {
+      "path": "motion/halo-silver-month-12-022.png",
+      "sha256": "93c6517be42df0e201b6f235c100894f4b1df08ace3aa1f48bf7a983e6bad9fe"
+    },
+    {
+      "path": "motion/halo-silver-month-12-023.png",
+      "sha256": "474cfa6ce41db507b43e97b1f78beb79b61f745fbc841f25e4583bcf5824aa65"
+    },
+    {
+      "path": "motion/halo-silver-month-12-024.png",
+      "sha256": "926f64200d36ef715c9abee325e5a2b4fa4cdbac921ab82b672c8e6bf4f6a776"
+    },
+    {
+      "path": "motion/halo-silver-month-12-025.png",
+      "sha256": "c95a1e6bbd5212e7a6204111b88787243a74cf6bd814f5a63793ea20f945ac10"
+    },
+    {
+      "path": "motion/halo-silver-month-12-026.png",
+      "sha256": "a19258d8bce405fb3700bd81423a30d7ff57fe4851f912f1c49c91775a8614cd"
+    },
+    {
+      "path": "motion/halo-silver-month-12-027.png",
+      "sha256": "f29d4a4fcc00acbb37e6f5aa2db71511f0f4a859ae480bb2eb2c7ab760892b07"
+    },
+    {
+      "path": "motion/halo-silver-month-12-028.png",
+      "sha256": "527c6f546a7f911de318b5c74a95fdf8b8d079eb2146759dcc2ee0db5ca3184b"
+    },
+    {
+      "path": "motion/halo-silver-month-12-029.png",
+      "sha256": "eb586e86dedf3012b2aaf87998c6422d732609d592d71471f82a77d11101a5a5"
+    },
+    {
+      "path": "motion/halo-silver-month-12-030.png",
+      "sha256": "6fe105a3d254307dc09581aa85393e014ab2cb7739e182ba07b9b1e07a7ccd72"
+    },
+    {
+      "path": "motion/halo-silver-month-12-031.png",
+      "sha256": "72b87579018bfbc828df209a5f1ee04512df68be235a63250f79ba517531c1d9"
+    },
+    {
+      "path": "motion/halo-silver-month-12-032.png",
+      "sha256": "5f2f982d4be748ed1d9dbaba08f6d7e8d1bf4af5f231a2bb15ac675d85762498"
+    },
+    {
+      "path": "motion/halo-silver-month-12-033.png",
+      "sha256": "60261f67f602a7533bb37e26c3565002b337c150ad15c41f65e337566dfb60f2"
+    },
+    {
+      "path": "motion/halo-silver-month-12-034.png",
+      "sha256": "34bf63e5e8176719d1cb8959ff0fed1d21931809335ab56b2e5a217efd500443"
+    },
+    {
+      "path": "motion/halo-silver-month-12-035.png",
+      "sha256": "14a4e7e623775676ddfae57937f95ca10e7e5d272edc141c6b907283aa35e2ff"
+    },
+    {
+      "path": "motion/halo-black-month-12-000.png",
+      "sha256": "c816b508197fb674d696ddff1b26c86f47326643cba5024289a12dc77e1bc54e"
+    },
+    {
+      "path": "motion/halo-black-month-12-001.png",
+      "sha256": "df3c222c1c16e146c2d7922c632af8b7260ef5e6face115c262db5cc8bce006a"
+    },
+    {
+      "path": "motion/halo-black-month-12-002.png",
+      "sha256": "f4c3c6d1accf37d5fb084f4cbb3e362e298ea42e6d40338fc72d466c02df6919"
+    },
+    {
+      "path": "motion/halo-black-month-12-003.png",
+      "sha256": "c8d360e42c1ffaff1329da386c614176ced4649e588ad89630c36e4bb45b1f88"
+    },
+    {
+      "path": "motion/halo-black-month-12-004.png",
+      "sha256": "60119e4448484084927d04882efc3da45efea78669dac7382559560e4a9ed0d3"
+    },
+    {
+      "path": "motion/halo-black-month-12-005.png",
+      "sha256": "f217d24e1ba3ac0d36ac1669d387af4db4ba8b37b02afa1a507bb826df420479"
+    },
+    {
+      "path": "motion/halo-black-month-12-006.png",
+      "sha256": "018e5a8d2db0532062f7488a1dec57a4b229717d1f0374af317f2f2ff5866df1"
+    },
+    {
+      "path": "motion/halo-black-month-12-007.png",
+      "sha256": "9a4911c08c453aa24e12208d6c681ecbda791a2fc71a8a6667120581dadf6801"
+    },
+    {
+      "path": "motion/halo-black-month-12-008.png",
+      "sha256": "06c11a3ad9b4d613f7efacee3f2f7438687d9f833517d038ffbde7b40e760011"
+    },
+    {
+      "path": "motion/halo-black-month-12-009.png",
+      "sha256": "c6d264d851370575e3b904e9d4e94e8849e4cb5a48ce1568332ca35a486ba0ed"
+    },
+    {
+      "path": "motion/halo-black-month-12-010.png",
+      "sha256": "37746578a50afeb3d02b79192ba9ea85bd95842a38a8b7805fc8cb9828412d40"
+    },
+    {
+      "path": "motion/halo-black-month-12-011.png",
+      "sha256": "0d6ebb849e444ff71844e1833f15e727cd1751c9f631f64b31a246c3ecde8fd3"
+    },
+    {
+      "path": "motion/halo-black-month-12-012.png",
+      "sha256": "f5e7cf54aeca4b65f1acd422fdbad1fdd84f430fef0f04adbf61531c627d5fdd"
+    },
+    {
+      "path": "motion/halo-black-month-12-013.png",
+      "sha256": "52f4b13cb4bcd1057b98a70c8fdd619519158407096db689484401f4be8385b9"
+    },
+    {
+      "path": "motion/halo-black-month-12-014.png",
+      "sha256": "1e96966aa142d6e6ab96a9ba4bff9089d00cd24b558e86a1bf93eccc9ec2e7bb"
+    },
+    {
+      "path": "motion/halo-black-month-12-015.png",
+      "sha256": "c7e9e6c192e45469c47e30ef6eae4c4e8b6d70ab48ce5d0d976fd1623b9bb2b8"
+    },
+    {
+      "path": "motion/halo-black-month-12-016.png",
+      "sha256": "fb49d7d1fbbb5bebfcd888e81f6ac53e4a9a4a792c9db4211a6809b7146913ba"
+    },
+    {
+      "path": "motion/halo-black-month-12-017.png",
+      "sha256": "43ff078555598d6f9b0f7424415f9e5b1a882ab6c492e1e633854454c19ce203"
+    },
+    {
+      "path": "motion/halo-black-month-12-018.png",
+      "sha256": "6619965b276e958d4b2560b156fdefea83e291c6856c317e8bb2bc962d70ffd2"
+    },
+    {
+      "path": "motion/halo-black-month-12-019.png",
+      "sha256": "94e03ae7772434800242e482288a0a8e753eccfeede123c5bc461926214c36e1"
+    },
+    {
+      "path": "motion/halo-black-month-12-020.png",
+      "sha256": "da3707b463ca749d418ef40ba60f0a7933b41e09e978346c7ee2848ca1a91413"
+    },
+    {
+      "path": "motion/halo-black-month-12-021.png",
+      "sha256": "75145f0d9fa262bca12aae6004c8f6d9852aed00e1721343dd3148cf8b48c70a"
+    },
+    {
+      "path": "motion/halo-black-month-12-022.png",
+      "sha256": "3656169612bd22c85db1fd9ae7eebbc93d33f12a849569298c479d904c407d1f"
+    },
+    {
+      "path": "motion/halo-black-month-12-023.png",
+      "sha256": "e27c817026df027a258a114a5bf955a36037c894c8c9d3535c1e291ea25a4f48"
+    },
+    {
+      "path": "motion/halo-black-month-12-024.png",
+      "sha256": "b2f250f22a32dfd686b939da286c063ce176ad9332adf33e49ac5cf7a2cb63cc"
+    },
+    {
+      "path": "motion/halo-black-month-12-025.png",
+      "sha256": "779866f1bab265c45de3333d8fd8f9a383913b9037f4e023348524bc8cb08a57"
+    },
+    {
+      "path": "motion/halo-black-month-12-026.png",
+      "sha256": "69102f42c0cdf595573f16326a5a4af6e93170d1c09fd29b10a840a8620e38cf"
+    },
+    {
+      "path": "motion/halo-black-month-12-027.png",
+      "sha256": "72072beb9bd364b41473d4cb5472092163ebe65c6583ac34d9cd314565af6197"
+    },
+    {
+      "path": "motion/halo-black-month-12-028.png",
+      "sha256": "46f585e64a10b69faa45e1c4f42ac4f026397262de2487202cbd75410d1679d6"
+    },
+    {
+      "path": "motion/halo-black-month-12-029.png",
+      "sha256": "fb569ab6c419f9af5d7f9378d86b320115edb352e150657cc70b234573930b47"
+    },
+    {
+      "path": "motion/halo-black-month-12-030.png",
+      "sha256": "76d32f861df9d58d92b05ef57312818244b4d1627753ad954c392e72ad8ed9d8"
+    },
+    {
+      "path": "motion/halo-black-month-12-031.png",
+      "sha256": "3463a97d83e0376eff7a2f0c6fc34e00f9024ebef9b5ad3c6f9367854b71821f"
+    },
+    {
+      "path": "motion/halo-black-month-12-032.png",
+      "sha256": "8ceeb72bd429e4ae6654d723c05e1236d7fe37da5a2ce2a1d638258fbd31f6d9"
+    },
+    {
+      "path": "motion/halo-black-month-12-033.png",
+      "sha256": "2ec26a5b6e5a8090966fe204cc4c8a7d65a6de9d12b29dd3dd253cdb5308449b"
+    },
+    {
+      "path": "motion/halo-black-month-12-034.png",
+      "sha256": "f96ae14bb0c1eab96be53d27209accadc41d7a746ad8350a7a3ab6a914ad9795"
+    },
+    {
+      "path": "motion/halo-black-month-12-035.png",
+      "sha256": "5548d122a700e9d66f7f770e055e8adaaf97144a83ad6a820ec0801a67e9780b"
+    },
+    {
+      "path": "poster/halo-gold-month-12-000.png",
+      "sha256": "3af7eae86f5762eb43d88edf64e2389f2381ae98916821603ea2efd03f6eed65"
+    }
+  ],
+  "render_script_versions": {
+    "months": "9afa1dbaf14f4c455b4844618bb679bd442228eb3e61d5d89b9f0b417e57d6d1",
+    "motion": "860d25f4f9048cd907bf22b43edf9097ecc8d8a394f956f1efeeeaf8f89321b7",
+    "poster": "860d25f4f9048cd907bf22b43edf9097ecc8d8a394f956f1efeeeaf8f89321b7"
+  },
+  "encoder_script_sha256": "00ebbdbda0947b979010491d76933dbd804fb66fc0def62727cb7a5c6c3351f0"
+}

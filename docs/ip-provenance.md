@@ -20,10 +20,10 @@ Run `pnpm website:build` after a config change. The generated public pages use t
 
 - Actual UTC generation time, application version, source commit/branch when available, dirty-tree state, and a build/deployment identifier.
 - Canonical domain and a unique Vercel deployment origin when supplied by the platform.
-- SHA-256 hashes and byte counts for the selected public HTML, CSS, JavaScript, and a product imagery manifest containing individual image hashes.
+- SHA-256 hashes and byte counts for the selected public HTML, CSS, JavaScript, video, and a product imagery manifest containing individual image and video hashes.
 - Key surface mappings and an embedded copy/hash of the versioned product-concept manifest.
 
-The complete product imagery manifest is retained inside the local build record and the collected deployment record, so subsequent public-file replacements do not erase the image-hash inventory for earlier releases.
+The complete product imagery manifest is retained inside the local build record and the collected deployment record, so subsequent public-file replacements do not erase the image/video hash inventory for earlier releases. MP4 and WebM files in the selected public asset directories are also direct verification artifacts; each must remain within the collector's 20 MB response limit.
 
 Only explicit metadata fields are read. Missing Git/deployment values stay `null`; a generated local build UUID is labeled `local-…`. No environment dump, credentials, personal workstation hostname, private source files, or user records are captured. Dirty builds are identified as such; the commit SHA alone is never represented as their complete byte identity.
 
@@ -35,7 +35,7 @@ A sanitized current receipt is served at `/halo-site/release-provenance.json`. I
 pnpm deploy:production
 ```
 
-This uses the already linked Vercel project, submits explicit Git context, waits for Vercel success, and verifies the resulting public build receipt against the deployed text artifacts, imagery-manifest bytes, and the three routed pages. If the unique Vercel URL requires authentication, it checks the public production alias instead, but only when that receipt identifies the exact expected deployment. Image bytes are hashed at build time; the collector does not re-download every image. Only verified HTTP responses create a `production_deployment_observed` record. Keep that newly generated record in Git:
+This uses the already linked Vercel project, submits explicit Git context, waits for Vercel success, and verifies the resulting public build receipt against the deployed text and video artifacts, imagery-manifest bytes, and the three routed pages. If the unique Vercel URL requires authentication, it checks the public production alias instead, but only when that receipt identifies the exact expected deployment. Image bytes are hashed at build time; the collector does not re-download every image. Video bytes are fetched and verified against their build hashes. Only verified HTTP responses create a `production_deployment_observed` record. Keep that newly generated record in Git:
 
 ```sh
 git add provenance/releases/<new-record>.json
@@ -62,6 +62,8 @@ pnpm snapshot:public --url https://www.habithalo.app
 ```
 
 This command is opt-in; neither build nor deployment runs it. It requires an existing Playwright installation/Chromium; `PLAYWRIGHT_MODULE_PATH` can point at an installed module. It creates a fresh browser context, never your signed-in browser profile. See the script's usage for the precise fixed page allowlist and capture bounds. It records actual capture times, rendered HTML, response HTML, title/metadata, page/section screenshots, captured public assets, and SHA-256 hashes. Local Git context and a remote build receipt are recorded separately. Missing assets or capture failures remain explicit; a snapshot is not represented as a fully functioning offline copy.
+
+Snapshots use reduced motion and do not archive movie bytes. If a future page includes video, its URLs remain in the captured HTML and release records retain its verified hashes; the local snapshot is not a movie archive.
 
 Archives live under `archives/public-versions/`, are Git-ignored, and are excluded from Vercel uploads. Never move them into `public/` or `website/`. Do not commit or publish archived pages without a separate explicit decision. There is no date override and no historical reconstruction mode. Keep independent backups if long-term custody matters; local files can be lost.
 

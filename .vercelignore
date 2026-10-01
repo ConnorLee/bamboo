@@ -9,3 +9,6 @@ public/halo-site
 qa
 scripts/__pycache__
 *.tsbuildinfo
+
+# Native marketing exports are retained in Git, not uploaded with the website.
+marketing

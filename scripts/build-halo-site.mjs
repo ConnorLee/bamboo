@@ -37,6 +37,11 @@ async function transform(directory = '') {
     if (entry.name.endsWith('.html')) {
       let html = await readFile(file, 'utf8');
       html = html.replace(/\b(src|href)="([^"]+)"/g, (_, attr, value) => `${attr}="${publicUrl(value, directory)}"`);
+      // Responsive picture sources need the same mounted asset URLs as img.src.
+      html = html.replace(/\bsrcset="([^"]+)"/g, (_, value) => `srcset="${value.split(',').map(candidate => {
+        const [url, ...descriptor] = candidate.trim().split(/\s+/);
+        return [publicUrl(url, directory), ...descriptor].join(' ');
+      }).join(', ')}"`);
       await writeFile(file, html);
     } else if (entry.name.endsWith('.js')) {
       // Image paths in these small, framework-free explorers are document-relative.

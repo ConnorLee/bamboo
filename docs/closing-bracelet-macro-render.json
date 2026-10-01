@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "web_exports_generated_at_utc": "2026-10-01T05:25:43.520880+00:00",
+  "note": "Native camera crop from the unchanged Blender master. WebP is an RGBA delivery encoding, with no image synthesis or geometry editing. The completed film is retained separately for future marketing.",
+  "assets": [
+    {
+      "native": {
+        "version": 1,
+        "generatedAt": "2026-10-01T05:24:07.439705+00:00",
+        "file": "halo-closing-macro-landscape.png",
+        "width": 2400,
+        "height": 1400,
+        "channels": "RGBA",
+        "samples": 96,
+        "renderSeconds": 9.789,
+        "sha256": "33b686c5290752ade4fb7ee34fec31dc39332e89583b84f60d5bb87a0a4b4a39",
+        "bytes": 2119064,
+        "source": "HALO_Bracelet_Master.blend",
+        "sourceSha256Before": "188ada48b8e270a59dcb4959263ffe20512fc073c4dc079574238130d4b9e8eb",
+        "sourceSha256After": "188ada48b8e270a59dcb4959263ffe20512fc073c4dc079574238130d4b9e8eb",
+        "sourceUnchanged": true,
+        "scriptSha256": "b891bb212428a3adc74a82a7349d88142453b93c95d13184d3c8e483f378f532",
+        "executedSourceSnapshot": "render-source.py",
+        "studioRendererSha256": "8124b4562e0cdffd252528125f9205aae05df016294234484e4c683ae417ca95",
+        "canonicalRendererSha256": "f891d3c8a129a6f30b1c3c852bdda19808c13fea805443471bd892375a6a9ca2",
+        "materialLibrarySha256": "8cd23da7402a0419d03478409ecc18e2714c8708bc22de375d2b4ba762a66f7b",
+        "geometrySha256": "371ed4e4c1a2532afbd35c46adb1bffdd50f80418fcf5121c25984b0070484b2",
+        "installedStones": 12,
+        "blankPositions": 0,
+        "closedClasp": true,
+        "finish": "Silver",
+        "camera": [
+          3.0,
+          -185.0,
+          -150.0
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "rollDegrees": -27,
+        "orthoScale": 78.0,
+        "shiftX": -0.3100000023841858,
+        "shiftY": 0.05999999865889549,
+        "bounds": {
+          "left": 0.30501389503479004,
+          "right": 1.2779490947723389,
+          "top": -0.1629098653793335,
+          "bottom": 1.2515657842159271
+        },
+        "gemstoneProjection": [
+          {
+            "month": 1,
+            "mineral": "Moonstone",
+            "x": 0.5947455763816833,
+            "y": 0.3873211145401001
+          },
+          {
+            "month": 2,
+            "mineral": "Amethyst",
+            "x": 0.8239218592643738,
+            "y": 0.1820617914199829
+          },
+          {
+            "month": 3,
+            "mineral": "Turquoise",
+            "x": 0.5046388506889343,
+            "y": 0.531537652015686
+          },
+          {
+            "month": 4,
+            "mineral": "Rose Quartz",
+            "x": 0.9453449845314026,
+            "y": 0.13682401180267334
+          },
+          {
+            "month": 5,
+            "mineral": "Carnelian",
+            "x": 0.4442906379699707,
+            "y": 0.690876841545105
+          },
+          {
+            "month": 6,
+            "mineral": "Lapis Lazuli",
+            "x": 0.42623212933540344,
+            "y": 0.8475259244441986
+          },
+          {
+            "month": 7,
+            "mineral": "Green Aventurine",
+            "x": 1.0576077699661255,
+            "y": 0.1415659785270691
+          },
+          {
+            "month": 8,
+            "mineral": "Tiger's Eye",
+            "x": 0.4587208330631256,
+            "y": 0.9763622917234898
+          },
+          {
+            "month": 9,
+            "mineral": "Black Tourmaline",
+            "x": 1.1449298858642578,
+            "y": 0.2038319706916809
+          },
+          {
+            "month": 10,
+            "mineral": "Citrine",
+            "x": 0.5368170738220215,
+            "y": 1.053770337253809
+          },
+          {
+            "month": 11,
+            "mineral": "Clear Quartz",
+            "x": 1.1903135776519775,
+            "y": 0.32111918926239014
+          },
+          {
+            "month": 12,
+            "mineral": "Opal",
+            "x": 0.7041212916374207,
+            "y": 0.26821714639663696
+          }
+        ],
+        "renderEngine": "CYCLES",
+        "blenderVersion": "4.5.14 LTS"
+      },
+      "public_path": "/halo-site/assets/halo-closing-macro-v1.webp",
+      "sha256": "684de6a4235e20d770176806b941d04af977007c0fcaefbcf32bf8728bacd26a",
+      "bytes": 147578
+    },
+    {
+      "native": {
+        "version": 1,
+        "generatedAt": "2026-10-01T05:24:25.460077+00:00",
+        "file": "halo-closing-macro-mobile.png",
+        "width": 1200,
+        "height": 1100,
+        "channels": "RGBA",
+        "samples": 96,
+        "renderSeconds": 5.887,
+        "sha256": "5d406764a7db9797cc4b7bbbb4a9a609bb3607ff1424966f517c50d2c8473390",
+        "bytes": 1277939,
+        "source": "HALO_Bracelet_Master.blend",
+        "sourceSha256Before": "188ada48b8e270a59dcb4959263ffe20512fc073c4dc079574238130d4b9e8eb",
+        "sourceSha256After": "188ada48b8e270a59dcb4959263ffe20512fc073c4dc079574238130d4b9e8eb",
+        "sourceUnchanged": true,
+        "scriptSha256": "b891bb212428a3adc74a82a7349d88142453b93c95d13184d3c8e483f378f532",
+        "executedSourceSnapshot": "render-source.py",
+        "studioRendererSha256": "8124b4562e0cdffd252528125f9205aae05df016294234484e4c683ae417ca95",
+        "canonicalRendererSha256": "f891d3c8a129a6f30b1c3c852bdda19808c13fea805443471bd892375a6a9ca2",
+        "materialLibrarySha256": "8cd23da7402a0419d03478409ecc18e2714c8708bc22de375d2b4ba762a66f7b",
+        "geometrySha256": "371ed4e4c1a2532afbd35c46adb1bffdd50f80418fcf5121c25984b0070484b2",
+        "installedStones": 12,
+        "blankPositions": 0,
+        "closedClasp": true,
+        "finish": "Silver",
+        "camera": [
+          3.0,
+          -185.0,
+          -150.0
+        ],
+        "target": [
+          0,
+          0,
+          0
+        ],
+        "rollDegrees": -27,
+        "orthoScale": 55.0,
+        "shiftX": -0.029999999329447746,
+        "shiftY": 0.009999999776482582,
+        "bounds": {
+          "left": -0.18616211414337158,
+          "right": 1.1936368942260742,
+          "top": -0.18017983436584473,
+          "bottom": 1.0963551998138428
+        },
+        "gemstoneProjection": [
+          {
+            "month": 1,
+            "mineral": "Moonstone",
+            "x": 0.22473005950450897,
+            "y": 0.3163922429084778
+          },
+          {
+            "month": 2,
+            "mineral": "Amethyst",
+            "x": 0.5497437715530396,
+            "y": 0.13114994764328003
+          },
+          {
+            "month": 3,
+            "mineral": "Turquoise",
+            "x": 0.09694238007068634,
+            "y": 0.44654470682144165
+          },
+          {
+            "month": 4,
+            "mineral": "Rose Quartz",
+            "x": 0.7219437956809998,
+            "y": 0.090323805809021
+          },
+          {
+            "month": 5,
+            "mineral": "Carnelian",
+            "x": 0.011357602663338184,
+            "y": 0.590345025062561
+          },
+          {
+            "month": 6,
+            "mineral": "Lapis Lazuli",
+            "x": -0.014252644963562489,
+            "y": 0.731717586517334
+          },
+          {
+            "month": 7,
+            "mineral": "Green Aventurine",
+            "x": 0.8811527490615845,
+            "y": 0.09460330009460449
+          },
+          {
+            "month": 8,
+            "mineral": "Tiger's Eye",
+            "x": 0.03182227537035942,
+            "y": 0.8479897379875183
+          },
+          {
+            "month": 9,
+            "mineral": "Black Tourmaline",
+            "x": 1.0049915313720703,
+            "y": 0.15079712867736816
+          },
+          {
+            "month": 10,
+            "mineral": "Citrine",
+            "x": 0.1425769180059433,
+            "y": 0.9178488999605179
+          },
+          {
+            "month": 11,
+            "mineral": "Clear Quartz",
+            "x": 1.0693538188934326,
+            "y": 0.25664639472961426
+          },
+          {
+            "month": 12,
+            "mineral": "Opal",
+            "x": 0.3798447549343109,
+            "y": 0.20890337228775024
+          }
+        ],
+        "renderEngine": "CYCLES",
+        "blenderVersion": "4.5.14 LTS"
+      },
+      "public_path": "/halo-site/assets/halo-closing-macro-mobile-v1.webp",
+      "sha256": "edce1d1c7d264388b1888fefcb92bfd27c1436701623cd100a600a502f0ce4a5",
+      "bytes": 110892
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import path from 'node:path';
 export const canonicalOrigin = 'https://www.habithalo.app';
 export const receiptPath = '/halo-site/release-provenance.json';
 const imageExtension = /\.(?:png|jpe?g|webp|avif|svg|gif)$/i;
+const videoExtension = /\.(?:mp4|webm)$/i;
 const publicTextExtension = /\.(?:html|css|js)$/i;
 const shaPattern = /^[a-f0-9]{40,64}$/;
 
@@ -63,16 +64,19 @@ export async function recordBuild(root, env = process.env) {
   const images = [];
   const artifacts = [];
   for (const relative of files) {
-    const isImage = imageExtension.test(relative) && /^(?:assets\/|original\/assets\/|how-it-works\/assets\/)/.test(relative);
+    const isMediaDirectory = /^(?:assets\/|original\/assets\/|how-it-works\/assets\/)/.test(relative);
+    const isImage = imageExtension.test(relative) && isMediaDirectory;
+    const isVideo = videoExtension.test(relative) && isMediaDirectory;
     const isText = publicTextExtension.test(relative) && (!relative.includes('/') || /^(?:how-it-works|patents)\/[^/]+$/.test(relative) || relative === 'original/style.css');
     const isFont = /^(?:original|how-it-works)\/assets\/fonts\/[^/]+\.(?:otf|ttf|woff2?)$/.test(relative);
     const isCatalog = relative === 'assets/stone-year/catalog.json';
-    if (!isImage && !isText && !isCatalog && !isFont) continue;
+    if (!isImage && !isVideo && !isText && !isCatalog && !isFont) continue;
     const artifact = { path: `/halo-site/${relative}`, ...await hashFile(path.join(output, relative)) };
-    if (isImage) images.push(artifact);
-    else artifacts.push(artifact);
+    if (isImage || isVideo) images.push(artifact);
+    // Movies are also fetched and verified by the deployment collector.
+    if (!isImage) artifacts.push(artifact);
   }
-  const imageManifest = { schema_version: 1, generated_at_utc: generated, scope: 'Public image assets shipped in the selected landing-page asset directories; inclusion does not imply every image is currently displayed.', assets: images };
+  const imageManifest = { schema_version: 1, generated_at_utc: generated, scope: 'Public image and video assets shipped in the selected landing-page asset directories; inclusion does not imply every asset is currently displayed.', assets: images };
   const imageManifestFile = path.join(output, 'product-imagery-manifest.json');
   await writeFile(imageManifestFile, JSON.stringify(imageManifest, null, 2) + '\n');
   artifacts.push({ path: '/halo-site/product-imagery-manifest.json', ...await hashFile(imageManifestFile) });
