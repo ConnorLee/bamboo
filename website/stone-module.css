@@ -1,0 +1,82 @@
+/* One continuous stage, sharing the original journey's typography and atmosphere. */
+.journey.has-module { height:1640svh; }
+.journey-story-links { display:flex; align-items:center; gap:28px; }
+.journey-story-links button,.module-top button { border:0; padding:10px 0; color:inherit; background:none; font-size:11px; cursor:pointer; }
+.journey-story-links button span,.module-top button span { margin-left:10px; }
+.stone-module-story[hidden] { display:none; }
+.stone-module-story { position:absolute; inset:0; z-index:2; max-width:1440px; margin:auto; padding:35px 5.5vw 24px; display:flex; flex-direction:column; }
+.module-top { display:flex; align-items:center; justify-content:space-between; min-height:32px; }
+.module-top h3 { font-size:15px; font-weight:500; letter-spacing:-.02em; margin:0; }
+.module-top button { color:var(--muted); }
+.module-layout { flex:1; min-height:0; display:grid; grid-template-columns:34% 66%; align-items:center; gap:0; }
+.module-editorial { position:relative; z-index:2; }
+.module-editorial article[hidden] { display:none; }
+.module-editorial .eyebrow { color:#b9b9c7; font-size:9px; font-weight:500; line-height:1.6; letter-spacing:.13em; margin-bottom:23px; }
+.module-editorial h4 { font-size:clamp(30px,3.8vw,55px); font-weight:400; line-height:1.05; letter-spacing:-.045em; margin:0 0 26px; text-wrap:balance; }
+.module-editorial p:not(.eyebrow) { font-size:14px; line-height:1.65; color:#c6c6d0; max-width:330px; margin:0 0 14px; }
+.module-editorial .module-support { font-size:11px!important; line-height:1.65; margin-top:24px!important; padding-top:18px; border-top:1px solid #ffffff24; color:#e5e3ea!important; }
+.module-visual { margin:0; min-width:0; display:flex; flex-direction:column; align-items:center; }
+.module-art { width:100%; max-height:calc(100svh - 225px); aspect-ratio:700 / 560; }
+.module-art>svg,.module-art>img { width:100%; height:100%; display:block; overflow:hidden; }
+.module-visual figcaption { min-height:30px; font-size:10px; line-height:1.6; color:#babac7; text-align:center; margin-top:8px; max-width:90%; }
+.module-bottom { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.module-chapters { display:flex; gap:28px; }
+.module-chapters button { position:relative; border:0; background:none; padding:14px 0; font-size:11px; color:#b6b6c3; cursor:pointer; }
+.module-chapters button[aria-current="step"] { color:#fff; }
+.module-chapters button[aria-current="step"]::after { content:""; position:absolute; height:1px; bottom:5px; left:0; right:0; background:#e8e4ee; }
+.module-concept { color:#a3a3b4; font-size:9px; }
+.module-progress { height:1px; background:#ffffff1f; margin-top:12px; }
+.module-progress span { display:block; height:100%; width:100%; background:#ccc9d6; transform:scaleX(0); transform-origin:left; }
+.journey[data-story="module"] .journey-worlds { opacity:.36; }
+.journey[data-story="module"] .journey-stage { background:radial-gradient(ellipse at 66% 36%,#24252e,#101018 82%); }
+@media(min-width:1600px) { .stone-module-story { padding-inline:70px; } }
+@media(max-width:1000px) and (min-width:701px) { .module-layout { grid-template-columns:39% 61%; } .module-editorial h4 { font-size:36px; } .module-editorial p:not(.eyebrow) { font-size:13px; } .module-chapters { gap:22px; } }
+@media(max-width:700px) {
+  .journey.has-module { height:1600svh; }
+  .journey-story-links .scroll-hint { display:none; }
+  .journey-story-links button { font-size:10px; }
+  .stone-module-story { padding:18px 24px 16px; }
+  .module-top h3 { font-size:12px; }
+  .module-top button { font-size:10px; }
+  .module-layout { display:flex; flex-direction:column; justify-content:center; align-items:stretch; }
+  .module-editorial { flex:none; margin-top:20px; }
+  .module-editorial .eyebrow { font-size:8px; margin-bottom:12px; }
+  .module-editorial h4 { font-size:35px; margin-bottom:15px; }
+  .module-editorial p:not(.eyebrow) { font-size:12px; line-height:1.55; max-width:100%; margin-bottom:8px; }
+  .module-editorial .module-support { font-size:10px!important; padding-top:10px; margin-top:13px!important; }
+  .module-visual { flex:1; min-height:0; justify-content:center; }
+  .module-art { width:100%; max-height:100%; min-height:0; flex:0 1 auto; }
+  .module-visual figcaption { min-height:20px; font-size:9px; margin:0 0 8px; }
+  .module-bottom { display:block; }
+  .module-chapters { justify-content:space-between; gap:8px; }
+  .module-chapters button { min-height:44px; font-size:10px; }
+  .module-concept { display:block; text-align:center; font-size:8px; margin-top:5px; }
+  .module-progress { margin-top:12px; }
+}
+@media(max-height:700px) and (min-width:701px) { .stone-module-story { padding-top:18px; padding-bottom:14px; } .module-editorial h4 { font-size:34px; margin-bottom:18px; } .module-editorial .eyebrow { margin-bottom:14px; } .module-editorial p:not(.eyebrow) { font-size:12px; } .module-editorial .module-support { margin-top:15px!important; padding-top:12px; } }
+@media(max-width:360px) {
+  .stone-module-story { padding:12px 18px; }
+  .module-editorial { margin-top:12px; }
+  .module-editorial h4 { font-size:28px; margin-bottom:12px; }
+  .module-editorial .eyebrow { font-size:7px; margin-bottom:9px; }
+  .module-editorial p:not(.eyebrow) { font-size:11px; line-height:1.45; }
+  .module-editorial .module-support { font-size:9px!important; margin-top:10px!important; padding-top:8px; }
+  .module-visual figcaption { font-size:8px; margin-bottom:3px; }
+  .module-concept { margin-top:0; }
+  .module-progress { margin-top:6px; }
+}
+@media(max-height:500px) and (min-width:701px) {
+  .stone-module-story { padding:8px 5.5vw; }
+  .module-top { min-height:24px; }
+  .module-layout { grid-template-columns:45% 55%; }
+  .module-editorial h4 { font-size:26px; margin-bottom:10px; }
+  .module-editorial .eyebrow { font-size:7px; margin-bottom:8px; }
+  .module-editorial p:not(.eyebrow) { font-size:10px; line-height:1.45; margin-bottom:6px; }
+  .module-editorial .module-support { font-size:9px!important; margin-top:8px!important; padding-top:6px; }
+  .module-art { max-height:calc(100svh - 170px); }
+  .module-visual figcaption { font-size:8px; margin-top:0; min-height:16px; }
+  .module-chapters button { padding:9px 0; }
+  .module-progress { margin-top:4px; }
+}
+@media(prefers-reduced-motion:reduce) { .module-art * { transition:none!important; } }
+@media print { .journey.has-module { height:auto; } .journey-stage { position:static; height:auto; overflow:visible; } .journey-inner { min-height:600px; } .stone-module-story,.stone-module-story[hidden] { display:block!important; position:static; padding:32px; } .module-layout { display:block; } .module-editorial article[hidden] { display:block; } .module-editorial article { break-inside:avoid; margin-bottom:30px; } .module-visual,.module-bottom,.module-progress,.module-top button { display:none; } }

@@ -1,0 +1,48 @@
+/* Extend only the new chapter's travel. A monthly unit keeps its original length. */
+.journey.has-finale { --journey-base-height:620svh; height:calc((var(--journey-base-height) - 100svh + var(--nav-height)) * var(--journey-duration-ratio) + 100svh - var(--nav-height)); }
+.journey.has-finale.has-module { --journey-base-height:1640svh; }
+.year-finale[hidden] { display:none; }
+.year-finale { position:absolute; inset:0; z-index:3; overflow:hidden; pointer-events:none; color:#292333; }
+.year-finale-atmosphere { position:absolute; inset:0; overflow:hidden; background:#e2e6ed; }
+.year-finale-sheen { position:absolute; inset:-12%; background:
+  linear-gradient(125deg,transparent 18%,#ffffff40 34%,transparent 48%,#ffffff24 72%,transparent 84%),
+  radial-gradient(ellipse at 50% 48%,#eff5efee 0%,#e7f0ec66 24%,transparent 48%),
+  radial-gradient(ellipse at 18% 22%,#edbddf 0%,transparent 48%),
+  radial-gradient(ellipse at 83% 72%,#9cd9e1 0%,transparent 50%),
+  radial-gradient(ellipse at 80% 20%,#d6c5f5 0%,transparent 46%),
+  radial-gradient(ellipse at 24% 79%,#ffe2bb 0%,transparent 46%),
+  conic-gradient(from 220deg at 50% 50%,#a5d4e5,#a7dac5,#f4e7bb,#edbed5,#b8bcea,#a5d4e5);
+  will-change:transform;
+}
+.year-finale-atmosphere::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 47%,transparent 24%,#f5f1f444 78%),url('assets/halo-grain.svg'); opacity:.055; }
+.year-finale-product { position:absolute; left:50%; top:53%; margin:0; transform-origin:center; will-change:transform,opacity; isolation:isolate; }
+.year-finale-product img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; mix-blend-mode:plus-lighter; }
+.year-finale-product img:first-child { filter:drop-shadow(0 24px 18px #38334732); }
+.year-finale-copy { position:absolute; top:9%; left:24px; right:24px; text-align:center; }
+.year-finale-copy .eyebrow { font-size:10px; letter-spacing:.17em; margin:0 0 18px; color:#51485e; }
+.year-finale-copy h4 { margin:0; font-size:clamp(44px,7.2vw,104px); font-weight:400; line-height:1.02; letter-spacing:-.055em; text-wrap:balance; outline-offset:8px; }
+.year-finale-copy h4:focus { outline:none; }
+.year-finale-foot { position:absolute; bottom:6%; left:24px; right:24px; text-align:center; }
+.year-finale-foot p { margin:0 0 14px; color:#534b60; font-size:13px; line-height:1.5; }
+.year-finale-foot button,.year-finale-jump { border:0; background:none; color:inherit; font:inherit; cursor:pointer; min-height:44px; padding:10px 12px; }
+.year-finale-foot button { pointer-events:auto; font-size:11px; }
+.year-finale-foot button span { margin-left:8px; }
+.year-finale-jump { display:block; margin:0 auto; font-size:10px; }
+.year-finale-jump[hidden] { display:none; }
+@media(max-width:700px) {
+  .journey.has-finale.has-module { --journey-base-height:1600svh; }
+  .year-finale-copy { top:12%; }
+  .year-finale-copy h4 { font-size:clamp(42px,10vw,70px); }
+  .year-finale-copy .eyebrow { font-size:8px; margin-bottom:14px; }
+  .year-finale-foot { bottom:12%; }
+  .year-finale-foot p { font-size:11px; }
+}
+@media(max-height:600px) {
+  .year-finale-copy { top:5%; }
+  .year-finale-copy h4 { font-size:clamp(30px,6vw,56px); }
+  .year-finale-copy .eyebrow { font-size:8px; margin-bottom:7px; }
+  .year-finale-foot { bottom:2%; }
+  .year-finale-foot p { font-size:10px; margin-bottom:0; }
+}
+@media(prefers-reduced-motion:reduce) { .year-finale-product,.year-finale-sheen { will-change:auto; } }
+@media print { .journey.has-finale { height:auto; } .year-finale { display:none; } }

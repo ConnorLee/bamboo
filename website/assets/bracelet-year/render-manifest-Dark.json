@@ -1,0 +1,1882 @@
+{
+  "source": "HALO_Bracelet_Master.blend",
+  "width": 1000,
+  "height": 875,
+  "positions": 12,
+  "indexConvention": "index 0 is Month 01; no separate Intention stone",
+  "historyRanks": [
+    -1,
+    1,
+    -2,
+    2,
+    -3,
+    -4,
+    3,
+    -5,
+    4,
+    -6,
+    5
+  ],
+  "states": [
+    {
+      "month": 0,
+      "finish": "Dark",
+      "installed": 1,
+      "blanks": 11,
+      "current": "moonstone",
+      "base": "base-dark-00.webp",
+      "stone": "stone-00.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 1,
+      "finish": "Dark",
+      "installed": 2,
+      "blanks": 10,
+      "current": "amethyst",
+      "base": "base-dark-01.webp",
+      "stone": "stone-01.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 2,
+      "finish": "Dark",
+      "installed": 3,
+      "blanks": 9,
+      "current": "turquoise",
+      "base": "base-dark-02.webp",
+      "stone": "stone-02.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 3,
+      "finish": "Dark",
+      "installed": 4,
+      "blanks": 8,
+      "current": "rose-quartz",
+      "base": "base-dark-03.webp",
+      "stone": "stone-03.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 3,
+          "installed": true,
+          "mineral": "rose-quartz",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 4,
+      "finish": "Dark",
+      "installed": 5,
+      "blanks": 7,
+      "current": "carnelian",
+      "base": "base-dark-04.webp",
+      "stone": "stone-04.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 4,
+          "installed": true,
+          "mineral": "carnelian",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": 3,
+          "installed": true,
+          "mineral": "rose-quartz",
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 5,
+      "finish": "Dark",
+      "installed": 6,
+      "blanks": 6,
+      "current": "lapis-lazuli",
+      "base": "base-dark-05.webp",
+      "stone": "stone-05.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": 4,
+          "installed": true,
+          "mineral": "carnelian",
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 5,
+          "installed": true,
+          "mineral": "lapis-lazuli",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": 3,
+          "installed": true,
+          "mineral": "rose-quartz",
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 6,
+      "finish": "Dark",
+      "installed": 7,
+      "blanks": 5,
+      "current": "green-aventurine",
+      "base": "base-dark-06.webp",
+      "stone": "stone-06.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": 5,
+          "installed": true,
+          "mineral": "lapis-lazuli",
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": 4,
+          "installed": true,
+          "mineral": "carnelian",
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 6,
+          "installed": true,
+          "mineral": "green-aventurine",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": 3,
+          "installed": true,
+          "mineral": "rose-quartz",
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 7,
+      "finish": "Dark",
+      "installed": 8,
+      "blanks": 4,
+      "current": "tigers-eye",
+      "base": "base-dark-07.webp",
+      "stone": "stone-07.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": 5,
+          "installed": true,
+          "mineral": "lapis-lazuli",
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": 4,
+          "installed": true,
+          "mineral": "carnelian",
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 7,
+          "installed": true,
+          "mineral": "tigers-eye",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": 3,
+          "installed": true,
+          "mineral": "rose-quartz",
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": 6,
+          "installed": true,
+          "mineral": "aventurine",
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 8,
+      "finish": "Dark",
+      "installed": 9,
+      "blanks": 3,
+      "current": "black-tourmaline",
+      "base": "base-dark-08.webp",
+      "stone": "stone-08.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": 7,
+          "installed": true,
+          "mineral": "tigers-eye",
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": 5,
+          "installed": true,
+          "mineral": "lapis-lazuli",
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": 4,
+          "installed": true,
+          "mineral": "carnelian",
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 8,
+          "installed": true,
+          "mineral": "black-tourmaline",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": 3,
+          "installed": true,
+          "mineral": "rose-quartz",
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": 6,
+          "installed": true,
+          "mineral": "aventurine",
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 9,
+      "finish": "Dark",
+      "installed": 10,
+      "blanks": 2,
+      "current": "citrine",
+      "base": "base-dark-09.webp",
+      "stone": "stone-09.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": 7,
+          "installed": true,
+          "mineral": "tigers-eye",
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": 5,
+          "installed": true,
+          "mineral": "lapis-lazuli",
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": 4,
+          "installed": true,
+          "mineral": "carnelian",
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 9,
+          "installed": true,
+          "mineral": "citrine",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": 3,
+          "installed": true,
+          "mineral": "rose-quartz",
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": 6,
+          "installed": true,
+          "mineral": "aventurine",
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": 8,
+          "installed": true,
+          "mineral": "black-tourmaline",
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 10,
+      "finish": "Dark",
+      "installed": 11,
+      "blanks": 1,
+      "current": "quartz",
+      "base": "base-dark-10.webp",
+      "stone": "stone-10.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": 9,
+          "installed": true,
+          "mineral": "citrine",
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": 7,
+          "installed": true,
+          "mineral": "tigers-eye",
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": 5,
+          "installed": true,
+          "mineral": "lapis-lazuli",
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": 4,
+          "installed": true,
+          "mineral": "carnelian",
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 10,
+          "installed": true,
+          "mineral": "quartz",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": 3,
+          "installed": true,
+          "mineral": "rose-quartz",
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": 6,
+          "installed": true,
+          "mineral": "aventurine",
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": 8,
+          "installed": true,
+          "mineral": "black-tourmaline",
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": null,
+          "installed": false,
+          "mineral": null,
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    },
+    {
+      "month": 11,
+      "finish": "Dark",
+      "installed": 12,
+      "blanks": 0,
+      "current": "opal",
+      "base": "base-dark-11.webp",
+      "stone": "stone-11.webp",
+      "positions": [
+        {
+          "rank": -6,
+          "role": "history",
+          "socket": "History_10",
+          "month": 9,
+          "installed": true,
+          "mineral": "citrine",
+          "projected": [
+            0.13901,
+            0.62851
+          ]
+        },
+        {
+          "rank": -5,
+          "role": "history",
+          "socket": "History_08",
+          "month": 7,
+          "installed": true,
+          "mineral": "tigers-eye",
+          "projected": [
+            0.09248,
+            0.53669
+          ]
+        },
+        {
+          "rank": -4,
+          "role": "history",
+          "socket": "History_06",
+          "month": 5,
+          "installed": true,
+          "mineral": "lapis-lazuli",
+          "projected": [
+            0.09966,
+            0.43828
+          ]
+        },
+        {
+          "rank": -3,
+          "role": "history",
+          "socket": "History_05",
+          "month": 4,
+          "installed": true,
+          "mineral": "carnelian",
+          "projected": [
+            0.15836,
+            0.35075
+          ]
+        },
+        {
+          "rank": -2,
+          "role": "history",
+          "socket": "History_03",
+          "month": 2,
+          "installed": true,
+          "mineral": "turquoise",
+          "projected": [
+            0.25451,
+            0.28514
+          ]
+        },
+        {
+          "rank": -1,
+          "role": "history",
+          "socket": "History_01",
+          "month": 0,
+          "installed": true,
+          "mineral": "moonstone",
+          "projected": [
+            0.37234,
+            0.24557
+          ]
+        },
+        {
+          "rank": 0,
+          "role": "current",
+          "socket": "Current",
+          "month": 11,
+          "installed": true,
+          "mineral": "opal",
+          "projected": [
+            0.5,
+            0.23239
+          ]
+        },
+        {
+          "rank": 1,
+          "role": "history",
+          "socket": "History_02",
+          "month": 1,
+          "installed": true,
+          "mineral": "amethyst",
+          "projected": [
+            0.62766,
+            0.24557
+          ]
+        },
+        {
+          "rank": 2,
+          "role": "history",
+          "socket": "History_04",
+          "month": 3,
+          "installed": true,
+          "mineral": "rose-quartz",
+          "projected": [
+            0.74549,
+            0.28514
+          ]
+        },
+        {
+          "rank": 3,
+          "role": "history",
+          "socket": "History_07",
+          "month": 6,
+          "installed": true,
+          "mineral": "aventurine",
+          "projected": [
+            0.84164,
+            0.35075
+          ]
+        },
+        {
+          "rank": 4,
+          "role": "history",
+          "socket": "History_09",
+          "month": 8,
+          "installed": true,
+          "mineral": "black-tourmaline",
+          "projected": [
+            0.90034,
+            0.43828
+          ]
+        },
+        {
+          "rank": 5,
+          "role": "history",
+          "socket": "History_11",
+          "month": 10,
+          "installed": true,
+          "mineral": "quartz",
+          "projected": [
+            0.90752,
+            0.53669
+          ]
+        }
+      ]
+    }
+  ]
+}

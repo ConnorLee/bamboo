@@ -1,0 +1,2536 @@
+{
+  "version": 1,
+  "frameCount": 24,
+  "width": 1000,
+  "height": 875,
+  "source": "HALO_Bracelet_Master.blend",
+  "sourceSha256Before": "188ada48b8e270a59dcb4959263ffe20512fc073c4dc079574238130d4b9e8eb",
+  "sourceSha256After": "188ada48b8e270a59dcb4959263ffe20512fc073c4dc079574238130d4b9e8eb",
+  "sourceUnchanged": true,
+  "month": 12,
+  "installedStones": 12,
+  "currentMonth": 12,
+  "lockFrame": 16,
+  "heroFrames": [
+    0,
+    23
+  ],
+  "timing": {
+    "reveal": [
+      0,
+      7
+    ],
+    "close": [
+      8,
+      16
+    ],
+    "returnToHero": [
+      17,
+      23
+    ]
+  },
+  "identicalGeometryAcrossFinishes": true,
+  "frames": [
+    {
+      "index": 0,
+      "orbitDegrees": 0.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        0.0,
+        -165.0,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orthoScale": 79.0,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-00.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 1,
+      "orbitDegrees": 5.6,
+      "claspOpenDegrees": 0,
+      "camera": [
+        16.10118865966797,
+        -164.2125244140625,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.11999999731779099,
+        0.0
+      ],
+      "orthoScale": 79.27999877929688,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-01.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 2,
+      "orbitDegrees": 21.0,
+      "claspOpenDegrees": 20,
+      "camera": [
+        59.13072204589844,
+        -154.040771484375,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.44999998807907104,
+        0.0
+      ],
+      "orthoScale": 80.05000305175781,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-02.webp",
+      "lidAngleDegrees": 20.0,
+      "claspLidWorld": [
+        [
+          0.9396926164627075,
+          -0.3420201241970062,
+          0.0,
+          -0.5035667419433594
+        ],
+        [
+          0.3420201241970062,
+          0.9396926164627075,
+          0.0,
+          30.555870056152344
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 3,
+      "orbitDegrees": 49.0,
+      "claspOpenDegrees": 55,
+      "camera": [
+        124.5270767211914,
+        -108.24974822998047,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        1.0499999523162842,
+        0.0
+      ],
+      "orthoScale": 81.44999694824219,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-03.webp",
+      "lidAngleDegrees": 55.0,
+      "claspLidWorld": [
+        [
+          0.5735764503479004,
+          -0.8191520571708679,
+          0.0,
+          -3.5606369972229004
+        ],
+        [
+          0.8191520571708679,
+          0.5735764503479004,
+          0.0,
+          34.53992462158203
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 4,
+      "orbitDegrees": 84.0,
+      "claspOpenDegrees": 82,
+      "camera": [
+        164.0961151123047,
+        -17.247188568115234,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        1.7999999523162842,
+        0.0
+      ],
+      "orthoScale": 83.19999694824219,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-04.webp",
+      "lidAngleDegrees": 82.0,
+      "claspLidWorld": [
+        [
+          0.13917310535907745,
+          -0.9902680516242981,
+          0.0,
+          -7.1879048347473145
+        ],
+        [
+          0.9902680516242981,
+          0.13917310535907745,
+          0.0,
+          35.96874237060547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 5,
+      "orbitDegrees": 117.6,
+      "claspOpenDegrees": 88,
+      "camera": [
+        146.2235870361328,
+        76.44384002685547,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        2.5199999809265137,
+        0.0
+      ],
+      "orthoScale": 84.87999725341797,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-05.webp",
+      "lidAngleDegrees": 88.0,
+      "claspLidWorld": [
+        [
+          0.03489949554204941,
+          -0.9993908405303955,
+          0.0,
+          -8.058589935302734
+        ],
+        [
+          0.9993908405303955,
+          0.03489949554204941,
+          0.0,
+          36.04491424560547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 6,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 88,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-06.webp",
+      "lidAngleDegrees": 88.0,
+      "claspLidWorld": [
+        [
+          0.03489949554204941,
+          -0.9993908405303955,
+          0.0,
+          -8.058589935302734
+        ],
+        [
+          0.9993908405303955,
+          0.03489949554204941,
+          0.0,
+          36.04491424560547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 7,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 88,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-07.webp",
+      "lidAngleDegrees": 88.0,
+      "claspLidWorld": [
+        [
+          0.03489949554204941,
+          -0.9993908405303955,
+          0.0,
+          -8.058589935302734
+        ],
+        [
+          0.9993908405303955,
+          0.03489949554204941,
+          0.0,
+          36.04491424560547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 8,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 82,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-08.webp",
+      "lidAngleDegrees": 82.0,
+      "claspLidWorld": [
+        [
+          0.13917310535907745,
+          -0.9902680516242981,
+          0.0,
+          -7.1879048347473145
+        ],
+        [
+          0.9902680516242981,
+          0.13917310535907745,
+          0.0,
+          35.96874237060547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 9,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 72,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-09.webp",
+      "lidAngleDegrees": 72.0,
+      "claspLidWorld": [
+        [
+          0.30901697278022766,
+          -0.9510565400123596,
+          0.0,
+          -5.769708633422852
+        ],
+        [
+          0.9510565400123596,
+          0.30901697278022766,
+          0.0,
+          35.641326904296875
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 10,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 59,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-10.webp",
+      "lidAngleDegrees": 59.0,
+      "claspLidWorld": [
+        [
+          0.5150380730628967,
+          -0.8571673035621643,
+          0.0,
+          -4.049432277679443
+        ],
+        [
+          0.8571673035621643,
+          0.5150380730628967,
+          0.0,
+          34.85734939575195
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 11,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 45,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-11.webp",
+      "lidAngleDegrees": 45.0,
+      "claspLidWorld": [
+        [
+          0.7071067690849304,
+          -0.7071067690849304,
+          0.0,
+          -2.4456586837768555
+        ],
+        [
+          0.7071067690849304,
+          0.7071067690849304,
+          0.0,
+          33.60434341430664
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 12,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 33,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-12.webp",
+      "lidAngleDegrees": 33.0,
+      "claspLidWorld": [
+        [
+          0.838670551776886,
+          -0.5446390509605408,
+          0.0,
+          -1.3471007347106934
+        ],
+        [
+          0.5446390509605408,
+          0.838670551776886,
+          0.0,
+          32.247737884521484
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 13,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 22,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-13.webp",
+      "lidAngleDegrees": 22.0,
+      "claspLidWorld": [
+        [
+          0.9271838665008545,
+          -0.37460657954216003,
+          0.0,
+          -0.6080145835876465
+        ],
+        [
+          0.37460657954216003,
+          0.9271838665008545,
+          0.0,
+          30.82796859741211
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 14,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 12,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-14.webp",
+      "lidAngleDegrees": 12.0,
+      "claspLidWorld": [
+        [
+          0.9781476259231567,
+          -0.20791170001029968,
+          0.0,
+          -0.18246746063232422
+        ],
+        [
+          0.20791170001029968,
+          0.9781476259231567,
+          0.0,
+          29.436065673828125
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 15,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 4,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-15.webp",
+      "lidAngleDegrees": 4.0,
+      "claspLidWorld": [
+        [
+          0.9975640773773193,
+          -0.06975647062063217,
+          0.0,
+          -0.0203399658203125
+        ],
+        [
+          0.06975647062063217,
+          0.9975640773773193,
+          0.0,
+          28.282468795776367
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 16,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-16.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 17,
+      "orbitDegrees": 138.6,
+      "claspOpenDegrees": 0,
+      "camera": [
+        109.11642456054688,
+        123.76834869384766,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        2.9700000286102295,
+        0.0
+      ],
+      "orthoScale": 85.93000030517578,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-17.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 18,
+      "orbitDegrees": 126.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        133.48779296875,
+        96.9845962524414,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        2.700000047683716,
+        0.0
+      ],
+      "orthoScale": 85.30000305175781,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-18.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 19,
+      "orbitDegrees": 98.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        163.39422607421875,
+        22.963577270507812,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        2.0999999046325684,
+        0.0
+      ],
+      "orthoScale": 83.9000015258789,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-19.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 20,
+      "orbitDegrees": 56.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        136.79119873046875,
+        -92.26683807373047,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "orthoScale": 81.80000305175781,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-20.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 21,
+      "orbitDegrees": 25.2,
+      "claspOpenDegrees": 0,
+      "camera": [
+        70.25357055664062,
+        -149.2964630126953,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.5400000214576721,
+        0.0
+      ],
+      "orthoScale": 80.26000213623047,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-21.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 22,
+      "orbitDegrees": 5.6,
+      "claspOpenDegrees": 0,
+      "camera": [
+        16.10118865966797,
+        -164.2125244140625,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.11999999731779099,
+        0.0
+      ],
+      "orthoScale": 79.27999877929688,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-22.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 23,
+      "orbitDegrees": 0.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        0.0,
+        -165.0,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orthoScale": 79.0,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Light",
+      "file": "light-23.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 0,
+      "orbitDegrees": 0.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        0.0,
+        -165.0,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orthoScale": 79.0,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-00.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 1,
+      "orbitDegrees": 5.6,
+      "claspOpenDegrees": 0,
+      "camera": [
+        16.10118865966797,
+        -164.2125244140625,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.11999999731779099,
+        0.0
+      ],
+      "orthoScale": 79.27999877929688,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-01.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 2,
+      "orbitDegrees": 21.0,
+      "claspOpenDegrees": 20,
+      "camera": [
+        59.13072204589844,
+        -154.040771484375,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.44999998807907104,
+        0.0
+      ],
+      "orthoScale": 80.05000305175781,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-02.webp",
+      "lidAngleDegrees": 20.0,
+      "claspLidWorld": [
+        [
+          0.9396926164627075,
+          -0.3420201241970062,
+          0.0,
+          -0.5035667419433594
+        ],
+        [
+          0.3420201241970062,
+          0.9396926164627075,
+          0.0,
+          30.555870056152344
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 3,
+      "orbitDegrees": 49.0,
+      "claspOpenDegrees": 55,
+      "camera": [
+        124.5270767211914,
+        -108.24974822998047,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        1.0499999523162842,
+        0.0
+      ],
+      "orthoScale": 81.44999694824219,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-03.webp",
+      "lidAngleDegrees": 55.0,
+      "claspLidWorld": [
+        [
+          0.5735764503479004,
+          -0.8191520571708679,
+          0.0,
+          -3.5606369972229004
+        ],
+        [
+          0.8191520571708679,
+          0.5735764503479004,
+          0.0,
+          34.53992462158203
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 4,
+      "orbitDegrees": 84.0,
+      "claspOpenDegrees": 82,
+      "camera": [
+        164.0961151123047,
+        -17.247188568115234,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        1.7999999523162842,
+        0.0
+      ],
+      "orthoScale": 83.19999694824219,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-04.webp",
+      "lidAngleDegrees": 82.0,
+      "claspLidWorld": [
+        [
+          0.13917310535907745,
+          -0.9902680516242981,
+          0.0,
+          -7.1879048347473145
+        ],
+        [
+          0.9902680516242981,
+          0.13917310535907745,
+          0.0,
+          35.96874237060547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 5,
+      "orbitDegrees": 117.6,
+      "claspOpenDegrees": 88,
+      "camera": [
+        146.2235870361328,
+        76.44384002685547,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        2.5199999809265137,
+        0.0
+      ],
+      "orthoScale": 84.87999725341797,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-05.webp",
+      "lidAngleDegrees": 88.0,
+      "claspLidWorld": [
+        [
+          0.03489949554204941,
+          -0.9993908405303955,
+          0.0,
+          -8.058589935302734
+        ],
+        [
+          0.9993908405303955,
+          0.03489949554204941,
+          0.0,
+          36.04491424560547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 6,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 88,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-06.webp",
+      "lidAngleDegrees": 88.0,
+      "claspLidWorld": [
+        [
+          0.03489949554204941,
+          -0.9993908405303955,
+          0.0,
+          -8.058589935302734
+        ],
+        [
+          0.9993908405303955,
+          0.03489949554204941,
+          0.0,
+          36.04491424560547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 7,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 88,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "reveal",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-07.webp",
+      "lidAngleDegrees": 88.0,
+      "claspLidWorld": [
+        [
+          0.03489949554204941,
+          -0.9993908405303955,
+          0.0,
+          -8.058589935302734
+        ],
+        [
+          0.9993908405303955,
+          0.03489949554204941,
+          0.0,
+          36.04491424560547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 8,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 82,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-08.webp",
+      "lidAngleDegrees": 82.0,
+      "claspLidWorld": [
+        [
+          0.13917310535907745,
+          -0.9902680516242981,
+          0.0,
+          -7.1879048347473145
+        ],
+        [
+          0.9902680516242981,
+          0.13917310535907745,
+          0.0,
+          35.96874237060547
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 9,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 72,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-09.webp",
+      "lidAngleDegrees": 72.0,
+      "claspLidWorld": [
+        [
+          0.30901697278022766,
+          -0.9510565400123596,
+          0.0,
+          -5.769708633422852
+        ],
+        [
+          0.9510565400123596,
+          0.30901697278022766,
+          0.0,
+          35.641326904296875
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 10,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 59,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-10.webp",
+      "lidAngleDegrees": 59.0,
+      "claspLidWorld": [
+        [
+          0.5150380730628967,
+          -0.8571673035621643,
+          0.0,
+          -4.049432277679443
+        ],
+        [
+          0.8571673035621643,
+          0.5150380730628967,
+          0.0,
+          34.85734939575195
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 11,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 45,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-11.webp",
+      "lidAngleDegrees": 45.0,
+      "claspLidWorld": [
+        [
+          0.7071067690849304,
+          -0.7071067690849304,
+          0.0,
+          -2.4456586837768555
+        ],
+        [
+          0.7071067690849304,
+          0.7071067690849304,
+          0.0,
+          33.60434341430664
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 12,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 33,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-12.webp",
+      "lidAngleDegrees": 33.0,
+      "claspLidWorld": [
+        [
+          0.838670551776886,
+          -0.5446390509605408,
+          0.0,
+          -1.3471007347106934
+        ],
+        [
+          0.5446390509605408,
+          0.838670551776886,
+          0.0,
+          32.247737884521484
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 13,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 22,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-13.webp",
+      "lidAngleDegrees": 22.0,
+      "claspLidWorld": [
+        [
+          0.9271838665008545,
+          -0.37460657954216003,
+          0.0,
+          -0.6080145835876465
+        ],
+        [
+          0.37460657954216003,
+          0.9271838665008545,
+          0.0,
+          30.82796859741211
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 14,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 12,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-14.webp",
+      "lidAngleDegrees": 12.0,
+      "claspLidWorld": [
+        [
+          0.9781476259231567,
+          -0.20791170001029968,
+          0.0,
+          -0.18246746063232422
+        ],
+        [
+          0.20791170001029968,
+          0.9781476259231567,
+          0.0,
+          29.436065673828125
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 15,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 4,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-15.webp",
+      "lidAngleDegrees": 4.0,
+      "claspLidWorld": [
+        [
+          0.9975640773773193,
+          -0.06975647062063217,
+          0.0,
+          -0.0203399658203125
+        ],
+        [
+          0.06975647062063217,
+          0.9975640773773193,
+          0.0,
+          28.282468795776367
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 16,
+      "orbitDegrees": 140.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        106.05998992919922,
+        126.39730072021484,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        3.0,
+        0.0
+      ],
+      "orthoScale": 86.0,
+      "phase": "close",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-16.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 17,
+      "orbitDegrees": 138.6,
+      "claspOpenDegrees": 0,
+      "camera": [
+        109.11642456054688,
+        123.76834869384766,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        2.9700000286102295,
+        0.0
+      ],
+      "orthoScale": 85.93000030517578,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-17.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 18,
+      "orbitDegrees": 126.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        133.48779296875,
+        96.9845962524414,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        2.700000047683716,
+        0.0
+      ],
+      "orthoScale": 85.30000305175781,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-18.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 19,
+      "orbitDegrees": 98.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        163.39422607421875,
+        22.963577270507812,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        2.0999999046325684,
+        0.0
+      ],
+      "orthoScale": 83.9000015258789,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-19.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 20,
+      "orbitDegrees": 56.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        136.79119873046875,
+        -92.26683807373047,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        1.2000000476837158,
+        0.0
+      ],
+      "orthoScale": 81.80000305175781,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-20.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 21,
+      "orbitDegrees": 25.2,
+      "claspOpenDegrees": 0,
+      "camera": [
+        70.25357055664062,
+        -149.2964630126953,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.5400000214576721,
+        0.0
+      ],
+      "orthoScale": 80.26000213623047,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-21.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 22,
+      "orbitDegrees": 5.6,
+      "claspOpenDegrees": 0,
+      "camera": [
+        16.10118865966797,
+        -164.2125244140625,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.11999999731779099,
+        0.0
+      ],
+      "orthoScale": 79.27999877929688,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-22.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "index": 23,
+      "orbitDegrees": 0.0,
+      "claspOpenDegrees": 0,
+      "camera": [
+        0.0,
+        -165.0,
+        -150.0
+      ],
+      "target": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "orthoScale": 79.0,
+      "phase": "return",
+      "installedStones": 12,
+      "blankPositions": 0,
+      "finish": "Dark",
+      "file": "dark-23.webp",
+      "lidAngleDegrees": 0.0,
+      "claspLidWorld": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          27.700002670288086
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "heroEndpointReuse": true,
+  "assets": [
+    {
+      "file": "light-00.webp",
+      "bytes": 46426
+    },
+    {
+      "file": "light-01.webp",
+      "bytes": 46472
+    },
+    {
+      "file": "light-02.webp",
+      "bytes": 45702
+    },
+    {
+      "file": "light-03.webp",
+      "bytes": 46260
+    },
+    {
+      "file": "light-04.webp",
+      "bytes": 40478
+    },
+    {
+      "file": "light-05.webp",
+      "bytes": 38900
+    },
+    {
+      "file": "light-06.webp",
+      "bytes": 37420
+    },
+    {
+      "file": "light-07.webp",
+      "bytes": 37406
+    },
+    {
+      "file": "light-08.webp",
+      "bytes": 37438
+    },
+    {
+      "file": "light-09.webp",
+      "bytes": 37106
+    },
+    {
+      "file": "light-10.webp",
+      "bytes": 35176
+    },
+    {
+      "file": "light-11.webp",
+      "bytes": 32472
+    },
+    {
+      "file": "light-12.webp",
+      "bytes": 33018
+    },
+    {
+      "file": "light-13.webp",
+      "bytes": 32270
+    },
+    {
+      "file": "light-14.webp",
+      "bytes": 31472
+    },
+    {
+      "file": "light-15.webp",
+      "bytes": 31740
+    },
+    {
+      "file": "light-16.webp",
+      "bytes": 29908
+    },
+    {
+      "file": "light-17.webp",
+      "bytes": 30156
+    },
+    {
+      "file": "light-18.webp",
+      "bytes": 30774
+    },
+    {
+      "file": "light-19.webp",
+      "bytes": 32884
+    },
+    {
+      "file": "light-20.webp",
+      "bytes": 38794
+    },
+    {
+      "file": "light-21.webp",
+      "bytes": 44680
+    },
+    {
+      "file": "light-22.webp",
+      "bytes": 46446
+    },
+    {
+      "file": "light-23.webp",
+      "bytes": 46426
+    },
+    {
+      "file": "dark-00.webp",
+      "bytes": 44042
+    },
+    {
+      "file": "dark-01.webp",
+      "bytes": 44256
+    },
+    {
+      "file": "dark-02.webp",
+      "bytes": 42162
+    },
+    {
+      "file": "dark-03.webp",
+      "bytes": 42470
+    },
+    {
+      "file": "dark-04.webp",
+      "bytes": 38464
+    },
+    {
+      "file": "dark-05.webp",
+      "bytes": 35054
+    },
+    {
+      "file": "dark-06.webp",
+      "bytes": 33338
+    },
+    {
+      "file": "dark-07.webp",
+      "bytes": 33348
+    },
+    {
+      "file": "dark-08.webp",
+      "bytes": 33056
+    },
+    {
+      "file": "dark-09.webp",
+      "bytes": 32772
+    },
+    {
+      "file": "dark-10.webp",
+      "bytes": 31946
+    },
+    {
+      "file": "dark-11.webp",
+      "bytes": 30320
+    },
+    {
+      "file": "dark-12.webp",
+      "bytes": 30208
+    },
+    {
+      "file": "dark-13.webp",
+      "bytes": 29924
+    },
+    {
+      "file": "dark-14.webp",
+      "bytes": 29164
+    },
+    {
+      "file": "dark-15.webp",
+      "bytes": 28738
+    },
+    {
+      "file": "dark-16.webp",
+      "bytes": 28298
+    },
+    {
+      "file": "dark-17.webp",
+      "bytes": 28478
+    },
+    {
+      "file": "dark-18.webp",
+      "bytes": 28216
+    },
+    {
+      "file": "dark-19.webp",
+      "bytes": 30830
+    },
+    {
+      "file": "dark-20.webp",
+      "bytes": 36226
+    },
+    {
+      "file": "dark-21.webp",
+      "bytes": 41494
+    },
+    {
+      "file": "dark-22.webp",
+      "bytes": 44222
+    },
+    {
+      "file": "dark-23.webp",
+      "bytes": 44042
+    }
+  ],
+  "totalWebBytes": 1750892,
+  "validation": "48 RGBA frames; 12 installed stones each; native lid movement; closed lock; matched finish geometry and hero endpoints"
+}

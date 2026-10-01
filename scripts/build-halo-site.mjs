@@ -13,6 +13,8 @@ await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(source, output, { recursive: true });
 await buildManufacture(path.join(root, 'manufacture'), path.join(output, 'manufacture'));
+// Keep image-generation prompts and workstation provenance out of public assets.
+await rm(path.join(output, 'assets/halo-milestone-screen-v1.json'), { force: true });
 
 function publicUrl(value, directory) {
   if (/^(?:#|\/|[a-z][a-z\d+.-]*:)/i.test(value)) return value;
@@ -36,7 +38,7 @@ async function transform(directory = '') {
       await writeFile(file, html);
     } else if (entry.name.endsWith('.js')) {
       // Image paths in these small, framework-free explorers are document-relative.
-      const js = (await readFile(file, 'utf8')).replace(/([`'"])((?:original\/)?assets)\//g, (_, quote, assets) => `${quote}/halo-site/${directory ? directory + '/' : ''}${assets}/`);
+      const js = (await readFile(file, 'utf8')).replace(/([`'"])((?:\.\.\/)*(?:original\/)?assets)\//g, (_, quote, assets) => `${quote}/halo-site/${path.posix.normalize(path.posix.join(directory, assets))}/`);
       await writeFile(file, js);
     }
   }

@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 560" fill="none" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="sm-pellet-metal" x1="0" y1="0" x2="1" y2=".7">
+      <stop stop-color="#959CA5"/><stop offset=".32" stop-color="#D5D9DE"/><stop offset=".61" stop-color="#BDC3CA"/><stop offset="1" stop-color="#939BA5"/>
+    </linearGradient>
+    <pattern id="sm-brushed-grain" width="3" height="2" patternUnits="userSpaceOnUse">
+      <path d="M0 .5H3" stroke="#F1F3F5" stroke-opacity=".15" stroke-width=".35"/>
+    </pattern>
+    <linearGradient id="sm-steel" x1="248" y1="238" x2="440" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#747880"/>
+      <stop offset=".19" stop-color="#E3E5E8"/>
+      <stop offset=".43" stop-color="#B2B6BD"/>
+      <stop offset=".62" stop-color="#F5F5F4"/>
+      <stop offset=".83" stop-color="#AFB3B9"/>
+      <stop offset="1" stop-color="#676D76"/>
+    </linearGradient>
+    <linearGradient id="sm-steel-edge" x1="262" y1="278" x2="436" y2="310" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#858A94"/>
+      <stop offset=".22" stop-color="#D0D2D6"/>
+      <stop offset=".51" stop-color="#989DA5"/>
+      <stop offset=".77" stop-color="#BBC0C7"/>
+      <stop offset="1" stop-color="#5C626C"/>
+    </linearGradient>
+    <linearGradient id="sm-band-metal" x1="110" y1="294" x2="546" y2="415" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#868C96"/>
+      <stop offset=".17" stop-color="#D8DBDF"/>
+      <stop offset=".34" stop-color="#A4A9B0"/>
+      <stop offset=".52" stop-color="#F2F2F1"/>
+      <stop offset=".71" stop-color="#B3B8BF"/>
+      <stop offset=".88" stop-color="#E1E4E7"/>
+      <stop offset="1" stop-color="#79808B"/>
+    </linearGradient>
+    <linearGradient id="sm-socket-metal" x1="289" y1="326" x2="415" y2="379" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E6E8EB"/>
+      <stop offset=".24" stop-color="#ADB3BC"/>
+      <stop offset=".51" stop-color="#E9EBED"/>
+      <stop offset=".79" stop-color="#ACB1BA"/>
+      <stop offset="1" stop-color="#6E7682"/>
+    </linearGradient>
+    <linearGradient id="sm-cavity" x1="350" y1="324" x2="350" y2="365" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2E333D"/>
+      <stop offset="1" stop-color="#7A828F"/>
+    </linearGradient>
+    <linearGradient id="sm-copper" x1="280" y1="244" x2="430" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8E7451"/>
+      <stop offset=".46" stop-color="#BAA17D"/>
+      <stop offset="1" stop-color="#8F7756"/>
+    </linearGradient>
+    <linearGradient id="sm-seal-glass" x1="350" y1="231" x2="350" y2="287" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7EBF0" stop-opacity=".35"/>
+      <stop offset=".62" stop-color="#DCE3EC" stop-opacity=".07"/>
+      <stop offset="1" stop-color="#DBE0E8" stop-opacity=".38"/>
+    </linearGradient>
+    <radialGradient id="sm-opal-fallback" cx=".3" cy=".25" r=".8">
+      <stop stop-color="#72B8A2"/>
+      <stop offset=".3" stop-color="#437D78"/>
+      <stop offset=".63" stop-color="#356C7C"/>
+      <stop offset="1" stop-color="#203F42"/>
+    </radialGradient>
+    <radialGradient id="sm-earned-gem" cx=".3" cy=".2" r=".9">
+      <stop stop-color="#90A68D"/>
+      <stop offset=".34" stop-color="#6E8A70"/>
+      <stop offset=".74" stop-color="#3F6352"/>
+      <stop offset="1" stop-color="#1F4237"/>
+    </radialGradient>
+    <linearGradient id="sm-phone-frame" x1="101" y1="89" x2="275" y2="431" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A0A4AC"/>
+      <stop offset=".24" stop-color="#515660"/>
+      <stop offset=".75" stop-color="#7B828C"/>
+      <stop offset="1" stop-color="#414650"/>
+    </linearGradient>
+    <linearGradient id="sm-phone-screen" x1="113" y1="102" x2="263" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20232E"/>
+      <stop offset="1" stop-color="#181A23"/>
+    </linearGradient>
+    <filter id="sm-soft-shadow" x="-40%" y="-100%" width="180%" height="300%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <clipPath id="sm-phone-screen-clip"><rect x="107" y="97" width="162" height="352" rx="22"/></clipPath>
+  </defs>
+
+  <!-- Generated Halo screen concept, based on authentic app references.
+       The earned milestone stays fixed before and after stone recognition. -->
+  <g id="sm-phone" opacity="0">
+    <g transform="translate(188 260) scale(1.15) translate(-188 -260)">
+      <rect x="100" y="90" width="176" height="366" rx="28" fill="url(#sm-phone-frame)"/>
+      <rect x="102" y="92" width="172" height="362" rx="26" stroke="#D4D7DE" stroke-opacity=".35"/>
+      <rect x="107" y="97" width="162" height="352" rx="22" fill="#0b0b10"/>
+      <image id="sm-app-screen" href="assets/halo-milestone-screen-v1.jpg" x="107" y="97" width="162" height="352" preserveAspectRatio="xMidYMid meet" clip-path="url(#sm-phone-screen-clip)"/>
+      <g id="sm-recognition" opacity="0">
+        <rect x="100.5" y="90.5" width="175" height="365" rx="27.5" stroke="#E5E2EE" stroke-opacity=".75" stroke-width="1.2"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- The socket center is 350,345. A .65 scale module seats here. -->
+  <g id="sm-bracelet" opacity="0">
+    <ellipse cx="353" cy="394" rx="207" ry="15" fill="#141720" opacity=".16" filter="url(#sm-soft-shadow)"/>
+    <path d="M77 399C164 361 226 356 305 332L327 367C238 390 166 401 87 433Z" fill="url(#sm-band-metal)"/>
+    <path d="M390 312C460 282 523 260 608 255L623 287C541 292 474 318 406 351Z" fill="url(#sm-band-metal)"/>
+    <path d="M87 433C166 402 238 391 327 367V375C239 399 167 410 88 441Z" fill="#747B86"/>
+    <path d="M406 351C474 318 541 292 623 287V294C541 300 477 325 408 360Z" fill="#757C86"/>
+    <path d="M81 400C165 364 229 357 303 335M392 315C468 283 528 263 608 258" stroke="#F2F3F5" stroke-opacity=".66" stroke-width="1.4"/>
+    <path d="M90 428C166 399 230 387 312 366M418 344C484 315 544 292 616 287" stroke="#7D8591" stroke-opacity=".7" stroke-width="1"/>
+    <g transform="translate(222 383) rotate(-12)">
+      <ellipse cy="3" rx="35" ry="19" fill="#77808C"/>
+      <ellipse rx="35" ry="18" fill="#D8DDE4"/>
+      <ellipse cy="-2" rx="29" ry="16" fill="url(#sm-earned-gem)"/>
+      <path d="M-22 -8C-14 -15 4 -18 17 -10" stroke="#BCCBB0" stroke-opacity=".55" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+    <g transform="translate(477 308) rotate(-20)">
+      <ellipse cy="3" rx="31" ry="17" fill="#77808C"/>
+      <ellipse rx="31" ry="16" fill="#D3D8E0"/>
+      <ellipse rx="29" ry="14" fill="url(#sm-pellet-metal)"/>
+      <ellipse rx="29" ry="14" fill="url(#sm-brushed-grain)"/>
+      <path d="M-24 0C-21 14 21 14 24 0" stroke="#AEB7C4" stroke-width="1"/>
+    </g>
+    <path d="M283 345V361C283 379 417 379 417 361V345Z" fill="url(#sm-socket-metal)"/>
+    <ellipse cx="350" cy="345" rx="67" ry="31" fill="url(#sm-socket-metal)"/>
+    <ellipse cx="350" cy="345" rx="56" ry="25" fill="url(#sm-cavity)"/>
+    <ellipse cx="350" cy="348" rx="51" ry="21" fill="url(#sm-pellet-metal)"/>
+    <g id="sm-engraving" opacity="0" transform="translate(350 348) scale(1.25 .55) translate(-12 -12)" stroke-linecap="round" stroke-linejoin="round">
+      <path transform="translate(0 .8)" stroke="#EEF0F2" stroke-opacity=".6" stroke-width="1.35"/>
+      <path stroke="#626C78" stroke-width="1.25"/>
+    </g>
+    <path d="M294 345C296 318 404 318 406 345" stroke="#596272" stroke-width="2"/>
+    <path d="M302 358C326 373 375 373 399 357" stroke="#DCE1E9" stroke-opacity=".8" stroke-width="1.2"/>
+    <path d="M294 339L303 336L305 342L296 345M396 347L405 344L406 350L397 353" fill="#B3BBC8"/>
+    <!-- The outward-facing pellet is plain steel. Only its removal reveals the seat. -->
+    <g id="sm-pellet">
+      <ellipse cx="350" cy="348" rx="55" ry="24" fill="#828B96"/>
+      <ellipse cx="350" cy="344" rx="55" ry="24" fill="url(#sm-pellet-metal)" stroke="#E1E5E9" stroke-width=".8"/>
+      <ellipse cx="350" cy="344" rx="54" ry="23" fill="url(#sm-brushed-grain)"/>
+    </g>
+  </g>
+
+  <!-- All five layer groups share the module origin 350,260. Animate the outer groups only. -->
+  <g id="sm-module">
+    <g id="sm-carrier">
+      <path d="M267 271L253 275V284L269 287M433 271L447 275V284L431 287" fill="url(#sm-steel)" stroke="#838D9C" stroke-width=".8"/>
+      <path d="M264 264V278C264 318 436 318 436 278V264Z" fill="url(#sm-steel-edge)"/>
+      <ellipse cx="350" cy="264" rx="86" ry="30" fill="url(#sm-steel)" stroke="#E1E6ED" stroke-opacity=".72"/>
+      <ellipse cx="350" cy="264" rx="75" ry="24" fill="#7C8797"/>
+      <path d="M267 282C282 318 416 318 433 282" stroke="#DEE4ED" stroke-opacity=".56" stroke-width="1"/>
+    </g>
+    <g id="sm-ferrite">
+      <path d="M276 260V265C276 299 424 299 424 265V260Z" fill="#363B45"/>
+      <ellipse cx="350" cy="260" rx="74" ry="26" fill="#444C58" stroke="#7A8697" stroke-width=".8"/>
+      <ellipse cx="350" cy="259" rx="65" ry="22" stroke="#828E9F" stroke-opacity=".2" stroke-width=".8"/>
+    </g>
+    <g id="sm-nfc">
+      <path d="M278 258V261C278 293 422 293 422 261V258Z" fill="#7F7053"/>
+      <ellipse cx="350" cy="258" rx="72" ry="25" fill="#A18B65"/>
+      <ellipse cx="350" cy="258" rx="67" ry="22" fill="#6C6F55"/>
+      <g stroke="url(#sm-copper)" stroke-width="1.45">
+        <ellipse cx="350" cy="258" rx="60" ry="18"/>
+        <ellipse cx="350" cy="258" rx="51" ry="14"/>
+        <ellipse cx="350" cy="258" rx="42" ry="10"/>
+        <path d="M392 258H372L365 252H353M308 258H323L334 264H347"/>
+      </g>
+      <path d="M347 251L358 253V262L347 260Z" fill="#383E46" stroke="#B8A47D" stroke-width=".65"/>
+      <path d="M350 254L354 255V259L350 258Z" fill="#818994"/>
+    </g>
+    <g id="sm-seal">
+      <ellipse cx="350" cy="255" rx="77" ry="27" fill="url(#sm-seal-glass)" stroke="#E4EAF2" stroke-opacity=".64" stroke-width="1"/>
+      <path d="M279 252C293 228 405 228 421 252" stroke="#F3F5F9" stroke-opacity=".65" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M276 259C295 290 409 289 424 259" stroke="#A7B2C3" stroke-opacity=".5" stroke-width="1"/>
+    </g>
+    <g id="sm-gem">
+      <ellipse cx="350" cy="242" rx="77" ry="38" fill="url(#sm-opal-fallback)"/>
+      <image href="original/assets/mineral-opal-circular.webp" x="250" y="173" width="200" height="150" transform="translate(0 -24)"/>
+    </g>
+  </g>
+
+  <!-- Foreground rim overlaps the module only once seated. -->
+  <g id="sm-rim" opacity="0">
+    <path d="M283 345C283 386 417 386 417 345V360C417 400 283 400 283 360Z" fill="url(#sm-socket-metal)"/>
+    <path d="M284 345C286 384 415 384 416 345" stroke="#EEF1F6" stroke-opacity=".8" stroke-width="1.4"/>
+    <path d="M288 365C306 391 397 391 412 365" stroke="#808D9E" stroke-opacity=".65" stroke-width="1"/>
+  </g>
+
+  <!-- Conceptual installed-state section: continuous metal walls and base enclose the assembly. -->
+  <g id="sm-cutaway" opacity="0">
+    <path d="M285 343L296 345V363Q350 385 404 363V345L415 343V370Q350 400 285 370Z" fill="url(#sm-socket-metal)" stroke="#E4E8EE" stroke-width=".7"/>
+    <path d="M298 347Q350 366 402 347V363Q350 382 298 363Z" fill="#2B323D"/>
+    <path d="M300 350Q350 368 400 350" stroke="#B8A079" stroke-width="3"/>
+    <path d="M300 356Q350 375 400 356" stroke="#4D5665" stroke-width="4"/>
+    <path d="M300 363Q350 382 400 363" stroke="#909CAC" stroke-width="2.5"/>
+    <path d="M346 359L354 360V364L346 363Z" fill="#C6B08A"/>
+    <path d="M290 346V367Q350 394 410 367V346" stroke="#EEF0F4" stroke-opacity=".58" stroke-width="1"/>
+  </g>
+</svg>

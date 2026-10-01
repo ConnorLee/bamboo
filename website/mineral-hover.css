@@ -1,0 +1,42 @@
+/* Hover has its own pose layer; the catalog's image framing stays untouched. */
+.collection .mineral-row { padding-top:36px; }
+.collection .mineral { user-select:none; -webkit-user-select:none; }
+.collection .mineral::after { content:""; position:absolute; inset:-32px 0 0; }
+.collection .mineral-window img { -webkit-user-drag:none; }
+.collection .mineral-window { overflow:visible; }
+.collection .mineral-object,
+.collection .mineral-surface { position:absolute; inset:0; display:block; transform-style:preserve-3d; pointer-events:none; }
+.collection .mineral-object { transform-origin:50% 50%; }
+.collection .mineral-surface { transform:translateZ(1px); }
+.collection .mineral-awake { z-index:2; }
+.collection .mineral-awake .mineral-object { will-change:transform; }
+.collection .mineral-edge {
+  translate:0 0 var(--edge-z); opacity:0;
+  filter:brightness(.52) saturate(1.3);
+  transition:opacity 180ms ease;
+}
+.collection .mineral-awake .mineral-edge { opacity:1; }
+.collection .mineral-sheen {
+  display:block; position:absolute; left:50%; top:50%;
+  mask-size:100% 100%; mask-repeat:no-repeat; pointer-events:none; opacity:0;
+  overflow:hidden; isolation:isolate; transform-style:flat;
+}
+.collection .mineral-glint {
+  position:absolute; inset:-50%; pointer-events:none;
+  background:linear-gradient(112deg,transparent 31%,
+    color-mix(in oklch,var(--stone-color) 40%,#baffed) 40%,
+    #fff4 44%,#fffe 46%,#eee5ff99 48%,
+    color-mix(in oklch,var(--stone-color) 40%,#b5cdff) 51%,transparent 61%);
+}
+@media(hover:hover) and (pointer:fine) {
+  .collection .mineral:hover .mineral-window,
+  .collection .mineral:active .mineral-window { transform:none; }
+  .collection .mineral:hover::before { opacity:.95; transform:translateY(9px) scale(1.12,.68); }
+  .collection .mineral:active .mineral-surface { transform:translateZ(1px) scale(.97); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .collection .mineral-object { transform:none !important; }
+  .collection .mineral-edge,.collection .mineral-sheen { opacity:0 !important; }
+  .collection .mineral:hover::before,.collection .mineral:focus-visible::before { transform:none; }
+  .collection .mineral:active .mineral-surface { transform:translateZ(1px); }
+}

@@ -6,13 +6,20 @@ window.HALO_YEAR_COLLECTION = Object.freeze({
   stones: Object.freeze(window.HALO_I_CATALOG.map(stage => Object.freeze({
     month: stage.month,
     compartment: stage.compartment,
+    key: stage.key,
     milestoneID: `halo-i-${stage.compartment}`,
     name: stage.stone,
     chapter: stage.chapter,
     color: stage.color,
+    timeLabel: stage.timeLabel,
+    image: `../assets/stone-year/${stage.key}.webp`,
     story: stage.firstReveal,
+    meaning: stage.meaning,
     openingMessage: stage.firstReveal,
     beneathMessage: stage.beneathStone,
-    texture: `${stage.stone} · Proposed natural stone. Color study only.`
+    texture: stage.material,
+    variation: stage.variation,
+    symbolism: stage.symbolism,
+    sourceURLs: stage.sourceURLs
   })))
 });

@@ -71,7 +71,7 @@
       entries.forEach(entry => { if (entry.isIntersecting) reveal(entry.target, instant()); });
     }, { threshold:0, rootMargin:'0px 0px -36px 0px' });
     const groups = [
-      '#milestones > *', '.collection-heading > *', '#mineral-collection > .mineral',
+      '#milestones > :not([aria-hidden="true"])', '.collection-heading > *', '#mineral-collection > .mineral',
       '.app-section > .eyebrow, .app-section > h2, .app-section > .app-intro',
       '.app-gallery > figure', '.closing > *',
     ];

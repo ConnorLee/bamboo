@@ -1,0 +1,77 @@
+/* One quiet purchase system shared by the two public Halo stories. */
+.reservation-button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 24px;border:1px solid transparent;border-radius:999px;background:var(--ink,#22291e);color:var(--paper,#f7f7f5);font:inherit;font-size:13px;font-weight:500;line-height:1.4;cursor:pointer;text-align:center;text-decoration:none}
+.reservation-button:hover{filter:brightness(1.13)}
+.reservation-button:disabled{opacity:.6;cursor:wait}
+.reservation-button:focus-visible,.reservation-text-link:focus-visible,.reservation-close:focus-visible,.reservation-dialog a:focus-visible{outline:2px solid #7f9863;outline-offset:4px}
+.reservation-text-link{background:none;border:0;border-bottom:1px solid currentColor;border-radius:0;padding:3px 0;color:inherit;font:inherit;font-size:12px;line-height:1.5;cursor:pointer}
+.reservation-hero-offer{margin:25px 0 0!important;font-size:14px!important;line-height:1.65!important}
+.reservation-hero-offer strong,.reservation-hero-offer span{display:block;font-weight:400}
+.reservation-hero-offer strong{color:inherit}
+.reservation-hero-checkout{width:100%;max-width:320px;margin:20px 0 0}
+.support-copy .reservation-hero-checkout{margin-inline:auto}
+.reservation-hero-checkout>.reservation-button{width:100%}
+.support-hero .reservation-button,.nav.over-intro .reservation-button{background:#eff1ec;color:#151714}
+.support-hero .reservation-hero-offer strong{color:#f2f2ef}
+.reservation-mini{margin:10px 0 0!important;font-size:11px!important;line-height:1.5!important;color:inherit;opacity:.72}
+.reservation-availability{font-size:11px!important;line-height:1.55!important;margin:10px 0 0!important;color:inherit;opacity:.8}
+.reservation-availability:empty{display:none}
+.reservation-discover{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-top:22px}
+.reservation-wallet{width:100%;min-width:0;margin:0 0 10px}
+.reservation-wallet:not([data-ready="true"]){height:0;margin:0;overflow:hidden;visibility:hidden}
+.reservation-wallet[hidden],.reservation-dialog [hidden]{display:none!important}
+.reservation-offer{scroll-margin-top:100px;background:var(--paper,#f7f7f5);color:var(--ink,#22291e);padding:110px 6vw 120px;border-top:1px solid var(--line,#d7dbd2)}
+.reservation-offer-inner{display:grid;grid-template-columns:1.25fr 1fr;gap:12%;max-width:1180px;margin:auto}
+.reservation-offer h2{font-size:clamp(34px,4vw,60px);font-weight:400;letter-spacing:-.055em;line-height:1.05;margin:20px 0 28px}
+.reservation-offer h2 span{color:var(--muted,#71786b)}
+.reservation-offer-intro{font-size:18px;line-height:1.6;margin:0 0 26px}
+.reservation-includes{list-style:none;padding:0;margin:0;max-width:460px}
+.reservation-includes li{padding:12px 0;border-bottom:1px solid var(--line,#d7dbd2);font-size:13px;line-height:1.5}
+.reservation-purchase{padding-top:25px;max-width:400px}
+.reservation-purchase>.reservation-button{width:100%}
+.reservation-price{font-size:72px;letter-spacing:-.065em;line-height:1;margin:0 0 12px}
+.reservation-price-label{font-size:12px;line-height:1.5;margin:0;color:var(--muted,#71786b)}
+.reservation-today{font-size:18px;line-height:1.5;margin:35px 0 18px}
+.reservation-terms{font-size:13px;line-height:1.75;margin:21px 0 12px}
+.reservation-disclosure{font-size:11px;line-height:1.75;margin:0 0 23px;color:var(--muted,#71786b)}
+.reservation-legal{font-size:11px;line-height:1.5;margin:24px 0 0;color:var(--muted,#71786b)}
+.reservation-legal a{text-decoration:underline;text-underline-offset:3px}
+html.reservation-open{overflow:hidden}
+.reservation-dialog,.reservation-updates-dialog{position:fixed;inset:0;margin:auto;border:1px solid var(--line,#d7dbd2);border-radius:22px;padding:40px;width:calc(100% - 32px);max-width:470px;max-height:calc(100svh - 32px);overflow:auto;background:var(--paper,#f7f7f5);color:var(--ink,#22291e);box-shadow:0 30px 100px #0003}
+.reservation-dialog::backdrop,.reservation-updates-dialog::backdrop{background:#060b08a6;backdrop-filter:blur(5px)}
+.reservation-close{position:absolute;right:16px;top:12px;display:grid;place-items:center;min-width:36px;min-height:36px;background:none;color:inherit;border:0;font-size:26px;font-weight:300;cursor:pointer}
+.reservation-dialog h2,.reservation-updates-dialog h2{font-size:35px;line-height:1.1;letter-spacing:-.04em;font-weight:400;margin:10px 0 20px}
+.reservation-dialog .eyebrow{font-size:10px;letter-spacing:.09em;margin:0 0 18px}
+.reservation-dialog p{font-size:13px;line-height:1.65}
+.reservation-dialog form{margin:22px 0 0}
+.reservation-dialog .reservation-button{width:100%;margin-top:16px}
+.reservation-dialog .reservation-text-link{margin-top:12px}
+.reservation-payment-status{min-height:1.65em;margin:14px 0 0;overflow-wrap:anywhere}
+.reservation-payment-status[data-error="true"]{color:#9d292e}
+:root[data-theme="dark"] .reservation-payment-status[data-error="true"]{color:#ffb1b4}
+.reservation-card-label{text-align:center;color:var(--muted,#71786b);font-size:11px!important;margin:18px 0}
+.reservation-detail-label{display:block;margin:18px 0 7px;font-size:12px}
+.reservation-details input:not([type="checkbox"]),.reservation-details select{display:block;width:100%;min-height:46px;padding:11px 13px;border:1px solid var(--muted,#71786b);border-radius:9px;background:var(--paper,#f7f7f5);color:inherit;font:inherit;font-size:16px}
+.reservation-details input:focus-visible,.reservation-details select:focus-visible{outline:2px solid #7f9863;outline-offset:3px}
+.reservation-opt-in{display:flex;align-items:flex-start;gap:10px;margin:20px 0 0;font-size:12px;line-height:1.5}
+.reservation-opt-in input{width:17px;height:17px;flex-shrink:0;margin:0}
+.reservation-receipt{border-block:1px solid var(--line,#d7dbd2);padding:12px 0;margin:22px 0}
+.reservation-receipt p{margin:5px 0}
+.reservation-id{font-size:10px!important;overflow-wrap:anywhere;color:var(--muted,#71786b)}
+.reservation-refund{margin-top:28px;border-top:1px solid var(--line,#d7dbd2);padding-top:14px}
+.reservation-refund summary{font-size:12px;cursor:pointer}
+.reservation-form-status{font-size:12px!important}
+@media(max-width:700px){
+  .nav .reservation-button{font-size:11px;padding:10px 14px;min-height:42px;white-space:nowrap}
+  .reservation-offer{padding:70px 24px 80px}
+  .reservation-offer-inner{grid-template-columns:1fr;gap:34px}
+  .reservation-purchase{max-width:none;padding-top:0}
+  .reservation-price{font-size:64px}
+  .reservation-dialog,.reservation-updates-dialog{padding:36px 24px 28px}
+  .support-hero{padding-top:64px;padding-bottom:110px}
+  .support-actions{gap:20px;flex-wrap:wrap;margin-top:20px}
+  .reservation-offer h2{font-size:38px}
+}
+@media(prefers-reduced-motion:reduce){.reservation-dialog,.reservation-button{animation:none;transition:none;scroll-behavior:auto}}
+
+/* Payment returns still target the retained hero checkout. */
+.reservation-hero-checkout#reserve { scroll-margin-top:calc(var(--nav-height) + 24px); }

@@ -1,0 +1,28 @@
+.mineral-carousel { display:contents; }
+.mineral-carousel-controls[hidden] { display:none; }
+.mineral-carousel-controls { display:flex; justify-content:center; padding:4px 24px 0; }
+.mineral-carousel-toggle {
+  display:inline-flex; align-items:center; justify-content:center; gap:7px;
+  min-height:44px; padding:6px 14px; border:0; border-radius:24px;
+  color:var(--muted); background:transparent; font:inherit; font-size:11px; cursor:pointer;
+}
+.mineral-carousel-toggle svg { width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:1.5; }
+.mineral-carousel-toggle .carousel-play-icon { display:none; }
+.mineral-carousel-toggle[aria-pressed="true"] .carousel-play-icon { display:block; fill:currentColor; stroke:none; }
+.mineral-carousel-toggle[aria-pressed="true"] .carousel-pause-icon { display:none; }
+.mineral-carousel-toggle:hover { background:var(--line); color:var(--ink); }
+.mineral-carousel-toggle:focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
+@media(max-width:1180px), (hover:none) and (pointer:coarse) {
+  .collection { --carousel-inset:5.5vw; }
+  .mineral-carousel.is-looping { display:block; margin-inline:calc(-1 * var(--carousel-inset)); }
+  .collection .is-looping .mineral-row {
+    max-width:none; width:100%; margin-inline:0; padding-inline:0;
+    grid-auto-columns:clamp(104px,18vw,132px); gap:24px;
+    scroll-snap-type:none; scroll-behavior:auto; scrollbar-width:none;
+    overflow-x:auto; overflow-y:hidden; overscroll-behavior-x:contain;
+    mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent);
+  }
+  .collection .is-looping .mineral-row::-webkit-scrollbar { display:none; }
+  .collection .is-looping .mineral { scroll-snap-align:none; }
+}
+@media(max-width:700px) { .collection { --carousel-inset:24px; } }
