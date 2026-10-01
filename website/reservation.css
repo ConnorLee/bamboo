@@ -1,6 +1,6 @@
 /* One quiet purchase system shared by the two public Halo stories. */
 .reservation-button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 24px;border:1px solid transparent;border-radius:999px;background:var(--ink,#22291e);color:var(--paper,#f7f7f5);font:inherit;font-size:13px;font-weight:500;line-height:1.4;cursor:pointer;text-align:center;text-decoration:none}
-.reservation-button:hover{filter:brightness(1.13)}
+@media(hover:hover) and (pointer:fine){.reservation-button:hover{filter:brightness(1.13)}}
 .reservation-button:disabled{opacity:.6;cursor:wait}
 .reservation-button:focus-visible,.reservation-text-link:focus-visible,.reservation-close:focus-visible,.reservation-dialog a:focus-visible{outline:2px solid #7f9863;outline-offset:4px}
 .reservation-text-link{background:none;border:0;border-bottom:1px solid currentColor;border-radius:0;padding:3px 0;color:inherit;font:inherit;font-size:12px;line-height:1.5;cursor:pointer}
@@ -75,3 +75,20 @@ html.reservation-open{overflow:hidden}
 
 /* Payment returns still target the retained hero checkout. */
 .reservation-hero-checkout#reserve { scroll-margin-top:calc(var(--nav-height) + 24px); }
+
+/* A restrained tactile response for the landing page's launch invitation. */
+.reservation-button[data-open-waitlist] {
+  box-shadow:inset 0 1px 0 #ffffff40,0 6px 20px #0000;
+  transition:transform 150ms var(--ease-out),box-shadow 180ms ease,background-color 180ms ease;
+}
+@media(hover:hover) and (pointer:fine) {
+  .reservation-button[data-open-waitlist]:not(:disabled):hover {
+    filter:none; transform:translateY(-1px);
+    box-shadow:inset 0 1px 0 #ffffff80,0 6px 20px #0002;
+  }
+}
+.reservation-button[data-open-waitlist]:not(:disabled):active { transform:scale(.98); }
+@media(prefers-reduced-motion:reduce) {
+  .reservation-button[data-open-waitlist]:not(:disabled):is(:hover,:active) { transform:none; }
+}
+[data-motion-input="keyboard"] .reservation-button[data-open-waitlist] { transform:none; }
