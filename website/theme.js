@@ -12,7 +12,8 @@
     const theme = preference || (system.matches ? 'dark' : 'light');
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
-    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#101114' : '#f7f7f5';
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = theme === 'dark' ? '#101114' : '#f7f7f5';
     const toggle = document.getElementById('theme-toggle');
     if (toggle) {
       const label = 'Switch to ' + (theme === 'dark' ? 'light' : 'dark') + ' mode';

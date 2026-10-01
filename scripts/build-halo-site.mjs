@@ -52,4 +52,4 @@ async function transform(directory = '') {
 }
 await transform();
 await rm(path.join(output, 'halo-i-sections.html'));
-console.log('Built Halo website: /, /how-it-works, /original, /variants (A–D)');
+console.log('Built Halo website: /, /privacy, /how-it-works, /original, /variants (A–D)');

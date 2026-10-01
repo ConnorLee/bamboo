@@ -37,6 +37,13 @@
   star.style.setProperty('--star-delay', `${random(4, 8)}s`);
   field.append(star);
   hero.prepend(field);
+  const fields = [{ surface: hero, field, inView: true }];
+  [document.getElementById('yearly-bracelets'), document.querySelector('footer.site-footer')]
+    .filter(Boolean).forEach((surface) => {
+      const copy = field.cloneNode(true);
+      surface.prepend(copy);
+      fields.push({ surface, field: copy, inView: false });
+    });
 
   const toggle = document.createElement('button');
   toggle.type = 'button';
@@ -44,9 +51,10 @@
   const pauseIcon = '<path d="M6 4v8M10 4v8"/>';
   const playIcon = '<path d="m6 4 6 4-6 4Z"/>';
   let paused = false;
-  let inView = true;
   function sync() {
-    field.dataset.running = String(inView && !document.hidden && !paused && !reduced.matches);
+    fields.forEach((item) => {
+      item.field.dataset.running = String(item.inView && !document.hidden && !paused && !reduced.matches);
+    });
     toggle.hidden = reduced.matches;
     toggle.setAttribute('aria-label', paused ? 'Play background animation' : 'Pause background animation');
     toggle.title = paused ? 'Play atmosphere' : 'Pause atmosphere';
@@ -56,11 +64,21 @@
   const foot = hero.querySelector('.support-foot');
   foot?.insertBefore(toggle, foot.querySelector('a'));
   if ('IntersectionObserver' in window) {
-    const visibility = new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; sync(); });
-    visibility.observe(hero);
+    const visibility = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const item = fields.find(({ surface }) => surface === entry.target);
+        if (item) item.inView = entry.isIntersecting;
+      });
+      sync();
+    });
+    fields.forEach(({ surface }) => visibility.observe(surface));
+  } else {
+    fields.forEach(item => { item.inView = true; });
   }
   document.addEventListener('visibilitychange', sync);
-  window.addEventListener('pagehide', () => { field.dataset.running = 'false'; });
+  window.addEventListener('pagehide', () => {
+    fields.forEach(({ field }) => { field.dataset.running = 'false'; });
+  });
   window.addEventListener('pageshow', sync);
   reduced.addEventListener('change', sync);
   sync();

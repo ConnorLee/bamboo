@@ -1,6 +1,10 @@
 /* Candidate B is the visual source of truth. Reuse its preserved design and assets. */
 @import url("./original/style.css");
 
+.halo-footer-links{display:flex;gap:18px;flex-wrap:wrap;font-size:12px}
+.halo-footer-links a{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:800px){.halo-footer-links{gap:12px}}
+
 /* One stationary mineral-paper grain, composited behind section content.
    Keep it on the sticky stage, never on the full scroll-length journey. */
 .support-hero,.section-heading,.collection,.app-section,.year-case,.yearly-collection {
@@ -343,6 +347,11 @@ html[data-motion-input="keyboard"] { scroll-behavior:auto; }
   border-top:1px solid #ffffff0d; overflow:hidden;
 }
 .yearly-copy { position:relative; z-index:1; padding-block:16px; }
+.yearly-app-icon {
+  display:block; width:68px; height:68px; margin:0 0 27px;
+  border:1px solid #ffffff27; border-radius:23%;
+  box-shadow:0 12px 35px #0007,0 0 30px #c6d7ba13;
+}
 .yearly-collection .eyebrow { color:#a5b5c8; font-size:10px; margin-bottom:24px; }
 .yearly-collection h2 {
   font-size:clamp(40px,4.2vw,68px); font-weight:400; letter-spacing:-.055em;
@@ -368,6 +377,7 @@ html[data-motion-input="keyboard"] { scroll-behavior:auto; }
 @media(max-width:700px) {
   .closing.yearly-collection { grid-template-columns:1fr; gap:22px; padding:58px 24px 42px; }
   .yearly-copy { padding:0; }
+  .yearly-app-icon { width:56px; height:56px; margin-bottom:23px; }
   .yearly-collection .eyebrow { margin-bottom:19px; font-size:9px; }
   .yearly-collection h2 { font-size:clamp(40px,10.8vw,60px); margin-bottom:18px; }
   .yearly-intro { max-width:310px; font-size:14px; margin-bottom:23px; }
@@ -376,15 +386,40 @@ html[data-motion-input="keyboard"] { scroll-behavior:auto; }
   .yearly-art figcaption { font-size:9px; padding-top:10px; }
 }
 
+/* Continue the opening sky through the black closing scene and sign-off. */
+.yearly-collection > .hero-atmosphere {
+  z-index:0; background:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 28%,transparent 64%);
+  mask-image:linear-gradient(90deg,#000 0%,#000 28%,transparent 64%);
+}
+footer.site-footer {
+  --wordmark-filter:none; --muted:#a5aeb7;
+  position:relative; isolation:isolate; overflow:hidden;
+  background:#080909; border-top:1px solid #ffffff22;
+}
+.site-footer > .hero-atmosphere {
+  z-index:0; background:none;
+  -webkit-mask-image:none; mask-image:none;
+}
+.site-footer .hero-firefly:nth-child(n+25) { display:none; }
+.site-footer > :not(.hero-atmosphere) { position:relative; z-index:1; }
+.site-footer .halo-footer-links a { color:#c6cbd0; }
+@media(max-width:800px) {
+  .yearly-collection > .hero-atmosphere {
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 40%,transparent 72%);
+    mask-image:linear-gradient(180deg,#000 0%,#000 40%,transparent 72%);
+  }
+}
+
 /* A quiet company sign-off, aligned with the page's existing side margins. */
 footer.site-footer { padding:36px 5.5vw; flex-wrap:nowrap; gap:24px; }
 .site-footer .brand-lockup { width:136px; }
 .site-footer .footer-copyright { margin:0; width:auto; min-width:0; order:0; font-size:12px; line-height:1.5; text-align:right; }
 .site-footer .footer-copyright a { margin-left:8px; font-size:inherit; text-underline-offset:3px; }
 @media(max-width:700px) {
-  footer.site-footer { padding:28px 24px; gap:20px; }
+  footer.site-footer { padding:28px 24px; flex-wrap:wrap; gap:20px; }
   .site-footer .brand-lockup { width:112px; }
-  .site-footer .footer-copyright { font-size:11px; }
+  .site-footer .footer-copyright { width:100%; order:3; font-size:11px; text-align:left; }
 }
 
 /* The original simple email form, available without leaving the landing page. */
