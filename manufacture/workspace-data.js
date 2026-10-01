@@ -1,17 +1,17 @@
 /* Canonical editable schema. Blank means unknown, never zero or approved. */
 window.HaloManufactureData = {
   storageKey: 'halo-manufacture-workspace-v1',
-  revision: 'rigid-chassis-installed-readability-v2',
+  revision: 'first-year-189-open-nfc-v3',
   dimensions: [
-    ['wrist-diameter', 'Wrist inner diameter (legacy / general envelope)', 'mm / size range — re-review against two-size strategy'],
+    ['wrist-diameter', 'Wrist inner diameter (legacy / general envelope)', 'mm / size range — re-review required fit sizes against H3'],
     ['size-sm', 'S/M chassis target envelope', 'TARGET ONLY — curvature / internal envelope / revision'],
     ['size-ml', 'M/L chassis target envelope', 'TARGET ONLY — curvature / internal envelope / revision'],
-    ['size-coverage', 'Two-size fit evidence', 'Wrist samples / overlap / comfort / tool-free adjustment'],
+    ['size-coverage', 'Required size count / fit evidence', 'Wrist samples / overlap / comfort / tool-free adjustment'],
     ['underside-travel', 'Underside adjustment travel', 'TARGET 15–20 mm; final travel requires fit prototype'],
     ['wrist-curvature', 'Rigid upper wrist curvature', 'Approx. front 2/3; arc / radii / section / CAD revision'],
     ['clasp-architecture', 'Clasp / adjustment candidate', 'Candidate mechanism / closure feedback / accidental release'],
     ['current-indexing', 'Current-stone center alignment', 'Mechanism / sequence / Months 01–12 / retention evidence'],
-    ['module-envelope', 'Complete removable module envelope', 'Stone + carrier + NFC / antenna / isolation, mm'],
+    ['module-envelope', 'Complete removable module envelope', 'Stone + carrier; optional NFC only if selected, mm'],
     ['pinch-points', 'Skin pinch / sharp-edge clearance', 'Clasp, moving underside, module edges / inspection revision'],
     ['pvd-allowance', 'PVD thickness / fit allowance', 'Supplier process range / masking / tolerance stack'],
     ['isolation-volume', 'NFC isolation / antenna volume', 'Space for spacer / ferrite / antenna alternatives, mm'],
@@ -36,15 +36,15 @@ window.HaloManufactureData = {
     ['pack-envelope', 'Master box outer envelope', 'Final TBD — reference 280 × 160 × 45 mm conflicts', 'packaging'],
     ['pack-board', 'Board, wrap & lining stack', 'Board gauge / texture / finish', 'packaging'],
     ['pack-bracelet-bay', 'Bracelet bay / package location', 'Separate protected position; Month 01 immediately accessible', 'packaging'],
-    ['pack-first-box', 'Month 01 location / box envelope', 'One of exactly 12 branded boxes; accessible first', 'packaging'],
-    ['pack-month-boxes', 'Milestone boxes / calibrated envelope', 'Final TBD — reference 60 × 60 × 45 mm conflicts', 'packaging'],
-    ['pack-drawer', 'Collection tray / drawer & travel', '12-box arrangement / internal fit / access, mm', 'packaging'],
+    ['pack-first-box', 'Month 01 location / box envelope', 'One of 12 individual presentations; accessible first', 'packaging'],
+    ['pack-month-boxes', 'Individual milestone presentations / envelope', 'Final TBD — reference 60 × 60 × 45 mm conflicts', 'packaging'],
+    ['pack-drawer', 'Collection tray / drawer & travel', '12-presentation arrangement / internal fit / access, mm', 'packaging'],
     ['pack-fit', 'Drawer fit / divider pitch', 'Clearance / tolerance stack, mm', 'packaging'],
     ['pack-insert', 'Stone nest / removable insert', 'Cavity / material / safe extraction', 'packaging'],
     ['pack-ribbon', 'Ribbon pull / anchor detail', 'Material / pull length / retention target', 'packaging'],
     ['pack-cards', 'Ritual card / print specification', 'Size / stock / print / finish', 'packaging'],
     ['pack-protection', 'Transit / closure protection', 'Crown clearance / movement / carton allowance', 'packaging'],
-    ['pack-finish-match', 'Shared Light / Dark dieline verification', 'Same inserts, cards, graphics, type and stone order; color only', 'packaging']
+    ['pack-finish-match', 'Presentation geometry / optional finish comparison', 'Same inserts, cards, graphics, type and stone order; color only', 'packaging']
   ],
   protocol: [
     ['revision', 'CAD / sample revision', 'TBD — link every result to the tested geometry'],
@@ -69,7 +69,7 @@ window.HaloManufactureData = {
   ],
   rf: [
     ['prototype', 'Prototype ID / CAD revision'],
-    ['requirement', 'Requirement basis', ['Current installed-readability requirement', 'Legacy — re-review required']],
+    ['requirement', 'Requirement basis', ['H3 optional NFC experiment', 'Current installed-readability requirement', 'Legacy — re-review required']],
     ['evidence', 'Evidence status', ['REQUIRES PROTOTYPE', 'DESIGN INTENT', 'WORKING ASSUMPTION', 'SUPPLIER-CONFIRMED', 'PHYSICALLY VALIDATED']],
     ['chassis', 'Chassis size / geometry'], ['finish', 'Finish / PVD revision'],
     ['chip', 'NFC chip / inlay'], ['antenna', 'Antenna envelope (mm)'],

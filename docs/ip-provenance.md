@@ -45,6 +45,14 @@ git push
 
 The archival commit follows the deployed source commit; do **not** redeploy solely to make the archive commit become the source SHA. `VERCEL_CLI` can select an installed Vercel binary. A collection failure leaves a private `archives/deployment-recovery.json` containing the deployment URL and Git context, so the observation can be retried without pretending it succeeded earlier.
 
+### Archival commits and Git builds
+
+`vercel.json` sets `ignoreCommand` to `node scripts/vercel-ignore-build.mjs`. It skips a Git build only when the nonempty diff from `VERCEL_GIT_PREVIOUS_SHA` to the current commit contains exclusively `provenance/releases/*.json` files. The previous SHA is Vercel's last successful deployment for this project and branch, not simply the parent commit. A push containing a source change followed by an archival commit therefore still builds. Product-concept manifests, build scripts, config, page and asset changes all build normally.
+
+Missing metadata, unavailable shallow history, unrelated history, a dirty tracked checkout, a mismatched HEAD, or no changes all continue the build. Manual deployment uploads without Git history also build. The guard does not edit records, timestamps, Git history or platform settings. Its exit codes follow Vercel's convention: `0` skips and `1` builds. Vercel marks a skipped build canceled; it still counts toward deployment quotas. An archival commit need not become the source SHA served by the production alias.
+
+`pnpm test:deployment` verifies this boundary, including multi-commit pushes and a source file renamed into the release directory. See Vercel's [ignoreCommand reference](https://vercel.com/docs/project-configuration/vercel-json#ignorecommand), [previous deployment SHA](https://vercel.com/docs/environment-variables/system-environment-variables#vercel_git_previous_sha) and [ignored build behavior](https://vercel.com/docs/project-configuration/project-settings#ignored-build-step).
+
 For a deployment made outside the normal command:
 
 ```sh

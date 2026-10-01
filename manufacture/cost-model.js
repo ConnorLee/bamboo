@@ -1,4 +1,4 @@
-/* One HALO program: shared geometry/tooling, Light and Dark cosmetic finishes.
+/* H3: one $189 First Year Collection. Finish comparisons retain historical evidence.
  * All old item IDs remain stable. Blank/null/undefined means unknown, never zero.
  * Component prices are per finished kit (quantity-12 items are per component).
  * Dark adds PVD and packaging premiums to the shared preparation/packaging cost.
@@ -16,6 +16,9 @@
   'use strict';
   var SCENARIOS = Object.freeze([25, 100, 500, 1000]);
   var FINISHES = Object.freeze(['light', 'dark']);
+  var TARGET = Object.freeze({ retail: 189, reservation: 25, landedAim: 70, landedCeiling: 85, baseBudget: 80, currency: 'USD' });
+  // B uses three tagged milestones solely as a comparison assumption, not a product decision.
+  var NFC_OPTIONS = Object.freeze({ all: 12, milestones: 3, bracelet: 1, none: 0 });
   var ITEMS = Object.freeze([
     { id: 'body', label: 'Shared 316L rigid bracelet chassis', quantity: 1, group: 'cogs' },
     { id: 'clasp', label: 'Shared clasp / underside adjustment', quantity: 1, group: 'cogs' },
@@ -24,9 +27,9 @@
     { id: 'sockets', label: 'Socket / retention interface', quantity: 12, group: 'cogs' },
     { id: 'carrier', label: 'Stone carrier', quantity: 12, group: 'cogs' },
     { id: 'gemstone', label: 'Gemstone', quantity: 12, group: 'cogs' },
-    { id: 'nfc', label: 'Passive NFC inlay', quantity: 12, group: 'cogs' },
-    { id: 'ferrite', label: 'Ferrite / RF isolation allowance', quantity: 12, group: 'cogs' },
-    { id: 'moduleAssembly', label: 'Stone / NFC module assembly', quantity: 12, group: 'cogs' },
+    { id: 'nfc', label: 'Optional NFC inlay + provisioning / tag assembly', quantity: 12, group: 'cogs', nfc: true },
+    { id: 'ferrite', label: 'Optional ferrite / RF isolation allowance', quantity: 12, group: 'cogs', nfc: true },
+    { id: 'moduleAssembly', label: 'Stone / carrier assembly (exclude NFC work above)', quantity: 12, group: 'cogs' },
     { id: 'blankFiller', label: 'Blank filler (12-piece supply allowance)', quantity: 12, group: 'cogs' },
     { id: 'assembly', label: 'Final bracelet / kit assembly', quantity: 1, group: 'cogs' },
     { id: 'engraving', label: 'Engraving', quantity: 1, group: 'cogs' },
@@ -51,7 +54,7 @@
       mix[scenario] = { light: '', dark: '' };
       yieldAssumptions[scenario] = { light: '', dark: '', basis: '' };
     });
-    return { currency: 'USD', costs: costs, retail: ['', '', ''], sharedTooling: '', toolingBasis: '', mix: mix, yieldAssumptions: yieldAssumptions };
+    return { currency: 'USD', nfcMode: 'none', costs: costs, retail: ['', '', ''], sharedTooling: '', toolingBasis: '', mix: mix, yieldAssumptions: yieldAssumptions };
   }
   function amount(input) {
     if (input === null || input === undefined || (typeof input === 'string' && input.trim() === '')) return { value: null, status: 'missing' };
@@ -78,13 +81,16 @@
     finish = finish || 'light';
     if (FINISHES.indexOf(finish) === -1) throw new RangeError('Unknown HALO finish: ' + finish);
     model = model && typeof model === 'object' ? model : {};
+    var nfcMode = model.nfcMode === undefined ? 'all' : model.nfcMode;
+    if (!Object.prototype.hasOwnProperty.call(NFC_OPTIONS, nfcMode)) throw new RangeError('Unknown NFC option: ' + nfcMode);
     var costs = model.costs && model.costs[quantity] || {};
     var items = ITEMS.map(function (item) {
       var input = costs[item.id], parsed = amount(input);
-      var applicable = !item.finish || item.finish === finish;
-      var lineTotal = applicable && parsed.value !== null ? finite(parsed.value * item.quantity) : null;
+      var count = item.nfc ? NFC_OPTIONS[nfcMode] : item.quantity;
+      var applicable = (!item.finish || item.finish === finish) && count > 0;
+      var lineTotal = applicable && parsed.value !== null ? finite(parsed.value * count) : null;
       return {
-        id: item.id, label: item.label, quantity: item.quantity, group: item.group, applicable: applicable,
+        id: item.id, label: item.label, quantity: count, group: item.group, applicable: applicable,
         input: input === undefined ? '' : input, unitCost: parsed.value, lineTotal: lineTotal,
         status: !applicable ? 'not-applicable' : parsed.status === 'valid' && lineTotal === null ? 'invalid' : parsed.status
       };
@@ -111,7 +117,7 @@
       };
     });
     return {
-      scenario: quantity, quantity: quantity, finish: finish,
+      scenario: quantity, quantity: quantity, finish: finish, nfcMode: nfcMode,
       complete: missing.length === 0 && invalid.length === 0 && cogs !== null && landed !== null && selling !== null,
       missing: missing, invalid: invalid, items: items, cogs: cogs, landed: landed, selling: selling,
       tooling: { total: tooling.value, status: tooling.status, perKit: toolingPerKit }, amortizedLanded: amortizedLanded,
@@ -153,5 +159,5 @@
       yieldPlanComplete: totalStarts !== null
     };
   }
-  return Object.freeze({ ITEMS: ITEMS, SCENARIOS: SCENARIOS, FINISHES: FINISHES, blankModel: blankModel, calculate: calculate, calculateProgram: calculateProgram });
+  return Object.freeze({ ITEMS: ITEMS, SCENARIOS: SCENARIOS, FINISHES: FINISHES, TARGET: TARGET, NFC_OPTIONS: NFC_OPTIONS, blankModel: blankModel, calculate: calculate, calculateProgram: calculateProgram });
 });

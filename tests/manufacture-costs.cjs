@@ -4,7 +4,10 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const { ITEMS, SCENARIOS, blankModel, calculate, calculateProgram } = require('../manufacture/cost-model.js');
+const { ITEMS, SCENARIOS, TARGET, blankModel: freshModel, calculate, calculateProgram } = require('../manufacture/cost-model.js');
+
+// Legacy arithmetic fixtures explicitly retain the historical all-12 NFC scenario.
+function blankModel() { return {...freshModel(), nfcMode: 'all'}; }
 
 function zeroScenario(model, scenario) {
   ITEMS.forEach(item => { model.costs[scenario][item.id] = '0'; });
@@ -291,4 +294,85 @@ test('invalid mix, tooling or yield never produce a misleading complete estimate
     assert.equal(calculateProgram(model,25).complete, false);
   }
   assert.throws(() => calculate(model,25,'male'), RangeError);
+});
+
+
+test('H3 baseline has fixed targets and no fabricated costs, with optional NFC excluded', () => {
+  const model = freshModel();
+  assert.equal(TARGET.retail, 189);
+  assert.equal(TARGET.reservation, 25);
+  assert.equal(TARGET.landedCeiling, 85);
+  assert.equal(TARGET.baseBudget, 80);
+  assert.equal(model.nfcMode, 'none');
+  const result = calculate(model, 25);
+  assert.equal(result.landed, null);
+  assert.ok(!result.missing.includes('nfc'));
+  assert.ok(!result.missing.includes('ferrite'));
+  assert.equal(result.items.find(row => row.id === 'nfc').quantity, 0);
+  assert.equal(result.items.find(row => row.id === 'nfc').status, 'not-applicable');
+});
+
+test('NFC options alter only selected tag quantities and never erase entered evidence', () => {
+  const model = zeroScenario(freshModel(), 25);
+  model.costs[25].body = '50';
+  model.costs[25].nfc = '2';
+  model.costs[25].ferrite = '0.5';
+  model.costs[25].moduleAssembly = '1';
+  const costs = JSON.stringify(model.costs);
+  const expected = {none: 62, bracelet: 64.5, milestones: 69.5, all: 92};
+  for (const [mode, landed] of Object.entries(expected)) {
+    model.nfcMode = mode;
+    const result = calculate(model, 25);
+    assert.equal(result.landed, landed);
+    assert.equal(result.items.find(row => row.id === 'moduleAssembly').lineTotal, 12);
+    assert.equal(JSON.stringify(model.costs), costs);
+  }
+  model.nfcMode = 'none';
+  model.costs[25].nfc = '';
+  model.costs[25].ferrite = '-1';
+  assert.equal(calculate(model, 25).landed, 62);
+  model.nfcMode = 'bracelet';
+  assert.equal(calculate(model, 25).landed, null);
+  assert.deepEqual(calculate(model, 25).missing, ['nfc']);
+  assert.deepEqual(calculate(model, 25).invalid, ['ferrite']);
+});
+
+test('pre-H3 model quantities stay at twelve and unknown NFC choices are rejected', () => {
+  const model = zeroScenario(freshModel(), 25);
+  model.costs[25].nfc = '2';
+  delete model.nfcMode;
+  assert.equal(calculate(model, 25).landed, 24);
+  model.nfcMode = 'typo';
+  assert.throws(() => calculate(model, 25), RangeError);
+  model.nfcMode = '__proto__';
+  assert.throws(() => calculate(model, 25), RangeError);
+});
+
+test('H3 workspace import preserves historical NFC arithmetic and rejects ambiguous new modes', () => {
+  // Exercise the real pure migration boundary without starting a browser or touching local storage.
+  const context = {window: {HaloManufactureCosts: require('../manufacture/cost-model.js')}};
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../manufacture/workspace-data.js'), 'utf8'), context);
+  const workspaceSource = fs.readFileSync(path.join(__dirname, '../manufacture/manufacture.js'), 'utf8');
+  const migration = vm.runInNewContext(workspaceSource.slice(0, workspaceSource.indexOf('  function toast(')) + '\nreturn {fresh, normalize};\n})();', context);
+  const old = migration.fresh();
+  old.requirementRevision = 'rigid-chassis-installed-readability-v2';
+  delete old.model.nfcMode;
+  old.model.costs[25].nfc = '2.25';
+  old.model.retail = ['299', '249', ''];
+  old.checks['hw-next-08'] = true;
+  old.rf[0].requirement = 'Current installed-readability requirement';
+  const migrated = migration.normalize(old);
+  assert.equal(migrated.legacyReviewRequired, true);
+  assert.equal(migrated.model.nfcMode, 'all');
+  assert.equal(migrated.model.costs[25].nfc, '2.25');
+  assert.equal(migrated.model.retail[0], '299', 'Audit values survive without becoming the H3 offer');
+  assert.equal(migrated.checks['hw-next-08'], true);
+  assert.equal(migrated.rf[0].requirement, 'Current installed-readability requirement');
+  assert.equal(calculate(migrated.model, 25).items.find(row => row.id === 'nfc').lineTotal, 27);
+  const fresh = migration.fresh();
+  assert.equal(migration.normalize(fresh).model.nfcMode, 'none');
+  for (const value of ['typo', '__proto__', null, ['all'], 0]) {
+    fresh.model.nfcMode = value;
+    assert.throws(() => migration.normalize(fresh), /Invalid NFC option/);
+  }
 });

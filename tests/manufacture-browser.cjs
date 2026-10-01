@@ -54,6 +54,7 @@ async function run() {
     const response = await page.goto(`${baseUrl}/manufacture/`, { waitUntil: 'networkidle' });
     assert.equal(response.status(), 200);
     await page.waitForSelector('[data-cost="carrier"]');
+    await page.locator('#nfc-mode').selectOption('all');
     assert.equal(await page.title(), 'Manufacture — Halo Hardware Development');
     assert.equal(await page.locator('#section-nav a').count(), anchors.length);
     for (const id of anchors) {
@@ -131,6 +132,7 @@ async function run() {
     const costInputs = page.locator('[data-cost]');
     for (let index = 0; index < await costInputs.count(); index++) await costInputs.nth(index).fill('0');
     await page.locator('[data-cost="carrier"]').fill('2');
+    await page.getByText('Historical retail sensitivity / not the $189 offer', {exact: true}).click();
     await page.locator('[data-retail="0"]').fill('100');
     await page.locator('[data-retail="1"]').fill('0');
     await page.locator('[data-retail="2"]').fill('200');

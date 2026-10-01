@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server"
+import { recordUpdatesSignup } from "@/lib/reservations/service"
 
 export async function POST(request: Request) {
-  const { email } = await request.json()
+  let body
+  try { body = await request.json() } catch {
+    return NextResponse.json({ error: "Enter a valid email address" }, { status: 400 })
+  }
+  const { email, visitorId, attemptId } = body || {}
 
-  if (!email) {
-    return NextResponse.json({ error: "Email is required" }, { status: 400 })
+  if (typeof email !== "string" || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return NextResponse.json({ error: "Enter a valid email address" }, { status: 400 })
   }
 
   const MAILCHIMP_API_KEY = process.env.MAILCHIMP_API_KEY
@@ -34,6 +39,9 @@ export async function POST(request: Request) {
     const data = await response.json()
 
     if (response.ok) {
+      // Count only successful subscriptions. A missing analytics database must
+      // never turn an already successful Mailchimp signup into an error.
+      try { await recordUpdatesSignup({ visitorId, attemptId }) } catch { /* Best effort. */ }
       return NextResponse.json({ success: true })
     } else {
       return NextResponse.json({ error: data.detail }, { status: 400 })

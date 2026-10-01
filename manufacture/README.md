@@ -1,86 +1,50 @@
-# Halo manufacturing workspace
+# Halo manufacturing workspace · H3
 
-Internal reference route: `https://www.habithalo.app/manufacture` (Next.js rewrites the extensionless route; a trailing slash redirects to this canonical path).
+The active planning brief is **Halo — First Year Collection, $189**. The retained reservation model is **$25 fully refundable, credited toward $189**; the public site currently offers a Coming soon waitlist, not checkout. The collection includes the bracelet, 12 milestone stones, individual presentations, Halo iPhone app, digital milestone collection and companion growth. The internal economics brief is [`../docs/first-year-economics.md`](../docs/first-year-economics.md).
 
-This is an additive route in the existing Halo static site. It shares the bundled Aeonik Pro typography, brand lockup, palette and theme preference. It requires no backend or framework. It publishes from the Bamboo project to Vercel; public product pages are unchanged by this hardware specification update.
+Landed product COGS aims for $70, with $85 the maximum design gate. The $80 working allocation is hardware $28 + 12 stones/inserts $22 + all packaging $12 + assembly/QC/rework $8 + inbound freight/duties $10. These are targets, not supplier prices. Individual category ceilings sum to $100 and cannot all be spent. No supplier costs, prototype performance, fit, yield or profitability are confirmed by this reference.
 
-## Source files
+## Active product direction
 
-- `content.html`: all 16 reference sections, outreach text, engineering sources and checklist keys.
-- `page.html`: workspace shell, navigation slot, critical unknown and development context.
-- `workspace-data.js`: CAD dimensions, test protocol fields, requirement revision and RF/quote/decision tracker schemas.
-- `manufacture.js`: local persistence, editable controls, CSV/JSON export, import and rendering.
-- `cost-model.js`: dependency-free monetary calculations, shared with Node tests.
-- `manufacture.css`: responsive styling, theme and print styles.
-- `reference-bracelets.png`: user-supplied third-party form/closure reference, not a Halo prototype.
-- `latest-design-reference.png`: user-supplied bracelet/packaging concept (30 September 2026). H2 written requirements take precedence over unvalidated render details.
-- `packaging-reference-02.png`: additional 2 × 6 collection study, with unverified 280 × 160 × 45 mm outer and 60 × 60 × 45 mm individual-box annotations.
-- `hardware-architecture.svg`: symbolic Light/Dark × Month 01/12 occupancy, shared rigid upper chassis and current-center requirement; not scaled CAD.
-- `clasp-sizing.svg`: three unselected underside mechanism volumes and the provisional two-size strategy; not released engineering.
-- `../scripts/build-manufacture.mjs`: generates the route during the existing website build. Only runtime files enter `../public/halo-site/manufacture/`; templates and this README remain outside public output.
+NFC is optional. A = 12 tagged stones; B = selected stones (three only as a calculator comparison); C = one bracelet element; D = none. D is the provisional cost baseline; investigate C if one ownership/collection tap proves valuable. The app owns milestone eligibility for every option. RF tests are conditional on A–C, not required to approve D.
 
-From `/Users/connor/Desktop/halo/bamboo` (Vercel project `v0-scrapapp-mpjxkfyicbn`):
+One consumer offer and one provisional finish for cost development. Fit evidence determines necessary size variants. Twelve individual presentations remain included; twelve rigid mini-boxes, two packaging colorways, ornate retention and custom machining are not automatic requirements. Preserve real materials, progressive bracelet, monthly ritual and companion maturation. Center-current reseating remains a design candidate: cost/handling findings require a product review before changing meaningful staging.
 
-```sh
-pnpm website:build
-pnpm build
-pnpm start --port 61022
-```
+Earlier manufacturing source remains in Git history. H2 SVGs are visibly labeled historical studies. They do not mandate dual finishes, installed NFC in all stones or an unvalidated mechanism. Old dimensions, checkmarks, RF results, supplier qualifications and cost entries remain historical; they do not approve H3.
 
-Open `http://127.0.0.1:61022/manufacture`. The existing website builder owns the generated directory and normalizes HTML asset paths to `/halo-site/`. Re-run it after editing manufacturing source. Bamboo/Vercel is the deployment target; do not publish the former ChatGPT Sites checkout for this route. Keep stable IDs for unchanged meanings. Use new IDs when acceptance criteria change; retain historical keys in backups.
+## Source and build
 
-## Editing and persistence
+- `content.html`: 16 active reference sections, sourcing briefs, economics and evidence gates.
+- `page.html`: shell and current scope/evidence boundary.
+- `workspace-data.js`: editable dimension/protocol/RF/quote/decision schemas and H3 requirement revision.
+- `manufacture.js`: local persistence, schema migration, rendering, CSV/JSON export/import and target feedback.
+- `cost-model.js`: dependency-free calculations and $189/$85 target constants, shared with Node tests.
+- `manufacture.css`: responsive, theme and print styles.
+- `../scripts/build-manufacture.mjs`: builds `/manufacture` during `pnpm website:build`; explicit asset allowlist excludes documentation/archive sources.
 
-Fifty-four bracelet/packaging CAD values, reviewed flags, gate/lab/action checklists, 19 protocol fields, RF results (24 columns), supplier quotes (26 columns), decisions (7 columns), costs and retail inputs are editable. Tables begin with three blank rows and allow added rows. Reference prose and outreach questions are static source content, with copy controls for outreach. Older version-1 backups remain compatible: newly added dimensions and BOM lines migrate to unknown values rather than zero, preserving existing records.
+Work in `/Users/connor/Desktop/halo/bamboo`. Run `pnpm website:build`, then the existing Next preview/build workflow. The canonical internal-reference URL is `/manufacture` (trailing slash redirects). It is unlisted/noindex, **not authenticated**. Do not add supplier secrets to static sources. No deployment is implied by a local build.
 
-Edits save under `halo-manufacture-workspace-v1` in browser localStorage. They are not written into source files, shared, synced, or sent to suppliers. Export JSON to back up the whole workspace; import replaces current values after schema validation. RF, supplier and decision trackers also export CSV with spreadsheet formula protection. Changing port or hostname starts a different workspace; import a backup to transfer it.
+## Cost calculations and evidence
 
-Storage errors are visible. Corrupt saved data is preserved instead of automatically overwritten. A change from another tab pauses saving to prevent stale writes: export unsaved work, then reload. Browser storage limits vary; JSON export still works from an open session when saving fails. No values are seeded from test fixtures or invented supplier quotes.
+Four alternative batches: 25 / 100 / 500 / 1,000 saleable kits. Twenty-four cost lines remain stable for old backups. New workspaces start with NFC D; the two NFC cost lines have quantity zero and are excluded from arithmetic without erasing saved values. A/B/C apply 12/3/1 to NFC and isolation. Stone assembly remains ×12 regardless of NFC. NFC cost must include inlay, tag assembly/provisioning and testing; isolation is separate. Requote architecture changes rather than treating a bracelet tag and a tiny stone tag as identical prices. Legacy all-NFC quotes must be reviewed for the new complete-operation scope; adding assembly to both lines would double count it.
 
-## Cost definitions
+All physical component prices remain blank until entered with a quote or explicit estimate basis. Blank/invalid applicable dependencies are never treated as zero. An explicit zero requires an inclusion/exclusion explanation. Inactive optional fields remain saved and are labeled excluded. Quotes do not auto-populate prices because currencies, revisions and inclusions differ.
 
-Four alternative total-program scenarios: 25, 100, 500 and 1,000 saleable kits, with 24 unit-cost lines. Light and Dark share geometry, two chassis-size options, mechanisms and packaging dielines. Shared unit prices must reflect the quoted S/M + M/L size mix; equal costs or pooled minimum orders are not assumed. Each kit budgets one bracelet, 12 interfaces and removable stone modules, 12 milestone boxes and cards, and one presentation system with bracelet accommodation. The legacy 12-piece filler supply allowance remains a provisional starting/spare assumption; Month 01 shows 11 installed blanks. Confirm the final supplied quantity before quoting.
-
-Shared one-time tooling is stored once, with scope/evidence, and divided by the selected total program quantity for a separately displayed amortized landed cost. Sampling/development remains in the quote tracker. Light uses common preparation/natural steel finishing; Dark adds incremental PVD and charcoal-packaging premiums. Shared brushing is never removed or counted twice. Extra Dark rework/scrap belongs in its documented premium.
-
-Finish quantities must be whole numbers adding to the selected batch. Enter explicit usable-yield assumptions for each nonzero finish: estimated starts = ceiling(saleable quantity / usable-yield fraction). This plans quantities only; it does not multiply finished-unit quote prices or duplicate monetary scrap. Blank yield leaves the production-start plan incomplete; zero or greater than 100% is invalid. Mixed-batch spend adds tooling once.
-
-- COGS: chassis, clasp/adjustment, machining/preparation, 12 interfaces and complete module sets, module/final assembly, engraving, packaging, QC and monetary scrap/replacement allowance; plus applicable Dark premiums.
+- COGS: applicable components, assembly, all packaging, QC, monetary scrap/rework.
 - Landed: COGS + inbound freight + duties/import.
-- Gross margin: `(tax-exclusive retail − variable landed cost) / retail`; excludes one-time tooling, displayed separately.
-- Contribution: gross profit − fulfillment − estimated payment fees.
+- Selling: outbound fulfillment + payment fees (amounts, not rates).
+- Gross margin: tax-exclusive retail less landed cost; contribution also subtracts the modeled selling lines. App/cloud/companion operations, warranty, support, acquisition and unentered operating expenses remain outside that calculator contribution.
+- Shared tooling: stored once, separately amortized over the selected total batch; no duplicated Light/Dark tooling.
+- Finish/yield alternatives: existing comparison preserved, not consumer variants. Enter explicit zero for the unused finish. Whole-number finish quantities sum to the batch. Yield estimates production starts only; it never silently multiplies finished-unit quotes or duplicates scrap.
 
-Payment fees, scrap and duties are currency amounts, not rates. Payment fees are a fixed estimate across retail options; update them for percentage-based fee comparisons. Currency selection changes the label and never converts amounts. Blank or invalid dependencies produce “Incomplete”; explicit zero is allowed for costs included elsewhere. Retail prices start blank. Quotes do not automatically populate the BOM because currencies and inclusions may differ.
+The visible H3 gate always evaluates $189 USD and ≤$85 USD landed. It says incomplete, over-budget, or entered scenario within target **with unverified evidence**. Non-USD entries do not produce a USD gate result; changing a label never converts currency. Historical retail sensitivity fields remain in a collapsed disclosure and do not redefine the product price. Tax-inclusive markets require modeling actual net revenue separately.
 
-## H2 direction and evidence
+## Local persistence and migration
 
-- One program: Light brushed natural 316L/ivory packaging and Dark brushed black 316L (PVD preferred)/charcoal packaging. Geometry, dimensions, stone system, clasp/sizing, packaging dielines, typography, graphics, inserts, cards and stone order are identical. These are cosmetic finishes, not gendered products.
-- The rigid visible upper/front approximately two-thirds contains all 12 positions. Ordinary adjustment belongs at the concealed underside clasp. S/M + M/L chassis and approximately 15–20 mm fine travel are working targets; no wrist coverage is validated. Established telescoping/sliding/micro-adjust candidates remain unselected.
-- The current milestone must occupy the physical center-top position while prior stones remain installed. Month 01 = 01 centered + 11 blanks; Month 12 = 12 centered + 01–11. CAD must resolve indexing, pitch, installation sequence and tolerance stack. Twelve positions on an open arc do not establish symmetric equal pitch; diagrams express occupancy, not a solved mechanism. All depicted modules share one envelope. Illustrated glow in earlier renders is not powered illumination.
-- The fixed stone design specification is Clarity/Amethyst, Compassion/Rose Quartz, Courage/Garnet, Renewal/Aventurine, Balance/Jade, Presence/Aquamarine, Strength/Tiger’s Eye, Resilience/Carnelian, Perspective/Lapis Lazuli, Gratitude/Rhodonite, Growth/Citrine and Harmony/Onyx. Supplier identity, treatment, cut and validated production material remain unconfirmed.
-- Passive NFC per removable module is a development direction. The new requirement is readability loose → partially integrated → installed in final 316L → installed on wrist, with phones, orientation, distance, identity/multitag selection and repeatability documented. Test ferrite/isolation/polymer/antenna-location alternatives. NXP/ST antenna guidance does not prove this geometry works; iPhone background notifications and RF reading are separate observations.
-- Installed suppression is superseded. Historical criteria, rows, checks, costs and unknown keys remain in version-1 backups. Old RF rows are marked legacy; the new installed-readability criterion has a separate ID, new static checklists use H2 keys, and imported history prompts re-review. Preserved old reviewed flags or supplier qualifications cannot approve H2 hardware. No old physical pass becomes a current pass automatically.
-- Packaging contains exactly 12 branded milestone boxes/cards plus protected bracelet accommodation, with Month 01 immediately available. Earlier 1 + 11 and 2 × 6 studies remain reference alternatives under the shared Light/Dark structure. Source annotations conflict: six 60 mm boxes need 360 mm before allowances, exceeding the labeled 280 mm outer width; a 45 mm inner box cannot fit within a 45 mm outer height. Approved CAD fields stay blank pending a corrected dimension chain and full-size sample.
-- Earn → Unbox current milestone → Tap/activate → Install → Wear → Repeat is intended behavior, not validated hardware or UX. Product eligibility remains a separate software concern.
-- P0–P8 separate visual/dimensional, wearable fit, clasp/adjustment, retention, installed RF, complete functional, cosmetic finish, packaging and pilot evidence. The next build is a non-RF P0 mockup of both chassis envelopes, all 12 positions, current-center occupancy and three underside mechanism volumes; no production tooling release is implied.
-- DESIGN INTENT, WORKING ASSUMPTION and REQUIRES PROTOTYPE distinguish planned work. SUPPLIER-CONFIRMED requires written evidence; PHYSICALLY VALIDATED requires recorded tests for the exact revision. Static diagrams and reference renders establish neither. All loads, cycles, dimensions, chip selection, quotes and wrist ranges remain unvalidated unless the user adds linked evidence.
-- The route has `noindex,nofollow,noarchive` and no consumer navigation link. The Vercel production route is publicly reachable and adds no authentication. Noindex is not access control. Keep confidential supplier details in browser-local fields rather than static source.
+Browser key remains `halo-manufacture-workspace-v1`. Imports preserve older values and unknown historical keys. H3 adds `model.nfcMode` with strict A/B/C/D-option validation. Backups without this field retain `all` (the historical twelve-module arithmetic), and previous revision imports show re-review warnings. New workspaces use `none` as a provisional baseline. Changing an option is explicit; switching back recovers prior unit entries. New H3 checklist keys do not reuse H2 approvals.
+
+Edits are browser-local, not synced or sent to suppliers. Export JSON before clearing storage or changing origin. Storage errors, corrupt-data preservation and cross-tab write blocking remain active. Import replaces the current workspace only after validation. CSV export escapes formula-leading text; JSON is the full-fidelity backup.
 
 ## Verification
 
-```sh
-node --test tests/manufacture-costs.cjs
-node tests/manufacture-browser.cjs
-node tests/manufacture-resilience.cjs
-node tests/manufacture-hardware.cjs
-```
-
-Browser tests use bundled Playwright and installed Chrome with the server running, and isolated browser storage. Screenshots/results are in `../qa/manufacture/`. Node tests cover missing/zero/invalid costs, multipliers, finish premiums, mixed quantities, shared tooling, yield, scenario independence, overflow and margins. Browser checks cover 16 sections, editable fields, persistence, theme, responsive widths, cost calculations, export and import. Resilience checks cover large-backup round trips, actual storage-quota failure, corrupted storage preservation, cross-tab write protection, copy fallback, keyboard navigation and CSV/HTML escaping. Hardware integration checks cover authentic legacy migration, preserved retired fields, historical suppression evidence, decisions, finish costs, mixed-batch tooling, yield planning and export/import. Physical hardware performance remains untested.
-
-Implementation also adds `../tests/manufacture-costs.cjs`, `../tests/manufacture-browser.cjs`, `../tests/manufacture-resilience.cjs` and `../tests/manufacture-hardware.cjs`, produces ten route files under `../public/halo-site/manufacture/`. QA artifacts stay outside the served directory. Browser tests resolve `playwright` normally or through `PLAYWRIGHT_MODULE_PATH`; use `NODE_PATH` for a shared runtime install.
-
-## Vercel publication
-
-Use the existing `.vercel/project.json` link and `vercel --prod --yes --scope connorlees-projects`. Production is `https://www.habithalo.app/manufacture`. Preserve Bamboo marketing pages and existing work. Browser data does not transfer across origins: export JSON from the former localhost/ChatGPT Sites workspace and import it on the new host if needed.
-
-Set `MANUFACTURE_BASE_URL=http://127.0.0.1:61022` for browser suites against the local production server. QA captures are local output, not deployed assets.
+`node --test tests/manufacture-costs.cjs` covers monetary boundaries, legacy quantities, option switching, incomplete/invalid costs, independent scenarios, single-count tooling and explicit yield planning. Existing browser/hardware/resilience scripts retain migration/export/storage/overflow cases. The current revision was checked in the browser for NFC option switching and incomplete-cost feedback; the full browser suites were not rerun. Manufacturing feasibility still requires supplier quotes and physical tests.

@@ -35,6 +35,7 @@ const nextConfig = {
         { source: "/patents", destination: "/halo-site/patents/index.html" },
         { source: "/manufacture", destination: "/halo-site/manufacture/index.html" },
         { source: "/how-it-works", destination: "/halo-site/how-it-works/index.html" },
+        { source: "/reservation-terms", destination: "/halo-site/reservation-terms/index.html" },
         { source: "/original", destination: "/halo-site/original/index.html" },
         { source: "/variants", destination: "/halo-site/variants/index.html" },
         { source: "/variants/a", destination: "/halo-site/variants/a/index.html" },

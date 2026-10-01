@@ -54,7 +54,7 @@
       const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ email: emailInput.value }),
+        body: JSON.stringify({ email: emailInput.value, visitorId: window.HaloReservation?.visitorId, attemptId: window.HaloReservation?.attemptId }),
         signal: controller.signal,
       });
       const data = await response.json().catch(() => ({}));

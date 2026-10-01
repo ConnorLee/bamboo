@@ -62,7 +62,7 @@ async function run() {
     checks.push('Authentic v1 rows/costs/retired fields survive; old suppression passes stay historical; new costs, targets and yield remain unknown.');
 
     await page.locator('[data-add="rf"]').click();
-    assert.equal(await page.locator('[data-table="rf"][data-row="1"][data-key="requirement"]').inputValue(),'Current installed-readability requirement');
+    assert.equal(await page.locator('[data-table="rf"][data-row="1"][data-key="requirement"]').inputValue(),'H3 optional NFC experiment');
     assert.equal(await page.locator('[data-table="rf"][data-row="1"][data-key="result"]').inputValue(),'Not tested');
     await page.locator('[data-table="decisions"][data-row="0"][data-key="topic"]').fill('Resolve current stone indexing');
     await page.locator('[data-table="decisions"][data-row="0"][data-key="status"]').selectOption('REQUIRES PROTOTYPE');
