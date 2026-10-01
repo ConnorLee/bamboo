@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     siteName: "Halo",
     images: [
       {
-        url: "/social/halo-support-v1.jpg",
+        url: "/social/halo-bracelet-v2.jpg",
         width: 1200,
         height: 630,
         type: "image/jpeg",
-        alt: "Halo — A support system. For your progress. A silver bracelet concept with an amethyst milestone stone, lit in violet against a dark background.",
+        alt: "Halo — Time, made tangible. Blender-based brushed-silver bracelet concept with polished gemstone modules on a minimal black background.",
       },
     ],
     locale: "en_US",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Halo — A support system. For your progress.",
     description: "Meet Halo. A support system for your sober journey.",
-    images: [{ url: "/social/halo-support-v1.jpg", alt: "Halo — A support system. For your progress. Silver and amethyst bracelet concept in violet light." }],
+    images: [{ url: "/social/halo-bracelet-v2.jpg", alt: "Halo — Time, made tangible. Blender-based brushed-silver bracelet concept with polished gemstone modules on a minimal black background." }],
     creator: "@habithalo",
   },
     generator: 'v0.dev'

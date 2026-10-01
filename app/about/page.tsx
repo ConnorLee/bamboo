@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     url: "/about",
     siteName: "Halo",
     type: "website",
-    images: [{ url: "/social/halo-support-v1.jpg", width: 1200, height: 630, type: "image/jpeg", alt: "Halo — A support system. For your progress. Silver and amethyst bracelet concept in violet light." }],
+    images: [{ url: "/social/halo-bracelet-v2.jpg", width: 1200, height: 630, type: "image/jpeg", alt: "Halo — Time, made tangible. Blender-based brushed-silver bracelet concept with polished gemstone modules on a minimal black background." }],
   },
 }
 
