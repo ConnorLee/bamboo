@@ -49,8 +49,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-00.webp",
+      "finish": "Dark",
+      "file": "dark-00.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -97,8 +97,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-01.webp",
+      "finish": "Dark",
+      "file": "dark-01.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -145,8 +145,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-02.webp",
+      "finish": "Dark",
+      "file": "dark-02.webp",
       "lidAngleDegrees": 20.0,
       "claspLidWorld": [
         [
@@ -193,8 +193,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-03.webp",
+      "finish": "Dark",
+      "file": "dark-03.webp",
       "lidAngleDegrees": 55.0,
       "claspLidWorld": [
         [
@@ -241,8 +241,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-04.webp",
+      "finish": "Dark",
+      "file": "dark-04.webp",
       "lidAngleDegrees": 82.0,
       "claspLidWorld": [
         [
@@ -289,8 +289,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-05.webp",
+      "finish": "Dark",
+      "file": "dark-05.webp",
       "lidAngleDegrees": 88.0,
       "claspLidWorld": [
         [
@@ -337,8 +337,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-06.webp",
+      "finish": "Dark",
+      "file": "dark-06.webp",
       "lidAngleDegrees": 88.0,
       "claspLidWorld": [
         [
@@ -385,8 +385,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-07.webp",
+      "finish": "Dark",
+      "file": "dark-07.webp",
       "lidAngleDegrees": 88.0,
       "claspLidWorld": [
         [
@@ -433,8 +433,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-08.webp",
+      "finish": "Dark",
+      "file": "dark-08.webp",
       "lidAngleDegrees": 82.0,
       "claspLidWorld": [
         [
@@ -481,8 +481,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-09.webp",
+      "finish": "Dark",
+      "file": "dark-09.webp",
       "lidAngleDegrees": 72.0,
       "claspLidWorld": [
         [
@@ -529,8 +529,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-10.webp",
+      "finish": "Dark",
+      "file": "dark-10.webp",
       "lidAngleDegrees": 59.0,
       "claspLidWorld": [
         [
@@ -577,8 +577,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-11.webp",
+      "finish": "Dark",
+      "file": "dark-11.webp",
       "lidAngleDegrees": 45.0,
       "claspLidWorld": [
         [
@@ -625,8 +625,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-12.webp",
+      "finish": "Dark",
+      "file": "dark-12.webp",
       "lidAngleDegrees": 33.0,
       "claspLidWorld": [
         [
@@ -673,8 +673,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-13.webp",
+      "finish": "Dark",
+      "file": "dark-13.webp",
       "lidAngleDegrees": 22.0,
       "claspLidWorld": [
         [
@@ -721,8 +721,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-14.webp",
+      "finish": "Dark",
+      "file": "dark-14.webp",
       "lidAngleDegrees": 12.0,
       "claspLidWorld": [
         [
@@ -769,8 +769,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-15.webp",
+      "finish": "Dark",
+      "file": "dark-15.webp",
       "lidAngleDegrees": 4.0,
       "claspLidWorld": [
         [
@@ -817,8 +817,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-16.webp",
+      "finish": "Dark",
+      "file": "dark-16.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -865,8 +865,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-17.webp",
+      "finish": "Dark",
+      "file": "dark-17.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -913,8 +913,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-18.webp",
+      "finish": "Dark",
+      "file": "dark-18.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -961,8 +961,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-19.webp",
+      "finish": "Dark",
+      "file": "dark-19.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -1009,8 +1009,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-20.webp",
+      "finish": "Dark",
+      "file": "dark-20.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -1057,8 +1057,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-21.webp",
+      "finish": "Dark",
+      "file": "dark-21.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -1105,8 +1105,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-22.webp",
+      "finish": "Dark",
+      "file": "dark-22.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -1153,8 +1153,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Light",
-      "file": "light-23.webp",
+      "finish": "Dark",
+      "file": "dark-23.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -1201,8 +1201,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-00.webp",
+      "finish": "Light",
+      "file": "light-00.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -1249,8 +1249,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-01.webp",
+      "finish": "Light",
+      "file": "light-01.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -1297,8 +1297,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-02.webp",
+      "finish": "Light",
+      "file": "light-02.webp",
       "lidAngleDegrees": 20.0,
       "claspLidWorld": [
         [
@@ -1345,8 +1345,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-03.webp",
+      "finish": "Light",
+      "file": "light-03.webp",
       "lidAngleDegrees": 55.0,
       "claspLidWorld": [
         [
@@ -1393,8 +1393,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-04.webp",
+      "finish": "Light",
+      "file": "light-04.webp",
       "lidAngleDegrees": 82.0,
       "claspLidWorld": [
         [
@@ -1441,8 +1441,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-05.webp",
+      "finish": "Light",
+      "file": "light-05.webp",
       "lidAngleDegrees": 88.0,
       "claspLidWorld": [
         [
@@ -1489,8 +1489,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-06.webp",
+      "finish": "Light",
+      "file": "light-06.webp",
       "lidAngleDegrees": 88.0,
       "claspLidWorld": [
         [
@@ -1537,8 +1537,8 @@
       "phase": "reveal",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-07.webp",
+      "finish": "Light",
+      "file": "light-07.webp",
       "lidAngleDegrees": 88.0,
       "claspLidWorld": [
         [
@@ -1585,8 +1585,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-08.webp",
+      "finish": "Light",
+      "file": "light-08.webp",
       "lidAngleDegrees": 82.0,
       "claspLidWorld": [
         [
@@ -1633,8 +1633,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-09.webp",
+      "finish": "Light",
+      "file": "light-09.webp",
       "lidAngleDegrees": 72.0,
       "claspLidWorld": [
         [
@@ -1681,8 +1681,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-10.webp",
+      "finish": "Light",
+      "file": "light-10.webp",
       "lidAngleDegrees": 59.0,
       "claspLidWorld": [
         [
@@ -1729,8 +1729,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-11.webp",
+      "finish": "Light",
+      "file": "light-11.webp",
       "lidAngleDegrees": 45.0,
       "claspLidWorld": [
         [
@@ -1777,8 +1777,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-12.webp",
+      "finish": "Light",
+      "file": "light-12.webp",
       "lidAngleDegrees": 33.0,
       "claspLidWorld": [
         [
@@ -1825,8 +1825,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-13.webp",
+      "finish": "Light",
+      "file": "light-13.webp",
       "lidAngleDegrees": 22.0,
       "claspLidWorld": [
         [
@@ -1873,8 +1873,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-14.webp",
+      "finish": "Light",
+      "file": "light-14.webp",
       "lidAngleDegrees": 12.0,
       "claspLidWorld": [
         [
@@ -1921,8 +1921,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-15.webp",
+      "finish": "Light",
+      "file": "light-15.webp",
       "lidAngleDegrees": 4.0,
       "claspLidWorld": [
         [
@@ -1969,8 +1969,8 @@
       "phase": "close",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-16.webp",
+      "finish": "Light",
+      "file": "light-16.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -2017,8 +2017,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-17.webp",
+      "finish": "Light",
+      "file": "light-17.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -2065,8 +2065,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-18.webp",
+      "finish": "Light",
+      "file": "light-18.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -2113,8 +2113,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-19.webp",
+      "finish": "Light",
+      "file": "light-19.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -2161,8 +2161,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-20.webp",
+      "finish": "Light",
+      "file": "light-20.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -2209,8 +2209,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-21.webp",
+      "finish": "Light",
+      "file": "light-21.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -2257,8 +2257,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-22.webp",
+      "finish": "Light",
+      "file": "light-22.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -2305,8 +2305,8 @@
       "phase": "return",
       "installedStones": 12,
       "blankPositions": 0,
-      "finish": "Dark",
-      "file": "dark-23.webp",
+      "finish": "Light",
+      "file": "light-23.webp",
       "lidAngleDegrees": 0.0,
       "claspLidWorld": [
         [
@@ -2340,197 +2340,197 @@
   "assets": [
     {
       "file": "light-00.webp",
-      "bytes": 46426
+      "bytes": 47542
     },
     {
       "file": "light-01.webp",
-      "bytes": 46472
+      "bytes": 49950
     },
     {
       "file": "light-02.webp",
-      "bytes": 45702
+      "bytes": 48540
     },
     {
       "file": "light-03.webp",
-      "bytes": 46260
+      "bytes": 48376
     },
     {
       "file": "light-04.webp",
-      "bytes": 40478
+      "bytes": 45610
     },
     {
       "file": "light-05.webp",
-      "bytes": 38900
+      "bytes": 43302
     },
     {
       "file": "light-06.webp",
-      "bytes": 37420
+      "bytes": 41402
     },
     {
       "file": "light-07.webp",
-      "bytes": 37406
+      "bytes": 41460
     },
     {
       "file": "light-08.webp",
-      "bytes": 37438
+      "bytes": 41168
     },
     {
       "file": "light-09.webp",
-      "bytes": 37106
+      "bytes": 40628
     },
     {
       "file": "light-10.webp",
-      "bytes": 35176
+      "bytes": 38778
     },
     {
       "file": "light-11.webp",
-      "bytes": 32472
+      "bytes": 36052
     },
     {
       "file": "light-12.webp",
-      "bytes": 33018
+      "bytes": 36308
     },
     {
       "file": "light-13.webp",
-      "bytes": 32270
+      "bytes": 35676
     },
     {
       "file": "light-14.webp",
-      "bytes": 31472
+      "bytes": 35710
     },
     {
       "file": "light-15.webp",
-      "bytes": 31740
+      "bytes": 34792
     },
     {
       "file": "light-16.webp",
-      "bytes": 29908
+      "bytes": 33176
     },
     {
       "file": "light-17.webp",
-      "bytes": 30156
+      "bytes": 33804
     },
     {
       "file": "light-18.webp",
-      "bytes": 30774
+      "bytes": 34194
     },
     {
       "file": "light-19.webp",
-      "bytes": 32884
+      "bytes": 37100
     },
     {
       "file": "light-20.webp",
-      "bytes": 38794
+      "bytes": 42034
     },
     {
       "file": "light-21.webp",
-      "bytes": 44680
+      "bytes": 47208
     },
     {
       "file": "light-22.webp",
-      "bytes": 46446
+      "bytes": 50012
     },
     {
       "file": "light-23.webp",
-      "bytes": 46426
+      "bytes": 47542
     },
     {
       "file": "dark-00.webp",
-      "bytes": 44042
+      "bytes": 41256
     },
     {
       "file": "dark-01.webp",
-      "bytes": 44256
+      "bytes": 41916
     },
     {
       "file": "dark-02.webp",
-      "bytes": 42162
+      "bytes": 40692
     },
     {
       "file": "dark-03.webp",
-      "bytes": 42470
+      "bytes": 40220
     },
     {
       "file": "dark-04.webp",
-      "bytes": 38464
+      "bytes": 37562
     },
     {
       "file": "dark-05.webp",
-      "bytes": 35054
+      "bytes": 35252
     },
     {
       "file": "dark-06.webp",
-      "bytes": 33338
+      "bytes": 33328
     },
     {
       "file": "dark-07.webp",
-      "bytes": 33348
+      "bytes": 33408
     },
     {
       "file": "dark-08.webp",
-      "bytes": 33056
+      "bytes": 32932
     },
     {
       "file": "dark-09.webp",
-      "bytes": 32772
+      "bytes": 32044
     },
     {
       "file": "dark-10.webp",
-      "bytes": 31946
+      "bytes": 31614
     },
     {
       "file": "dark-11.webp",
-      "bytes": 30320
+      "bytes": 29820
     },
     {
       "file": "dark-12.webp",
-      "bytes": 30208
+      "bytes": 29818
     },
     {
       "file": "dark-13.webp",
-      "bytes": 29924
+      "bytes": 29636
     },
     {
       "file": "dark-14.webp",
-      "bytes": 29164
+      "bytes": 29016
     },
     {
       "file": "dark-15.webp",
-      "bytes": 28738
+      "bytes": 28556
     },
     {
       "file": "dark-16.webp",
-      "bytes": 28298
+      "bytes": 28104
     },
     {
       "file": "dark-17.webp",
-      "bytes": 28478
+      "bytes": 28710
     },
     {
       "file": "dark-18.webp",
-      "bytes": 28216
+      "bytes": 28460
     },
     {
       "file": "dark-19.webp",
-      "bytes": 30830
+      "bytes": 31744
     },
     {
       "file": "dark-20.webp",
-      "bytes": 36226
+      "bytes": 36022
     },
     {
       "file": "dark-21.webp",
-      "bytes": 41494
+      "bytes": 40108
     },
     {
       "file": "dark-22.webp",
-      "bytes": 44222
+      "bytes": 41970
     },
     {
       "file": "dark-23.webp",
-      "bytes": 44042
+      "bytes": 41256
     }
   ],
-  "totalWebBytes": 1750892,
+  "totalWebBytes": 1813808,
   "validation": "48 RGBA frames; 12 installed stones each; native lid movement; closed lock; matched finish geometry and hero endpoints"
 }

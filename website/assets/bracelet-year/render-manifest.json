@@ -3747,111 +3747,111 @@
   "assets": [
     {
       "file": "base-dark-00.webp",
-      "bytes": 37520
+      "bytes": 35462
     },
     {
       "file": "base-dark-01.webp",
-      "bytes": 38160
+      "bytes": 37002
     },
     {
       "file": "base-dark-02.webp",
-      "bytes": 39944
+      "bytes": 38680
     },
     {
       "file": "base-dark-03.webp",
-      "bytes": 42470
+      "bytes": 41100
     },
     {
       "file": "base-dark-04.webp",
-      "bytes": 43710
+      "bytes": 42518
     },
     {
       "file": "base-dark-05.webp",
-      "bytes": 45288
+      "bytes": 43838
     },
     {
       "file": "base-dark-06.webp",
-      "bytes": 46640
+      "bytes": 44978
     },
     {
       "file": "base-dark-07.webp",
-      "bytes": 47644
+      "bytes": 46614
     },
     {
       "file": "base-dark-08.webp",
-      "bytes": 48244
+      "bytes": 47048
     },
     {
       "file": "base-dark-09.webp",
-      "bytes": 48970
+      "bytes": 47374
     },
     {
       "file": "base-dark-10.webp",
-      "bytes": 48960
+      "bytes": 47416
     },
     {
       "file": "base-dark-11.webp",
-      "bytes": 49088
+      "bytes": 47590
     },
     {
       "file": "base-light-00.webp",
-      "bytes": 39648
+      "bytes": 42818
     },
     {
       "file": "base-light-01.webp",
-      "bytes": 40298
+      "bytes": 44256
     },
     {
       "file": "base-light-02.webp",
-      "bytes": 41528
+      "bytes": 46072
     },
     {
       "file": "base-light-03.webp",
-      "bytes": 45348
+      "bytes": 48574
     },
     {
       "file": "base-light-04.webp",
-      "bytes": 46376
+      "bytes": 49734
     },
     {
       "file": "base-light-05.webp",
-      "bytes": 47324
+      "bytes": 51022
     },
     {
       "file": "base-light-06.webp",
-      "bytes": 48658
+      "bytes": 52002
     },
     {
       "file": "base-light-07.webp",
-      "bytes": 49746
+      "bytes": 53404
     },
     {
       "file": "base-light-08.webp",
-      "bytes": 50290
+      "bytes": 54030
     },
     {
       "file": "base-light-09.webp",
-      "bytes": 51604
+      "bytes": 55348
     },
     {
       "file": "base-light-10.webp",
-      "bytes": 51446
+      "bytes": 54910
     },
     {
       "file": "base-light-11.webp",
-      "bytes": 51244
+      "bytes": 54866
     },
     {
       "file": "empty-dark.webp",
-      "bytes": 38086
+      "bytes": 35832
     },
     {
       "file": "empty-light.webp",
-      "bytes": 40684
+      "bytes": 42604
     },
     {
       "file": "empty.webp",
-      "bytes": 40684
+      "bytes": 42604
     },
     {
       "file": "gem-00.webp",
@@ -3903,208 +3903,208 @@
     },
     {
       "file": "progress-00.webp",
-      "bytes": 40684
+      "bytes": 42604
     },
     {
       "file": "progress-01.webp",
-      "bytes": 40068
+      "bytes": 44086
     },
     {
       "file": "progress-02.webp",
-      "bytes": 41718
+      "bytes": 46214
     },
     {
       "file": "progress-03.webp",
-      "bytes": 45716
+      "bytes": 48670
     },
     {
       "file": "progress-04.webp",
-      "bytes": 46032
+      "bytes": 49758
     },
     {
       "file": "progress-05.webp",
-      "bytes": 48296
+      "bytes": 51332
     },
     {
       "file": "progress-06.webp",
-      "bytes": 51498
+      "bytes": 53982
     },
     {
       "file": "progress-07.webp",
-      "bytes": 50206
+      "bytes": 54430
     },
     {
       "file": "progress-08.webp",
-      "bytes": 52192
+      "bytes": 55918
     },
     {
       "file": "progress-09.webp",
-      "bytes": 51508
+      "bytes": 54850
     },
     {
       "file": "progress-10.webp",
-      "bytes": 53028
+      "bytes": 56492
     },
     {
       "file": "progress-11.webp",
-      "bytes": 51668
+      "bytes": 55652
     },
     {
       "file": "progress-12.webp",
-      "bytes": 55354
+      "bytes": 56118
     },
     {
       "file": "progress-dark-00.webp",
-      "bytes": 38086
+      "bytes": 35832
     },
     {
       "file": "progress-dark-01.webp",
-      "bytes": 38438
+      "bytes": 37208
     },
     {
       "file": "progress-dark-02.webp",
-      "bytes": 40176
+      "bytes": 39002
     },
     {
       "file": "progress-dark-03.webp",
-      "bytes": 43168
+      "bytes": 41188
     },
     {
       "file": "progress-dark-04.webp",
-      "bytes": 43538
+      "bytes": 42662
     },
     {
       "file": "progress-dark-05.webp",
-      "bytes": 45916
+      "bytes": 44194
     },
     {
       "file": "progress-dark-06.webp",
-      "bytes": 49568
+      "bytes": 47084
     },
     {
       "file": "progress-dark-07.webp",
-      "bytes": 48262
+      "bytes": 47516
     },
     {
       "file": "progress-dark-08.webp",
-      "bytes": 50302
+      "bytes": 48970
     },
     {
       "file": "progress-dark-09.webp",
-      "bytes": 49522
+      "bytes": 48038
     },
     {
       "file": "progress-dark-10.webp",
-      "bytes": 50974
+      "bytes": 49320
     },
     {
       "file": "progress-dark-11.webp",
-      "bytes": 49694
+      "bytes": 48734
     },
     {
       "file": "progress-dark-12.webp",
-      "bytes": 53438
+      "bytes": 49144
     },
     {
       "file": "progress-light-00.webp",
-      "bytes": 40684
+      "bytes": 42604
     },
     {
       "file": "progress-light-01.webp",
-      "bytes": 40068
+      "bytes": 44086
     },
     {
       "file": "progress-light-02.webp",
-      "bytes": 41718
+      "bytes": 46214
     },
     {
       "file": "progress-light-03.webp",
-      "bytes": 45716
+      "bytes": 48670
     },
     {
       "file": "progress-light-04.webp",
-      "bytes": 46032
+      "bytes": 49758
     },
     {
       "file": "progress-light-05.webp",
-      "bytes": 48296
+      "bytes": 51332
     },
     {
       "file": "progress-light-06.webp",
-      "bytes": 51498
+      "bytes": 53982
     },
     {
       "file": "progress-light-07.webp",
-      "bytes": 50206
+      "bytes": 54430
     },
     {
       "file": "progress-light-08.webp",
-      "bytes": 52192
+      "bytes": 55918
     },
     {
       "file": "progress-light-09.webp",
-      "bytes": 51508
+      "bytes": 54850
     },
     {
       "file": "progress-light-10.webp",
-      "bytes": 53028
+      "bytes": 56492
     },
     {
       "file": "progress-light-11.webp",
-      "bytes": 51668
+      "bytes": 55652
     },
     {
       "file": "progress-light-12.webp",
-      "bytes": 55354
+      "bytes": 56118
     },
     {
       "file": "stone-00.webp",
-      "bytes": 4380
+      "bytes": 5142
     },
     {
       "file": "stone-01.webp",
-      "bytes": 5342
+      "bytes": 5726
     },
     {
       "file": "stone-02.webp",
-      "bytes": 6496
+      "bytes": 6170
     },
     {
       "file": "stone-03.webp",
-      "bytes": 4766
+      "bytes": 5210
     },
     {
       "file": "stone-04.webp",
-      "bytes": 5790
+      "bytes": 5392
     },
     {
       "file": "stone-05.webp",
-      "bytes": 7350
+      "bytes": 6762
     },
     {
       "file": "stone-06.webp",
-      "bytes": 5246
+      "bytes": 6170
     },
     {
       "file": "stone-07.webp",
-      "bytes": 5882
+      "bytes": 6042
     },
     {
       "file": "stone-08.webp",
-      "bytes": 4708
+      "bytes": 4536
     },
     {
       "file": "stone-09.webp",
-      "bytes": 5718
+      "bytes": 5832
     },
     {
       "file": "stone-10.webp",
-      "bytes": 4538
+      "bytes": 5200
     },
     {
       "file": "stone-11.webp",
-      "bytes": 7426
+      "bytes": 5072
     }
   ],
-  "totalWebBytes": 3390240
+  "totalWebBytes": 3480032
 }
