@@ -1,7 +1,7 @@
 """Native Halo closing macro portraits, reusing the approved film studio.
 
 Blender --background HALO_Bracelet_Master.blend --python this.py --
-    --output-dir /path/to/output --layout landscape --width 2400 --samples 96
+    --output-dir /path/to/output --layout landscape --width 2400 --samples 96 --finish Light
 
 The bracelet is cropped by the camera. No master model or existing film frame is
 modified; transparent space is reserved for the website's own near-black surface.
@@ -24,6 +24,7 @@ HERE = Path(__file__).resolve().parent
 parser = argparse.ArgumentParser()
 parser.add_argument('--output-dir', type=Path, required=True)
 parser.add_argument('--layout', choices=('landscape', 'mobile'), default='landscape')
+parser.add_argument('--finish', choices=('Light', 'Dark'), default='Light')
 parser.add_argument('--width', type=int, default=2400)
 parser.add_argument('--samples', type=int, default=96)
 parser.add_argument('--scale', type=float)
@@ -56,7 +57,7 @@ try:
 finally:
     sys.argv = original_argv
 scene, root, cam, model, product = (namespace[k] for k in ('scene', 'root', 'cam', 'model', 'product'))
-namespace['set_state'](11, 'Light')
+namespace['set_state'](11, options.finish)
 namespace['pose'](0)
 namespace['ground'].hide_render = True
 # Return to the canonical website orientation: the mineral arc sits above the
@@ -124,7 +125,8 @@ manifest = dict(version=1, generatedAt=datetime.now(timezone.utc).isoformat(),
                 canonicalRendererSha256=namespace['canonical_script_hash'],
                 materialLibrarySha256=namespace['material_library_hash'],
                 geometrySha256=geometry_hash, installedStones=12, blankPositions=0, closedClasp=True,
-                finish='Silver', camera=list(cam.location), target=[0, 0, 0],
+                finish='Black' if options.finish == 'Dark' else 'Silver',
+                camera=list(cam.location), target=[0, 0, 0],
                 rollDegrees=options.roll, orthoScale=cam.data.ortho_scale,
                 shiftX=cam.data.shift_x, shiftY=cam.data.shift_y,
                 bounds=bounds, gemstoneProjection=gemstones,

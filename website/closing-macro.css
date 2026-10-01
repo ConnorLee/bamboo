@@ -16,6 +16,9 @@
   pointer-events:none;
 }
 .yearly-macro picture { display:block; width:100%; height:100%; }
+.yearly-macro .yearly-macro-dark { display:none; }
+:root[data-theme="dark"] .yearly-macro .yearly-macro-light { display:none; }
+:root[data-theme="dark"] .yearly-macro .yearly-macro-dark { display:block; }
 .yearly-art.yearly-macro img {
   width:100%;
   height:100%;
