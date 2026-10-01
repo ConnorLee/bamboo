@@ -8,6 +8,13 @@
   root.dataset.motionInput = 'pointer';
   const instant = () => reduced.matches || root.dataset.motionInput === 'keyboard';
 
+  // Reuse the same quiet glyph field so both stone sections stay in sync.
+  const symbols = document.querySelector('#milestones > .milestone-symbols');
+  const collection = document.querySelector('.collection');
+  if (symbols && collection && !collection.querySelector('.milestone-symbols')) {
+    collection.prepend(symbols.cloneNode(true));
+  }
+
   function animate(element, frames, options) {
     if (instant() || !element.animate) return;
     const animation = element.animate(frames, options);

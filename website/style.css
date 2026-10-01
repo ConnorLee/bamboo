@@ -509,11 +509,14 @@ html.waitlist-open { overflow:hidden; }
   .journey .stage-copy>p:not(.eyebrow) { display:none; }
 }
 
-/* A quiet symbolic field around the twelve-chapter introduction. */
+/* One quiet symbolic field shared by the chapter introduction and collection. */
 #milestones > p, #milestones > h2 { position:relative; z-index:1; }
+.collection-heading, .collection .mineral-row, .collection .mineral-carousel-controls { position:relative; z-index:1; }
 .milestone-symbols { position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; user-select:none; color:var(--ink); }
+.collection > .milestone-symbols { bottom:170px; }
 .milestone-symbol { position:absolute; left:var(--x); top:var(--y); width:var(--size); height:var(--size); transform:translate(-50%,-50%) rotate(var(--angle)); opacity:var(--alpha); fill:none; stroke:currentColor; stroke-width:1.15; stroke-linecap:round; stroke-linejoin:round; }
 @media(max-width:700px) {
+  .collection > .milestone-symbols { bottom:200px; }
   .milestone-symbol { width:calc(var(--size)*.72); height:calc(var(--size)*.72); }
   .milestone-symbols .symbol-aries { left:12%; top:8%; }
   .milestone-symbols .symbol-taurus { left:88%; top:12%; }
