@@ -11,7 +11,13 @@ function shouldSkip() {
   const git = (...args) => execFileSync('git', args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
   try {
     if (git('rev-parse', 'HEAD').trim().toLowerCase() !== current.toLowerCase()) return false;
-    if (git('status', '--porcelain', '--untracked-files=no').trim()) return false;
+    const status = git('status', '--porcelain', '-z', '--untracked-files=no').split('\0').filter(Boolean);
+    if (status.length) {
+      // Vercel prunes upload-excluded files before this command runs. Only
+      // unstaged deletions of those tracked files are an expected dirty state.
+      const excluded = new Set(git('ls-files', '--cached', '--ignored', '--exclude-from=.vercelignore', '-z').split('\0').filter(Boolean));
+      if (status.some(entry => !entry.startsWith(' D ') || !excluded.has(entry.slice(3)))) return false;
+    }
     git('merge-base', '--is-ancestor', previous, current);
     // --no-renames keeps a source file moved into this directory visible as a deletion.
     const changed = git('diff', '--no-renames', '--name-only', '-z', previous, current, '--').split('\0').filter(Boolean);

@@ -79,6 +79,29 @@ test('a redeploy or dirty source checkout builds', t => {
   assert.equal(f.decision(), 1);
 });
 
+test('Vercel upload pruning can skip, while dirty source and changed exclusions still build', t => {
+  const f = fixture(t);
+  f.write('.vercelignore', '.env*\nmarketing\nprovenance/releases\n');
+  const pruned = ['.env.example', 'marketing/closing-film/poster with space.webp', 'provenance/releases/previous.json'];
+  for (const name of pruned) f.write(name);
+  const previous = f.commit();
+  f.write('provenance/releases/current.json'); f.commit();
+  const decision = () => f.decision({ VERCEL_GIT_PREVIOUS_SHA: previous });
+  for (const name of [...pruned, 'provenance/releases/current.json']) rmSync(path.join(f.root, name));
+  assert.equal(decision(), 0, 'Only platform-pruned files are missing');
+  f.write('website/index.html', '<main>Uncommitted runtime change</main>');
+  assert.equal(decision(), 1);
+  f.git('restore', 'website/index.html');
+  rmSync(path.join(f.root, 'website/index.html'));
+  assert.equal(decision(), 1, 'A missing runtime file is not platform pruning');
+  f.git('restore', 'website/index.html');
+  f.write('.vercelignore', '.env*\nmarketing\nprovenance/releases\nwebsite\n');
+  assert.equal(decision(), 1, 'Modified exclusion rules cannot authorize skipping');
+  f.git('restore', '.vercelignore');
+  f.git('add', '.env.example');
+  assert.equal(decision(), 1, 'A staged deletion is not platform pruning');
+});
+
 test('unrelated history and a checkout without Git build', t => {
   const f = fixture(t);
   f.git('checkout', '--orphan', 'unrelated'); f.git('rm', '-rf', '.');
