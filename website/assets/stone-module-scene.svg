@@ -21,14 +21,27 @@
       <stop offset=".77" stop-color="#BBC0C7"/>
       <stop offset="1" stop-color="#5C626C"/>
     </linearGradient>
-    <linearGradient id="sm-band-metal" x1="110" y1="294" x2="546" y2="415" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#868C96"/>
-      <stop offset=".17" stop-color="#D8DBDF"/>
-      <stop offset=".34" stop-color="#A4A9B0"/>
-      <stop offset=".52" stop-color="#F2F2F1"/>
-      <stop offset=".71" stop-color="#B3B8BF"/>
-      <stop offset=".88" stop-color="#E1E4E7"/>
-      <stop offset="1" stop-color="#79808B"/>
+    <linearGradient id="sm-band-metal" x1="-70" y1="392" x2="745" y2="311" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#626972"/>
+      <stop offset=".18" stop-color="#AEB4BA"/>
+      <stop offset=".36" stop-color="#9199A2"/>
+      <stop offset=".51" stop-color="#CBD0D4"/>
+      <stop offset=".63" stop-color="#B6BDC3"/>
+      <stop offset=".81" stop-color="#818A94"/>
+      <stop offset="1" stop-color="#515B65"/>
+    </linearGradient>
+    <linearGradient id="sm-band-wall" x1="0" y1="380" x2="700" y2="404" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#444D57"/>
+      <stop offset=".25" stop-color="#727D88"/>
+      <stop offset=".52" stop-color="#ABB4BD"/>
+      <stop offset=".74" stop-color="#697581"/>
+      <stop offset="1" stop-color="#343F4A"/>
+    </linearGradient>
+    <linearGradient id="sm-band-bevel" x1="0" y1="380" x2="700" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A0A9B2"/>
+      <stop offset=".48" stop-color="#F0F2F3"/>
+      <stop offset=".7" stop-color="#B6C0C9"/>
+      <stop offset="1" stop-color="#7D8894"/>
     </linearGradient>
     <linearGradient id="sm-socket-metal" x1="289" y1="326" x2="415" y2="379" gradientUnits="userSpaceOnUse">
       <stop stop-color="#E6E8EB"/>
@@ -95,28 +108,38 @@
 
   <!-- The socket center is 350,345. A .65 scale module seats here. -->
   <g id="sm-bracelet" opacity="0">
-    <ellipse cx="353" cy="394" rx="207" ry="15" fill="#141720" opacity=".16" filter="url(#sm-soft-shadow)"/>
-    <path d="M77 399C164 361 226 356 305 332L327 367C238 390 166 401 87 433Z" fill="url(#sm-band-metal)"/>
-    <path d="M390 312C460 282 523 260 608 255L623 287C541 292 474 318 406 351Z" fill="url(#sm-band-metal)"/>
-    <path d="M87 433C166 402 238 391 327 367V375C239 399 167 410 88 441Z" fill="#747B86"/>
-    <path d="M406 351C474 318 541 292 623 287V294C541 300 477 325 408 360Z" fill="#757C86"/>
-    <path d="M81 400C165 364 229 357 303 335M392 315C468 283 528 263 608 258" stroke="#F2F3F5" stroke-opacity=".66" stroke-width="1.4"/>
-    <path d="M90 428C166 399 230 387 312 366M418 344C484 315 544 292 616 287" stroke="#7D8591" stroke-opacity=".7" stroke-width="1"/>
-    <g transform="translate(222 383) rotate(-12)">
-      <ellipse cy="3" rx="35" ry="19" fill="#77808C"/>
-      <ellipse rx="35" ry="18" fill="#D8DDE4"/>
-      <ellipse cy="-2" rx="29" ry="16" fill="url(#sm-earned-gem)"/>
-      <path d="M-22 -8C-14 -15 4 -18 17 -10" stroke="#BCCBB0" stroke-opacity=".55" stroke-width="1.5" stroke-linecap="round"/>
+    <ellipse cx="350" cy="417" rx="380" ry="25" fill="#10141C" opacity=".25" filter="url(#sm-soft-shadow)"/>
+    <!-- A cropped section of the continuous rigid chassis, not two loose strap
+         ends. The projected face and wall follow the native 13.2 / 9.92 / 3 mm
+         band / receiver / wall relationship around the unchanged central seat. -->
+    <path d="M-160 474C42 483 209 429 350 386C492 346 654 315 860 333V359C654 341 492 372 350 412C209 455 42 509-160 500Z" fill="url(#sm-band-wall)"/>
+    <path id="sm-band-face" d="M-160 392C42 401 209 347 350 304C492 264 654 233 860 251V333C654 315 492 346 350 386C209 429 42 483-160 474Z" fill="url(#sm-band-metal)"/>
+    <path d="M-160 392C42 401 209 347 350 304C492 264 654 233 860 251V333C654 315 492 346 350 386C209 429 42 483-160 474Z" fill="url(#sm-brushed-grain)" opacity=".42"/>
+    <path d="M-160 392C42 401 209 347 350 304C492 264 654 233 860 251" stroke="url(#sm-band-bevel)" stroke-width="2.2"/>
+    <path d="M-160 395C42 404 209 350 350 307C492 267 654 236 860 254" stroke="#48535E" stroke-opacity=".45" stroke-width="1"/>
+    <path d="M-160 474C42 483 209 429 350 386C492 346 654 315 860 333" stroke="url(#sm-band-bevel)" stroke-width="2.5"/>
+    <path d="M-160 498C42 507 209 453 350 410C492 370 654 339 860 357" stroke="#293440" stroke-opacity=".65" stroke-width="1.4"/>
+    <g stroke="#E7EBEE" stroke-opacity=".13" stroke-width=".6">
+      <path d="M-160 418C42 427 209 373 350 330C492 290 654 259 860 277"/>
+      <path d="M-160 437C42 446 209 392 350 349C492 309 654 278 860 296"/>
+      <path d="M-160 457C42 466 209 412 350 369C492 329 654 298 860 316"/>
     </g>
-    <g transform="translate(477 308) rotate(-20)">
-      <ellipse cy="3" rx="31" ry="17" fill="#77808C"/>
-      <ellipse rx="31" ry="16" fill="#D3D8E0"/>
-      <ellipse rx="29" ry="14" fill="url(#sm-pellet-metal)"/>
-      <ellipse rx="29" ry="14" fill="url(#sm-brushed-grain)"/>
-      <path d="M-24 0C-21 14 21 14 24 0" stroke="#AEB7C4" stroke-width="1"/>
+    <g transform="translate(215 384) rotate(-17)">
+      <ellipse cy="3" rx="56" ry="27" fill="#5C6873"/>
+      <ellipse rx="56" ry="26" fill="url(#sm-pellet-metal)" stroke="#E4E8EC" stroke-opacity=".5" stroke-width=".8"/>
+      <ellipse cy="-1" rx="49" ry="22" fill="url(#sm-earned-gem)"/>
+      <path d="M-38 -10C-23 -23 7 -24 30 -13" stroke="#BCCBB0" stroke-opacity=".48" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M-37 13C-15 23 16 23 37 12" stroke="#264B3D" stroke-opacity=".6" stroke-width="1.2"/>
     </g>
-    <path d="M283 345V361C283 379 417 379 417 361V345Z" fill="url(#sm-socket-metal)"/>
-    <ellipse cx="350" cy="345" rx="67" ry="31" fill="url(#sm-socket-metal)"/>
+    <g transform="translate(488 312) rotate(-12)">
+      <ellipse cy="3" rx="56" ry="27" fill="#5C6873"/>
+      <ellipse rx="56" ry="26" fill="url(#sm-pellet-metal)" stroke="#E4E8EC" stroke-opacity=".48" stroke-width=".8"/>
+      <ellipse rx="51" ry="23" fill="url(#sm-pellet-metal)" stroke="#65727F" stroke-opacity=".72" stroke-width="1"/>
+      <ellipse rx="50" ry="22" fill="url(#sm-brushed-grain)"/>
+      <path d="M-45 0C-40 24 40 24 45 0" stroke="#E0E5E9" stroke-opacity=".52" stroke-width="1"/>
+    </g>
+    <path d="M283 345V361C283 379 417 379 417 361V345Z" fill="url(#sm-band-metal)"/>
+    <ellipse cx="350" cy="345" rx="67" ry="31" fill="url(#sm-band-metal)" stroke="#E4E8EC" stroke-opacity=".36" stroke-width=".8"/>
     <ellipse cx="350" cy="345" rx="56" ry="25" fill="url(#sm-cavity)"/>
     <ellipse cx="350" cy="348" rx="51" ry="21" fill="url(#sm-pellet-metal)"/>
     <g id="sm-engraving" opacity="0" transform="translate(350 348) scale(1.25 .55) translate(-12 -12)" stroke-linecap="round" stroke-linejoin="round">

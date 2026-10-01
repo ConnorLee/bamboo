@@ -81,7 +81,7 @@
       if(loading) return loading;
       loading=(async()=>{
         try{
-          const response=await fetch('assets/stone-module-scene.svg?v=hidden-chapter-1');
+          const response=await fetch('assets/stone-module-scene.svg?v=solid-band-2');
           if(!response.ok) throw new Error('Module illustration unavailable');
           const source=await response.text();
           // This is a bundled, same-origin illustration, never user-supplied markup.
