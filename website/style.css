@@ -362,9 +362,18 @@ html[data-motion-input="keyboard"] { scroll-behavior:auto; }
   .yearly-art figcaption { font-size:9px; padding-top:10px; }
 }
 
+/* A quiet company sign-off, aligned with the page's existing side margins. */
+footer.site-footer { padding:36px 5.5vw; flex-wrap:nowrap; gap:24px; }
+.site-footer .brand-lockup { width:136px; }
+.site-footer .footer-copyright { margin:0; width:auto; order:0; font-size:12px; line-height:1.5; text-align:right; white-space:nowrap; }
+@media(max-width:700px) {
+  footer.site-footer { padding:28px 24px; gap:20px; }
+  .site-footer .brand-lockup { width:112px; }
+  .site-footer .footer-copyright { font-size:11px; }
+}
+
 /* The original simple email form, available without leaving the landing page. */
 .waitlist-trigger { border:0; cursor:pointer; }
-.footer-waitlist { background:none; padding:8px 0; font-size:inherit; text-align:left; white-space:nowrap; }
 html.waitlist-open { overflow:hidden; }
 .waitlist-dialog {
   --focus:#e5e5e5; color-scheme:dark;
