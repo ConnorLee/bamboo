@@ -1,0 +1,11 @@
+# Private archives and local release ledgers never enter a Vercel upload.
+archives
+provenance/releases
+.env*
+.vercel
+node_modules
+.next
+public/halo-site
+qa
+scripts/__pycache__
+*.tsbuildinfo

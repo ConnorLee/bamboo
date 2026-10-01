@@ -2,6 +2,7 @@ import { cp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildManufacture } from './build-manufacture.mjs';
+import { applyIpNotices } from './ip-notice.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const source = path.join(root, 'website');
@@ -12,6 +13,7 @@ const output = path.join(root, 'public/halo-site');
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(source, output, { recursive: true });
+await applyIpNotices(root, output);
 await buildManufacture(path.join(root, 'manufacture'), path.join(output, 'manufacture'));
 // Keep image-generation prompts and workstation provenance out of public assets.
 await rm(path.join(output, 'assets/halo-milestone-screen-v1.json'), { force: true });

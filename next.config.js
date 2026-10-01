@@ -32,6 +32,7 @@ const nextConfig = {
     return {
       beforeFiles: [
         { source: "/", destination: "/halo-site/index.html" },
+        { source: "/patents", destination: "/halo-site/patents/index.html" },
         { source: "/manufacture", destination: "/halo-site/manufacture/index.html" },
         { source: "/how-it-works", destination: "/halo-site/how-it-works/index.html" },
         { source: "/original", destination: "/halo-site/original/index.html" },

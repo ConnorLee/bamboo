@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "manifest_version": 1,
+  "reviewed_at_utc": "2026-10-01T04:18:53Z",
+  "reviewed_repository_head": "dfc36924e2e9e7435ffcbbd1c1efddf83b6a6b22",
+  "scope": "Current public marketing pages and explicitly identified saved studies and demo routes. Presence records a visible concept, not a shipping capability.",
+  "history_caveat": "first_known_release identifies the earliest reviewed repository commit containing the cited concept evidence. These are repository-content observations, not verified deployments, historical snapshots, or proof of earliest public disclosure in or outside this repository. A null value means no supporting evidence was found in this audit.",
+  "concepts": [
+    {
+      "id": "companion",
+      "name": "Companion",
+      "present_on_site": true,
+      "scope": "current_marketing",
+      "first_known_release": {
+        "git_commit_sha": "534b42ec9bebddc0addcbf5f020499d064d2aa2e",
+        "evidence_path": "website/how-it-works/index.html#evolution",
+        "deployment_verified": false
+      },
+      "current_page_sections": ["/#app", "/how-it-works#evolution", "/how-it-works#journey"],
+      "notes": "Companion relationship and maturation are shown through illustrative app captures and evolution studies. Expressive 3D and milestone activation remain in development. An older unused component's generic Cosmic Companion wording is not treated as evidence of this animal-companion system."
+    },
+    {
+      "id": "accumulating_milestone_bracelet",
+      "name": "Accumulating milestone bracelet",
+      "present_on_site": true,
+      "scope": "current_marketing",
+      "first_known_release": {
+        "git_commit_sha": "534b42ec9bebddc0addcbf5f020499d064d2aa2e",
+        "evidence_path": "website/how-it-works/index.html#wearable",
+        "deployment_verified": false
+      },
+      "current_page_sections": ["/#journey", "/how-it-works#wearable", "/how-it-works#collection"],
+      "notes": "Twelve seats fill over time and earlier stones remain. Rendered geometry and material studies do not establish manufactured inventory or validated retention, fit, durability, or electronics."
+    },
+    {
+      "id": "single_current_stone_bracelet",
+      "name": "Single-current-stone bracelet",
+      "present_on_site": true,
+      "scope": "saved_study",
+      "first_known_release": {
+        "git_commit_sha": "534b42ec9bebddc0addcbf5f020499d064d2aa2e",
+        "evidence_path": "website/original/index.html#journey",
+        "deployment_verified": false
+      },
+      "current_page_sections": ["/original#journey", "/variants/c#ritual"],
+      "notes": "The saved original visual swaps one current stone on one base; saved Variant C explicitly describes changing the bracelet stone. These are earlier studies, not the current accumulating twelve-seat proposal. The current proposal's centered current stone is not evidence of a single-stone-only design."
+    },
+    {
+      "id": "hidden_chapter_symbols",
+      "name": "Hidden chapter symbols",
+      "present_on_site": true,
+      "scope": "current_marketing",
+      "first_known_release": {
+        "git_commit_sha": "cfb160fadf25b4348af0f6ec28cefdf4e7c62b97",
+        "evidence_path": "website/index.html#stone-module",
+        "deployment_verified": false
+      },
+      "current_page_sections": ["/#stone-module"],
+      "notes": "An interaction study lifts a steel pellet to reveal a chapter mark in the seat; the earned stone conceals the mark again. This is distinct from the decorative zodiac symbols in section backgrounds. The mechanism is still being developed."
+    },
+    {
+      "id": "nfc_stones",
+      "name": "NFC stones",
+      "present_on_site": true,
+      "scope": "current_marketing_exploration",
+      "first_known_release": {
+        "git_commit_sha": "cfb160fadf25b4348af0f6ec28cefdf4e7c62b97",
+        "evidence_path": "website/index.html#stone-module",
+        "deployment_verified": false
+      },
+      "current_page_sections": ["/#stone-module", "/how-it-works#app"],
+      "notes": "NFC in stones, selected stones, the bracelet, or no NFC remains an open design decision. This is not a live NFC or activation service. Earlier commit 534b42ec9bebddc0addcbf5f020499d064d2aa2e describes packaging NFC and explicitly excludes electronics in the jewelry; it is not evidence of implemented NFC stones."
+    },
+    {
+      "id": "support_network",
+      "name": "Support network",
+      "present_on_site": true,
+      "scope": "demo_and_general_marketing",
+      "first_known_release": {
+        "git_commit_sha": "24ddb50a7270cb46f0dc8108fdc42f152a96a059",
+        "evidence_path": "app/demo/join-group/page.tsx",
+        "deployment_verified": false
+      },
+      "current_page_sections": ["/#introduction", "/demo/home", "/demo/join-group", "/demo/chat"],
+      "notes": "The legacy demo shows mock support groups and chat. The homepage describes a support system and emotional support company. Neither establishes a functioning support network, real members, or a delivered service."
+    },
+    {
+      "id": "sos",
+      "name": "SOS",
+      "present_on_site": false,
+      "scope": "not_observed",
+      "first_known_release": null,
+      "current_page_sections": [],
+      "notes": "No explicit SOS product concept was found in the audited public page source. Support language is not treated as evidence of an SOS feature."
+    },
+    {
+      "id": "partner_jewelry",
+      "name": "Partner jewelry",
+      "present_on_site": false,
+      "scope": "not_observed",
+      "first_known_release": null,
+      "current_page_sections": [],
+      "notes": "No explicit partner-jewelry product concept was found in the audited public page source. Multiple finish renders do not by themselves establish this concept."
+    },
+    {
+      "id": "annual_editions",
+      "name": "Annual editions",
+      "present_on_site": true,
+      "scope": "current_marketing_exploration",
+      "first_known_release": {
+        "git_commit_sha": "534b42ec9bebddc0addcbf5f020499d064d2aa2e",
+        "evidence_path": "website/how-it-works/index.html#finishes",
+        "deployment_verified": false
+      },
+      "current_page_sections": ["/#yearly-bracelets", "/how-it-works#finishes"],
+      "notes": "The original future-family study shows Halo II/III and retained earlier years. Commit 32ba45b466c9501aeb95228c48c9aabd90fd3542 added a dedicated yearly collection to the homepage. Silver, black, and gold remain collection/finish studies, not verified production SKUs or delivery commitments."
+    }
+  ]
+}

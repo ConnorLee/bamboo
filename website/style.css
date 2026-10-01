@@ -365,7 +365,8 @@ html[data-motion-input="keyboard"] { scroll-behavior:auto; }
 /* A quiet company sign-off, aligned with the page's existing side margins. */
 footer.site-footer { padding:36px 5.5vw; flex-wrap:nowrap; gap:24px; }
 .site-footer .brand-lockup { width:136px; }
-.site-footer .footer-copyright { margin:0; width:auto; order:0; font-size:12px; line-height:1.5; text-align:right; white-space:nowrap; }
+.site-footer .footer-copyright { margin:0; width:auto; min-width:0; order:0; font-size:12px; line-height:1.5; text-align:right; }
+.site-footer .footer-copyright a { margin-left:8px; font-size:inherit; text-underline-offset:3px; }
 @media(max-width:700px) {
   footer.site-footer { padding:28px 24px; gap:20px; }
   .site-footer .brand-lockup { width:112px; }

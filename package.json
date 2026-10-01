@@ -6,9 +6,12 @@
     "website:build": "node scripts/build-halo-site.mjs",
     "predev": "pnpm website:build",
     "dev": "next dev",
-    "build": "pnpm website:build && next build",
+    "build": "node scripts/build-production.mjs",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:production": "node scripts/deploy-production.mjs",
+    "snapshot:public": "node scripts/capture-public-version.mjs",
+    "test:provenance": "node --test tests/release-provenance.test.mjs tests/public-snapshot.test.mjs"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",

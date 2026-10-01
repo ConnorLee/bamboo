@@ -12,6 +12,9 @@
 # production
 /build
 
+# Intentional private captures; never copy into public/ or website/.
+/archives/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
