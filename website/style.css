@@ -595,3 +595,29 @@ html.waitlist-open { overflow:hidden; }
   .milestone-symbols .symbol-pisces, .milestone-symbols .symbol-sagittarius, .milestone-symbols .symbol-star, .milestone-symbols .symbol-orbit { display:none; }
 }
 @media print { .milestone-symbols { display:none; } }
+
+/* Native October app captures. Keep the entire screen legible, without a card grid. */
+.native-app-section { scroll-margin-top:var(--nav-height); }
+.native-app-section h2 span { color:#a1a3a8; }
+.native-app-section .app-intro { color:#a9abb0; }
+.native-app-section .app-gallery { max-width:1080px; gap:56px; margin-top:72px; }
+.native-app-section .app-gallery:focus-visible { outline:2px solid #d5dcd1; outline-offset:10px; border-radius:4px; }
+.native-app-section .app-gallery .phone { max-width:290px; aspect-ratio:auto; }
+.native-app-section .app-gallery .phone img { display:block; height:auto; object-fit:contain; }
+.native-app-section .app-gallery figcaption { max-width:290px; }
+.native-app-section .app-gallery figcaption>span { color:#a5a8af; font-size:10px; letter-spacing:.13em; }
+.native-app-section .app-gallery h3 { font-size:21px; }
+.native-app-section .app-gallery figcaption p { color:#a9abb0; font-size:14px; line-height:1.6; }
+.native-app-section .demo-note { color:#92959d; font-size:11px; }
+.native-gallery-hint { display:none; }
+@media (min-width:701px) and (max-width:1000px) {
+  .native-app-section .app-gallery { gap:28px; }
+}
+@media (max-width:700px) {
+  .native-app-section h2 { font-size:clamp(42px,10vw,60px); }
+  .native-app-section .app-gallery { grid-template-columns:repeat(3,min(78vw,290px)); gap:26px; margin:44px -24px 0; padding:0 24px 22px; scroll-padding-inline:24px; }
+  .native-app-section .app-gallery .phone,.native-app-section .app-gallery figcaption { max-width:290px; }
+  .native-app-section .app-gallery figcaption { margin-top:24px; }
+  .native-gallery-hint { display:block; margin:22px 0 0; color:#adb0b6; font-size:12px; }
+  .native-app-section .demo-note { margin-top:20px; line-height:1.5; }
+}

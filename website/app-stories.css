@@ -1,0 +1,57 @@
+/* Two concise editorial stories extending the native app showcase. */
+.app-story { position:relative; isolation:isolate; scroll-margin-top:var(--nav-height); color:var(--ink); }
+.app-story-inner { width:min(100% - 112px,1080px); margin-inline:auto; padding-block:76px; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr); align-items:center; gap:clamp(48px,7vw,110px); }
+.app-story-copy { max-width:540px; }
+.app-story .eyebrow { margin:0 0 22px; font-size:11px; line-height:1.5; letter-spacing:.15em; text-transform:uppercase; }
+.app-story h2 { margin:0; font-size:clamp(38px,4.7vw,64px); line-height:1.04; letter-spacing:-.055em; font-weight:500; text-wrap:balance; }
+.app-story h2 span { color:var(--muted); }
+.app-story-intro { max-width:440px; margin:27px 0 0; font-size:17px; line-height:1.65; color:var(--muted); text-wrap:pretty; }
+.app-story-note { max-width:400px; margin:28px 0 0; font-size:12px; line-height:1.6; color:var(--muted); text-wrap:pretty; }
+.tailored-story { background:var(--paper); border-top:1px solid var(--border); }
+.goal-notes { list-style:none; padding:0; margin:27px 0 0; display:flex; flex-wrap:wrap; gap:6px 16px; font-size:15px; line-height:1.5; color:var(--ink); }
+.goal-notes li:first-child { color:#b34b2f; }
+:root[data-theme="dark"] .goal-notes li:first-child { color:#e99578; }
+.onboarding-preview { margin:0; justify-self:center; }
+.onboarding-phone { width:210px; padding:5px; border-radius:32px; background:#343637; box-shadow:0 22px 60px #0002; }
+.onboarding-phone img { display:block; width:100%; height:auto; border-radius:27px; }
+.onboarding-preview figcaption { max-width:220px; margin-top:18px; font-size:11px; line-height:1.5; text-align:center; color:var(--muted); }
+.rooms-story { overflow:hidden; background:#041019; color:#f1f4f5; }
+.rooms-world { position:absolute; z-index:-2; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 38%; }
+.rooms-story::before { content:""; position:absolute; z-index:-1; inset:0; background:linear-gradient(90deg,#020b13e6,#020b1366 75%),linear-gradient(0deg,#020b1366,transparent 65%); }
+.rooms-story .app-story-inner { min-height:500px; padding-block:88px; }
+.rooms-story h2 span { color:#b0c6ce; }
+.rooms-story .eyebrow { color:#bed0d7; }
+.rooms-story .app-story-intro { color:#d2dce0; }
+.rooms-story .app-story-note { color:#b5c6ce; }
+.rooms-notes { padding-top:12px; }
+.rooms-notes ul { list-style:none; margin:0; padding:0; }
+.rooms-notes li { display:flex; align-items:baseline; gap:18px; padding:19px 0; border-bottom:1px solid #d1e1e533; font-size:clamp(20px,2.3vw,29px); line-height:1.25; letter-spacing:-.025em; }
+.room-number { font-size:10px; letter-spacing:.05em; color:#aac4ce; font-variant-numeric:tabular-nums; }
+.rooms-notes .rooms-preview-note { font-size:11px; max-width:260px; margin-top:24px; }
+@media (max-width:800px) {
+  .app-story-inner { width:calc(100% - 48px); gap:34px; grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr); padding-block:60px; }
+  .app-story h2 { font-size:clamp(36px,5.5vw,48px); }
+  .app-story-intro { font-size:16px; }
+  .onboarding-phone { width:180px; border-radius:28px; }
+  .onboarding-phone img { border-radius:23px; }
+  .rooms-story .app-story-inner { padding-block:68px; }
+}
+@media (max-width:600px) {
+  .app-story-inner { grid-template-columns:1fr; gap:36px; }
+  .app-story h2 { font-size:clamp(37px,10vw,52px); }
+  .app-story .eyebrow { margin-bottom:18px; }
+  .app-story-intro { margin-top:22px; }
+  .onboarding-preview { justify-self:start; display:grid; grid-template-columns:170px minmax(0,1fr); gap:20px; align-items:end; width:100%; }
+  .onboarding-phone { width:170px; }
+  .onboarding-preview figcaption { margin:0 0 16px; text-align:left; max-width:140px; }
+  .rooms-story .app-story-inner { min-height:0; gap:30px; }
+  .rooms-story::before { background:linear-gradient(180deg,#020b13ed,#020b138c); }
+  .rooms-notes { padding-top:0; }
+  .rooms-notes li { padding-block:16px; font-size:23px; }
+  .rooms-notes .rooms-preview-note { max-width:300px; }
+}
+@media (prefers-contrast:more) {
+  .app-story-intro,.app-story-note,.onboarding-preview figcaption { color:var(--ink); }
+  .rooms-story::before { background:#020b13de; }
+  .rooms-story .app-story-intro,.rooms-story .app-story-note { color:#fff; }
+}
