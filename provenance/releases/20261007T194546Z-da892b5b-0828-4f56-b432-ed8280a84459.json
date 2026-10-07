@@ -1,0 +1,1773 @@
+{
+  "schema_version": 1,
+  "event": "production_deployment_observed",
+  "generated_at_utc": "2026-10-07T19:45:46.685Z",
+  "source": {
+    "commit_sha": "ca425ed40d4b202ff26d867bfe3dad532bac34b6",
+    "branch": null,
+    "working_tree_dirty": true,
+    "metadata_origin": "vercel_git_metadata",
+    "qualification": "Commit identity does not identify uncommitted content. Artifact hashes identify the captured public bytes."
+  },
+  "build": {
+    "id": "dpl_FeZgVQDjxXDKBfTB8NSA7JZe9Cdz",
+    "application_version": "0.1.0",
+    "environment": "production"
+  },
+  "site": {
+    "canonical_origin": "https://www.habithalo.app",
+    "deployment_origin": "https://v0-scrapapp-mpjxkfyicbn-nlodh6v77-connorlees-projects.vercel.app",
+    "observed_origin": "https://www.habithalo.app"
+  },
+  "publication": {
+    "verified": true,
+    "verified_artifacts": [
+      "/halo-site/app-stories.css",
+      "/halo-site/app.js",
+      "/halo-site/bracelet.js",
+      "/halo-site/closing-macro.css",
+      "/halo-site/halo-i-catalog.js",
+      "/halo-site/halo-i-sections.css",
+      "/halo-site/halo-i-sections.js",
+      "/halo-site/hero-atmosphere.js",
+      "/halo-site/hero.js",
+      "/halo-site/how-it-works/app.js",
+      "/halo-site/how-it-works/assets/fonts/AeonikPro-Medium.otf",
+      "/halo-site/how-it-works/assets/fonts/AeonikPro-Regular.otf",
+      "/halo-site/how-it-works/collection.js",
+      "/halo-site/how-it-works/evolution-art.js",
+      "/halo-site/how-it-works/evolution.js",
+      "/halo-site/how-it-works/index.html",
+      "/halo-site/how-it-works/style.css",
+      "/halo-site/how-it-works/theme.js",
+      "/halo-site/how-it-works/waitlist.css",
+      "/halo-site/how-it-works/waitlist.js",
+      "/halo-site/how-it-works/world-case.css",
+      "/halo-site/index.html",
+      "/halo-site/milestones.js",
+      "/halo-site/mineral-carousel.css",
+      "/halo-site/mineral-carousel.js",
+      "/halo-site/mineral-collection.js",
+      "/halo-site/mineral-hover.css",
+      "/halo-site/mineral-hover.js",
+      "/halo-site/motion.js",
+      "/halo-site/original/assets/fonts/AeonikPro-Bold.otf",
+      "/halo-site/original/assets/fonts/AeonikPro-Light.otf",
+      "/halo-site/original/assets/fonts/AeonikPro-Medium.otf",
+      "/halo-site/original/assets/fonts/AeonikPro-Regular.otf",
+      "/halo-site/original/style.css",
+      "/halo-site/patents/index.html",
+      "/halo-site/patents/patents.css",
+      "/halo-site/reservation.css",
+      "/halo-site/reservation.js",
+      "/halo-site/stone-module.css",
+      "/halo-site/stone-module.js",
+      "/halo-site/stone-year.css",
+      "/halo-site/stone-year.js",
+      "/halo-site/style.css",
+      "/halo-site/theme.js",
+      "/halo-site/waitlist-dialog.js",
+      "/halo-site/year-finale.css",
+      "/halo-site/year-finale.js",
+      "/halo-site/product-imagery-manifest.json",
+      "/",
+      "/how-it-works",
+      "/patents"
+    ],
+    "note": "Public HTTP responses matched the build hashes at observation time. Image bytes are listed in the hashed imagery manifest but are not all fetched by this collector. This is not proof of the first public disclosure or a trusted timestamp."
+  },
+  "build_receipt": {
+    "path": "/halo-site/release-provenance.json",
+    "sha256": "38102ff84dca846c68201b9936dd21509b2762a69429f5902d25c3499c968164",
+    "record": {
+      "schema_version": 1,
+      "event": "production_build",
+      "generated_at_utc": "2026-10-07T19:44:13.455Z",
+      "source": {
+        "commit_sha": "ca425ed40d4b202ff26d867bfe3dad532bac34b6",
+        "branch": null,
+        "working_tree_dirty": true,
+        "metadata_origin": "vercel_git_metadata",
+        "qualification": "Commit identity does not identify uncommitted content. Artifact hashes identify the captured public bytes.",
+        "branch_omission": "Branch names are retained in local release records, not the public receipt."
+      },
+      "build": {
+        "id": "dpl_FeZgVQDjxXDKBfTB8NSA7JZe9Cdz",
+        "application_version": "0.1.0",
+        "environment": "production"
+      },
+      "site": {
+        "canonical_origin": "https://www.habithalo.app",
+        "deployment_origin": "https://v0-scrapapp-mpjxkfyicbn-nlodh6v77-connorlees-projects.vercel.app"
+      },
+      "publication": {
+        "verified": false,
+        "note": "Successful build only. This record does not establish public deployment or an independently trusted timestamp."
+      },
+      "artifacts": [
+        {
+          "path": "/halo-site/app-stories.css",
+          "sha256": "76c676ac8fdb3e5848fd6add4efffc66ea456cf3fd7bdee1850eeb2f20642ed1",
+          "bytes": 4296
+        },
+        {
+          "path": "/halo-site/app.js",
+          "sha256": "70da6360e466efd4e0cd6f6a47e0b36be63306a6f5be9ac0f443e051dbad302f",
+          "bytes": 12315
+        },
+        {
+          "path": "/halo-site/bracelet.js",
+          "sha256": "60cb0912c2705ad57c7314e146baf38c5e99c27bd3302b9531bbcec4bfb17536",
+          "bytes": 5785
+        },
+        {
+          "path": "/halo-site/closing-macro.css",
+          "sha256": "89784efd4063a75bae9d7cf2d183e1a39d6de3883669f10d0a56967b077442f0",
+          "bytes": 1338
+        },
+        {
+          "path": "/halo-site/halo-i-catalog.js",
+          "sha256": "65af3965a164117039c55a904bfcfb4fc31660276996ae9f0a45acab5dd186cf",
+          "bytes": 19515
+        },
+        {
+          "path": "/halo-site/halo-i-sections.css",
+          "sha256": "62ec3b73da035b2bb864c0852d12c42126feefe7d064a2202a0135b1fef67245",
+          "bytes": 31541
+        },
+        {
+          "path": "/halo-site/halo-i-sections.js",
+          "sha256": "d2c34f708121caac4d9c2e5e28be61780b0f37f0a94ed431141bbca358316863",
+          "bytes": 4557
+        },
+        {
+          "path": "/halo-site/hero-atmosphere.js",
+          "sha256": "6c22a2cad25c6085f9b0a860d606ed000b1f2ff73421a269b81f611129886d78",
+          "bytes": 4008
+        },
+        {
+          "path": "/halo-site/hero.js",
+          "sha256": "5af3d6f90d8884981b83b9abd1ac78b30417cbeb33d150645764c33d6ec05e32",
+          "bytes": 1946
+        },
+        {
+          "path": "/halo-site/how-it-works/app.js",
+          "sha256": "24a93189ec24f16b8220c550b9555b35592b1769badf6e4363cfff349315df39",
+          "bytes": 9192
+        },
+        {
+          "path": "/halo-site/how-it-works/assets/fonts/AeonikPro-Medium.otf",
+          "sha256": "56831e0ee28172bc24a899a6fd5547621696811c706e4c6454669b1eabfdce4f",
+          "bytes": 126544
+        },
+        {
+          "path": "/halo-site/how-it-works/assets/fonts/AeonikPro-Regular.otf",
+          "sha256": "6ab031a068b890a4430f787c3837cc44e4d230ca803defae2c18152c01b44a9f",
+          "bytes": 122496
+        },
+        {
+          "path": "/halo-site/how-it-works/collection.js",
+          "sha256": "d16d24f99ef4b394800d5e24891935a46b3a1f2c87f9bbb767d91e4e945202f2",
+          "bytes": 975
+        },
+        {
+          "path": "/halo-site/how-it-works/evolution-art.js",
+          "sha256": "1d92aab6e8b22a6c1e78562e587c45039f6c687f305ed5f5f95e00a28e880c20",
+          "bytes": 6690
+        },
+        {
+          "path": "/halo-site/how-it-works/evolution.js",
+          "sha256": "1b1d2dfae3fd45295fb4bb2a3568cd2c261af335ea0ec92c139883b4fc4f6b45",
+          "bytes": 4061
+        },
+        {
+          "path": "/halo-site/how-it-works/index.html",
+          "sha256": "995973ea7cc754c3763843e3cd2a413a840d64a1dc5d3140981f68cbd51d6bac",
+          "bytes": 25325
+        },
+        {
+          "path": "/halo-site/how-it-works/style.css",
+          "sha256": "0a77049834d23e06f418e78c859c4e6c4eee521f9d1c86d3e76536980a035a55",
+          "bytes": 24742
+        },
+        {
+          "path": "/halo-site/how-it-works/theme.js",
+          "sha256": "12b54ab3e62ff40754d66253f8ab180fadf5675228905b2190e6a8ed06335af0",
+          "bytes": 1654
+        },
+        {
+          "path": "/halo-site/how-it-works/waitlist.css",
+          "sha256": "e42e93cde30bb6da854231281fc59268b6538027b00d91847814744836d14c6a",
+          "bytes": 2017
+        },
+        {
+          "path": "/halo-site/how-it-works/waitlist.js",
+          "sha256": "aa0b009a73a37c953d9f73c59cca5c93b303963b71414623ea2ffa93f5c8255e",
+          "bytes": 3319
+        },
+        {
+          "path": "/halo-site/how-it-works/world-case.css",
+          "sha256": "e19072f4e4d8966d0715de3b837d08006c3e495a71cd21a405addd61fcee3d41",
+          "bytes": 6064
+        },
+        {
+          "path": "/halo-site/index.html",
+          "sha256": "42598521d580e1213ae74b5eec83e0cc9fe358640a65842067d585646535fb9e",
+          "bytes": 32393
+        },
+        {
+          "path": "/halo-site/milestones.js",
+          "sha256": "4a265dfbb11031cebbcdba3a27995ac8340a50db93e806c00d544f63df2f6ce2",
+          "bytes": 654
+        },
+        {
+          "path": "/halo-site/mineral-carousel.css",
+          "sha256": "f04f0ebf6e9a271a67005352d78454a270457711f048d32dd7724f44e0a71ff2",
+          "bytes": 1854
+        },
+        {
+          "path": "/halo-site/mineral-carousel.js",
+          "sha256": "63f0f27fd8f15245d11dfc4aa4320af7bb3ab9f41de95deb9ab360ecea1c4885",
+          "bytes": 7808
+        },
+        {
+          "path": "/halo-site/mineral-collection.js",
+          "sha256": "d4853f73e7b99479c7917bf803febefa5d5b5dc6be2e491357188553ab60be0e",
+          "bytes": 7006
+        },
+        {
+          "path": "/halo-site/mineral-hover.css",
+          "sha256": "595b75322a1a08b0ba4e34a22072b1896cae510533eb0c3df1150baea5e6de4a",
+          "bytes": 2214
+        },
+        {
+          "path": "/halo-site/mineral-hover.js",
+          "sha256": "4c16500aa24ca135fdaba2e1f0911fead00bca789f21adcf0bf0dfd0f7998326",
+          "bytes": 6596
+        },
+        {
+          "path": "/halo-site/motion.js",
+          "sha256": "e7f0b6498593b45c6360570539e50f8711ddf1faae11e89bfaca9545a1befa32",
+          "bytes": 5267
+        },
+        {
+          "path": "/halo-site/original/assets/fonts/AeonikPro-Bold.otf",
+          "sha256": "b3499969339b7361037a12242fdaaffcbe9caeae61bb24b9e35f85d393b937f8",
+          "bytes": 128960
+        },
+        {
+          "path": "/halo-site/original/assets/fonts/AeonikPro-Light.otf",
+          "sha256": "750bbe6b85fac11136afbab127ea6893623cb51ec81a5cccc7675914a573fe50",
+          "bytes": 125212
+        },
+        {
+          "path": "/halo-site/original/assets/fonts/AeonikPro-Medium.otf",
+          "sha256": "56831e0ee28172bc24a899a6fd5547621696811c706e4c6454669b1eabfdce4f",
+          "bytes": 126544
+        },
+        {
+          "path": "/halo-site/original/assets/fonts/AeonikPro-Regular.otf",
+          "sha256": "6ab031a068b890a4430f787c3837cc44e4d230ca803defae2c18152c01b44a9f",
+          "bytes": 122496
+        },
+        {
+          "path": "/halo-site/original/style.css",
+          "sha256": "070dd3ec5610befeb17647fcc8bbcfab393c85e68256f0482a9f41c050d72343",
+          "bytes": 20230
+        },
+        {
+          "path": "/halo-site/patents/index.html",
+          "sha256": "08d175252713a4b6d47d76453a35f94e1be6d3fb5dc8b0cfc9ff7548d3c5d53b",
+          "bytes": 1149
+        },
+        {
+          "path": "/halo-site/patents/patents.css",
+          "sha256": "fd0059a8b5afee543f044a6ad61319b5accf1c13237526505ff0a202e274997a",
+          "bytes": 1383
+        },
+        {
+          "path": "/halo-site/reservation.css",
+          "sha256": "01f5e68272d66db73c07c1d079ff47758effcaf1f3a5ca7b6bceac16cec15a52",
+          "bytes": 7797
+        },
+        {
+          "path": "/halo-site/reservation.js",
+          "sha256": "4a847f5ad6eff24aa088835ebc4f6c14ab1a15a36b42994655974a29e5f010ef",
+          "bytes": 29670
+        },
+        {
+          "path": "/halo-site/stone-module.css",
+          "sha256": "6a4cce561aabbba7dd5b73c1c7a07ab7b5f4bd76531444e99b11da787838d643",
+          "bytes": 6868
+        },
+        {
+          "path": "/halo-site/stone-module.js",
+          "sha256": "e3a820bc8bdcab38dc8e8c7d6459962038cdb0a5bb640aa4e962502eaba8d4d3",
+          "bytes": 7847
+        },
+        {
+          "path": "/halo-site/stone-year.css",
+          "sha256": "abc5e610730efaf4a3a1d58e4bdea5083d9a0f8f413cd5c58e342849e30f047f",
+          "bytes": 7924
+        },
+        {
+          "path": "/halo-site/stone-year.js",
+          "sha256": "9416f47345216709cdd82574c36b31fd9ff9a67f20cc3dea5c3cc318f659cdf3",
+          "bytes": 2963
+        },
+        {
+          "path": "/halo-site/style.css",
+          "sha256": "b43b9ec92f21793cf24cb2ef1df3a3bc848fd915aa39db2e6dd86d3137670690",
+          "bytes": 34906
+        },
+        {
+          "path": "/halo-site/theme.js",
+          "sha256": "ec0ee6fadc668e6a68994325f92451539488f2d61cd34904d01806184d4e86a4",
+          "bytes": 1705
+        },
+        {
+          "path": "/halo-site/waitlist-dialog.js",
+          "sha256": "8fcee5d8c640ff53a72b9d04683faf290ec1e0382a42cb07337a034f40bfe953",
+          "bytes": 1996
+        },
+        {
+          "path": "/halo-site/year-finale.css",
+          "sha256": "8dfe184fffc61646d85d913356c15b818dd34be84e6c5668d980612fd342fea8",
+          "bytes": 3546
+        },
+        {
+          "path": "/halo-site/year-finale.js",
+          "sha256": "80bb842015876b8ecf842cd34b7705b7274cec697b5dfe497a8f17a624195cb7",
+          "bytes": 7863
+        },
+        {
+          "path": "/halo-site/product-imagery-manifest.json",
+          "sha256": "0f8a7390a548ec5cf3a140c3d49cb17472a4fb75f0b69e443095bf22df539b9d",
+          "bytes": 45086
+        }
+      ],
+      "surfaces": {
+        "landing_page": {
+          "path": "/",
+          "artifacts": [
+            "/halo-site/index.html",
+            "/halo-site/style.css",
+            "/halo-site/app.js"
+          ]
+        },
+        "wearable": {
+          "path": "/#journey",
+          "artifacts": [
+            "/halo-site/index.html",
+            "/halo-site/bracelet.js",
+            "/halo-site/product-imagery-manifest.json"
+          ]
+        },
+        "milestone_stones": {
+          "path": "/#milestones",
+          "artifacts": [
+            "/halo-site/index.html",
+            "/halo-site/app.js",
+            "/halo-site/product-imagery-manifest.json"
+          ]
+        },
+        "support_network_copy": {
+          "path": "/",
+          "artifacts": [
+            "/halo-site/index.html"
+          ],
+          "note": "Support-system marketing copy; demo network presence is separately qualified in the concept manifest."
+        },
+        "product_imagery": {
+          "path": "/halo-site/product-imagery-manifest.json",
+          "artifacts": [
+            "/halo-site/product-imagery-manifest.json"
+          ]
+        },
+        "patent_information": {
+          "path": "/patents",
+          "artifacts": [
+            "/halo-site/patents/index.html"
+          ]
+        }
+      },
+      "product_concepts": {
+        "sha256": "2851c25a8731ecaf371e66ea0e170575ee0ca4358732c8e6bd2fe9d2c7dc4478",
+        "bytes": 6535,
+        "manifest": {
+          "schema_version": 1,
+          "manifest_version": 1,
+          "reviewed_at_utc": "2026-10-01T04:18:53Z",
+          "reviewed_repository_head": "dfc36924e2e9e7435ffcbbd1c1efddf83b6a6b22",
+          "scope": "Current public marketing pages and explicitly identified saved studies and demo routes. Presence records a visible concept, not a shipping capability.",
+          "history_caveat": "first_known_release identifies the earliest reviewed repository commit containing the cited concept evidence. These are repository-content observations, not verified deployments, historical snapshots, or proof of earliest public disclosure in or outside this repository. A null value means no supporting evidence was found in this audit.",
+          "concepts": [
+            {
+              "id": "companion",
+              "name": "Companion",
+              "present_on_site": true,
+              "scope": "current_marketing",
+              "first_known_release": {
+                "git_commit_sha": "534b42ec9bebddc0addcbf5f020499d064d2aa2e",
+                "evidence_path": "website/how-it-works/index.html#evolution",
+                "deployment_verified": false
+              },
+              "current_page_sections": [
+                "/#app",
+                "/how-it-works#evolution",
+                "/how-it-works#journey"
+              ],
+              "notes": "Companion relationship and maturation are shown through illustrative app captures and evolution studies. Expressive 3D and milestone activation remain in development. An older unused component's generic Cosmic Companion wording is not treated as evidence of this animal-companion system."
+            },
+            {
+              "id": "accumulating_milestone_bracelet",
+              "name": "Accumulating milestone bracelet",
+              "present_on_site": true,
+              "scope": "current_marketing",
+              "first_known_release": {
+                "git_commit_sha": "534b42ec9bebddc0addcbf5f020499d064d2aa2e",
+                "evidence_path": "website/how-it-works/index.html#wearable",
+                "deployment_verified": false
+              },
+              "current_page_sections": [
+                "/#journey",
+                "/how-it-works#wearable",
+                "/how-it-works#collection"
+              ],
+              "notes": "Twelve seats fill over time and earlier stones remain. Rendered geometry and material studies do not establish manufactured inventory or validated retention, fit, durability, or electronics."
+            },
+            {
+              "id": "single_current_stone_bracelet",
+              "name": "Single-current-stone bracelet",
+              "present_on_site": true,
+              "scope": "saved_study",
+              "first_known_release": {
+                "git_commit_sha": "534b42ec9bebddc0addcbf5f020499d064d2aa2e",
+                "evidence_path": "website/original/index.html#journey",
+                "deployment_verified": false
+              },
+              "current_page_sections": [
+                "/original#journey",
+                "/variants/c#ritual"
+              ],
+              "notes": "The saved original visual swaps one current stone on one base; saved Variant C explicitly describes changing the bracelet stone. These are earlier studies, not the current accumulating twelve-seat proposal. The current proposal's centered current stone is not evidence of a single-stone-only design."
+            },
+            {
+              "id": "hidden_chapter_symbols",
+              "name": "Hidden chapter symbols",
+              "present_on_site": true,
+              "scope": "current_marketing",
+              "first_known_release": {
+                "git_commit_sha": "cfb160fadf25b4348af0f6ec28cefdf4e7c62b97",
+                "evidence_path": "website/index.html#stone-module",
+                "deployment_verified": false
+              },
+              "current_page_sections": [
+                "/#stone-module"
+              ],
+              "notes": "An interaction study lifts a steel pellet to reveal a chapter mark in the seat; the earned stone conceals the mark again. This is distinct from the decorative zodiac symbols in section backgrounds. The mechanism is still being developed."
+            },
+            {
+              "id": "nfc_stones",
+              "name": "NFC stones",
+              "present_on_site": true,
+              "scope": "current_marketing_exploration",
+              "first_known_release": {
+                "git_commit_sha": "cfb160fadf25b4348af0f6ec28cefdf4e7c62b97",
+                "evidence_path": "website/index.html#stone-module",
+                "deployment_verified": false
+              },
+              "current_page_sections": [
+                "/#stone-module",
+                "/how-it-works#app"
+              ],
+              "notes": "NFC in stones, selected stones, the bracelet, or no NFC remains an open design decision. This is not a live NFC or activation service. Earlier commit 534b42ec9bebddc0addcbf5f020499d064d2aa2e describes packaging NFC and explicitly excludes electronics in the jewelry; it is not evidence of implemented NFC stones."
+            },
+            {
+              "id": "support_network",
+              "name": "Support network",
+              "present_on_site": true,
+              "scope": "demo_and_general_marketing",
+              "first_known_release": {
+                "git_commit_sha": "24ddb50a7270cb46f0dc8108fdc42f152a96a059",
+                "evidence_path": "app/demo/join-group/page.tsx",
+                "deployment_verified": false
+              },
+              "current_page_sections": [
+                "/#introduction",
+                "/demo/home",
+                "/demo/join-group",
+                "/demo/chat"
+              ],
+              "notes": "The legacy demo shows mock support groups and chat. The homepage describes a support system and emotional support company. Neither establishes a functioning support network, real members, or a delivered service."
+            },
+            {
+              "id": "sos",
+              "name": "SOS",
+              "present_on_site": false,
+              "scope": "not_observed",
+              "first_known_release": null,
+              "current_page_sections": [],
+              "notes": "No explicit SOS product concept was found in the audited public page source. Support language is not treated as evidence of an SOS feature."
+            },
+            {
+              "id": "partner_jewelry",
+              "name": "Partner jewelry",
+              "present_on_site": false,
+              "scope": "not_observed",
+              "first_known_release": null,
+              "current_page_sections": [],
+              "notes": "No explicit partner-jewelry product concept was found in the audited public page source. Multiple finish renders do not by themselves establish this concept."
+            },
+            {
+              "id": "annual_editions",
+              "name": "Annual editions",
+              "present_on_site": true,
+              "scope": "current_marketing_exploration",
+              "first_known_release": {
+                "git_commit_sha": "534b42ec9bebddc0addcbf5f020499d064d2aa2e",
+                "evidence_path": "website/how-it-works/index.html#finishes",
+                "deployment_verified": false
+              },
+              "current_page_sections": [
+                "/#yearly-bracelets",
+                "/how-it-works#finishes"
+              ],
+              "notes": "The original future-family study shows Halo II/III and retained earlier years. Commit 32ba45b466c9501aeb95228c48c9aabd90fd3542 added a dedicated yearly collection to the homepage. Silver, black, and gold remain collection/finish studies, not verified production SKUs or delivery commitments."
+            }
+          ]
+        }
+      },
+      "product_imagery": {
+        "sha256": "0f8a7390a548ec5cf3a140c3d49cb17472a4fb75f0b69e443095bf22df539b9d",
+        "bytes": 45086
+      }
+    }
+  },
+  "product_imagery": {
+    "sha256": "0f8a7390a548ec5cf3a140c3d49cb17472a4fb75f0b69e443095bf22df539b9d",
+    "bytes": 45086,
+    "manifest": {
+      "schema_version": 1,
+      "generated_at_utc": "2026-10-07T19:44:13.455Z",
+      "scope": "Public image and video assets shipped in the selected landing-page asset directories; inclusion does not imply every asset is currently displayed.",
+      "assets": [
+        {
+          "path": "/halo-site/assets/app-companion.webp",
+          "sha256": "9a701fbda4a357407cbbe595de7399f20570950423cbfc4beadf3bc05ca67cd0",
+          "bytes": 78402
+        },
+        {
+          "path": "/halo-site/assets/app-october-2026/journey-oct5.webp",
+          "sha256": "b98e4e58569edf7897379eddc01784e661cb8d93287d3950f526d791b7f50dc5",
+          "bytes": 126146
+        },
+        {
+          "path": "/halo-site/assets/app-october-2026/luna-oct5.webp",
+          "sha256": "57baad36565763655725c465384e5476efd9c288775263bf6d0657718de4ce2a",
+          "bytes": 93908
+        },
+        {
+          "path": "/halo-site/assets/app-october-2026/progress-oct5.webp",
+          "sha256": "a31f84b1d2c18293403d19502ba6662a184f8afd105c221995f7cda6a324bfac",
+          "bytes": 207846
+        },
+        {
+          "path": "/halo-site/assets/app-stories/ocean-room.webp",
+          "sha256": "20af5c6f249412915f4c7eac109d52b2748d7a073c8e1c09859116481c4bc262",
+          "bytes": 92682
+        },
+        {
+          "path": "/halo-site/assets/app-stories/onboarding-interests.webp",
+          "sha256": "93a1e521db432e62a8aaad9c107e239fd73ae4cf81303d3f90530d52154245e7",
+          "bytes": 62448
+        },
+        {
+          "path": "/halo-site/assets/bracelet/gem-06.webp",
+          "sha256": "834775f82709463a910af737a2d2838e88aaef2e70c9e0d67376c59fe81bbf50",
+          "bytes": 21266
+        },
+        {
+          "path": "/halo-site/assets/bracelet/gem-07.webp",
+          "sha256": "dd35b813f57a576675e71eafcdee73830645d75c13b43f568468eecf1c5bdf53",
+          "bytes": 21058
+        },
+        {
+          "path": "/halo-site/assets/bracelet/gem-08.webp",
+          "sha256": "da229670b208cccbc573a338733dbf52ac43b7f80b9f60c3d683a7026b7adb41",
+          "bytes": 15610
+        },
+        {
+          "path": "/halo-site/assets/bracelet/gem-10.webp",
+          "sha256": "8ed550385a9c78fb7392e5663a7e1d358f0c33d63b132041d086effec5d9094f",
+          "bytes": 20148
+        },
+        {
+          "path": "/halo-site/assets/bracelet/gem-11.webp",
+          "sha256": "b2e4a6474cdab457062f5b687c4ed730ef1edad9ff57664e8c32b9ef45e25ad5",
+          "bytes": 16898
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-00.webp",
+          "sha256": "d3343be3d9ca35b3794ad5b351ffc06b5474488c5f5c0f31470f56f36a1f2db3",
+          "bytes": 35462
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-01.webp",
+          "sha256": "e58af37cd00f84e930189bfd419042cb05358ed231d15e4bed739eedb3fe6278",
+          "bytes": 37002
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-02.webp",
+          "sha256": "f5e1984652dcd3d972e56d5e28c0a3c4019dd6d6a496a66e73f093e56c72a626",
+          "bytes": 38680
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-03.webp",
+          "sha256": "29dd45cfddfe3c7f75a2f21a6dd84785f1928413f56a4c74d3bfed27c06156b4",
+          "bytes": 41100
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-04.webp",
+          "sha256": "400fcd62158b1bc4de043a52c70c4baf5441bf2fd75dad6362784055ac00b439",
+          "bytes": 42518
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-05.webp",
+          "sha256": "f79dd25213f4a208bd809ae0aa48c935870ae1037fb5b0f8f07e84c27ff93edb",
+          "bytes": 43838
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-06.webp",
+          "sha256": "915a8c1ca60781e26d012a1531303618d068041ed053e55943be0f7d89e82b4b",
+          "bytes": 44978
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-07.webp",
+          "sha256": "0b890b8f5c5ad93eb05f395c75ce6bdd3b7f8edd6b814baf6b1a0185e905d377",
+          "bytes": 46614
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-08.webp",
+          "sha256": "6185fc2e59ba33f8ed2dfb9ab46ca42fd506d85d8c907ad1539bf2fe91adbf6e",
+          "bytes": 47048
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-09.webp",
+          "sha256": "9158fcebe50bfd89449ae2a723e1bda27731998f3f60fedef5b1b317d9a42336",
+          "bytes": 47374
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-10.webp",
+          "sha256": "c49332246aae98572fba1a678f0f73d52789f7bcccdb1ab951a0fa1a35928a00",
+          "bytes": 47416
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-dark-11.webp",
+          "sha256": "72c231312078f6d23a167791c23b530feec1f6e10c70875865b98c69994dbd40",
+          "bytes": 47590
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-00.webp",
+          "sha256": "b4743b6a186c22678193acbd2c82eea9863e931db1b36d73e9e3552680cdb009",
+          "bytes": 42818
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-01.webp",
+          "sha256": "7b647979edfd8fa1860dbaca7fa9224ff8516e37e8262556b9e6b9ea758cc124",
+          "bytes": 44256
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-02.webp",
+          "sha256": "8c6ff8c873165380380149b4e4a1cf386e83aec0d756f26e276e2fb7590d336c",
+          "bytes": 46072
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-03.webp",
+          "sha256": "6a86e256fe11a8b636617425896985214880851064d442face752b51f0842a93",
+          "bytes": 48574
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-04.webp",
+          "sha256": "c71bf65c8799fa51984822c5c7e724be3832153d08eab843d0c2d5ec9e613f41",
+          "bytes": 49734
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-05.webp",
+          "sha256": "34be03c2f494947ca3166f77367a1e796a051f7db66eed8de849007923c31c20",
+          "bytes": 51022
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-06.webp",
+          "sha256": "6ff725ce5ad3cad70853272aef1d3d3832353083dc7c344bda9df03bf1cb75d8",
+          "bytes": 52002
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-07.webp",
+          "sha256": "7e3c221230908b36beaeb02ea15a383d75116d0f4cace74ce6f6d57efd4ad17e",
+          "bytes": 53404
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-08.webp",
+          "sha256": "bb92a3b33228a7a6dc0a2e63583b8db181f63b50024e121140490e054dbe60ec",
+          "bytes": 54030
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-09.webp",
+          "sha256": "c7214e99b6d85ad5610019bac61f0dc7c7a12d950accb035bf2e1568c18a4a36",
+          "bytes": 55348
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-10.webp",
+          "sha256": "61e57870824488794a0b177b9a40de725d05c81596068fd9b4e29c3d5dab2483",
+          "bytes": 54910
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/base-light-11.webp",
+          "sha256": "d643903d0a7c8db425ae715be366671bf336b21095b9c6dfd6bf04d4e2dfaf91",
+          "bytes": 54866
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/empty-dark.webp",
+          "sha256": "daf0747768214809183e8d5801882f526477c948b038f3d3ca11ee8521083d56",
+          "bytes": 35832
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/empty-light.webp",
+          "sha256": "e41ca97e61763967066d7ade3d8304e0ccfc5bcc900a34ab5f0a6cc8713200e5",
+          "bytes": 42604
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/empty.webp",
+          "sha256": "e41ca97e61763967066d7ade3d8304e0ccfc5bcc900a34ab5f0a6cc8713200e5",
+          "bytes": 42604
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-00.webp",
+          "sha256": "0e0c7c45ef15524bdddba1f60e90788fe7ed869e7cb3fb0455b376c13b107405",
+          "bytes": 41256
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-01.webp",
+          "sha256": "4b3a422030ceea27a4f18bd74c47d67a634ab77ab35b21d9ace1739f67441602",
+          "bytes": 41916
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-02.webp",
+          "sha256": "55c7ba92162b89433e3bc87da83e132dcc7684e72422fd947657f6eabd2c0b3c",
+          "bytes": 40692
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-03.webp",
+          "sha256": "5c3057aa72a318d8b91fd6f5dad7f559760520080d20acf5377f7a4bc99665b7",
+          "bytes": 40220
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-04.webp",
+          "sha256": "e9f32545b8e4333c11efccec93560f6a7ee7f35ae3a22fc0fe0b20f533d6c85c",
+          "bytes": 37562
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-05.webp",
+          "sha256": "ed9edded403764b93315e871eb9e3eaaa847b7ef3d40a4e798280236d138cce2",
+          "bytes": 35252
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-06.webp",
+          "sha256": "7fe4ab7f6abfaad2da363ea0cfb877bd4128db77946dbae85992a01a48e64825",
+          "bytes": 33328
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-07.webp",
+          "sha256": "604e560ec67c4a71c3b7494c68d1af6decf506fa4982eb24f8eac0472d7fdfb3",
+          "bytes": 33408
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-08.webp",
+          "sha256": "312e1f51082f2c62e8114c4b529488b53ba3fc4480a74f5ba51373f223c68246",
+          "bytes": 32932
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-09.webp",
+          "sha256": "93097951a89e8540ca31e26513cbd5c8a1516c6c93a5380e065d4ba4c66c24bb",
+          "bytes": 32044
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-10.webp",
+          "sha256": "fcc980c2b438c122cbadf651bcc45c37f1ef01b3a3f851d578ba8c03b4c7aed8",
+          "bytes": 31614
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-11.webp",
+          "sha256": "49c38151d2bae6dd7e7dd3af0f999dfbcc7aae3044a07b76bd5b3663895076bb",
+          "bytes": 29820
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-12.webp",
+          "sha256": "34f20fc99add5666e540541dc27900aeacfd4fc42513cdb4ced307039fa0fcba",
+          "bytes": 29818
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-13.webp",
+          "sha256": "3b3bd80078d912ec92a739fe823362b55d89f73e6d0394e50a527c812f0c680b",
+          "bytes": 29636
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-14.webp",
+          "sha256": "40a90b7bf955a5925e1a8d29933a983f6d42f44547ca9411c37078952930c502",
+          "bytes": 29016
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-15.webp",
+          "sha256": "26f5e9745b08df97449c1d469ede2ffc0fbba55a905618884a3fdbc6f8ca0cb6",
+          "bytes": 28556
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-16.webp",
+          "sha256": "a84bac4dfd74285225799322a263a76e261cb8ff2610638c3a5cc8bb98d96e7e",
+          "bytes": 28104
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-17.webp",
+          "sha256": "5a1d1a3ee299bbe82c30612d5488da1d54fe32318c0b2375e9aed85f6c418b9b",
+          "bytes": 28710
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-18.webp",
+          "sha256": "6abbf62f428b19a3b464aa19ecb9cd4171fffc322515a68fb533629109552fb1",
+          "bytes": 28460
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-19.webp",
+          "sha256": "c27e200b3e7efbe6abd71caa26c112c9d920682e47aa29db6af9ca988b5e3bed",
+          "bytes": 31744
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-20.webp",
+          "sha256": "1036df5d4b6583b52cbf1ee92eda040e404ff5ec97655f10111cc39fb2f3ad6c",
+          "bytes": 36022
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-21.webp",
+          "sha256": "b7588149f9bfe88a142b776b9d509a43e9fa03481d7d7ee4454ec5a487abf78c",
+          "bytes": 40108
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-22.webp",
+          "sha256": "0364f4198bd2975895ec9e37a9a1bb1fa73e63e4d227ac2b952b5f0a8cfb53ea",
+          "bytes": 41970
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/dark-23.webp",
+          "sha256": "0e0c7c45ef15524bdddba1f60e90788fe7ed869e7cb3fb0455b376c13b107405",
+          "bytes": 41256
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-00.webp",
+          "sha256": "4f6248e61dcdd768d529c65b86a015e20d6906d5379b6d164b1124cd94dba221",
+          "bytes": 47542
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-01.webp",
+          "sha256": "38e0343381670ca8c8805664f6200fc7d37827f59b6fa44b8b749fbd05a63294",
+          "bytes": 49950
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-02.webp",
+          "sha256": "5d54773e121a74537434fa8b4e848685e1d6223e9fb5a5ce4eb19a63dc87f59b",
+          "bytes": 48540
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-03.webp",
+          "sha256": "d7c66f64a580021bf193d5854cf04520c88082297b51eb3b952c2505838af0c5",
+          "bytes": 48376
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-04.webp",
+          "sha256": "cda785a7a958b8947393cee48931b7cf98caadbf4c07c7768dfd1e5b2f1e5b20",
+          "bytes": 45610
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-05.webp",
+          "sha256": "9849cef3fe2ad9ce409f7fb4ae1982df24ad867527db362feb1aaa07b2d1dade",
+          "bytes": 43302
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-06.webp",
+          "sha256": "77a3bce37d5065cce27917f05feeb810cc26f2cd352fa1d935e00d0ffcf45ff1",
+          "bytes": 41402
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-07.webp",
+          "sha256": "8ef9fa7ec652276e0f4f516ca7d4d7dbc10f2d386883e864f292452513d6cb6d",
+          "bytes": 41460
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-08.webp",
+          "sha256": "46d54f8c61a775480acedd4343c80c8193ed3872b5d66a9a998fca832a4a18ca",
+          "bytes": 41168
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-09.webp",
+          "sha256": "361d6dd04fc375b3b62a6082c4cb1f45ab18b07c9c44a6bd27b5baea3daccb36",
+          "bytes": 40628
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-10.webp",
+          "sha256": "def13f3e726e3f0580c63fe94e724f8ea566efce100e39978f495f476aba54ec",
+          "bytes": 38778
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-11.webp",
+          "sha256": "6ce13085c057095d5057b35be103bfdf436fc45449b8328caf31436972b40519",
+          "bytes": 36052
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-12.webp",
+          "sha256": "14225082bf8d72ced4676f0de2a4daaf92f53fd33aecf53c6d2684afdca95489",
+          "bytes": 36308
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-13.webp",
+          "sha256": "2cbd775e98f2fda4454df79d4fc76cc0b90c8acdb416efb33b072d6352892a11",
+          "bytes": 35676
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-14.webp",
+          "sha256": "18969dbf80916f08d793e527db2a8b41abf40892cd91393ca85ee83c32dad0fb",
+          "bytes": 35710
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-15.webp",
+          "sha256": "0e99900305c3fbf2b8c2055704a5f75742585175ee136857e060fca94b4d699f",
+          "bytes": 34792
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-16.webp",
+          "sha256": "cdc3f825526e012c1f3d1e348172bf198f64ccf47fee6aa68af31090fb695a88",
+          "bytes": 33176
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-17.webp",
+          "sha256": "84f10c76e59fbc5293eb16dde57883466ef979dd093613f3c414fb64aa7a7425",
+          "bytes": 33804
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-18.webp",
+          "sha256": "529f1d7c28148e713f08221854d1a9cea0a8899cadce557c7163c53e2fef8c55",
+          "bytes": 34194
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-19.webp",
+          "sha256": "bc9f7f239791f156363b750ac04ce2e0f2d7ecf35378d5e6afd28ab7fedef1ff",
+          "bytes": 37100
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-20.webp",
+          "sha256": "1a5603ed78e319a103c7ffbffffa4e032b229b64c780ed8037e9e935d1a3cc36",
+          "bytes": 42034
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-21.webp",
+          "sha256": "e1bc2aa14175398e96e58ea0a6dadc4e132ad968e4a22e66a0e76238865f1315",
+          "bytes": 47208
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-22.webp",
+          "sha256": "96c103c2603afd4fda0539a66aa866ca86105934ae953534c5da8f1f8e78425f",
+          "bytes": 50012
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/finale/light-23.webp",
+          "sha256": "4f6248e61dcdd768d529c65b86a015e20d6906d5379b6d164b1124cd94dba221",
+          "bytes": 47542
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-00.webp",
+          "sha256": "0f5f6a758480e251714fab53858e344bc8ae103f073346706b7f74b0b3f864e0",
+          "bytes": 10614
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-01.webp",
+          "sha256": "7b07dbc2e4234ca08d67ff846f11121e690b605f2cf4beda3ae0f2b447c87f21",
+          "bytes": 18152
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-02.webp",
+          "sha256": "eca47edf234dcb3e8c337e93066f09b15bfb6847e4c2e182d59c5b829aa1dcb8",
+          "bytes": 24192
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-03.webp",
+          "sha256": "8b779fe8a323bb5dd7ae7e6596599825ab4bc3e3a76f89b25be31f7b81b512fe",
+          "bytes": 12250
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-04.webp",
+          "sha256": "585945a3284c8f77ca71697ed4b880b0febbac872fd83ce2e8acf37d1d37ba90",
+          "bytes": 19486
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-05.webp",
+          "sha256": "c3eef100cf0a4e6c2b565559f837f27945948dd1a86498d1efe97ffba6580ec9",
+          "bytes": 36900
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-06.webp",
+          "sha256": "96841969dc8d912b9615ca7db55db9f13dee822acde4ddb0f2a9bda01872d1db",
+          "bytes": 15932
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-07.webp",
+          "sha256": "9d65cdb3f3e35aa0bb4d5a2cda5b96cbee15ee6c5fb5f1e8866c8f3ae2bd65ba",
+          "bytes": 25792
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-08.webp",
+          "sha256": "71dd74d0a6d1855e3d38b5cfa3befc1405eacb9b0eb3ea5127824f3d4ecc1d17",
+          "bytes": 21304
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-09.webp",
+          "sha256": "25f29161f3aa90739b27fbc799c1cf0e083bfd9ec6abd0de9f99411b8a97fe67",
+          "bytes": 18230
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-10.webp",
+          "sha256": "a3eff604fce5e62a43a6bb32357f5d0893803234da64f21d0d5fd93850329390",
+          "bytes": 11216
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/gem-11.webp",
+          "sha256": "0bef94af6942134898d393a5578257674be718a8e181bb1f2d024082a8357f40",
+          "bytes": 31910
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-00.webp",
+          "sha256": "e41ca97e61763967066d7ade3d8304e0ccfc5bcc900a34ab5f0a6cc8713200e5",
+          "bytes": 42604
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-01.webp",
+          "sha256": "f93032aa1e7b146e7abab1900827b747491ed5bd4636aa9a3dd2eba5e225b445",
+          "bytes": 44086
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-02.webp",
+          "sha256": "9ea733c56293320fdb73b309784f1ce7723c76d6a452b4c282ee50e3892c0f04",
+          "bytes": 46214
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-03.webp",
+          "sha256": "7da6b316dadf1ed22503474aded46c4dd484177996bc81829ca7f5efaf0fecf2",
+          "bytes": 48670
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-04.webp",
+          "sha256": "ca58f64a7da3df31e0f4cbc5c960a599b910934c46c7352b141cea8bfb4d63d1",
+          "bytes": 49758
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-05.webp",
+          "sha256": "f1965282579e66c380d6c969802d88ec0d541a32d201d882ad65ba3418d2fee9",
+          "bytes": 51332
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-06.webp",
+          "sha256": "d67e99c2f6918fd0d42d3444f3dec02165098c4fc134d4110b3036aec5ddbd49",
+          "bytes": 53982
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-07.webp",
+          "sha256": "95ade9e22959df83f574f835f0e14b3d5e1339cd98e5760da2f4f98929e18925",
+          "bytes": 54430
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-08.webp",
+          "sha256": "82ed761aca8040fc48ff7cb7a1e02e3be0036fda05579d42a52f5d750b13894d",
+          "bytes": 55918
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-09.webp",
+          "sha256": "e32613f57c5ede321cbdb19c4d40c533475f46a09fdc88cc2c01ca884341cb0a",
+          "bytes": 54850
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-10.webp",
+          "sha256": "a2b4e7c0872e8d91c1353bef758488cdeac2432c6666fcb8f4cebff694b18924",
+          "bytes": 56492
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-11.webp",
+          "sha256": "9d6c1f0f2aff9bd1c5a1e3695fc1fb9ce7825db6540305edf5c2f71ba1262ec1",
+          "bytes": 55652
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-12.webp",
+          "sha256": "5b3df35fe3a5ce3a49151c10f400c6cfbc1a9f0884c02a3d7c97c3c5b1c31f71",
+          "bytes": 56118
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-00.webp",
+          "sha256": "daf0747768214809183e8d5801882f526477c948b038f3d3ca11ee8521083d56",
+          "bytes": 35832
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-01.webp",
+          "sha256": "6e37864bb0a1645bfe6ef214a5afaa7740aaff95eddba21da0dd9c6c8d8b710e",
+          "bytes": 37208
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-02.webp",
+          "sha256": "49f7c2bb3038bdd43104d45103b79327c492127a044db2748f17165c5d593e65",
+          "bytes": 39002
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-03.webp",
+          "sha256": "f7548b42b5f4f6b589a3bdd31eb03f38cd3f2a6b8d188527ef058bae56f92f0c",
+          "bytes": 41188
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-04.webp",
+          "sha256": "38bcb1ed1c0b9c4ddc931dd79ec1290869ff76fae46fec8d54e2a9db59e4ba00",
+          "bytes": 42662
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-05.webp",
+          "sha256": "6251f6ec9dca2b870172626f642e8d6dd5ffff2a49a574b9284baaed46fb3fbe",
+          "bytes": 44194
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-06.webp",
+          "sha256": "d318d107bb3cdef27e5893549c8ee6ea0a13951c1f67b85d0ddde91069c0aa1c",
+          "bytes": 47084
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-07.webp",
+          "sha256": "8b442b67458b571c4cd068859ee952a7911f799f6c991277a77edbc0007fa842",
+          "bytes": 47516
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-08.webp",
+          "sha256": "25b6cf9d17f7b35ece7be6c4eeea05fa45fd1d0f3f436604296d18c2d39dcb13",
+          "bytes": 48970
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-09.webp",
+          "sha256": "c8fc6486251451ef0afc4d9d4100b11ae6580281baaf69ea0667ff407abcb248",
+          "bytes": 48038
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-10.webp",
+          "sha256": "c12ab83cb8b5b9a841e92f9bbed55f5f6542790e6b4cc0a5ad40ef35c4e332a8",
+          "bytes": 49320
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-11.webp",
+          "sha256": "5bcc40f6134f2b7ed3c44c35a0160dd89df87f09455ffafc1e481daf8a0da3ce",
+          "bytes": 48734
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-dark-12.webp",
+          "sha256": "15e58cce03166884414fd8c14f01124c2021e277c13c0381703994d868bf8cfe",
+          "bytes": 49144
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-00.webp",
+          "sha256": "e41ca97e61763967066d7ade3d8304e0ccfc5bcc900a34ab5f0a6cc8713200e5",
+          "bytes": 42604
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-01.webp",
+          "sha256": "f93032aa1e7b146e7abab1900827b747491ed5bd4636aa9a3dd2eba5e225b445",
+          "bytes": 44086
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-02.webp",
+          "sha256": "9ea733c56293320fdb73b309784f1ce7723c76d6a452b4c282ee50e3892c0f04",
+          "bytes": 46214
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-03.webp",
+          "sha256": "7da6b316dadf1ed22503474aded46c4dd484177996bc81829ca7f5efaf0fecf2",
+          "bytes": 48670
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-04.webp",
+          "sha256": "ca58f64a7da3df31e0f4cbc5c960a599b910934c46c7352b141cea8bfb4d63d1",
+          "bytes": 49758
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-05.webp",
+          "sha256": "f1965282579e66c380d6c969802d88ec0d541a32d201d882ad65ba3418d2fee9",
+          "bytes": 51332
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-06.webp",
+          "sha256": "d67e99c2f6918fd0d42d3444f3dec02165098c4fc134d4110b3036aec5ddbd49",
+          "bytes": 53982
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-07.webp",
+          "sha256": "95ade9e22959df83f574f835f0e14b3d5e1339cd98e5760da2f4f98929e18925",
+          "bytes": 54430
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-08.webp",
+          "sha256": "82ed761aca8040fc48ff7cb7a1e02e3be0036fda05579d42a52f5d750b13894d",
+          "bytes": 55918
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-09.webp",
+          "sha256": "e32613f57c5ede321cbdb19c4d40c533475f46a09fdc88cc2c01ca884341cb0a",
+          "bytes": 54850
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-10.webp",
+          "sha256": "a2b4e7c0872e8d91c1353bef758488cdeac2432c6666fcb8f4cebff694b18924",
+          "bytes": 56492
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-11.webp",
+          "sha256": "9d6c1f0f2aff9bd1c5a1e3695fc1fb9ce7825db6540305edf5c2f71ba1262ec1",
+          "bytes": 55652
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/progress-light-12.webp",
+          "sha256": "5b3df35fe3a5ce3a49151c10f400c6cfbc1a9f0884c02a3d7c97c3c5b1c31f71",
+          "bytes": 56118
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-00.webp",
+          "sha256": "6c1c593fa3ad77143f94101a59126511eb489e3448504081a0c14adb5cd23ff0",
+          "bytes": 5142
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-01.webp",
+          "sha256": "3ce254473deec658b61b98058b0e6be987c8bf0da87819c6900a4b963517cbda",
+          "bytes": 5726
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-02.webp",
+          "sha256": "ad566bb07c3f63ac1386e275e04f9ec0fed8a840b960d1cc0024b1e271552910",
+          "bytes": 6170
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-03.webp",
+          "sha256": "5079ab7f574ed60606a9ed62d00b93586c94b8e8237e8395d39c62df0d0bb61a",
+          "bytes": 5210
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-04.webp",
+          "sha256": "906406d8f6f9f329826e7b80cf4d6ef8460dab8a353da00f0afa0d8634bd1193",
+          "bytes": 5392
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-05.webp",
+          "sha256": "98161ab022e0751d151761f60d6d6e32eb1aa989561bbe54ca6e3b2f6a1be8de",
+          "bytes": 6762
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-06.webp",
+          "sha256": "6830fa74c3d8e1f238f889da338f4679360bdb7a3a0d5d36c1a6a509ba486559",
+          "bytes": 6170
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-07.webp",
+          "sha256": "5a9fd9d3cca3e05334b5ffa377284965efe1fe81950c6ae060ecd22a876344f9",
+          "bytes": 6042
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-08.webp",
+          "sha256": "2440f991e79597f38210a5f40542eb94bbb887391c79dcfe47f917ab9419c1fe",
+          "bytes": 4536
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-09.webp",
+          "sha256": "4eab734a2d6ab37d41e1768423f02f91416100a9af1b4b4b0246d888dbc37a70",
+          "bytes": 5832
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-10.webp",
+          "sha256": "723e078325e9dda8e1adbb2c6d5e3844df9e32a219c107e0097567196de5c273",
+          "bytes": 5200
+        },
+        {
+          "path": "/halo-site/assets/bracelet-year/stone-11.webp",
+          "sha256": "6ca0d5a5cec265156f7f56aa4209e45b872ae512a4e37b85b2a5760eefb02f68",
+          "bytes": 5072
+        },
+        {
+          "path": "/halo-site/assets/halo-closing-macro-dark-mobile-v1.webp",
+          "sha256": "4a65ac77f69a7856155cdad964435082271c9dcf6138e20ce5b17ff165908fdb",
+          "bytes": 77150
+        },
+        {
+          "path": "/halo-site/assets/halo-closing-macro-dark-v1.webp",
+          "sha256": "5048eb7a3038c025d84994a6930395a17c97835b5253a0baa01f4cf907f8e163",
+          "bytes": 107108
+        },
+        {
+          "path": "/halo-site/assets/halo-closing-macro-mobile-v1.webp",
+          "sha256": "edce1d1c7d264388b1888fefcb92bfd27c1436701623cd100a600a502f0ce4a5",
+          "bytes": 110892
+        },
+        {
+          "path": "/halo-site/assets/halo-closing-macro-v1.webp",
+          "sha256": "684de6a4235e20d770176806b941d04af977007c0fcaefbcf32bf8728bacd26a",
+          "bytes": 147578
+        },
+        {
+          "path": "/halo-site/assets/halo-grain.svg",
+          "sha256": "0949f33eb088bacbf740ceafa019059caf034f51069aa26e12f54cea2cce9ad7",
+          "bytes": 699
+        },
+        {
+          "path": "/halo-site/assets/halo-logo-sculptural.png",
+          "sha256": "33ec835ba7b6992a0a13d107efbb026078e6afe73bd568041c26b91bc6e12dfb",
+          "bytes": 127409
+        },
+        {
+          "path": "/halo-site/assets/halo-milestone-screen-v1.jpg",
+          "sha256": "77671170c82cc48a8d6aa0cb54ead03151ab90d7d0530a3b6b7cce056a4a9ad5",
+          "bytes": 222567
+        },
+        {
+          "path": "/halo-site/assets/halo-together.webp",
+          "sha256": "aa817c206664dca71be451b462a296d203bc16e7da63e47cde7cc6f3eda34954",
+          "bytes": 236420
+        },
+        {
+          "path": "/halo-site/assets/halo-twelve-month-packaging-v2.jpg",
+          "sha256": "c9b31b76b64c83d5c7bd78ea6fd195de0cf3c50a2c51d18c591deab7db761cdd",
+          "bytes": 415018
+        },
+        {
+          "path": "/halo-site/assets/halo-year-one-stone-boxes-dark-cutout-v1.webp",
+          "sha256": "abe2ba91006735f9f14204929696f0a96197e5cb23e5bbe5bf4e8f5eb641ac7d",
+          "bytes": 312750
+        },
+        {
+          "path": "/halo-site/assets/halo-year-one-stone-boxes-light-cutout-v1.webp",
+          "sha256": "5565eb70bfd2d4e57cb29b0c5f44f54cf3cea6f10d22eff7f0ecb58abd570381",
+          "bytes": 300588
+        },
+        {
+          "path": "/halo-site/assets/icon.png",
+          "sha256": "d9901678b1644d12895342f7351b3a803a89f2ae80ce6a6a13e679dcc8b05342",
+          "bytes": 782206
+        },
+        {
+          "path": "/halo-site/assets/milestone-landscapes.webp",
+          "sha256": "f5a3b35f0405f34f9252672de7ae1fd3f45ceaa8bf63b4ff57c62fb847633051",
+          "bytes": 263070
+        },
+        {
+          "path": "/halo-site/assets/stone-module-scene.svg",
+          "sha256": "bbe1a3ae5795d86e76a9dcb02ae740e93c3ba5d1ea17164f980c9e914dd513d4",
+          "bytes": 13390
+        },
+        {
+          "path": "/halo-site/assets/stone-year/amethyst.webp",
+          "sha256": "060ad7c41f933b55c9681fbd5f36e3709927771e677326c98793fa1e56c5605d",
+          "bytes": 20208
+        },
+        {
+          "path": "/halo-site/assets/stone-year/aventurine.webp",
+          "sha256": "2022e1d4c021687101170b42fd19831a80babb6f79e4177d7bf71cc54fb154d5",
+          "bytes": 22032
+        },
+        {
+          "path": "/halo-site/assets/stone-year/black-tourmaline.webp",
+          "sha256": "09382b03d5042348d5e19c0be2b1b48b7a3497af6f4f7b7b4bb72ee688640d18",
+          "bytes": 18726
+        },
+        {
+          "path": "/halo-site/assets/stone-year/carnelian.webp",
+          "sha256": "4767240fc9d69c54b1114e565b5ff83df8821372aca378c0806cce2573b22199",
+          "bytes": 15956
+        },
+        {
+          "path": "/halo-site/assets/stone-year/citrine.webp",
+          "sha256": "9d0e0074bb990aaace33766e7505b7ddb6a2d8f822a84524cc0a5aaddca608ca",
+          "bytes": 21622
+        },
+        {
+          "path": "/halo-site/assets/stone-year/lapis-lazuli.webp",
+          "sha256": "46459d74056b4d4376dcb52120f4a7201ba150dd9cdd122e0872a4d95d51d144",
+          "bytes": 25266
+        },
+        {
+          "path": "/halo-site/assets/stone-year/moonstone.webp",
+          "sha256": "c4fafbd3d4cdf25d3933e70d5d8465123e217fa128e56606780e0a0442c7a8fa",
+          "bytes": 15474
+        },
+        {
+          "path": "/halo-site/assets/stone-year/opal.webp",
+          "sha256": "ce02b78de57d111c7a2321e1d03e37929b2389336811c876ff4621bb7efc7f19",
+          "bytes": 14660
+        },
+        {
+          "path": "/halo-site/assets/stone-year/quartz.webp",
+          "sha256": "358a73696035baa805e11e5a3908bec8a034f1d69d8ad9a4434cae4ae8494d95",
+          "bytes": 19766
+        },
+        {
+          "path": "/halo-site/assets/stone-year/rose-quartz.webp",
+          "sha256": "037c069080bf02256470aa61d07be73f0ec5a731c51adfa174079f9d92aa0164",
+          "bytes": 14334
+        },
+        {
+          "path": "/halo-site/assets/stone-year/tigers-eye.webp",
+          "sha256": "6e19eb35542fd02233598b96357a5a36982f5d5d20295955d52b4e5273f4e19a",
+          "bytes": 20304
+        },
+        {
+          "path": "/halo-site/assets/stone-year/turquoise.webp",
+          "sha256": "1b7920087ea86354d1ac6f09e9b12dee95855101a5621d20782dbee5f38a6470",
+          "bytes": 21094
+        },
+        {
+          "path": "/halo-site/assets/yearly-bracelets-native-v1.webp",
+          "sha256": "bcbf51ab5b5c9945343659569c89a1e31ced7a7cd66a570b50bbc30d95af6c09",
+          "bytes": 48362
+        },
+        {
+          "path": "/halo-site/assets/yearly-bracelets.webp",
+          "sha256": "2fabf59aacd0b17cc10c2ff769beb0a2310fb99511753b825e25116932570cae",
+          "bytes": 219328
+        },
+        {
+          "path": "/halo-site/how-it-works/assets/app-progress-started.webp",
+          "sha256": "73287549b773e2c5cc0ad2e0576368a492d71c07ebf58d4f6d21b2e0851eec9d",
+          "bytes": 53062
+        },
+        {
+          "path": "/halo-site/how-it-works/assets/halo-family-black.svg",
+          "sha256": "abcf2ce5b637125d17081d014f558b70d20ac474d6e7e567030e13bf6894796c",
+          "bytes": 5471
+        },
+        {
+          "path": "/halo-site/how-it-works/assets/halo-family-gold.svg",
+          "sha256": "28e2bbb39372ac83862b21781fc5e92b80acb6377760e795ecf2f5d21877ab34",
+          "bytes": 5471
+        },
+        {
+          "path": "/halo-site/how-it-works/assets/halo-logo-sculptural.png",
+          "sha256": "33ec835ba7b6992a0a13d107efbb026078e6afe73bd568041c26b91bc6e12dfb",
+          "bytes": 127409
+        },
+        {
+          "path": "/halo-site/how-it-works/assets/icon.png",
+          "sha256": "d9901678b1644d12895342f7351b3a803a89f2ae80ce6a6a13e679dcc8b05342",
+          "bytes": 782206
+        },
+        {
+          "path": "/halo-site/original/assets/app-1.webp",
+          "sha256": "d534ad4d596da110046949b685ab6f8b4e09447deb97eb261ef249883d652c3e",
+          "bytes": 29424
+        },
+        {
+          "path": "/halo-site/original/assets/app-180.webp",
+          "sha256": "f8c7a17f7bbd1f8a2bc3e61616f9ad4ac906f74aab867a6206d12477ebb4e25d",
+          "bytes": 32124
+        },
+        {
+          "path": "/halo-site/original/assets/app-30.webp",
+          "sha256": "443c9b3ac116d909e51bd3ddb5e007901f3a1ccdd955753fafc637313033a6a9",
+          "bytes": 31804
+        },
+        {
+          "path": "/halo-site/original/assets/app-365.webp",
+          "sha256": "b62606cd58f1663a9a62f2b2ff5e43d89a7b1037cb70053ade23e7bcd6bfdc2c",
+          "bytes": 32256
+        },
+        {
+          "path": "/halo-site/original/assets/app-60.webp",
+          "sha256": "31781f1c269a1ca059ea1036467ad7215d9f8ae6e4f30555fe5c2f312970eef5",
+          "bytes": 31812
+        },
+        {
+          "path": "/halo-site/original/assets/app-7.webp",
+          "sha256": "958e3aa2f0c1576ef2c9af9526d495df8b1949090495282d46045d12b0349cb8",
+          "bytes": 31044
+        },
+        {
+          "path": "/halo-site/original/assets/app-90.webp",
+          "sha256": "6b271d1b6a1dcdf4f8a44b62e51cf9d4e1ac0fbdd5678051a41d7fe4f95bbb0c",
+          "bytes": 32204
+        },
+        {
+          "path": "/halo-site/original/assets/app-companion.webp",
+          "sha256": "9a701fbda4a357407cbbe595de7399f20570950423cbfc4beadf3bc05ca67cd0",
+          "bytes": 78402
+        },
+        {
+          "path": "/halo-site/original/assets/app-progress-started.webp",
+          "sha256": "73287549b773e2c5cc0ad2e0576368a492d71c07ebf58d4f6d21b2e0851eec9d",
+          "bytes": 53062
+        },
+        {
+          "path": "/halo-site/original/assets/app-progress.webp",
+          "sha256": "a2ae2a588dcc50851293d4901e69b951db5c118cb7f3ef881bdea6dd09c84136",
+          "bytes": 57282
+        },
+        {
+          "path": "/halo-site/original/assets/bracelet-base.webp",
+          "sha256": "54fc7b876d93a6d64ec9df898b4e908a8d3618786be246c41d7699ddc4c9a05d",
+          "bytes": 50304
+        },
+        {
+          "path": "/halo-site/original/assets/halo-logo-sculptural.png",
+          "sha256": "33ec835ba7b6992a0a13d107efbb026078e6afe73bd568041c26b91bc6e12dfb",
+          "bytes": 127409
+        },
+        {
+          "path": "/halo-site/original/assets/hero-amethyst-circular.webp",
+          "sha256": "8b31583fe5709600ce0a842ddc258441e9d5f79dc8e06209fc314b8449e5bf49",
+          "bytes": 53294
+        },
+        {
+          "path": "/halo-site/original/assets/hero-amethyst-solid.png",
+          "sha256": "daceb2ff9a5e023376a8d91dab8000a6e2b7c9b55f1c0ab6a8657dd3f7a213af",
+          "bytes": 593770
+        },
+        {
+          "path": "/halo-site/original/assets/hero-amethyst.webp",
+          "sha256": "9f5ec30c1ad053ccfa1215242b1d0e3bc219aa74d888a1dc37a4f2517ac29486",
+          "bytes": 53056
+        },
+        {
+          "path": "/halo-site/original/assets/icon.png",
+          "sha256": "d9901678b1644d12895342f7351b3a803a89f2ae80ce6a6a13e679dcc8b05342",
+          "bytes": 782206
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-amethyst-circular.webp",
+          "sha256": "f9a0c2ff983939831e5d427f392eeffa703546b0326400e42ad430b67c186bdb",
+          "bytes": 128210
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-amethyst.webp",
+          "sha256": "3193e33dbf39ffccba34c2125f1701f23f7542bb742a8d25eae775ab9d5f5cb7",
+          "bytes": 24170
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-aquamarine-circular.webp",
+          "sha256": "5c4be4e70a51a0a90c6516af9b9cf8849be30e5814e76013bc2d8a896d0780e8",
+          "bytes": 125544
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-aquamarine.webp",
+          "sha256": "fe025ecb0a3e87cadf50b8d5c5dbd2fe429b4371d11d45c3edb45fd9bd5ba15e",
+          "bytes": 24058
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-citrine-circular.webp",
+          "sha256": "dba912296787d82d21ce6d335fbb8382313a68e4e76a1d166a6a372f567d568c",
+          "bytes": 139372
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-citrine.webp",
+          "sha256": "de3045afb78441dc16e070becddef2d9d9a141cd406caed4856d6cf601a90b4f",
+          "bytes": 26916
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-green-tourmaline-circular.webp",
+          "sha256": "b5df6604518051a2a385b5d819d201b688d82fcb1462e535b44f8db15d4eba52",
+          "bytes": 129732
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-green-tourmaline.webp",
+          "sha256": "19c06f206d3d84319ff771e49b98329d0071aa5772d181c2068d5a435f8d7736",
+          "bytes": 25160
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-labradorite-circular.webp",
+          "sha256": "b8a8240c393c8e51cda3d78f094f0d24e671227ee5535d36e0476867c34cdba1",
+          "bytes": 116730
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-labradorite.webp",
+          "sha256": "d0c625ebfb12a6307e6c47fc1a28027d17fa4c6b75e7bcc1b421bade3c4672d8",
+          "bytes": 19052
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-opal-circular.webp",
+          "sha256": "bb83fbf4c43ff8fd56105e8470ef412392cc93e192315bc2b77717caff977d8a",
+          "bytes": 228974
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-opal.webp",
+          "sha256": "f30dd74245ef1b040becd745c176c7af6b5df849d333f7fd5da45db2471d0bfe",
+          "bytes": 36374
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-quartz-circular.webp",
+          "sha256": "def4caf93cc1e81ea3b219e0b53e29490210055938cf076b06a07a7f02981d6c",
+          "bytes": 103458
+        },
+        {
+          "path": "/halo-site/original/assets/mineral-quartz.webp",
+          "sha256": "a69160724bc5617afae17721ee02a856a67a3ce0ac3b44e16dc048b6c9b6b6ed",
+          "bytes": 16736
+        },
+        {
+          "path": "/halo-site/original/assets/native-1-circular.webp",
+          "sha256": "0f46a56a0eb3b58fccf647771f1594f9b1f9c384dc0a8fbceec4ed5cc3e21b45",
+          "bytes": 9058
+        },
+        {
+          "path": "/halo-site/original/assets/native-1.webp",
+          "sha256": "917304c10665eacf8b51de9b0a9fdeb85181037cc77fa712719d736a6a344a0f",
+          "bytes": 9264
+        },
+        {
+          "path": "/halo-site/original/assets/native-180-circular.webp",
+          "sha256": "f0306047d5c95524a8551ef29db6913a4c7599695954249bff2446671acf7fb2",
+          "bytes": 11288
+        },
+        {
+          "path": "/halo-site/original/assets/native-180.webp",
+          "sha256": "2f58e1f7a45bfc2813e4ebb1a94506a36df17406d7d4bb2533f74cdc71663b2a",
+          "bytes": 11054
+        },
+        {
+          "path": "/halo-site/original/assets/native-30-circular.webp",
+          "sha256": "0de291620c9b5b3139e0b03e1731d5b263ef352a39011a931214dfcf757d1cba",
+          "bytes": 13522
+        },
+        {
+          "path": "/halo-site/original/assets/native-30.webp",
+          "sha256": "c9a59eb1ea7b5fffc0d4028bc27fde562b788ce249d0c9e0a2b96c548a3a2a6d",
+          "bytes": 15398
+        },
+        {
+          "path": "/halo-site/original/assets/native-365-circular.webp",
+          "sha256": "3ff3b4b55746d84105a0b3502f8b650d4e737af54b0058f73b4a5223180a2071",
+          "bytes": 25180
+        },
+        {
+          "path": "/halo-site/original/assets/native-365.webp",
+          "sha256": "41ac2880bdd6bb52013d400544fbdfaeee90113e288f8604ae0e52764464e79d",
+          "bytes": 20490
+        },
+        {
+          "path": "/halo-site/original/assets/native-60-circular.webp",
+          "sha256": "62f42df0736be12661d3896b6ca728702b5b81d1b14970394a5bddde35d96d1f",
+          "bytes": 11776
+        },
+        {
+          "path": "/halo-site/original/assets/native-60.webp",
+          "sha256": "73078d9db986c0ef8b45bbfcffbf095b82e31f469485fc0c9c24564c16269332",
+          "bytes": 14290
+        },
+        {
+          "path": "/halo-site/original/assets/native-7-circular.webp",
+          "sha256": "a3cc85caf1a503467544677b9e507a1e392030355bf4029e86a8f7d86117b458",
+          "bytes": 10906
+        },
+        {
+          "path": "/halo-site/original/assets/native-7.webp",
+          "sha256": "6b46a1dea250a0b54f57e88fa6b384abbe4e8f6cbdc046df47a1e4f1282ebbd5",
+          "bytes": 13772
+        },
+        {
+          "path": "/halo-site/original/assets/native-90-circular.webp",
+          "sha256": "ecc9d958cf48287febb857753cb05513b2826cf36d296d54ecfa459ec344e925",
+          "bytes": 12816
+        },
+        {
+          "path": "/halo-site/original/assets/native-90.webp",
+          "sha256": "7f5bf7449aaeaf8095a260b1d88750472425316c68c0a2d9d93b02228670c323",
+          "bytes": 14182
+        },
+        {
+          "path": "/halo-site/original/assets/solid-stones.png",
+          "sha256": "09a7d346396cf938b563b9707ea2f7ec76daa55800273c30f8062e55aa4d4a25",
+          "bytes": 815955
+        },
+        {
+          "path": "/halo-site/original/assets/stone-amethyst-circular.webp",
+          "sha256": "d5b5d76455366f0e242fac0a186662a18423ab542a552436346fb205a61f1147",
+          "bytes": 15354
+        },
+        {
+          "path": "/halo-site/original/assets/stone-amethyst.webp",
+          "sha256": "88c89fbe29567b6404420671c2cdc579a1b3be7b656ada19452d85d42b82923d",
+          "bytes": 16704
+        },
+        {
+          "path": "/halo-site/original/assets/stone-aquamarine-circular.webp",
+          "sha256": "eebdebd830a49872258bed6d584889d46139c2edbe2bd4a869466ea34d83bd43",
+          "bytes": 16058
+        },
+        {
+          "path": "/halo-site/original/assets/stone-aquamarine.webp",
+          "sha256": "2e638b46664019c09c833465439218216b10054395616ab4f931b013cb888005",
+          "bytes": 15658
+        },
+        {
+          "path": "/halo-site/original/assets/stone-citrine-circular.webp",
+          "sha256": "22ba63120331ea517ce4695f4e850ca7133eebcb03acb3e97e8d50ba9e701739",
+          "bytes": 17086
+        },
+        {
+          "path": "/halo-site/original/assets/stone-citrine.webp",
+          "sha256": "fd214478119fa763c2e51ffffb6c24d4e8c345c2d63589881f7fd17934f19204",
+          "bytes": 18170
+        },
+        {
+          "path": "/halo-site/original/assets/stone-green-tourmaline-circular.webp",
+          "sha256": "c68ecbcc46df867df05bc0a7e847a8f17672bea5526dd19fcb7a33dccbc2513a",
+          "bytes": 16216
+        },
+        {
+          "path": "/halo-site/original/assets/stone-green-tourmaline.webp",
+          "sha256": "6b408eb4d2a799feba0c04db05b3a82b07f989f1f48f06bfea27edb53c9ce821",
+          "bytes": 17630
+        },
+        {
+          "path": "/halo-site/original/assets/stone-labradorite-circular.webp",
+          "sha256": "e636da6945c6e968f8a4d4806738f6700eead187bacc7a13054f8010a6708134",
+          "bytes": 15464
+        },
+        {
+          "path": "/halo-site/original/assets/stone-labradorite.webp",
+          "sha256": "759c0aab5e5c8c0037b17cbd08e7e13f753375eee98886aec6193c1f9d8a6dea",
+          "bytes": 15452
+        },
+        {
+          "path": "/halo-site/original/assets/stone-opal-circular.webp",
+          "sha256": "b47098860e9ccf6a77f84cb9636c3e7320ad1191473aa2452bf4877afdb4bdd9",
+          "bytes": 23892
+        },
+        {
+          "path": "/halo-site/original/assets/stone-opal.webp",
+          "sha256": "934186b32f6c13c5ca08be2817312bbd6d361f6bc6228be42ae44ece5bc59596",
+          "bytes": 19506
+        },
+        {
+          "path": "/halo-site/original/assets/stone-quartz-circular.webp",
+          "sha256": "59f14bbc53be3c89b35c7d609e87acb542ce025cbb669fbc907544a2b092c459",
+          "bytes": 11996
+        },
+        {
+          "path": "/halo-site/original/assets/stone-quartz.webp",
+          "sha256": "d2a6fa2e4df65d693761500e0ad6e17ab287cd04733656ba0441bf011f47d21c",
+          "bytes": 12438
+        },
+        {
+          "path": "/halo-site/original/assets/wearable-initial.png",
+          "sha256": "62340266f666670a2cdc3cbe4b698c00d275e777002e2657759c8f56ce097cb9",
+          "bytes": 1125051
+        },
+        {
+          "path": "/halo-site/original/assets/wordmark.png",
+          "sha256": "7a17a2181553fc0f801baa3be5807f1bf549bffb6a4e067ff11d0f48a513a9c3",
+          "bytes": 407888
+        }
+      ]
+    }
+  }
+}
