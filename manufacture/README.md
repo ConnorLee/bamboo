@@ -1,4 +1,6 @@
-# Halo manufacturing workspace · H3
+# Halo first-bracelet brief and manufacturing workspace
+
+`/brief` now opens with a short working brief for Halo's two-person team and its jewelry/sourcing partner. The twelve natural stones, their order and each month's meaning are presented as choices to make together; the current imagery and catalog are retained as visual studies. Brushed stainless steel is the first material direction, and a more elaborate luxury version is deferred. The original H3 engineering, quote and cost workspace remains in a collapsed **Working reference** section, available through `?reference=1` or a direct fragment link. Its assumptions are not presented as final stone or hardware decisions.
 
 The active planning brief is **Halo — First Year Collection, $189**. The retained reservation model is **$25 fully refundable, credited toward $189**; the public site currently offers a Coming soon waitlist, not checkout. The collection includes the bracelet, 12 milestone stones, individual presentations, Halo iPhone app, digital milestone collection and companion growth. The internal economics brief is [`../docs/first-year-economics.md`](../docs/first-year-economics.md).
 
@@ -14,15 +16,16 @@ Earlier manufacturing source remains in Git history. H2 SVGs are visibly labeled
 
 ## Source and build
 
-- `content.html`: 16 active reference sections, sourcing briefs, economics and evidence gates.
-- `page.html`: shell and current scope/evidence boundary.
+- `brief.html`: four plain-language sections for the first piece, stones, partner contribution and decisions to make together.
+- `content.html`: 16 retained technical reference sections, sourcing briefs, economics and evidence gates.
+- `page.html`: shell, brief introduction and collapsed working reference.
 - `workspace-data.js`: editable dimension/protocol/RF/quote/decision schemas and H3 requirement revision.
 - `manufacture.js`: local persistence, schema migration, rendering, CSV/JSON export/import and target feedback.
 - `cost-model.js`: dependency-free calculations and $189/$85 target constants, shared with Node tests.
 - `manufacture.css`: responsive, theme and print styles.
-- `../scripts/build-manufacture.mjs`: builds `/manufacture` during `pnpm website:build`; explicit asset allowlist excludes documentation/archive sources.
+- `../scripts/build-manufacture.mjs`: builds `/brief` during `pnpm website:build`; explicit asset allowlist excludes documentation/archive sources.
 
-Work in `/Users/connor/Desktop/halo/bamboo`. Run `pnpm website:build`, then the existing Next preview/build workflow. The canonical internal-reference URL is `/manufacture` (trailing slash redirects). It is unlisted/noindex, **not authenticated**. Do not add supplier secrets to static sources. No deployment is implied by a local build.
+Work in `/Users/connor/Desktop/halo/bamboo`. Run `pnpm website:build`, then the existing Next preview/build workflow. The canonical brief URL is `/brief`; legacy `/manufacture` links redirect there. It is unlisted/noindex, **not authenticated**. Do not add supplier secrets to static sources. No deployment is implied by a local build.
 
 ## Cost calculations and evidence
 
@@ -47,4 +50,4 @@ Edits are browser-local, not synced or sent to suppliers. Export JSON before cle
 
 ## Verification
 
-`node --test tests/manufacture-costs.cjs` covers monetary boundaries, legacy quantities, option switching, incomplete/invalid costs, independent scenarios, single-count tooling and explicit yield planning. Existing browser/hardware/resilience scripts retain migration/export/storage/overflow cases. The current revision was checked in the browser for NFC option switching and incomplete-cost feedback; the full browser suites were not rerun. Manufacturing feasibility still requires supplier quotes and physical tests.
+`node --test tests/manufacture-costs.cjs` covers monetary boundaries, legacy quantities, option switching, incomplete/invalid costs, independent scenarios, single-count tooling and explicit yield planning. The browser, hardware and resilience suites passed against the local preview after this brief revision; they retain migration/export/storage/overflow cases. Desktop and mobile visual checks found no page overflow or browser errors. Manufacturing feasibility still requires supplier quotes and physical tests.

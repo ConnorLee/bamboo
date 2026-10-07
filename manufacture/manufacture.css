@@ -19,3 +19,23 @@
 
 /* H2 adds evidence labels and engineering illustrations within the existing layout. */
 .evidence-tag{letter-spacing:.055em;font-size:9px}.work-section>.tags{margin:0 0 14px}.engineering-diagram{background:#f7f7f5;border:1px solid var(--border);border-radius:6px}.evidence-legend table{min-width:540px}.phase-number{min-width:38px}.latest-reference>a{display:block}#clasp-adjustment{scroll-margin-top:90px}
+
+/* The partner brief leads; the detailed manufacturing workspace remains available on demand. */
+.partner-section .section-intro{max-width:72ch;font-size:16px;line-height:1.65}
+.partner-section>p:not(.section-intro){max-width:78ch}
+.partner-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.partner-cards .card p{margin-bottom:0}
+.partner-prompt{max-width:78ch;margin:22px 0 0;padding:22px 25px;border-left:2px solid var(--green);background:var(--green-soft);border-radius:0 8px 8px 0}
+.partner-prompt strong{display:block;font-size:14px;margin-bottom:10px}
+.partner-prompt ul{margin:0}.partner-prompt li{padding:3px 0}
+.partner-aside{margin-top:20px;color:var(--muted);font-size:13px}
+.technical-reference{margin:70px 0 28px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.technical-reference>summary{list-style:none;display:flex;align-items:center;gap:14px;cursor:pointer;padding:22px 3px;font-size:17px;font-weight:500}
+.technical-reference>summary::-webkit-details-marker{display:none}
+.technical-reference>summary small{display:block;margin-left:auto;color:var(--muted);font-size:12px;font-weight:400;text-align:right}
+.technical-reference>summary:after{content:'+';font-size:25px;font-weight:400;line-height:1;color:var(--muted)}
+.technical-reference[open]>summary:after{content:'−'}
+.technical-reference-body{padding:0 0 12px}
+.reference-intro{max-width:77ch;padding:14px 0 4px;color:var(--muted);font-size:13px}
+@media(max-width:800px){.technical-reference{margin-top:52px}.technical-reference>summary{display:block}.technical-reference>summary small{margin:5px 0 0;text-align:left}.technical-reference>summary:after{float:right;margin-top:-36px}}
+@media(max-width:560px){.partner-cards{grid-template-columns:1fr}.partner-section .section-intro{font-size:15px}.partner-prompt{padding:18px}.technical-reference>summary{font-size:16px}.technical-reference>summary small{max-width:27ch}.technical-reference>summary:after{margin-top:-43px}}

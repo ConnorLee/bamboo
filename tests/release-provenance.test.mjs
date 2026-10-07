@@ -48,7 +48,7 @@ test('records use real capture time, hash exact bytes, remain append-only, and o
     await write('public/halo-site/assets/closing-film.webm', 'public-webm-bytes');
     await write('public/halo-site/original/style.css', ':root{font-family:Aeonik}');
     await write('public/halo-site/assets/private-notes.md', 'secret-sentinel');
-    await write('public/halo-site/manufacture/private.html', 'secret-sentinel');
+    await write('public/halo-site/brief/private.html', 'secret-sentinel');
     await write('private.png', 'secret-sentinel');
     await symlink(path.join(root, 'private.png'), path.join(root, 'public/halo-site/assets/symlink.png'));
     const before = Date.now();

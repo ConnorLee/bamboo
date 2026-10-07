@@ -11,7 +11,7 @@ const path = require('node:path');
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright');
 
 const origin = process.env.MANUFACTURE_BASE_URL || 'http://127.0.0.1:61019';
-const url = `${origin}/manufacture/`;
+const url = `${origin}/brief?reference=1`;
 const key = 'halo-manufacture-workspace-v1';
 const output = path.resolve(__dirname, '../qa/manufacture/resilience-results.json');
 
@@ -177,21 +177,23 @@ async function run() {
 
     {
       const { context, page } = await workspace();
-      const anchor = page.locator('#section-nav a[href="#rf-matrix"]');
+      const anchor = page.locator('#section-nav a[href="#your-eye"]');
       await anchor.focus();
       await page.keyboard.press('Enter');
-      await page.waitForFunction(() => location.hash === '#rf-matrix');
-      const sectionTop = await page.locator('#rf-matrix').evaluate(element => element.getBoundingClientRect().top);
+      await page.waitForFunction(() => location.hash === '#your-eye');
+      const sectionTop = await page.locator('#your-eye').evaluate(element => element.getBoundingClientRect().top);
       assert.ok(sectionTop >= 76 && sectionTop < 180, `Keyboard target should sit below the sticky header; got ${sectionTop}px`);
       await page.evaluate(() => Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: () => Promise.reject(new Error('QA simulated clipboard denial')) } }));
-      for (const id of ['bracelet-email', 'nfc-email', 'packaging-email']) {
-        const enclosingDetails = page.locator('details').filter({ has: page.locator(`[data-copy="${id}"]`) });
-        if (await enclosingDetails.count()) await enclosingDetails.locator(':scope > summary').click();
+      for (const id of ['bracelet-email', 'nfc-email']) {
+        const enclosingDetails = page.locator(`[data-copy="${id}"]`).locator('xpath=ancestor::details[1]');
+        if (await enclosingDetails.count() && !await enclosingDetails.evaluate(element => element.open)) {
+          await enclosingDetails.locator(':scope > summary').click();
+        }
         await page.locator(`[data-copy="${id}"]`).click();
         await page.waitForFunction(() => document.getElementById('toast').textContent.startsWith('Text selected.'));
         assert.equal(await page.evaluate(() => window.getSelection().toString()), await page.locator(`#${id}`).innerText());
       }
-      checks.push('Keyboard Enter follows section anchors below the sticky header; all three outreach blocks select correctly when clipboard access fails.');
+      checks.push('Keyboard Enter follows section anchors below the sticky header; both current outreach blocks select correctly when clipboard access fails.');
       await context.close();
     }
 

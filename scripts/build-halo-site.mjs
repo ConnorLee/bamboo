@@ -14,7 +14,7 @@ await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 await cp(source, output, { recursive: true });
 await applyIpNotices(root, output);
-await buildManufacture(path.join(root, 'manufacture'), path.join(output, 'manufacture'));
+await buildManufacture(path.join(root, 'manufacture'), path.join(output, 'brief'));
 // Keep image-generation prompts and workstation provenance out of public assets.
 await rm(path.join(output, 'assets/halo-milestone-screen-v1.json'), { force: true });
 

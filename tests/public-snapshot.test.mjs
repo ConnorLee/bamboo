@@ -31,6 +31,7 @@ test('network capture blocks APIs, submissions, authenticated routes, cross-orig
     [`${origin}/`, 'POST', 'document'],
     [`${origin}/contact`, 'GET', 'document'],
     [`${origin}/manufacture`, 'GET', 'document'],
+    [`${origin}/brief`, 'GET', 'document'],
     [`${origin}/demo`, 'GET', 'document'],
     [`${origin}/halo-site/secret.json`, 'GET', 'fetch'],
     [`${origin}/halo-site/app.js`, 'GET', 'fetch'],

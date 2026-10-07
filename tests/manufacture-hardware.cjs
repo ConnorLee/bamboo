@@ -22,7 +22,7 @@ async function run() {
   async function imported(value) {await page.locator('#import-file').setInputFiles({name:'hardware-backup.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(value))});}
   const saved = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), key);
   try {
-    assert.equal((await page.goto(origin+'/manufacture/',{waitUntil:'networkidle'})).status(),200);
+    assert.equal((await page.goto(origin+'/brief?reference=1',{waitUntil:'networkidle'})).status(),200);
     await page.waitForSelector('[data-cost="sockets"]');
     const seed = JSON.parse(await download('#export-workspace'));
     const legacy = {
@@ -122,7 +122,7 @@ async function run() {
     checks.push('JSON round trip preserves all new and historical data; decision CSV works; no document overflow at 390/768/1440px or runtime/network errors.');
     const output = path.resolve(__dirname,'../qa/manufacture/hardware-results.json');
     await fs.mkdir(path.dirname(output),{recursive:true});
-    await fs.writeFile(output,JSON.stringify({status:'passed',url:origin+'/manufacture/',checks,errors},null,2));
+    await fs.writeFile(output,JSON.stringify({status:'passed',url:origin+'/brief',checks,errors},null,2));
     console.log(`Hardware QA passed (${checks.length} groups): ${output}`);
   } finally {await context.close();await browser.close();}
 }

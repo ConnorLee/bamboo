@@ -235,6 +235,19 @@
     writesBlocked = true; $('#save-status').textContent = 'Another tab changed data';
     notice('Another tab changed this workspace. Saving here is paused to prevent overwriting it. Export any edits in this tab, then reload to load the latest saved version.');
   });
+  const reference = $('#working-reference');
+  function revealReferenceLink() {
+    const id = location.hash.slice(1);
+    const target = id ? document.getElementById(id) : null;
+    if (new URLSearchParams(location.search).get('reference') === '1' || (target && reference.contains(target))) {
+      if (!reference.open) {
+        reference.open = true;
+        if (target) requestAnimationFrame(() => target.scrollIntoView({block:'start'}));
+      }
+    }
+  }
+  revealReferenceLink();
+  window.addEventListener('hashchange', revealReferenceLink);
   const links = [...document.querySelectorAll('#section-nav a')];
   const sections = links.map(link => document.querySelector(link.getAttribute('href')));
   let scheduled = false;
@@ -251,7 +264,7 @@
   window.addEventListener('scroll', () => {if (!scheduled) {scheduled = true;requestAnimationFrame(updateActive);}}, {passive:true});
   updateActive();
   let printDetails = [];
-  window.addEventListener('beforeprint', () => {printDetails = [...document.querySelectorAll('details:not([open])')];printDetails.forEach(item => {item.open = true;});});
+  window.addEventListener('beforeprint', () => {printDetails = [...document.querySelectorAll('details:not([open]):not(#working-reference)')];printDetails.forEach(item => {item.open = true;});});
   window.addEventListener('afterprint', () => {printDetails.forEach(item => {item.open = false;});});
   $('#print-workspace').addEventListener('click', () => window.print());
 })();

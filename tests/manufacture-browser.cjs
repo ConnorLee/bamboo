@@ -1,5 +1,5 @@
 /*
- * Browser integration QA for the built /manufacture workspace.
+ * Browser integration QA for the built /brief workspace.
  * Serve dist first: python3 -m http.server 61019 --directory dist
  * Run: node tests/manufacture-browser.cjs
  * For a shared install: NODE_PATH=/path/to/node_modules node tests/manufacture-browser.cjs
@@ -15,6 +15,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright')
 const baseUrl = process.env.MANUFACTURE_BASE_URL || 'http://127.0.0.1:61019';
 const storageKey = 'halo-manufacture-workspace-v1';
 const output = path.resolve(__dirname, '../qa/manufacture');
+const briefAnchors = ['first-piece', 'stones', 'your-eye', 'together', 'working-reference'];
 const anchors = ['roadmap', 'supply-chain', 'sourcing', 'rf-reference', 'mechanical', 'cad', 'prototypes', 'rf-matrix', 'quotes', 'costs', 'procedure', 'bracelet-outreach', 'nfc-outreach', 'ip', 'red-flags', 'next-actions'];
 
 async function run() {
@@ -51,17 +52,29 @@ async function run() {
   }
 
   try {
-    const response = await page.goto(`${baseUrl}/manufacture/`, { waitUntil: 'networkidle' });
+    const legacy = await page.request.get(`${baseUrl}/manufacture?reference=1`, { maxRedirects: 0 });
+    assert.equal(legacy.status(), 308);
+    assert.equal(legacy.headers().location, '/brief?reference=1');
+    const oldAsset = await page.request.get(`${baseUrl}/halo-site/manufacture/manufacture.css`, { maxRedirects: 0 });
+    assert.equal(oldAsset.status(), 308);
+    assert.equal(oldAsset.headers().location, '/halo-site/brief/manufacture.css');
+    const response = await page.goto(`${baseUrl}/brief?reference=1`, { waitUntil: 'networkidle' });
     assert.equal(response.status(), 200);
+    assert.equal(response.headers()['x-robots-tag'], 'noindex, nofollow, noarchive');
     await page.waitForSelector('[data-cost="carrier"]');
     await page.locator('#nfc-mode').selectOption('all');
-    assert.equal(await page.title(), 'Manufacture — Halo Hardware Development');
-    assert.equal(await page.locator('#section-nav a').count(), anchors.length);
-    for (const id of anchors) {
-      assert.equal(await page.locator(`#${id}`).count(), 1, `Missing/duplicate section ${id}`);
+    assert.equal(await page.title(), 'First Bracelet Brief — Halo');
+    assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), 'https://www.habithalo.app/brief');
+    assert.equal(await page.locator('#section-nav a').count(), briefAnchors.length);
+    assert.equal(await page.locator('#working-reference').evaluate(element => element.open), true);
+    for (const id of briefAnchors) {
+      assert.equal(await page.locator(`#${id}`).count(), 1, `Missing/duplicate brief section ${id}`);
       assert.equal(await page.locator(`#section-nav a[href="#${id}"]`).count(), 1);
     }
-    checks.push('All 16 reference sections and navigation anchors exist.');
+    for (const id of anchors) {
+      assert.equal(await page.locator(`#${id}`).count(), 1, `Missing/duplicate section ${id}`);
+    }
+    checks.push('The /brief route is canonical and noindex; legacy page and asset URLs redirect; all 16 technical sections remain available.');
 
     const schema = await page.evaluate(() => ({ dimensions: HaloManufactureData.dimensions.length, protocol: HaloManufactureData.protocol.length, rf: HaloManufactureData.rf.length, quotes: HaloManufactureData.quotes.length, costs: HaloManufactureCosts.ITEMS.length }));
     assert.equal(schema.dimensions, 54);
@@ -148,7 +161,7 @@ async function run() {
     assert.equal(await page.locator('#cost-results .cost-stat strong').first().innerText(), '€24.00');
     assert.equal(await page.locator('[data-cost="carrier"]').inputValue(), '2');
     await page.locator('#cost-currency').selectOption('USD');
-    let costText = await page.locator('#costs').innerText();
+    let costText = await page.locator('#costs').textContent();
     assert.match(costText, /24(?:\.00)?/, 'Expected 12 × $2 carrier contribution');
     assert.match(costText, /76(?:\.0+)?\s*%/, 'Expected 76% gross margin at $100');
     assert.match(costText, /88(?:\.0+)?\s*%/, 'Expected 88% gross margin at $200');
@@ -161,7 +174,7 @@ async function run() {
     await page.reload({ waitUntil: 'networkidle' });
     await page.locator('[data-scenario="25"]').click();
     assert.equal(await page.locator('[data-cost="carrier"]').inputValue(), '2');
-    costText = await page.locator('#costs').innerText();
+    costText = await page.locator('#costs').textContent();
     assert.match(costText, /76(?:\.0+)?\s*%/);
     await page.locator('#costs').screenshot({ path: path.join(output, 'cost-model.png') });
     checks.push('BOM inputs persist, 12× quantities and margin outputs update, scenarios remain independent.');
@@ -193,7 +206,7 @@ async function run() {
 
     assert.deepEqual(errors, [], 'No JavaScript, console, failed request or HTTP errors expected');
     checks.push('No JavaScript, console or network errors.');
-    await fs.writeFile(path.join(output, 'browser-results.json'), JSON.stringify({ status: 'passed', url: `${baseUrl}/manufacture/`, checks, errors, screenshots: ['light-1440.png', 'light-768.png', 'light-390.png', 'dark-1440.png', 'cost-model.png'] }, null, 2));
+    await fs.writeFile(path.join(output, 'browser-results.json'), JSON.stringify({ status: 'passed', url: `${baseUrl}/brief`, checks, errors, screenshots: ['light-1440.png', 'light-768.png', 'light-390.png', 'dark-1440.png', 'cost-model.png'] }, null, 2));
     console.log(`Manufacture browser QA passed (${checks.length} groups). Screenshots and results: ${output}`);
   } finally {
     await context.close();

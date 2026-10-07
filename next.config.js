@@ -12,8 +12,23 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
+  async redirects() {
+    return [
+      { source: "/manufacture", destination: "/brief", permanent: true },
+      { source: "/manufacture/:path*", destination: "/brief/:path*", permanent: true },
+      { source: "/halo-site/manufacture/:path*", destination: "/halo-site/brief/:path*", permanent: true },
+    ]
+  },
   async headers() {
     return [
+      {
+        source: "/brief/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+      },
+      {
+        source: "/halo-site/brief/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
+      },
       {
         source: "/manufacture/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }],
@@ -33,7 +48,7 @@ const nextConfig = {
       beforeFiles: [
         { source: "/", destination: "/halo-site/index.html" },
         { source: "/patents", destination: "/halo-site/patents/index.html" },
-        { source: "/manufacture", destination: "/halo-site/manufacture/index.html" },
+        { source: "/brief", destination: "/halo-site/brief/index.html" },
         { source: "/how-it-works", destination: "/halo-site/how-it-works/index.html" },
         { source: "/privacy", destination: "/halo-site/privacy/index.html" },
         { source: "/reservation-terms", destination: "/halo-site/reservation-terms/index.html" },
