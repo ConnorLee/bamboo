@@ -1,21 +1,16 @@
-# Private `/brief` review service
+# Open `/brief` review service
 
-This is a separate two-person review service for section notes, comments and unread counts. The public `/brief` page remains readable without authentication. Review data is returned only by authenticated API routes, stored in a **private** Vercel Blob store, and never embedded in static HTML. This is private server storage, not end-to-end encryption.
+`GET /api/brief-review` is public and returns `{sections}`. Each section has a `note` and `comments`; it does not include reviewer identities or server read state. `POST /api/brief-review` accepts `{action:'comment'|'note',sectionId,body,displayName,revision?}` and returns `{sectionId,section}`. The name is required plain text and is **not verified**. A note may use an empty body to clear its text while incrementing its revision. A stale revision returns `409 note_conflict`; the client should refresh before retrying.
 
-The service fails closed until the four review settings and a private Blob token are configured:
+Only these server-side settings are required:
 
 | Variable | Purpose |
 | --- | --- |
-| `BRIEF_REVIEW_ORIGIN` | Exact site origin, such as `https://www.habithalo.app`; used to reject cross-origin writes. |
-| `BRIEF_REVIEW_ACCESS_CONNOR_SHA256` | SHA-256 hex digest of Connor's unique random access code. |
-| `BRIEF_REVIEW_ACCESS_PARTNER_SHA256` | SHA-256 hex digest of the partner's different random access code. |
-| `BRIEF_REVIEW_SESSION_SECRET` | At least 32 random bytes encoded as hex for signing HttpOnly session cookies. |
-| `BLOB_READ_WRITE_TOKEN` | Server-only token injected when a dedicated private Vercel Blob store is connected. `BRIEF_REVIEW_BLOB_READ_WRITE_TOKEN` may be used instead if the token is managed separately. |
+| `BRIEF_REVIEW_ORIGIN` | Exact site origin, such as `https://www.habithalo.app`; rejects cross-origin writes. |
+| `BLOB_READ_WRITE_TOKEN` | Server-only token for the connected Vercel Blob store. `BRIEF_REVIEW_BLOB_READ_WRITE_TOKEN` may be used instead when managed separately. Never expose either in client code, URLs, public environment variables, or Git. |
 
-Generate each access code with a cryptographically secure random generator (for example, `openssl rand -hex 24`), calculate its digest without writing the code to the repository, and share each code privately with its intended reviewer. Never put a code, digest, Blob token or session secret in client JavaScript, a public environment variable, a URL, or Git. Rotating a person's configured digest revokes that person's existing sessions. Rotating the session secret revokes all sessions. No store or secrets are provisioned by this code.
+The API requires the exact `Origin` header for writes and rejects requests marked cross-site. This is a browser write guard, not user authentication: anyone who can visit the page may read review content and submit a name. Do not put sensitive information in new comments or notes. Password-era review data remains in `brief-review/v1/sections/*` and is never loaded, migrated, or published by this API. New review content uses `brief-review/v2/open/sections/*`. Keep the v1 archive private.
 
-`GET /api/brief-review/session` returns `{available,user}`. `POST` accepts `{code}` and creates a signed, HttpOnly, SameSite=Strict, 30-day cookie; `DELETE` signs out. `GET /api/brief-review` returns shared sections and unread counts. `POST /api/brief-review` accepts `{action:'comment'|'note'|'read',sectionId,body?,revision?,throughSeq?}` and returns `{sectionId,section}`. Allowed section IDs are in `model.ts`. An empty note body intentionally clears it while incrementing its revision. Sending an old note revision returns `409 note_conflict`; clients should refresh and show both versions rather than silently overwriting.
+Each section uses one versioned Blob. Fresh reads and ETag conditional writes preserve simultaneous comments and detect conflicting note edits. Comments are append-only through this API and limited to 500 per section. Display names are at most 80 characters, comments 1,600 characters, notes 4,000 characters, and JSON requests 32 KiB. The API returns `Cache-Control: no-store` and no Blob URL or token. The browser should render all names and bodies as plain text. Unread indicators, if shown, are calculated and stored locally in that browser; there is no server read cursor or notification service.
 
-Read cursors are stored per reviewer and section. A `read` action should include `throughSeq`, the highest comment sequence actually displayed, so a concurrent new comment remains unread. Unread counts include only the other reviewer's comments after that cursor. Polling the authenticated GET route updates badges; no push notifications are implemented.
-
-Each section uses one versioned Blob. The server bypasses the Blob CDN cache on reads and uses ETag conditional writes to avoid losing simultaneous comments. Comments are append-only through this API and limited to 500 per section; there is no delete or moderation UI. All content is plain text: the browser must render note and comment bodies with `textContent`, not `innerHTML`. The API uses `Cache-Control: private, no-store` and returns no Blob URL or token. Test with `pnpm test:brief-review`.
+Run `pnpm test:brief-review` to verify the review model, handlers, namespace isolation, and concurrent writes.

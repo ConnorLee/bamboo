@@ -14,8 +14,25 @@ export class StoreConflict extends Error {
   constructor() { super('store_conflict'); }
 }
 
-function pathname(sectionId: SectionId) {
-  return `brief-review/v1/sections/${sectionId}.json`;
+async function readStoredText(stream: ReadableStream<Uint8Array>): Promise<string> {
+  const reader = stream.getReader();
+  const chunks: Uint8Array[] = [];
+  let bytes = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    bytes += value.byteLength;
+    if (bytes > MAX_STORED_BYTES) {
+      await reader.cancel();
+      throw new ReviewError('stored_data_invalid', 503);
+    }
+    chunks.push(value);
+  }
+  return Buffer.concat(chunks).toString('utf8');
+}
+
+export function sectionPath(sectionId: SectionId) {
+  return `brief-review/v2/open/sections/${sectionId}.json`;
 }
 
 export class BlobSectionStore implements SectionStore {
@@ -24,14 +41,13 @@ export class BlobSectionStore implements SectionStore {
   async read(sectionId: SectionId): Promise<LoadedSection> {
     // A cached read can return a stale version after an overwrite. This must be
     // fresh because every write uses the returned ETag for compare-and-swap.
-    const result = await get(pathname(sectionId), { access: 'private', useCache: false, token: this.token });
+    const result = await get(sectionPath(sectionId), { access: 'private', useCache: false, token: this.token });
     if (!result) return { record: blankSection(sectionId), etag: null };
     if (result.statusCode !== 200 || !result.stream ||
         (result.blob.size !== null && result.blob.size > MAX_STORED_BYTES)) {
       throw new ReviewError('stored_data_invalid', 503);
     }
-    const text = await new Response(result.stream).text();
-    if (Buffer.byteLength(text) > MAX_STORED_BYTES) throw new ReviewError('stored_data_invalid', 503);
+    const text = await readStoredText(result.stream);
     let parsed: unknown;
     try { parsed = JSON.parse(text); } catch { throw new ReviewError('stored_data_invalid', 503); }
     return { record: validateSection(parsed, sectionId), etag: result.blob.etag };
@@ -41,7 +57,7 @@ export class BlobSectionStore implements SectionStore {
     const body = JSON.stringify(record);
     if (Buffer.byteLength(body) > MAX_STORED_BYTES) throw new ReviewError('comment_limit_reached', 409);
     try {
-      await put(pathname(sectionId), body, {
+      await put(sectionPath(sectionId), body, {
         access: 'private', token: this.token, contentType: 'application/json',
         cacheControlMaxAge: 60,
         ...(etag ? { allowOverwrite: true, ifMatch: etag } : { allowOverwrite: false }),

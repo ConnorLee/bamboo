@@ -56,14 +56,16 @@
 .brief-hero-meta p{margin:0 0 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .brief-hero-meta p:first-child{font-size:9px;letter-spacing:.2em;color:#d5d5d1}
 .brief-hero-meta p:last-child{color:#e1e5da}
-/* The metal O rotates in the screen plane; the green center and vector lettering stay fixed. */
+/* The metal O turns left-to-right in place; the green center and vector lettering stay fixed. */
 .brand-lockup{overflow:visible}
 .brand-lockup .brand-lettering{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;clip-path:inset(0 0 0 24.4%);filter:var(--wordmark-filter)}
 .halo-mark{position:absolute;z-index:1;top:-18%;left:-2.4%;width:30%;aspect-ratio:1;pointer-events:none}
-.halo-mark-shell{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:contain;transform-origin:50% 50%;animation:halo-metal-turn 16s linear infinite}
+.halo-mark::before{content:"";position:absolute;z-index:0;left:45.5%;top:7%;width:9%;height:86%;border-radius:50%;background:linear-gradient(90deg,#333a3e 0%,#aeb5b6 30%,#edf0ed 52%,#555d60 100%);opacity:0;animation:halo-metal-edge 16s linear infinite}
+.halo-mark-shell{position:absolute;z-index:1;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:contain;transform-origin:50% 50%;backface-visibility:visible;animation:halo-metal-turn 16s linear infinite;will-change:transform}
 .brand-lockup .halo-mark-shell{inset:0;left:0;top:0;width:100%;height:100%}
 .halo-mark-core,.brand-lockup .halo-mark-core{position:absolute;z-index:2;left:50%;top:50%;width:25%;height:25%;max-width:none;transform:translate(-50%,-50%)}
-@keyframes halo-metal-turn{to{transform:rotate(360deg)}}
+@keyframes halo-metal-turn{from{transform:perspective(260px) rotateY(0deg)}to{transform:perspective(260px) rotateY(360deg)}}
+@keyframes halo-metal-edge{0%,19%,31%,69%,81%,100%{opacity:0}24%,26%,74%,76%{opacity:.9}}
 .review-top-trigger{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;background:transparent;font-size:11px;letter-spacing:.03em}
 .review-top-trigger>span{margin:0}.review-top-trigger svg{flex:none}
 .review-top-unread{min-width:19px;height:19px;padding:1px 5px;border-radius:999px;background:var(--green);color:var(--surface);font-size:10px;line-height:17px;text-align:center;font-variant-numeric:tabular-nums}
@@ -89,7 +91,7 @@
 .review-note-card strong{display:block;margin-bottom:8px;font-size:13px}
 .review-note-card p{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;margin:0;color:var(--muted);font-size:12px;line-height:1.5;white-space:pre-wrap}
 .review-note-card small{display:block;margin-top:12px}
-.review-locked-message{grid-column:1/-1;padding:22px;border:1px solid var(--border);border-radius:10px;color:var(--muted)}
+.review-grid-message{grid-column:1/-1;padding:22px;border:1px solid var(--border);border-radius:10px;color:var(--muted)}
 .review-launcher{position:fixed;z-index:80;right:24px;bottom:calc(24px + env(safe-area-inset-bottom));display:grid;place-items:center;width:54px;height:54px;min-height:0;padding:0;border:1px solid #ffffff45;border-radius:50%;background:#222729;color:#fff;box-shadow:0 8px 30px #0003}
 .review-launcher:hover{background:#333b3d;border-color:#ffffff80}
 .review-launcher[aria-expanded=true]{opacity:0;pointer-events:none}
@@ -100,19 +102,21 @@
 .review-panel-header strong{display:block;margin-top:2px;font-size:17px;line-height:1.2}
 .review-panel-header button{width:32px;min-height:32px;padding:0;border:0;background:transparent;font-size:26px;font-weight:400;line-height:1}
 .review-panel-status{padding:9px 18px;border-bottom:1px solid var(--border);background:var(--amber-soft);color:var(--amber);font-size:12px}
-.review-auth{padding:26px 20px}
-.review-auth p{max-width:30ch;color:var(--muted);font-size:13px}
-.review-auth form,.review-composer{display:grid;gap:9px}
-.review-auth label,.review-controls label,.review-composer label{font-size:11px;font-weight:500}
-.review-auth input,.review-controls select,.review-composer textarea{width:100%;border:1px solid var(--border);border-radius:7px;background:var(--paper);padding:10px 12px}
-.review-auth button,.review-composer button{justify-self:end;background:var(--ink);border-color:var(--ink);color:var(--surface)}
-.review-private{display:flex;flex:1;flex-direction:column;min-height:0}
+.review-identity{display:grid;gap:5px;padding:10px 18px 12px;border-bottom:1px solid var(--border)}
+.review-identity label{font-size:11px;font-weight:500}
+.review-identity input{width:100%;min-height:35px;padding:7px 10px;border:1px solid var(--border);border-radius:7px;background:var(--paper);font-size:12px}
+.review-identity small{font-size:10px;line-height:1.3}
+.review-composer{display:grid;gap:9px}
+.review-controls label,.review-composer label{font-size:11px;font-weight:500}
+.review-controls select,.review-composer textarea{width:100%;border:1px solid var(--border);border-radius:7px;background:var(--paper);padding:10px 12px}
+.review-composer button{justify-self:end;background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.review-private{display:flex;flex:1;flex-direction:column;min-height:0;overflow-y:auto;overscroll-behavior:contain}
 .review-controls{padding:14px 18px 0}
 .review-controls select{margin:5px 0 13px}
 .review-tabs{display:flex;gap:16px;border-bottom:1px solid var(--border)}
 .review-tabs button{min-height:35px;padding:4px 1px;border:0;border-radius:0;background:none;color:var(--muted);font-size:12px}
 .review-tabs button[aria-pressed=true]{color:var(--ink);border-bottom:2px solid var(--ink)}
-.review-content{flex:1;min-height:90px;overflow:auto;padding:18px;scrollbar-width:thin}
+.review-content{flex:1 0 72px;min-height:72px;overflow:auto;padding:18px;scrollbar-width:thin}
 .review-empty{color:var(--muted);font-size:12px}
 .review-message{padding:12px 0;border-bottom:1px solid var(--border)}
 .review-message:first-child{padding-top:0}
@@ -123,8 +127,6 @@
 .review-composer{padding:14px 18px 16px;border-top:1px solid var(--border)}
 .review-composer textarea{resize:vertical;min-height:70px;max-height:170px;font-size:13px}
 .review-composer button{min-height:35px;padding:7px 12px}
-.review-session-footer{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:0 18px 12px;color:var(--muted);font-size:10px}
-.review-session-footer button{min-height:28px;padding:3px 5px;border:0;background:none;color:var(--muted);font-size:10px}
 @media(max-width:650px){.review-notes-grid{grid-template-columns:1fr}.section-review-button{margin-left:40px}.review-launcher{right:16px;bottom:calc(16px + env(safe-area-inset-bottom))}.review-panel{right:0;bottom:0;width:100%;height:min(78dvh,690px);border-radius:17px 17px 0 0;border-bottom:0}.review-content{min-height:65px}}
-@media(max-height:700px){.review-private,.review-auth{overflow-y:auto;overscroll-behavior:contain}.review-content{flex:0 0 auto;min-height:72px;max-height:180px}.review-composer,.review-session-footer{flex-shrink:0}}
+@media(max-height:700px){.review-content{flex:0 0 auto;max-height:180px}.review-composer{flex-shrink:0}}
 @media print{.review-panel,.review-launcher,.section-review-button{display:none!important}}

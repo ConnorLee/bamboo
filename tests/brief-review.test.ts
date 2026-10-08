@@ -1,20 +1,18 @@
 import assert from 'node:assert/strict';
-import { createHash, randomBytes } from 'node:crypto';
+import { randomBytes } from 'node:crypto';
 import { after, test } from 'node:test';
 import { NextRequest } from 'next/server';
-import { COOKIE, configuration, issueSession, requireSameOrigin,
-  verifyAccessCode, verifySession } from '../lib/brief-review/auth';
-import { applyAction, blankSection, parseAction, ReviewError, sectionView,
+import { reviewHandlers } from '../lib/brief-review/handlers';
+import { configuration, requireSameOrigin } from '../lib/brief-review/http';
+import { applyAction, blankSection, parseAction, ReviewError, validateSection,
   type SectionId, type SectionRecord } from '../lib/brief-review/model';
 import { mutateReview, readReview } from '../lib/brief-review/service';
-import { StoreConflict, type LoadedSection, type SectionStore } from '../lib/brief-review/store';
-import { DELETE as deleteSession, GET as getSession, POST as postSession } from '../app/api/brief-review/session/route';
-import { GET as getReview, POST as postReview } from '../app/api/brief-review/route';
+import { sectionPath, StoreConflict, type LoadedSection, type SectionStore } from '../lib/brief-review/store';
 
 const keys = [
-  'BRIEF_REVIEW_ORIGIN', 'BRIEF_REVIEW_SESSION_SECRET',
-  'BRIEF_REVIEW_ACCESS_CONNOR_SHA256', 'BRIEF_REVIEW_ACCESS_PARTNER_SHA256',
-  'BRIEF_REVIEW_BLOB_READ_WRITE_TOKEN', 'BLOB_READ_WRITE_TOKEN',
+  'BRIEF_REVIEW_ORIGIN', 'BRIEF_REVIEW_BLOB_READ_WRITE_TOKEN', 'BLOB_READ_WRITE_TOKEN',
+  'BRIEF_REVIEW_SESSION_SECRET', 'BRIEF_REVIEW_ACCESS_CONNOR_SHA256',
+  'BRIEF_REVIEW_ACCESS_PARTNER_SHA256',
 ] as const;
 const original = Object.fromEntries(keys.map(key => [key, process.env[key]]));
 after(() => {
@@ -24,34 +22,34 @@ after(() => {
   }
 });
 
-const codeA = randomBytes(24).toString('hex');
-const codeB = randomBytes(24).toString('hex');
-const sha256 = (value: string) => createHash('sha256').update(value).digest('hex');
-
 function configure() {
   process.env.BRIEF_REVIEW_ORIGIN = 'http://localhost:3000';
-  process.env.BRIEF_REVIEW_SESSION_SECRET = randomBytes(32).toString('hex');
-  process.env.BRIEF_REVIEW_ACCESS_CONNOR_SHA256 = sha256(codeA);
-  process.env.BRIEF_REVIEW_ACCESS_PARTNER_SHA256 = sha256(codeB);
   process.env.BRIEF_REVIEW_BLOB_READ_WRITE_TOKEN = randomBytes(32).toString('hex');
   const config = configuration();
   assert.ok(config);
   return config;
 }
 
-function request(method = 'GET', body?: unknown, origin = 'http://localhost:3000') {
-  return new NextRequest('http://localhost:3000/api/brief-review/session', {
+function request(method = 'GET', body?: unknown, origin: string | null = 'http://localhost:3000') {
+  return new NextRequest('http://localhost:3000/api/brief-review', {
     method,
-    headers: { origin, 'content-type': 'application/json', 'sec-fetch-site': 'same-origin' },
+    headers: {
+      ...(origin ? { origin } : {}),
+      'content-type': 'application/json',
+      'sec-fetch-site': 'same-origin',
+    },
     ...(body === undefined ? {} : { body: JSON.stringify(body) }),
   });
 }
 
 class MemoryStore implements SectionStore {
   private readonly values = new Map<SectionId, { record: SectionRecord; version: number }>();
+  reads = 0;
+  writes = 0;
   conflicts = 0;
 
   async read(sectionId: SectionId): Promise<LoadedSection> {
+    this.reads++;
     const value = this.values.get(sectionId);
     return value
       ? { record: structuredClone(value.record), etag: String(value.version) }
@@ -59,6 +57,7 @@ class MemoryStore implements SectionStore {
   }
 
   async write(sectionId: SectionId, record: SectionRecord, etag: string | null): Promise<void> {
+    this.writes++;
     const current = this.values.get(sectionId);
     if ((current ? String(current.version) : null) !== etag) {
       this.conflicts++;
@@ -68,124 +67,129 @@ class MemoryStore implements SectionStore {
   }
 }
 
-test('configuration is fail-closed; codes and signed sessions are distinct and revocable', () => {
+test('the site origin and a server-only Blob token configure the open review', () => {
   for (const key of keys) delete process.env[key];
   assert.equal(configuration(), null);
   const config = configure();
-  assert.equal(verifyAccessCode(codeA, config), 'connor');
-  assert.equal(verifyAccessCode(codeB, config), 'partner');
-  assert.equal(verifyAccessCode('wrong-code'.repeat(4), config), null);
-  const cookie = issueSession('connor', config);
-  assert.equal(verifySession(cookie, config), 'connor');
-  assert.equal(verifySession(cookie.slice(0, -1) + 'x', config), null);
-  assert.equal(verifySession(cookie, config, Date.now() + 31 * 24 * 60 * 60 * 1000), null);
-  process.env.BRIEF_REVIEW_ACCESS_CONNOR_SHA256 = sha256(randomBytes(24).toString('hex'));
-  const rotated = configuration();
-  assert.ok(rotated);
-  assert.equal(verifySession(cookie, rotated), null);
+  assert.equal(config.origin, 'http://localhost:3000');
+  process.env.BRIEF_REVIEW_SESSION_SECRET = '';
+  process.env.BRIEF_REVIEW_ACCESS_CONNOR_SHA256 = '';
+  process.env.BRIEF_REVIEW_ACCESS_PARTNER_SHA256 = '';
+  assert.ok(configuration());
+  delete process.env.BRIEF_REVIEW_BLOB_READ_WRITE_TOKEN;
+  assert.equal(configuration(), null);
+  process.env.BLOB_READ_WRITE_TOKEN = randomBytes(32).toString('hex');
+  assert.ok(configuration());
 });
 
-test('session endpoint has no-store responses, same-origin login, and HttpOnly cookie', async () => {
-  configure();
-  const anonymous = await getSession(request());
-  assert.deepEqual(await anonymous.json(), { available: true, user: null });
-  assert.equal(anonymous.headers.get('cache-control'), 'private, no-store');
-  const rejected = await postSession(request('POST', { code: codeA }, 'https://other.example'));
-  assert.equal(rejected.status, 403);
-  const invalid = await postSession(request('POST', { code: 'x'.repeat(48) }));
-  assert.equal(invalid.status, 401);
-  const oversized = await postSession(request('POST', { code: 'x'.repeat(9000) }));
-  assert.equal(oversized.status, 413);
-  const loggedIn = await postSession(request('POST', { code: codeB }));
-  assert.equal(loggedIn.status, 200);
-  assert.deepEqual(await loggedIn.json(), { available: true, user: { id: 'partner', label: 'Partner' } });
-  const setCookie = loggedIn.headers.get('set-cookie') ?? '';
-  assert.match(setCookie, /HttpOnly/);
-  assert.match(setCookie, /SameSite=strict/i);
-  assert.match(setCookie, /Path=\/api\/brief-review/);
-  const cookieValue = loggedIn.cookies.get(COOKIE)?.value;
-  assert.ok(cookieValue);
-  const authenticated = request();
-  authenticated.cookies.set(COOKIE, cookieValue);
-  assert.deepEqual(await (await getSession(authenticated)).json(), {
-    available: true, user: { id: 'partner', label: 'Partner' },
-  });
-  const signedOut = await deleteSession(authenticated);
-  assert.deepEqual(await signedOut.json(), { available: true, user: null });
-  assert.equal(signedOut.cookies.get(COOKIE)?.value, '');
+test('new public namespace never reads or publishes the password-era private archive', async () => {
+  assert.equal(sectionPath('gtm'), 'brief-review/v2/open/sections/gtm.json');
+  assert.doesNotMatch(sectionPath('gtm'), /v1/);
+  const oldPrivateRecord = {
+    version: 1, sectionId: 'gtm', note: null, comments: [], readSeq: { connor: 0, partner: 0 },
+  };
+  assert.throws(() => validateSection(oldPrivateRecord, 'gtm'),
+    (error: unknown) => error instanceof ReviewError && error.code === 'stored_data_invalid');
+  const fresh = await readReview(new MemoryStore());
+  assert.deepEqual(fresh.sections.gtm, { note: null, comments: [] });
+  assert.equal(Object.hasOwn(fresh, 'unreadTotal'), false);
 });
 
-test('review endpoint refuses anonymous reads and cross-origin writes before touching storage', async () => {
+test('anonymous GET and named POST share public sections without a session', async () => {
   configure();
-  const anonymous = await getReview(new NextRequest('http://localhost:3000/api/brief-review'));
-  assert.equal(anonymous.status, 401);
-  const crossOrigin = await postReview(new NextRequest('http://localhost:3000/api/brief-review', {
-    method: 'POST', headers: { origin: 'https://other.example', 'content-type': 'application/json' },
-    body: JSON.stringify({ action: 'comment', sectionId: 'gtm', body: 'private' }),
+  const store = new MemoryStore();
+  const handlers = reviewHandlers(() => store);
+  const anonymous = await handlers.GET(request('GET', undefined, null));
+  assert.equal(anonymous.status, 200);
+  assert.equal(anonymous.headers.get('cache-control'), 'no-store');
+  assert.equal(anonymous.headers.get('set-cookie'), null);
+  const initial = await anonymous.json();
+  assert.deepEqual(initial.sections.stones, { note: null, comments: [] });
+  assert.equal(Object.hasOwn(initial, 'user'), false);
+  const posted = await handlers.POST(request('POST', {
+    action: 'comment', sectionId: 'stones', displayName: 'Alex', body: 'Try a lower setting.',
   }));
-  assert.equal(crossOrigin.status, 403);
+  assert.equal(posted.status, 200);
+  const postedBody = await posted.json();
+  assert.equal(postedBody.sectionId, 'stones');
+  assert.equal(postedBody.section.comments[0].author, 'Alex');
+  const reread = await (await handlers.GET(request())).json();
+  assert.equal(reread.sections.stones.comments[0].body, 'Try a lower setting.');
+  assert.equal(store.writes, 1);
 });
 
-test('origin checking rejects missing or cross-site Origin', () => {
+test('cross-origin, missing-origin and invalid writes fail before storage changes', async () => {
   const config = configure();
-  assert.throws(() => requireSameOrigin(request('POST', {}, 'https://other.example'), config),
-    (error: unknown) => error instanceof ReviewError && error.code === 'invalid_origin');
-  const noOrigin = new NextRequest('http://localhost:3000/api/brief-review', { method: 'POST' });
-  assert.throws(() => requireSameOrigin(noOrigin, config));
+  const store = new MemoryStore();
+  const handlers = reviewHandlers(() => store);
+  const body = { action: 'comment', sectionId: 'gtm', displayName: 'Alex', body: 'Hi' };
+  const crossOrigin = await handlers.POST(request('POST', body, 'https://other.example'));
+  assert.equal(crossOrigin.status, 403);
+  const noOrigin = await handlers.POST(request('POST', body, null));
+  assert.equal(noOrigin.status, 403);
+  assert.throws(() => requireSameOrigin(request('POST', body, 'https://other.example'), config));
+  assert.equal(store.reads, 0);
+  assert.equal(store.writes, 0);
+  const missingName = await handlers.POST(request('POST', { ...body, displayName: undefined }));
+  assert.equal(missingName.status, 400);
+  assert.deepEqual(await missingName.json(), { error: 'invalid_display_name' });
+  const invalidAction = await handlers.POST(request('POST', { ...body, action: 'read' }));
+  assert.equal(invalidAction.status, 400);
+  assert.equal(store.reads, 0);
+  const oversized = await handlers.POST(request('POST', { ...body, body: 'x'.repeat(33000) }));
+  assert.equal(oversized.status, 413);
+  const multibyteNote = await handlers.POST(request('POST', {
+    action: 'note', sectionId: 'gtm', displayName: 'Alex', body: '漢'.repeat(4000), revision: 0,
+  }));
+  assert.equal(multibyteNote.status, 200);
 });
 
-test('comments are append-only, unread is per reviewer, and read cursor is server-owned', async () => {
+test('named comments append in sequence and read state stays client-local', async () => {
   const store = new MemoryStore();
-  await mutateReview(store, parseAction({ action: 'comment', sectionId: 'stones', body: 'Try a lower setting.' }), 'partner');
-  let connor = await readReview(store, 'connor');
-  assert.equal(connor.unreadTotal, 1);
-  assert.equal(connor.sections.stones.comments[0].author, 'partner');
-  assert.equal((await readReview(store, 'partner')).unreadTotal, 0);
-  await mutateReview(store, parseAction({ action: 'read', sectionId: 'stones' }), 'connor');
-  connor = await readReview(store, 'connor');
-  assert.equal(connor.sections.stones.unread, 0);
-  await mutateReview(store, parseAction({ action: 'comment', sectionId: 'stones', body: 'Agreed.' }), 'connor');
-  assert.equal((await readReview(store, 'partner')).sections.stones.unread, 1);
-  assert.deepEqual((await store.read('stones')).record.comments.map(comment => comment.seq), [1, 2]);
-  await mutateReview(store, parseAction({ action: 'read', sectionId: 'stones', throughSeq: 1 }), 'partner');
-  assert.equal((await readReview(store, 'partner')).sections.stones.unread, 1);
-  await mutateReview(store, parseAction({ action: 'read', sectionId: 'stones', throughSeq: 2 }), 'partner');
-  assert.equal((await readReview(store, 'partner')).sections.stones.unread, 0);
+  await mutateReview(store, parseAction({
+    action: 'comment', sectionId: 'stones', displayName: 'Partner', body: 'Try a lower setting.',
+  }));
+  await mutateReview(store, parseAction({
+    action: 'comment', sectionId: 'stones', displayName: 'Connor', body: 'Agreed.',
+  }));
+  const view = (await readReview(store)).sections.stones;
+  assert.deepEqual(view.comments.map(comment => [comment.seq, comment.author]), [
+    [1, 'Partner'], [2, 'Connor'],
+  ]);
+  assert.deepEqual(Object.keys((await store.read('stones')).record).sort(), [
+    'comments', 'note', 'sectionId', 'version',
+  ]);
 });
 
-test('packaging generation section shares notes and unread comments through the review model', async () => {
+test('notes clear intentionally and reject stale revisions', async () => {
   const store = new MemoryStore();
-  const sectionId = 'ai-generations-packaging';
-  await mutateReview(store, parseAction({ action: 'note', sectionId, body: 'Review the second packaging image.', revision: 0 }), 'connor');
-  await mutateReview(store, parseAction({ action: 'comment', sectionId, body: 'Use it in the header.' }), 'partner');
-  const connor = await readReview(store, 'connor');
-  assert.equal(connor.sections[sectionId].note?.body, 'Review the second packaging image.');
-  assert.equal(connor.sections[sectionId].unread, 1);
-  assert.equal(connor.unreadTotal, 1);
-  await mutateReview(store, parseAction({ action: 'read', sectionId }), 'connor');
-  assert.equal((await readReview(store, 'connor')).unreadTotal, 0);
-});
-
-test('notes support intentional clearing and reject superseded revisions', async () => {
-  const store = new MemoryStore();
-  let note = await mutateReview(store, parseAction({ action: 'note', sectionId: 'gtm', body: 'Test LA first.', revision: 0 }), 'connor');
+  let note = await mutateReview(store, parseAction({
+    action: 'note', sectionId: 'gtm', displayName: 'Connor', body: 'Test LA first.', revision: 0,
+  }));
   assert.equal(note.note?.revision, 1);
   await assert.rejects(
-    mutateReview(store, parseAction({ action: 'note', sectionId: 'gtm', body: 'Stale edit', revision: 0 }), 'partner'),
+    mutateReview(store, parseAction({
+      action: 'note', sectionId: 'gtm', displayName: 'Partner', body: 'Stale edit', revision: 0,
+    })),
     (error: unknown) => error instanceof ReviewError && error.code === 'note_conflict',
   );
-  note = await mutateReview(store, parseAction({ action: 'note', sectionId: 'gtm', body: '', revision: 1 }), 'partner');
+  note = await mutateReview(store, parseAction({
+    action: 'note', sectionId: 'gtm', displayName: 'Partner', body: '', revision: 1,
+  }));
   assert.equal(note.note?.body, '');
   assert.equal(note.note?.revision, 2);
-  assert.equal(note.note?.updatedBy, 'partner');
-  assert.equal(sectionView((await store.read('gtm')).record, 'connor').unread, 0);
+  assert.equal(note.note?.updatedBy, 'Partner');
 });
 
-test('simultaneous note edits with the same expected revision do not overwrite each other', async () => {
+test('simultaneous note edits with the same revision do not overwrite each other', async () => {
   const store = new MemoryStore();
   const attempts = await Promise.allSettled([
-    mutateReview(store, parseAction({ action: 'note', sectionId: 'gtm', body: 'A', revision: 0 }), 'connor'),
-    mutateReview(store, parseAction({ action: 'note', sectionId: 'gtm', body: 'B', revision: 0 }), 'partner'),
+    mutateReview(store, parseAction({
+      action: 'note', sectionId: 'gtm', displayName: 'Alex', body: 'A', revision: 0,
+    })),
+    mutateReview(store, parseAction({
+      action: 'note', sectionId: 'gtm', displayName: 'Blair', body: 'B', revision: 0,
+    })),
   ]);
   assert.equal(attempts.filter(result => result.status === 'fulfilled').length, 1);
   assert.equal(attempts.filter(result => result.status === 'rejected').length, 1);
@@ -194,23 +198,38 @@ test('simultaneous note edits with the same expected revision do not overwrite e
 
 test('concurrent writes retry compare-and-swap instead of losing comments', async () => {
   const store = new MemoryStore();
-  const actionA = parseAction({ action: 'comment', sectionId: 'review-notes', body: 'First thought' });
-  const actionB = parseAction({ action: 'comment', sectionId: 'review-notes', body: 'Second thought' });
-  await Promise.all([mutateReview(store, actionA, 'connor'), mutateReview(store, actionB, 'partner')]);
+  const actionA = parseAction({
+    action: 'comment', sectionId: 'review-notes', displayName: 'Alex', body: 'First thought',
+  });
+  const actionB = parseAction({
+    action: 'comment', sectionId: 'review-notes', displayName: 'Blair', body: 'Second thought',
+  });
+  await Promise.all([mutateReview(store, actionA), mutateReview(store, actionB)]);
   const saved = (await store.read('review-notes')).record;
   assert.equal(saved.comments.length, 2);
   assert.deepEqual(saved.comments.map(comment => comment.seq), [1, 2]);
   assert.ok(store.conflicts >= 1);
 });
 
-test('invalid sections, empty comments and oversized input are rejected', () => {
-  assert.throws(() => parseAction({ action: 'comment', sectionId: 'unknown', body: 'x' }));
-  assert.throws(() => parseAction({ action: 'comment', sectionId: 'gtm', body: '  ' }));
-  assert.throws(() => parseAction({ action: 'note', sectionId: 'gtm', body: 'x'.repeat(4001), revision: 0 }));
-  assert.throws(() => parseAction({ action: 'read', sectionId: '__proto__' }));
-  assert.throws(() => parseAction({ action: 'read', sectionId: 'gtm', throughSeq: -1 }));
-  const record = blankSection('gtm');
-  const next = applyAction(record, parseAction({ action: 'comment', sectionId: 'gtm', body: '<script>alert(1)</script>' }), 'partner');
+test('section IDs, names, body bounds and the 500 comment cap are enforced', () => {
+  assert.throws(() => parseAction({ action: 'comment', sectionId: 'unknown', displayName: 'Alex', body: 'x' }));
+  assert.throws(() => parseAction({ action: 'comment', sectionId: 'gtm', displayName: '', body: 'x' }));
+  assert.throws(() => parseAction({ action: 'comment', sectionId: 'gtm', displayName: 'A\nB', body: 'x' }));
+  assert.throws(() => parseAction({ action: 'comment', sectionId: 'gtm', displayName: 'x'.repeat(81), body: 'x' }));
+  assert.throws(() => parseAction({ action: 'comment', sectionId: 'gtm', displayName: 'Alex', body: '  ' }));
+  assert.throws(() => parseAction({ action: 'note', sectionId: 'gtm', displayName: 'Alex', body: 'x'.repeat(4001), revision: 0 }));
+  assert.throws(() => parseAction({ action: 'read', sectionId: 'gtm', displayName: 'Alex' }));
+  const action = parseAction({
+    action: 'comment', sectionId: 'gtm', displayName: 'Alex', body: '<script>alert(1)</script>',
+  });
+  const initial = blankSection('gtm');
+  const next = applyAction(initial, action);
   assert.equal(next.comments[0].body, '<script>alert(1)</script>');
-  assert.equal(record.comments.length, 0);
+  assert.equal(initial.comments.length, 0);
+  const full = blankSection('gtm');
+  full.comments = Array.from({ length: 500 }, (_, index) => ({
+    id: String(index), seq: index + 1, author: 'Alex', body: 'x', createdAt: new Date().toISOString(),
+  }));
+  assert.throws(() => applyAction(full, action),
+    (error: unknown) => error instanceof ReviewError && error.code === 'comment_limit_reached');
 });

@@ -13,6 +13,7 @@ const path = require('node:path');
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright');
 
 const baseUrl = process.env.MANUFACTURE_BASE_URL || 'http://127.0.0.1:61019';
+const isLocal = ['localhost', '127.0.0.1'].includes(new URL(baseUrl).hostname);
 const storageKey = 'halo-manufacture-workspace-v1';
 const output = path.resolve(__dirname, '../qa/manufacture');
 const briefAnchors = ['gtm', 'first-piece', 'your-eye', 'stones', 'ai-generations-packaging', 'together', 'review-notes', 'working-reference'];
@@ -26,7 +27,7 @@ async function run() {
   const errors = [];
   const checks = [];
   page.on('pageerror', error => errors.push(error.message));
-  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  page.on('console', message => { if (message.type() === 'error') errors.push(`${message.text()} ${message.location().url}`); });
   page.on('requestfailed', request => errors.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText}`));
   page.on('response', response => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
   page.on('dialog', dialog => dialog.accept());
@@ -88,18 +89,29 @@ async function run() {
     await page.locator('#review-top-trigger').click();
     await page.locator('#review-panel').waitFor({ state: 'visible' });
     assert.equal(await page.locator('#review-top-trigger').getAttribute('aria-expanded'), 'true');
-    const reviewSession = await page.request.get(`${baseUrl}/api/brief-review/session`);
-    const reviewAvailable = reviewSession.ok() && Boolean((await reviewSession.json()).available);
+    assert.equal(await page.locator('#review-section-select').evaluate(node => document.activeElement === node), true);
+    assert.equal(await page.locator('#review-display-name').isVisible(), true);
+    assert.equal(await page.locator('#review-code, #review-auth, input[type="password"]').count(), 0);
+    assert.doesNotMatch(await page.locator('#review-panel, #review-notes').allTextContents().then(parts => parts.join(' ')), /access code|unlock|password|sign in|sign out|invited reviewers/i);
+    const reviewResponse = await page.request.get(`${baseUrl}/api/brief-review`);
+    const reviewAvailable = reviewResponse.ok();
+    if (!isLocal) assert.equal(reviewResponse.status(), 200, 'Public review GET must work without a session in production');
+    else assert.ok(reviewAvailable || [404, 503].includes(reviewResponse.status()), 'Local review must be available or explicitly unconfigured');
     if (reviewAvailable) {
-      assert.equal(await page.locator('#review-code').isVisible(), true);
-      assert.equal(await page.locator('#review-code').evaluate(node => document.activeElement === node), true);
+      assert.equal(typeof (await reviewResponse.json()).sections, 'object');
+      await page.locator('#review-comment-form').waitFor({ state: 'visible' });
+      await page.locator('[data-review-tab="notes"]').click();
+      assert.equal(await page.locator('#review-note-form').isVisible(), true);
+      await page.locator('[data-review-tab="comments"]').click();
+      assert.equal(await page.locator('#review-comment-form').isVisible(), true);
     } else {
-      assert.match(await page.locator('#review-auth > p').innerText(), /not available/i);
-      assert.equal(await page.locator('#review-close').evaluate(node => document.activeElement === node), true);
+      await page.locator('#review-content').getByText(/unavailable/i).waitFor();
+      assert.match(await page.locator('#review-content').innerText(), /unavailable/i);
+      assert.equal(await page.locator('#review-comment-form').isVisible(), false);
     }
     await page.locator('#review-close').click();
     assert.equal(await page.locator('#review-top-trigger').getAttribute('aria-expanded'), 'false');
-    checks.push('Second AI packaging concept leads the hero; both labeled concepts load; comments open from the header and export remains in the footer.');
+    checks.push('Second AI packaging concept leads the hero; both labeled concepts load; the review panel opens without an access code and export remains in the footer.');
     checks.push('The /brief route is canonical and noindex; legacy page and asset URLs redirect; all 16 technical sections remain available.');
 
     const darkSystemContext = await browser.newContext({ colorScheme: 'dark' });
@@ -252,9 +264,11 @@ async function run() {
     assert.equal(await page.locator('[data-dimension="stone-diameter"]').inputValue(), '8.25 — QA fixture');
     checks.push('JSON and CSV downloads contain entered data; malformed imports preserve state; valid backups restore it.');
 
-    assert.deepEqual(errors, [], 'No JavaScript, console, failed request or HTTP errors expected');
-    checks.push('No JavaScript, console or network errors.');
-    await fs.writeFile(path.join(output, 'browser-results.json'), JSON.stringify({ status: 'passed', url: `${baseUrl}/brief`, checks, errors, screenshots: ['light-1440.png', 'light-768.png', 'light-390.png', 'dark-1440.png', 'cost-model.png'] }, null, 2));
+    const fatalErrors = errors.filter(error => reviewAvailable || !isLocal ||
+      !(/\/api\/brief-review/.test(error) && /(?:404|503)/.test(error)));
+    assert.deepEqual(fatalErrors, [], 'No JavaScript, console, failed request or unexpected HTTP errors expected');
+    checks.push(reviewAvailable ? 'No JavaScript, console or network errors.' : 'No unexpected errors; local review API is not configured.');
+    await fs.writeFile(path.join(output, 'browser-results.json'), JSON.stringify({ status: 'passed', url: `${baseUrl}/brief`, reviewAvailable, checks, errors: fatalErrors, screenshots: ['light-1440.png', 'light-768.png', 'light-390.png', 'dark-1440.png', 'cost-model.png'] }, null, 2));
     console.log(`Manufacture browser QA passed (${checks.length} groups). Screenshots and results: ${output}`);
   } finally {
     await context.close();

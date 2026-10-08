@@ -1,27 +1,22 @@
 import { applyAction, ReviewError, SECTION_IDS, sectionView,
-  type Action, type ReviewerId, type SectionId, type SectionView } from './model';
+  type Action, type SectionId, type SectionView } from './model';
 import { StoreConflict, type SectionStore } from './store';
 
-export async function readReview(store: SectionStore, user: ReviewerId): Promise<{
+export async function readReview(store: SectionStore): Promise<{
   sections: Record<SectionId, SectionView>;
-  unreadTotal: number;
 }> {
   const records = await Promise.all(SECTION_IDS.map(sectionId => store.read(sectionId)));
-  const sections = Object.fromEntries(records.map(({ record }) => [record.sectionId, sectionView(record, user)])) as Record<SectionId, SectionView>;
-  const unreadTotal = SECTION_IDS.reduce((total, id) => total + sections[id].unread, 0);
-  return { sections, unreadTotal };
+  const sections = Object.fromEntries(records.map(({ record }) => [record.sectionId, sectionView(record)])) as Record<SectionId, SectionView>;
+  return { sections };
 }
 
-export async function mutateReview(store: SectionStore, action: Action, user: ReviewerId): Promise<SectionView> {
+export async function mutateReview(store: SectionStore, action: Action): Promise<SectionView> {
   for (let attempt = 0; attempt < 6; attempt++) {
     const { record, etag } = await store.read(action.sectionId);
-    const updated = applyAction(record, action, user);
-    if (action.action === 'read' && updated.readSeq[user] === record.readSeq[user]) {
-      return sectionView(record, user);
-    }
+    const updated = applyAction(record, action);
     try {
       await store.write(action.sectionId, updated, etag);
-      return sectionView(updated, user);
+      return sectionView(updated);
     } catch (error) {
       if (error instanceof StoreConflict) continue;
       throw error;
