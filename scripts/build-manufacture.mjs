@@ -4,11 +4,12 @@ import path from 'node:path';
 const sections = [
   ['01', 'gtm', 'Launch hypothesis'], ['02', 'first-piece', 'Year One'],
   ['03', 'your-eye', 'Jewelry'], ['04', 'stones', 'Twelve stones'],
-  ['05', 'together', 'Open decisions'], ['06', 'working-reference', 'Working reference'],
+  ['05', 'together', 'Open decisions'], ['06', 'review-notes', 'Review notes'],
+  ['07', 'working-reference', 'Working reference'],
 ];
-const groups = { 0: 'Brief', 5: 'Technical reference' };
+const groups = { 0: 'Brief', 6: 'Technical reference' };
 const assets = [
-  'manufacture.css', 'manufacture.js', 'workspace-data.js', 'cost-model.js',
+  'manufacture.css', 'manufacture.js', 'brief-review.js', 'workspace-data.js', 'cost-model.js',
   'reference-bracelets.png', 'latest-design-reference.png', 'packaging-reference-02.png',
   'hardware-architecture.svg', 'clasp-sizing.svg',
 ];

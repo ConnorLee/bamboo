@@ -15,7 +15,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright')
 const baseUrl = process.env.MANUFACTURE_BASE_URL || 'http://127.0.0.1:61019';
 const storageKey = 'halo-manufacture-workspace-v1';
 const output = path.resolve(__dirname, '../qa/manufacture');
-const briefAnchors = ['gtm', 'first-piece', 'your-eye', 'stones', 'together', 'working-reference'];
+const briefAnchors = ['gtm', 'first-piece', 'your-eye', 'stones', 'together', 'review-notes', 'working-reference'];
 const anchors = ['roadmap', 'supply-chain', 'sourcing', 'rf-reference', 'mechanical', 'cad', 'prototypes', 'rf-matrix', 'quotes', 'costs', 'procedure', 'bracelet-outreach', 'nfc-outreach', 'ip', 'red-flags', 'next-actions'];
 
 async function run() {
