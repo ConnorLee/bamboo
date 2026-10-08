@@ -1,22 +1,22 @@
-# Halo first-bracelet brief and manufacturing workspace
+# Halo Year One partner brief and manufacturing reference
 
-`/brief` now opens with a short working brief for Halo's two-person team and its jewelry/sourcing partner. The twelve natural stones, their order and each month's meaning are presented as choices to make together; the current imagery and catalog are retained as visual studies. Brushed stainless steel is the first material direction, and a more elaborate luxury version is deferred. The original H3 engineering, quote and cost workspace remains in a collapsed **Working reference** section, available through `?reference=1` or a direct fragment link. Its assumptions are not presented as final stone or hardware decisions.
+`/brief` now opens with the emerging Year One thesis for Halo's two-person team and its jewelry/sourcing partner: the year, people, commitment, earned progress, then the lasting bracelet. Human connection is central; the network and program are not yet built or approved. It keeps the material, twelve natural stones, their order and meaning, setting mechanics, suppliers and cost open for joint work. The existing imagery remains a form study. The original H3 engineering, quote and cost workspace remains in a collapsed **Earlier working reference** section, available through `?reference=1` or a direct fragment link. It is historical context, not the emerging premium membership specification or an active supplier brief.
 
-The active planning brief is **Halo — First Year Collection, $189**. The retained reservation model is **$25 fully refundable, credited toward $189**; the public site currently offers a Coming soon waitlist, not checkout. The collection includes the bracelet, 12 milestone stones, individual presentations, Halo iPhone app, digital milestone collection and companion growth. The internal economics brief is [`../docs/first-year-economics.md`](../docs/first-year-economics.md).
+The public consumer offer still uses **$189**, while `/brief` explores a premium Year One membership as a separate, unvalidated direction. The retained H3 model used **Halo — First Year Collection, $189** and a **$25 fully refundable reservation credited toward $189**; the public site currently offers a Coming soon waitlist, not checkout. A possible $500–1,000+ Year One membership is a market-validation hypothesis, not a final price, supplier instruction or change to the consumer offer. The retained economics brief is [`../docs/first-year-economics.md`](../docs/first-year-economics.md).
 
-Landed product COGS aims for $70, with $85 the maximum design gate. The $80 working allocation is hardware $28 + 12 stones/inserts $22 + all packaging $12 + assembly/QC/rework $8 + inbound freight/duties $10. These are targets, not supplier prices. Individual category ceilings sum to $100 and cannot all be spent. No supplier costs, prototype performance, fit, yield or profitability are confirmed by this reference.
+In that earlier H3 model, landed product COGS aimed for $70, with $85 the maximum design gate. The $80 working allocation was hardware $28 + 12 stones/inserts $22 + all packaging $12 + assembly/QC/rework $8 + inbound freight/duties $10. These are historical design targets, not supplier prices or gates for the premium hypothesis. Individual category ceilings sum to $100 and cannot all be spent. No supplier costs, prototype performance, fit, yield or profitability are confirmed by this reference.
 
-## Active product direction
+## Retained H3 technical study
 
-NFC is optional. A = 12 tagged stones; B = selected stones (three only as a calculator comparison); C = one bracelet element; D = none. D is the provisional cost baseline; investigate C if one ownership/collection tap proves valuable. The app owns milestone eligibility for every option. RF tests are conditional on A–C, not required to approve D.
+Within the retained study, NFC is optional. A = 12 tagged stones; B = selected stones (three only as a calculator comparison); C = one bracelet element; D = none. D is its provisional cost baseline; investigate C if one ownership/collection tap proves valuable. The app owns milestone eligibility for every option. RF tests are conditional on A–C, not required to approve D.
 
-One consumer offer and one provisional finish for cost development. Fit evidence determines necessary size variants. Twelve individual presentations remain included; twelve rigid mini-boxes, two packaging colorways, ornate retention and custom machining are not automatic requirements. Preserve real materials, progressive bracelet, monthly ritual and companion maturation. Center-current reseating remains a design candidate: cost/handling findings require a product review before changing meaningful staging.
+That study assumed one consumer offer and one provisional finish for cost development. Fit evidence would determine necessary size variants. Twelve individual presentations were included; twelve rigid mini-boxes, two packaging colorways, ornate retention and custom machining were not automatic requirements. Preserve real materials and the progressive bracelet while reconsidering the membership experience. Center-current reseating remains a design candidate: cost/handling findings require a product review before changing meaningful staging.
 
 Earlier manufacturing source remains in Git history. H2 SVGs are visibly labeled historical studies. They do not mandate dual finishes, installed NFC in all stones or an unvalidated mechanism. Old dimensions, checkmarks, RF results, supplier qualifications and cost entries remain historical; they do not approve H3.
 
 ## Source and build
 
-- `brief.html`: four plain-language sections for the first piece, stones, partner contribution and decisions to make together.
+- `brief.html`: four plain-language sections for the year, stones, partner contribution and decisions to make together.
 - `content.html`: 16 retained technical reference sections, sourcing briefs, economics and evidence gates.
 - `page.html`: shell, brief introduction and collapsed working reference.
 - `workspace-data.js`: editable dimension/protocol/RF/quote/decision schemas and H3 requirement revision.
@@ -40,7 +40,7 @@ All physical component prices remain blank until entered with a quote or explici
 - Shared tooling: stored once, separately amortized over the selected total batch; no duplicated Light/Dark tooling.
 - Finish/yield alternatives: existing comparison preserved, not consumer variants. Enter explicit zero for the unused finish. Whole-number finish quantities sum to the batch. Yield estimates production starts only; it never silently multiplies finished-unit quotes or duplicates scrap.
 
-The visible H3 gate always evaluates $189 USD and ≤$85 USD landed. It says incomplete, over-budget, or entered scenario within target **with unverified evidence**. Non-USD entries do not produce a USD gate result; changing a label never converts currency. Historical retail sensitivity fields remain in a collapsed disclosure and do not redefine the product price. Tax-inclusive markets require modeling actual net revenue separately.
+The retained H3 gate always evaluates $189 USD and ≤$85 USD landed. It says incomplete, over-budget, or entered scenario within target **with unverified evidence**. It does not evaluate the emerging premium membership. Non-USD entries do not produce a USD gate result; changing a label never converts currency. Historical retail sensitivity fields remain in a collapsed disclosure and do not redefine the product price. Tax-inclusive markets require modeling actual net revenue separately.
 
 ## Local persistence and migration
 
@@ -50,4 +50,4 @@ Edits are browser-local, not synced or sent to suppliers. Export JSON before cle
 
 ## Verification
 
-`node --test tests/manufacture-costs.cjs` covers monetary boundaries, legacy quantities, option switching, incomplete/invalid costs, independent scenarios, single-count tooling and explicit yield planning. The browser, hardware and resilience suites passed against the local preview after this brief revision; they retain migration/export/storage/overflow cases. Desktop and mobile visual checks found no page overflow or browser errors. Manufacturing feasibility still requires supplier quotes and physical tests.
+`node --test tests/manufacture-costs.cjs` covers monetary boundaries, legacy quantities, option switching, incomplete/invalid costs, independent scenarios, single-count tooling and explicit yield planning. This brief revision passed the site build and those 19 cost tests; focused static-browser checks at 390, 768 and 1280 pixels found no overflow or browser errors. The older browser, hardware and resilience suites were not rerun for this copy revision. Manufacturing feasibility still requires supplier quotes and physical tests.

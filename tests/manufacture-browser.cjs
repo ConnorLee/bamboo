@@ -63,7 +63,7 @@ async function run() {
     assert.equal(response.headers()['x-robots-tag'], 'noindex, nofollow, noarchive');
     await page.waitForSelector('[data-cost="carrier"]');
     await page.locator('#nfc-mode').selectOption('all');
-    assert.equal(await page.title(), 'First Bracelet Brief — Halo');
+    assert.equal(await page.title(), 'Halo Year One — Working Brief');
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), 'https://www.habithalo.app/brief');
     assert.equal(await page.locator('#section-nav a').count(), briefAnchors.length);
     assert.equal(await page.locator('#working-reference').evaluate(element => element.open), true);

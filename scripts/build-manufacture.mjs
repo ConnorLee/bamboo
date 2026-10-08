@@ -2,8 +2,8 @@ import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const sections = [
-  ['01', 'first-piece', 'The first piece'], ['02', 'stones', 'The twelve stones'],
-  ['03', 'your-eye', 'Where your eye helps'], ['04', 'together', 'Decide together'],
+  ['01', 'first-piece', 'The year'], ['02', 'stones', 'The twelve stones'],
+  ['03', 'your-eye', 'Your eye'], ['04', 'together', 'Next decisions'],
   ['05', 'working-reference', 'Working reference'],
 ];
 const groups = { 0: 'Our brief', 4: 'Details when needed' };

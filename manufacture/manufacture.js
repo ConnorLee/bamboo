@@ -212,8 +212,8 @@
     else if (button.dataset.copy) {
       const target = document.getElementById(button.dataset.copy);
       if (!target) return;
-      try {await navigator.clipboard.writeText(target.innerText);toast('Copied. Ready to paste into your supplier email.');}
-      catch {const range = document.createRange();range.selectNodeContents(target);const selection = window.getSelection();selection.removeAllRanges();selection.addRange(range);toast('Text selected. Press ⌘C or Ctrl+C to copy.');}
+      try {await navigator.clipboard.writeText(target.innerText);toast('Historical draft copied. Revise before any supplier contact.');}
+      catch {const range = document.createRange();range.selectNodeContents(target);const selection = window.getSelection();selection.removeAllRanges();selection.addRange(range);toast('Historical draft selected. Press ⌘C or Ctrl+C to copy, then revise before use.');}
     }
   });
   $('#export-workspace').addEventListener('click', () => {
