@@ -15,7 +15,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright')
 const baseUrl = process.env.MANUFACTURE_BASE_URL || 'http://127.0.0.1:61019';
 const storageKey = 'halo-manufacture-workspace-v1';
 const output = path.resolve(__dirname, '../qa/manufacture');
-const briefAnchors = ['gtm', 'first-piece', 'your-eye', 'stones', 'together', 'review-notes', 'working-reference'];
+const briefAnchors = ['gtm', 'first-piece', 'your-eye', 'stones', 'ai-generations-packaging', 'together', 'review-notes', 'working-reference'];
 const anchors = ['roadmap', 'supply-chain', 'sourcing', 'rf-reference', 'mechanical', 'cad', 'prototypes', 'rf-matrix', 'quotes', 'costs', 'procedure', 'bracelet-outreach', 'nfc-outreach', 'ip', 'red-flags', 'next-actions'];
 
 async function run() {
@@ -75,6 +75,31 @@ async function run() {
     for (const id of anchors) {
       assert.equal(await page.locator(`#${id}`).count(), 1, `Missing/duplicate section ${id}`);
     }
+    assert.match(await page.locator('.brief-photo-hero-media img').getAttribute('src'), /packaging-concept-02\.webp$/);
+    assert.ok(await page.locator('.brief-photo-hero-media img').evaluate(img => img.complete && img.naturalWidth > 0));
+    assert.ok(Number.isFinite(Date.parse(await page.locator('#brief-updated-at').getAttribute('datetime'))));
+    assert.equal(await page.locator('#ai-generations-packaging figure img').count(), 2);
+    assert.deepEqual(await page.locator('#ai-generations-packaging figure img').evaluateAll(async images => {
+      for (const img of images) { img.loading = 'eager'; await img.decode(); }
+      return images.map(img => img.complete && img.naturalWidth > 0);
+    }), [true, true]);
+    assert.equal(await page.locator('.topbar #export-workspace').count(), 0);
+    assert.equal(await page.locator('.workspace-footer #export-workspace').count(), 1);
+    await page.locator('#review-top-trigger').click();
+    await page.locator('#review-panel').waitFor({ state: 'visible' });
+    assert.equal(await page.locator('#review-top-trigger').getAttribute('aria-expanded'), 'true');
+    const reviewSession = await page.request.get(`${baseUrl}/api/brief-review/session`);
+    const reviewAvailable = reviewSession.ok() && Boolean((await reviewSession.json()).available);
+    if (reviewAvailable) {
+      assert.equal(await page.locator('#review-code').isVisible(), true);
+      assert.equal(await page.locator('#review-code').evaluate(node => document.activeElement === node), true);
+    } else {
+      assert.match(await page.locator('#review-auth > p').innerText(), /not available/i);
+      assert.equal(await page.locator('#review-close').evaluate(node => document.activeElement === node), true);
+    }
+    await page.locator('#review-close').click();
+    assert.equal(await page.locator('#review-top-trigger').getAttribute('aria-expanded'), 'false');
+    checks.push('Second AI packaging concept leads the hero; both labeled concepts load; comments open from the header and export remains in the footer.');
     checks.push('The /brief route is canonical and noindex; legacy page and asset URLs redirect; all 16 technical sections remain available.');
 
     const darkSystemContext = await browser.newContext({ colorScheme: 'dark' });

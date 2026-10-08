@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 
-export const SECTION_IDS = ['gtm', 'first-piece', 'your-eye', 'stones', 'together', 'review-notes'] as const;
+export const SECTION_IDS = ['gtm', 'first-piece', 'your-eye', 'stones', 'ai-generations-packaging', 'together', 'review-notes'] as const;
 export type SectionId = (typeof SECTION_IDS)[number];
 export type ReviewerId = 'connor' | 'partner';
 

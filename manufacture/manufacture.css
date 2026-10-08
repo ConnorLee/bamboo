@@ -49,11 +49,24 @@
 .brief-photo-hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .brief-photo-hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,4,4,.5),rgba(4,4,4,.64) 55%,rgba(4,4,4,.72));pointer-events:none}
 .brief-photo-hero-center{position:absolute;inset:0;display:grid;place-items:center;padding:24px}
-.brief-logo-lockup{position:relative;width:clamp(170px,18vw,250px);filter:drop-shadow(0 3px 18px #0008)}
-.brief-logo-lockup img,.brief-logo-orbit{display:block;width:100%;height:auto}
-.brief-logo-orbit{position:absolute;inset:0;pointer-events:none}
-.brief-logo-satellite{transform-box:view-box;transform-origin:98px 100px;animation:brief-logo-orbit 14s linear infinite}
-@keyframes brief-logo-orbit{to{transform:rotate(360deg)}}
+.brief-hero-identity{position:relative;filter:drop-shadow(0 3px 18px #0008)}
+.brief-logo-lockup{position:relative;width:clamp(170px,18vw,250px);aspect-ratio:841/170}
+.brief-logo-lettering{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;clip-path:inset(0 0 0 24.4%)}
+.brief-hero-meta{position:absolute;top:calc(100% + 24px);left:50%;transform:translateX(-50%);width:min(80vw,500px);text-align:center;color:#f0f0ef;font-size:10px;font-weight:400;line-height:1.55;letter-spacing:.12em;text-transform:uppercase}
+.brief-hero-meta p{margin:0 0 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brief-hero-meta p:first-child{font-size:9px;letter-spacing:.2em;color:#d5d5d1}
+.brief-hero-meta p:last-child{color:#e1e5da}
+/* The metal O rotates in the screen plane; the green center and vector lettering stay fixed. */
+.brand-lockup{overflow:visible}
+.brand-lockup .brand-lettering{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;clip-path:inset(0 0 0 24.4%);filter:var(--wordmark-filter)}
+.halo-mark{position:absolute;z-index:1;top:-18%;left:-2.4%;width:30%;aspect-ratio:1;pointer-events:none}
+.halo-mark-shell{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:contain;transform-origin:50% 50%;animation:halo-metal-turn 16s linear infinite}
+.brand-lockup .halo-mark-shell{inset:0;left:0;top:0;width:100%;height:100%}
+.halo-mark-core,.brand-lockup .halo-mark-core{position:absolute;z-index:2;left:50%;top:50%;width:25%;height:25%;max-width:none;transform:translate(-50%,-50%)}
+@keyframes halo-metal-turn{to{transform:rotate(360deg)}}
+.review-top-trigger{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;background:transparent;font-size:11px;letter-spacing:.03em}
+.review-top-trigger>span{margin:0}.review-top-trigger svg{flex:none}
+.review-top-unread{min-width:19px;height:19px;padding:1px 5px;border-radius:999px;background:var(--green);color:var(--surface);font-size:10px;line-height:17px;text-align:center;font-variant-numeric:tabular-nums}
 .brief-photo-hero-caption{position:absolute;bottom:28px;left:clamp(20px,4vw,70px);right:clamp(20px,4vw,70px);display:flex;justify-content:space-between;gap:16px;color:#fff;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
 .brief-intro{display:block;max-width:860px;margin-bottom:0}
 .brief-intro .intro-description{max-width:70ch}
@@ -62,7 +75,7 @@
 .approved-visual img{display:block;width:100%;height:auto;background:var(--stage);border-radius:8px}
 .approved-visual figcaption{font-size:11px;color:var(--muted);margin-top:8px}
 @media(max-width:560px){.brief-photo-hero{height:clamp(480px,79svh,760px)}.brief-photo-hero-media img{object-position:center 18%}.brief-logo-lockup{width:min(50vw,190px)}.brief-photo-hero-caption{display:block;bottom:20px;font-size:9px}.brief-photo-hero-caption span{display:block;margin-top:4px}.brief-intro .internal-badge{margin-bottom:14px}}
-@media(prefers-reduced-motion:reduce){.brief-photo-hero-media{transform:none;will-change:auto}.brief-logo-satellite{animation:none;transform:rotate(35deg)}}
+@media(prefers-reduced-motion:reduce){.brief-photo-hero-media{transform:none;will-change:auto}.halo-mark-shell{animation:none}}
 @media print{.brief-photo-hero{display:none!important}}
 
 /* Private, section-level review stays separate from the browser-only technical worksheet. */

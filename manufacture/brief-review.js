@@ -6,12 +6,14 @@
     ['first-piece', 'Year One experience'],
     ['your-eye', 'Bracelet requirements'],
     ['stones', 'Twelve stones'],
+    ['ai-generations-packaging', 'AI generations: Packaging'],
     ['together', 'Decisions to validate'],
     ['review-notes', 'Review notes'],
   ];
   const labels = Object.fromEntries(sections);
   const $ = selector => document.querySelector(selector);
   const launcher = $('#review-launcher');
+  const topTrigger = $('#review-top-trigger');
   const panel = $('#review-panel');
   const status = $('#review-panel-status');
   const sectionSelect = $('#review-section-select');
@@ -61,15 +63,42 @@
     return review?.sections?.[id] || { note: null, comments: [], unread: 0 };
   }
   function updateBadge() {
-    const count = user ? Number(review?.unreadTotal || 0) : 0;
-    const badge = $('#review-unread');
-    badge.hidden = count === 0;
-    badge.textContent = count > 99 ? '99+' : String(count);
+    const count = user && review ? Number(review.unreadTotal || 0) : 0;
+    for (const badge of [$('#review-unread'), $('#review-top-unread')]) {
+      if (!badge) continue;
+      badge.hidden = count === 0;
+      badge.textContent = count > 99 ? '99+' : String(count);
+    }
     launcher.setAttribute('aria-label', count ? `Open private review, ${count} unread comment${count === 1 ? '' : 's'}` : 'Open private review');
+    topTrigger?.setAttribute('aria-label', count ? `Open private review notifications, ${count} unread comment${count === 1 ? '' : 's'}` : 'Open private review notifications');
     for (const [id] of sections) {
       const button = document.querySelector(`[data-section-review="${id}"]`);
       const countNode = button?.querySelector('span');
-      if (countNode) countNode.textContent = sectionData(id).unread ? String(sectionData(id).unread) : '';
+      const unread = user && review ? sectionData(id).unread : 0;
+      if (countNode) countNode.textContent = unread ? String(unread) : '';
+    }
+  }
+  function updateHeroSummary() {
+    const latestNode = $('#brief-latest-note');
+    const unreadNode = $('#brief-unread-summary');
+    if (!user || !review) {
+      if (latestNode) latestNode.textContent = 'Unlock review to see latest note';
+      if (unreadNode) unreadNode.textContent = 'Unlock review to see unread comments';
+      return;
+    }
+    const latest = sections
+      .map(([id, label]) => ({ label, note: sectionData(id).note }))
+      .filter(({ note }) => note?.body?.trim())
+      .sort((a, b) => Date.parse(b.note.updatedAt) - Date.parse(a.note.updatedAt))[0];
+    if (latestNode) {
+      const excerpt = latest?.note.body.trim().replace(/\s+/g, ' ');
+      latestNode.textContent = latest
+        ? `Latest note · ${latest.label}: ${excerpt.length > 140 ? `${excerpt.slice(0, 139).trimEnd()}…` : excerpt}`
+        : 'No shared notes yet';
+    }
+    if (unreadNode) {
+      const count = Number(review.unreadTotal || 0);
+      unreadNode.textContent = count ? `${count} unread comment${count === 1 ? '' : 's'}` : 'No unread comments';
     }
   }
   function renderNotesGrid() {
@@ -125,7 +154,10 @@
     $('#review-private').hidden = !user;
     $('#review-auth-form').hidden = !available;
     $('#review-auth > p').textContent = available ? 'Notes and comments are available only to invited reviewers.' : 'Shared review is not available yet.';
-    if (!user || !review) return;
+    if (!user || !review) {
+      if (!user) $('#review-content').replaceChildren();
+      return;
+    }
     $('#review-signed-in-as').textContent = `Signed in as ${user.label}`;
     for (const button of document.querySelectorAll('[data-review-tab]')) button.setAttribute('aria-pressed', String(button.dataset.reviewTab === tab));
     $('#review-comment-form').hidden = tab !== 'comments';
@@ -134,6 +166,7 @@
   }
   function render() {
     updateBadge();
+    updateHeroSummary();
     renderNotesGrid();
     renderPanel();
   }
@@ -188,16 +221,18 @@
     tab = view;
     panel.hidden = false;
     launcher.setAttribute('aria-expanded', 'true');
+    topTrigger?.setAttribute('aria-expanded', 'true');
     renderPanel();
     if (user) {
       sectionSelect.focus();
       void markRead();
-    } else $('#review-code').focus();
+    } else (available ? $('#review-code') : $('#review-close')).focus();
   }
   function closeReview() {
     rememberDrafts();
     panel.hidden = true;
     launcher.setAttribute('aria-expanded', 'false');
+    topTrigger?.setAttribute('aria-expanded', 'false');
     message('');
     (returnFocus?.isConnected ? returnFocus : launcher).focus();
   }
@@ -215,6 +250,10 @@
     header.append(button);
   }
   launcher.addEventListener('click', () => openReview());
+  topTrigger?.addEventListener('click', () => {
+    const firstUnread = user && review ? sections.find(([id]) => sectionData(id).unread > 0)?.[0] : null;
+    openReview(firstUnread || selected, 'comments', topTrigger);
+  });
   $('#review-close').addEventListener('click', closeReview);
   sectionSelect.addEventListener('change', () => chooseSection(sectionSelect.value));
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && !panel.hidden) closeReview(); });

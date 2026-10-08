@@ -153,6 +153,19 @@ test('comments are append-only, unread is per reviewer, and read cursor is serve
   assert.equal((await readReview(store, 'partner')).sections.stones.unread, 0);
 });
 
+test('packaging generation section shares notes and unread comments through the review model', async () => {
+  const store = new MemoryStore();
+  const sectionId = 'ai-generations-packaging';
+  await mutateReview(store, parseAction({ action: 'note', sectionId, body: 'Review the second packaging image.', revision: 0 }), 'connor');
+  await mutateReview(store, parseAction({ action: 'comment', sectionId, body: 'Use it in the header.' }), 'partner');
+  const connor = await readReview(store, 'connor');
+  assert.equal(connor.sections[sectionId].note?.body, 'Review the second packaging image.');
+  assert.equal(connor.sections[sectionId].unread, 1);
+  assert.equal(connor.unreadTotal, 1);
+  await mutateReview(store, parseAction({ action: 'read', sectionId }), 'connor');
+  assert.equal((await readReview(store, 'connor')).unreadTotal, 0);
+});
+
 test('notes support intentional clearing and reject superseded revisions', async () => {
   const store = new MemoryStore();
   let note = await mutateReview(store, parseAction({ action: 'note', sectionId: 'gtm', body: 'Test LA first.', revision: 0 }), 'connor');
