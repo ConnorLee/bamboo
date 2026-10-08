@@ -49,7 +49,7 @@
 .brief-photo-hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .brief-photo-hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,4,4,.5),rgba(4,4,4,.64) 55%,rgba(4,4,4,.72));pointer-events:none}
 .brief-photo-hero-center{position:absolute;inset:0;display:grid;place-items:center;padding:24px}
-.brief-photo-hero-center img{display:block;width:clamp(260px,34vw,570px);height:auto;filter:drop-shadow(0 3px 25px #0008)}
+.brief-photo-hero-center img{display:block;width:clamp(210px,22vw,320px);height:auto;filter:drop-shadow(0 3px 18px #0008)}
 .brief-photo-hero-caption{position:absolute;bottom:28px;left:clamp(20px,4vw,70px);right:clamp(20px,4vw,70px);display:flex;justify-content:space-between;gap:16px;color:#fff;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
 .brief-intro{display:block;max-width:860px;margin-bottom:0}
 .brief-intro .intro-description{max-width:70ch}
@@ -57,6 +57,6 @@
 .approved-visual figure{margin:10px 0 18px;max-width:720px}
 .approved-visual img{display:block;width:100%;height:auto;background:var(--stage);border-radius:8px}
 .approved-visual figcaption{font-size:11px;color:var(--muted);margin-top:8px}
-@media(max-width:560px){.brief-photo-hero{height:clamp(480px,79svh,760px)}.brief-photo-hero-media img{object-position:center 18%}.brief-photo-hero-center img{width:min(80vw,400px)}.brief-photo-hero-caption{display:block;bottom:20px;font-size:9px}.brief-photo-hero-caption span{display:block;margin-top:4px}.brief-intro .internal-badge{margin-bottom:14px}}
+@media(max-width:560px){.brief-photo-hero{height:clamp(480px,79svh,760px)}.brief-photo-hero-media img{object-position:center 18%}.brief-photo-hero-center img{width:min(55vw,220px)}.brief-photo-hero-caption{display:block;bottom:20px;font-size:9px}.brief-photo-hero-caption span{display:block;margin-top:4px}.brief-intro .internal-badge{margin-bottom:14px}}
 @media(prefers-reduced-motion:reduce){.brief-photo-hero-media{transform:none;will-change:auto}}
 @media print{.brief-photo-hero{display:none!important}}
