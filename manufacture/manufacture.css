@@ -29,6 +29,23 @@
 .partner-prompt strong{display:block;font-size:14px;margin-bottom:10px}
 .partner-prompt ul{margin:0}.partner-prompt li{padding:3px 0}
 .partner-aside{margin-top:20px;color:var(--muted);font-size:13px}
+.partner-thesis{max-width:78ch;margin-top:36px;padding-top:29px;border-top:1px solid var(--border)}
+.partner-thesis .eyebrow{margin:0 0 10px}
+.partner-thesis h4{font-size:26px;line-height:1.2;margin:0 0 17px}
+.partner-thesis p{color:var(--muted);line-height:1.7}
+.partner-thesis .thesis-line{color:var(--ink);font-size:16px;margin-top:25px}
+.partner-thesis .partner-aside{font-size:13px;margin-bottom:0}
+.lifestyle-direction,.pricing-direction{margin-top:34px;padding-top:29px;border-top:1px solid var(--border)}
+.lifestyle-direction>p{max-width:76ch}
+.pricing-direction>p{max-width:76ch}
+.pricing-experiments{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:24px 0}
+.pricing-option{min-width:0;border-top:2px solid var(--ink);padding:14px 2px 0}
+.pricing-option h5{font-size:13px;font-weight:500;margin:0 0 8px}
+.pricing-option>strong{display:block;font-size:25px;letter-spacing:-.04em;line-height:1.1;margin-bottom:11px}
+.pricing-option p{font-size:12px;line-height:1.55;margin:0}
+.validation-plan{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:8px 0;margin:24px 0}
+.validation-plan summary{font-size:13px}
+.validation-plan p{max-width:76ch;line-height:1.65}
 .technical-reference{margin:70px 0 28px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .technical-reference>summary{list-style:none;display:flex;align-items:center;gap:14px;cursor:pointer;padding:22px 3px;font-size:17px;font-weight:500}
 .technical-reference>summary::-webkit-details-marker{display:none}
@@ -38,4 +55,4 @@
 .technical-reference-body{padding:0 0 12px}
 .reference-intro{max-width:77ch;padding:14px 0 4px;color:var(--muted);font-size:13px}
 @media(max-width:800px){.technical-reference{margin-top:52px}.technical-reference>summary{display:block}.technical-reference>summary small{margin:5px 0 0;text-align:left}.technical-reference>summary:after{float:right;margin-top:-36px}}
-@media(max-width:560px){.partner-cards{grid-template-columns:1fr}.partner-section .section-intro{font-size:15px}.partner-prompt{padding:18px}.technical-reference>summary{font-size:16px}.technical-reference>summary small{max-width:27ch}.technical-reference>summary:after{margin-top:-43px}}
+@media(max-width:560px){.partner-cards,.pricing-experiments{grid-template-columns:1fr}.partner-section .section-intro{font-size:15px}.partner-prompt{padding:18px}.pricing-option{padding-top:12px}.technical-reference>summary{font-size:16px}.technical-reference>summary small{max-width:27ch}.technical-reference>summary:after{margin-top:-43px}}
