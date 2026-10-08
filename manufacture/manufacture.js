@@ -263,6 +263,28 @@
   }
   window.addEventListener('scroll', () => {if (!scheduled) {scheduled = true;requestAnimationFrame(updateActive);}}, {passive:true});
   updateActive();
+  const photoHero = $('#photo-hero');
+  if (photoHero) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let parallaxScheduled = false;
+    function updateParallax() {
+      parallaxScheduled = false;
+      if (reducedMotion.matches) { photoHero.style.setProperty('--hero-shift', '0px'); return; }
+      const bounds = photoHero.getBoundingClientRect();
+      if (bounds.bottom < 0 || bounds.top > innerHeight) return;
+      const distance = Math.min(Math.max(-bounds.top, 0), bounds.height);
+      photoHero.style.setProperty('--hero-shift', `${Math.round(distance * 0.18)}px`);
+    }
+    function scheduleParallax() {
+      if (parallaxScheduled) return;
+      parallaxScheduled = true;
+      requestAnimationFrame(updateParallax);
+    }
+    window.addEventListener('scroll', scheduleParallax, {passive:true});
+    window.addEventListener('resize', scheduleParallax, {passive:true});
+    reducedMotion.addEventListener('change', scheduleParallax);
+    scheduleParallax();
+  }
   let printDetails = [];
   window.addEventListener('beforeprint', () => {printDetails = [...document.querySelectorAll('details:not([open]):not(#working-reference)')];printDetails.forEach(item => {item.open = true;});});
   window.addEventListener('afterprint', () => {printDetails.forEach(item => {item.open = false;});});

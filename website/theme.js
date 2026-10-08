@@ -1,15 +1,16 @@
 (() => {
   'use strict';
-  const key = 'halo-theme';
   const root = document.documentElement;
+  const key = root.dataset.themeStorageKey || 'halo-theme';
   const system = window.matchMedia('(prefers-color-scheme: dark)');
   const valid = value => value === 'light' || value === 'dark';
+  const defaultTheme = valid(root.dataset.defaultTheme) ? root.dataset.defaultTheme : null;
   let preference;
   try { preference = localStorage.getItem(key); } catch { /* Storage can be unavailable. */ }
   if (!valid(preference)) preference = null;
 
   function apply() {
-    const theme = preference || (system.matches ? 'dark' : 'light');
+    const theme = preference || defaultTheme || (system.matches ? 'dark' : 'light');
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
     const themeColor = document.querySelector('meta[name="theme-color"]');

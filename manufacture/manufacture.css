@@ -42,3 +42,21 @@
 .reference-intro{max-width:77ch;padding:14px 0 4px;color:var(--muted);font-size:13px}
 @media(max-width:800px){.technical-reference{margin-top:52px}.technical-reference>summary{display:block}.technical-reference>summary small{margin:5px 0 0;text-align:left}.technical-reference>summary:after{float:right;margin-top:-36px}}
 @media(max-width:560px){.partner-cards{grid-template-columns:1fr}.partner-section .section-intro{font-size:15px}.partner-prompt{padding:18px}.technical-reference>summary{font-size:16px}.technical-reference>summary small{max-width:27ch}.technical-reference>summary:after{margin-top:-43px}}
+
+/* The selected luxury reference is a visual entry to the working brief. */
+.brief-photo-hero{position:relative;height:min(86vh,920px);height:clamp(520px,86svh,920px);overflow:hidden;background:#0e0e0d;isolation:isolate;--hero-shift:0px}
+.brief-photo-hero-media{position:absolute;inset:-22% 0;transform:translate3d(0,var(--hero-shift),0);will-change:transform}
+.brief-photo-hero-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.brief-photo-hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,4,4,.5),rgba(4,4,4,.64) 55%,rgba(4,4,4,.72));pointer-events:none}
+.brief-photo-hero-center{position:absolute;inset:0;display:grid;place-items:center;padding:24px}
+.brief-photo-hero-center img{display:block;width:clamp(260px,34vw,570px);height:auto;filter:drop-shadow(0 3px 25px #0008)}
+.brief-photo-hero-caption{position:absolute;bottom:28px;left:clamp(20px,4vw,70px);right:clamp(20px,4vw,70px);display:flex;justify-content:space-between;gap:16px;color:#fff;font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+.brief-intro{display:block;max-width:860px;margin-bottom:0}
+.brief-intro .intro-description{max-width:70ch}
+.brief-decision-list{max-width:78ch;color:var(--muted);font-size:13px}
+.approved-visual figure{margin:10px 0 18px;max-width:720px}
+.approved-visual img{display:block;width:100%;height:auto;background:var(--stage);border-radius:8px}
+.approved-visual figcaption{font-size:11px;color:var(--muted);margin-top:8px}
+@media(max-width:560px){.brief-photo-hero{height:clamp(480px,79svh,760px)}.brief-photo-hero-media img{object-position:center 18%}.brief-photo-hero-center img{width:min(80vw,400px)}.brief-photo-hero-caption{display:block;bottom:20px;font-size:9px}.brief-photo-hero-caption span{display:block;margin-top:4px}.brief-intro .internal-badge{margin-bottom:14px}}
+@media(prefers-reduced-motion:reduce){.brief-photo-hero-media{transform:none;will-change:auto}}
+@media print{.brief-photo-hero{display:none!important}}

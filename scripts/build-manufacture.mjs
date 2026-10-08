@@ -2,11 +2,11 @@ import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const sections = [
-  ['01', 'first-piece', 'The year'], ['02', 'stones', 'The twelve stones'],
-  ['03', 'your-eye', 'Your eye'], ['04', 'gtm', 'Why premium first'],
-  ['05', 'together', 'Next decisions'], ['06', 'working-reference', 'Working reference'],
+  ['01', 'gtm', 'Launch hypothesis'], ['02', 'first-piece', 'Year One'],
+  ['03', 'your-eye', 'Jewelry'], ['04', 'stones', 'Twelve stones'],
+  ['05', 'together', 'Open decisions'], ['06', 'working-reference', 'Working reference'],
 ];
-const groups = { 0: 'Our brief', 5: 'Details when needed' };
+const groups = { 0: 'Brief', 5: 'Technical reference' };
 const assets = [
   'manufacture.css', 'manufacture.js', 'workspace-data.js', 'cost-model.js',
   'reference-bracelets.png', 'latest-design-reference.png', 'packaging-reference-02.png',

@@ -15,7 +15,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright')
 const baseUrl = process.env.MANUFACTURE_BASE_URL || 'http://127.0.0.1:61019';
 const storageKey = 'halo-manufacture-workspace-v1';
 const output = path.resolve(__dirname, '../qa/manufacture');
-const briefAnchors = ['first-piece', 'stones', 'your-eye', 'gtm', 'together', 'working-reference'];
+const briefAnchors = ['gtm', 'first-piece', 'your-eye', 'stones', 'together', 'working-reference'];
 const anchors = ['roadmap', 'supply-chain', 'sourcing', 'rf-reference', 'mechanical', 'cad', 'prototypes', 'rf-matrix', 'quotes', 'costs', 'procedure', 'bracelet-outreach', 'nfc-outreach', 'ip', 'red-flags', 'next-actions'];
 
 async function run() {
@@ -66,6 +66,7 @@ async function run() {
     assert.equal(await page.title(), 'Halo Year One — Working Brief');
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), 'https://www.habithalo.app/brief');
     assert.equal(await page.locator('#section-nav a').count(), briefAnchors.length);
+    assert.deepEqual(await page.locator('#section-nav a').evaluateAll(links => links.map(link => link.hash.slice(1))), briefAnchors);
     assert.equal(await page.locator('#working-reference').evaluate(element => element.open), true);
     for (const id of briefAnchors) {
       assert.equal(await page.locator(`#${id}`).count(), 1, `Missing/duplicate brief section ${id}`);
@@ -75,6 +76,20 @@ async function run() {
       assert.equal(await page.locator(`#${id}`).count(), 1, `Missing/duplicate section ${id}`);
     }
     checks.push('The /brief route is canonical and noindex; legacy page and asset URLs redirect; all 16 technical sections remain available.');
+
+    const darkSystemContext = await browser.newContext({ colorScheme: 'dark' });
+    await darkSystemContext.addInitScript(() => localStorage.setItem('halo-theme', 'dark'));
+    const darkSystemPage = await darkSystemContext.newPage();
+    await darkSystemPage.goto(`${baseUrl}/brief`, { waitUntil: 'networkidle' });
+    assert.equal(await darkSystemPage.locator('html').getAttribute('data-theme'), 'light');
+    assert.equal(await darkSystemPage.evaluate(() => localStorage.getItem('halo-brief-theme')), null);
+    await darkSystemPage.locator('#theme-toggle').click();
+    await darkSystemPage.reload({ waitUntil: 'networkidle' });
+    assert.equal(await darkSystemPage.locator('html').getAttribute('data-theme'), 'dark');
+    await darkSystemPage.goto(`${baseUrl}/`, { waitUntil: 'networkidle' });
+    assert.equal(await darkSystemPage.locator('html').getAttribute('data-theme'), 'dark');
+    await darkSystemContext.close();
+    checks.push('Brief defaults light despite dark OS/global preference; its explicit dark choice persists without changing the main site.');
 
     const schema = await page.evaluate(() => ({ dimensions: HaloManufactureData.dimensions.length, protocol: HaloManufactureData.protocol.length, rf: HaloManufactureData.rf.length, quotes: HaloManufactureData.quotes.length, costs: HaloManufactureCosts.ITEMS.length }));
     assert.equal(schema.dimensions, 54);
@@ -99,6 +114,14 @@ async function run() {
       await assertNoOverflow(width, height);
       await page.screenshot({ path: path.join(output, `light-${width}.png`) });
     }
+    assert.ok(await page.locator('#photo-hero img').first().evaluate(image => image.complete && image.naturalWidth > 0));
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.evaluate(() => window.scrollTo(0, Math.min(200, document.querySelector('#photo-hero').offsetHeight / 2)));
+    await page.waitForFunction(() => parseFloat(document.querySelector('#photo-hero').style.getPropertyValue('--hero-shift')) > 0);
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.waitForFunction(() => document.querySelector('#photo-hero').style.getPropertyValue('--hero-shift') === '0px');
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    checks.push('Selected photo loads; scroll parallax responds and Reduce Motion disables it.');
     await page.setViewportSize({ width: 1440, height: 1050 });
     await page.locator('#theme-toggle').click();
     assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
