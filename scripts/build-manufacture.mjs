@@ -3,10 +3,10 @@ import path from 'node:path';
 
 const sections = [
   ['01', 'first-piece', 'The year'], ['02', 'stones', 'The twelve stones'],
-  ['03', 'your-eye', 'Your eye'], ['04', 'together', 'Next decisions'],
-  ['05', 'working-reference', 'Working reference'],
+  ['03', 'your-eye', 'Your eye'], ['04', 'gtm', 'Why premium first'],
+  ['05', 'together', 'Next decisions'], ['06', 'working-reference', 'Working reference'],
 ];
-const groups = { 0: 'Our brief', 4: 'Details when needed' };
+const groups = { 0: 'Our brief', 5: 'Details when needed' };
 const assets = [
   'manufacture.css', 'manufacture.js', 'workspace-data.js', 'cost-model.js',
   'reference-bracelets.png', 'latest-design-reference.png', 'packaging-reference-02.png',
